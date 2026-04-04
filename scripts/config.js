@@ -1,0 +1,250 @@
+'use strict';
+
+// ── Site-wide constants ───────────────────────────────────────────────────────
+const site = {
+  name:      'Poki2',
+  domain:    'https://poki2.online',
+  tagline:   'The Ultimate Free Browser Games Network',
+  faviconUrl:'https://poki2.online/favicon.svg',
+  adsenseId: 'ca-pub-6199549323873133',
+};
+
+// ── Subdomain network ─────────────────────────────────────────────────────────
+const network = [
+  {
+    slug:        'play',
+    name:        'Poki2 Play',
+    url:         'https://play.poki2.online/',
+    color:       '#22d3ee',
+    emoji:       '🎮',
+    status:      'live',
+    gameCount:   '200+',
+    categories:  'Action, Puzzle, Racing, Sports, Adventure',
+    description: 'The original Poki2 game collection — over 200 hand-picked HTML5 games across every genre. Fast loading, no ads during gameplay, and works on any device.',
+  },
+  {
+    slug:        'azgames',
+    name:        'AZ Games',
+    url:         'https://azgames.poki2.online/',
+    color:       '#f97316',
+    emoji:       '🕹️',
+    status:      'live',
+    gameCount:   '300+',
+    categories:  'IO, Clicker, Adventure, 2-Player, Sports, Puzzle',
+    description: 'A massive 300-game collection sorted A to Z, powered by the azgames.io catalog. Every genre is covered with fresh titles added regularly.',
+  },
+  {
+    slug:        'gplus',
+    name:        'Unblocked G+',
+    url:         'https://unblocked-games-g-plus.poki2.online/',
+    color:       '#a855f7',
+    emoji:       '🔓',
+    status:      'live',
+    gameCount:   '35+',
+    categories:  'Unblocked, School-Safe, Parkour, IO',
+    description: "School-safe unblocked games in the G+ tradition. Works on Chromebook, survives most school firewalls, and includes the classics teachers haven't blocked yet.",
+  },
+  {
+    slug:        'kids',
+    name:        'Kids Games',
+    color:       '#4ade80',
+    emoji:       '🧒',
+    status:      'soon',
+    gameCount:   '100+',
+    categories:  'Coloring, Matching, Friendly Platformers',
+    description: 'Coming soon — a curated library of age-appropriate browser games for children aged 4–12. Safe for school, no ads, no in-app purchases.',
+  },
+  {
+    slug:        'racing',
+    name:        'Racing Hub',
+    color:       '#f59e0b',
+    emoji:       '🏎️',
+    status:      'soon',
+    gameCount:   '80+',
+    categories:  'Drift, Formula, Off-Road, Stunt',
+    description: 'Coming soon — the dedicated racing portal. Drift Hunters, Moto X3M, and dozens more racing games with instant browser play.',
+  },
+  {
+    slug:        'puzzle',
+    name:        'Puzzle World',
+    color:       '#ec4899',
+    emoji:       '🧩',
+    status:      'soon',
+    gameCount:   '120+',
+    categories:  'Sudoku, Match-3, Logic, Word',
+    description: 'Coming soon — dedicated to brain teasers and puzzle games. 2048, Cut the Rope, Mahjong, and hundreds of logic challenges.',
+  },
+  {
+    slug:        'io',
+    name:        'IO Arena',
+    color:       '#6366f1',
+    emoji:       '🌐',
+    status:      'soon',
+    gameCount:   '60+',
+    categories:  'Multiplayer IO, Battle Royale, Survival',
+    description: 'Coming soon — every major .io game in one place. Agar.io, Slither.io, Krunker, Shell Shockers and more with zero login required.',
+  },
+  {
+    slug:        'stickman',
+    name:        'Stickman Zone',
+    color:       '#64748b',
+    emoji:       '🥷',
+    status:      'soon',
+    gameCount:   '50+',
+    categories:  'Action, Fighting, Parkour, Strategy',
+    description: 'Coming soon — all things stickman. Hook, Archer, Sniper, and dozens of stickman action games in a single fast-loading portal.',
+  },
+];
+
+// ── Static pages metadata ──────────────────────────────────────────────────────
+const pages = [
+  {
+    slug:       'index',
+    outputFile: 'index.html',
+    bodyClass:  'home-page',
+    title:      'Poki2 — Free Browser Games Network: 500+ Games, No Download',
+    description:'Poki2 is a free browser games network. Explore 500+ games across 8 specialized sites — IO, action, puzzle, racing, and more. No downloads, instant play.',
+    keywords:   'free browser games, online games no download, poki2, free online games, browser games network',
+    canonical:  'https://poki2.online/',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'Poki2',
+        url:  'https://poki2.online/',
+        logo: 'https://poki2.online/favicon.svg',
+        contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', email: 'contact@poki2.online' }],
+        sameAs: ['https://azgames.poki2.online', 'https://unblocked-games-g-plus.poki2.online'],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        url:  'https://poki2.online',
+        name: 'Poki2',
+        publisher: { '@type': 'Organization', name: 'Poki2', url: 'https://poki2.online/' },
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: { '@type': 'EntryPoint', urlTemplate: 'https://azgames.poki2.online/?q={search_term_string}' },
+          'query-input': 'required name=search_term_string'
+        }
+      },
+    ],
+  },
+  {
+    slug:       'about',
+    outputFile: 'about.html',
+    bodyClass:  'static-page about-page',
+    title:      'About Poki2 — Our Mission, Team & Advertising',
+    description:'Learn about Poki2, the free browser games network. Our mission, how we curate games, our advertising policy, and who we are.',
+    canonical:  'https://poki2.online/about.html',
+    schema: [{
+      '@context': 'https://schema.org',
+      '@type': 'AboutPage',
+      url:  'https://poki2.online/about.html',
+      name: 'About Poki2',
+      description: 'About the Poki2 free browser games network.',
+    }],
+  },
+  {
+    slug:       'privacy',
+    outputFile: 'privacy.html',
+    bodyClass:  'static-page privacy-page',
+    title:      'Privacy Policy — Poki2',
+    description:'Poki2 Privacy Policy: how we collect, use, and protect your data, including our use of Google AdSense advertising cookies.',
+    canonical:  'https://poki2.online/privacy.html',
+    schema: [{
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      url: 'https://poki2.online/privacy.html',
+      name: 'Privacy Policy — Poki2',
+    }],
+  },
+  {
+    slug:       'terms',
+    outputFile: 'terms.html',
+    bodyClass:  'static-page terms-page',
+    title:      'Terms of Use — Poki2',
+    description:'Poki2 Terms of Use: acceptable use, intellectual property, disclaimers and your rights as a visitor.',
+    canonical:  'https://poki2.online/terms.html',
+    schema: [{
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      url: 'https://poki2.online/terms.html',
+      name: 'Terms of Use — Poki2',
+    }],
+  },
+  {
+    slug:       'contact',
+    outputFile: 'contact.html',
+    bodyClass:  'static-page contact-page',
+    title:      'Contact Us — Poki2',
+    description:'Contact the Poki2 team for support, game submissions, partnership enquiries, or press requests.',
+    canonical:  'https://poki2.online/contact.html',
+    schema: [{
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      url: 'https://poki2.online/contact.html',
+      name: 'Contact Poki2',
+    }],
+  },
+  {
+    slug:       'dmca',
+    outputFile: 'dmca.html',
+    bodyClass:  'static-page dmca-page',
+    title:      'DMCA Notice — Poki2',
+    description:'Poki2 DMCA policy. How to submit a copyright removal request and what to expect.',
+    canonical:  'https://poki2.online/dmca.html',
+    schema: [{
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      url: 'https://poki2.online/dmca.html',
+      name: 'DMCA Notice — Poki2',
+    }],
+  },
+];
+
+// ── Blog articles metadata ────────────────────────────────────────────────────
+const blogPosts = [
+  {
+    slug:       'best-browser-games-2026',
+    title:      'The 15 Best Free Browser Games of 2026',
+    description:'Our editors picked the 15 best free browser games you can play right now — no download, no login, just open and play.',
+    date:       'April 2026',
+    category:   'Top Lists',
+    readTime:   '6 min read',
+  },
+  {
+    slug:       'what-are-io-games',
+    title:      'What Are .IO Games? Your Complete Guide',
+    description:'.IO games are lightweight multiplayer browser games. Learn what makes them special, which ones are the best, and where to play them free.',
+    date:       'April 2026',
+    category:   'Guides',
+    readTime:   '5 min read',
+  },
+  {
+    slug:       'unblocked-games-guide',
+    title:      'How to Play Unblocked Games Safely at School or Work',
+    description:'A practical guide to finding and playing unblocked browser games legally and safely, without putting your network access at risk.',
+    date:       'April 2026',
+    category:   'Guides',
+    readTime:   '6 min read',
+  },
+  {
+    slug:       'best-multiplayer-browser-games',
+    title:      '10 Best Multiplayer Browser Games You Can Play Right Now',
+    description:'Compete against real players in these top multiplayer games. No downloads, no accounts — just open your browser and start playing.',
+    date:       'April 2026',
+    category:   'Top Lists',
+    readTime:   '5 min read',
+  },
+  {
+    slug:       'game-aggregator-picks',
+    title:      'Our Top 5 Browser Game Picks for Every Type of Gamer',
+    description:'Whether you love puzzles, racing, action, or casual fun — we\'ve picked the single best browser game for each type of player.',
+    date:       'April 2026',
+    category:   'Reviews',
+    readTime:   '5 min read',
+  },
+];
+
+module.exports = { site, network, pages, blogPosts };

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block dist build artifacts if accidentally published
+Disallow: /dist/
+
+Sitemap: https://poki2.online/sitemap.xml

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="keywords" content="{{KEYWORDS}}">
+  <link rel="canonical" href="{{CANONICAL}}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{OG_TITLE}}">
+  <meta property="og:description" content="{{OG_DESCRIPTION}}">
+  <meta property="og:url" content="{{OG_URL}}">
+  <meta property="og:type" content="{{OG_TYPE}}">
+  <meta property="og:site_name" content="Poki2">
+  <meta property="og:image" content="{{OG_IMAGE}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{TWITTER_TITLE}}">
+  <meta name="twitter:description" content="{{TWITTER_DESCRIPTION}}">
+  <meta name="twitter:image" content="{{TWITTER_IMAGE}}">
+
+  {{SCHEMA}}
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6199549323873133"
+    crossorigin="anonymous"></script>
+</head>
+<body class="{{BODY_CLASS}}">
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="logo" href="/">
+      <span class="logo-emoji">🎮</span>
+      <span>Poki2</span>
+    </a>
+
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-network-wrap">
+      <button class="nav-network-btn" id="nav-network-btn" aria-haspopup="true" aria-expanded="false">
+        Play Games
+      </button>
+      <div class="nav-network-dropdown" id="nav-network-dropdown" role="menu">
+
+        <a href="https://azgames.poki2.online/" rel="noopener">🕹️ AZ Games <span class="dd-badge">300+</span></a>
+        <a href="https://unblocked-games-g-plus.poki2.online/" rel="noopener">🔓 Unblocked G+ <span class="dd-badge">35+</span></a>
+        <a href="https://kids.poki2.online/" rel="noopener">🧒 Kids Games <span class="dd-badge badge-soon">Soon</span></a>
+        <a href="https://io.poki2.online/" rel="noopener">🌐 IO Arena <span class="dd-badge badge-soon">Soon</span></a>
+      </div>
+    </div>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main id="content">
+    {{CONTENT}}
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-brand"><a href="/">🎮 Poki2 Network</a></div>
+      <nav class="footer-network" aria-label="Network sites">
+        <a href="https://azgames.poki2.online/" rel="noopener">AZ Games</a>
+        <a href="https://unblocked-games-g-plus.poki2.online/" rel="noopener">Unblocked G+</a>
+      </nav>
+      <nav class="footer-nav" aria-label="Footer links">
+        <a href="/about.html">About</a>
+        <a href="/blog/">Blog</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/dmca.html">DMCA</a>
+      </nav>
+      <p class="footer-copy">
+        &copy; 2026 Poki2. All rights reserved. This site is supported by advertising.
+        <a href="/privacy.html">Cookie &amp; Ad Policy</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Hamburger toggle
+      var btn   = document.getElementById('nav-toggle');
+      var links = document.getElementById('nav-links');
+      if (btn && links) {
+        btn.addEventListener('click', function () {
+          var open = links.classList.toggle('open');
+          btn.classList.toggle('open', open);
+          btn.setAttribute('aria-expanded', open);
+        });
+      }
+      // Network dropdown
+      var nBtn  = document.getElementById('nav-network-btn');
+      var nDrop = document.getElementById('nav-network-dropdown');
+      if (nBtn && nDrop) {
+        nBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var open = nDrop.classList.toggle('open');
+          nBtn.setAttribute('aria-expanded', open);
+        });
+        document.addEventListener('click', function () {
+          nDrop.classList.remove('open');
+          nBtn.setAttribute('aria-expanded', 'false');
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            nDrop.classList.remove('open');
+            nBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
