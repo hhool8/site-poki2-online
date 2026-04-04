@@ -74,6 +74,7 @@ function fillBase(template, page, content) {
 
 function fillArticle(template, post, content, relatedLinks) {
   const canonical = `${site.domain}/blog/${post.slug}`;
+  const buildTs   = new Date().toISOString();
   const ogImage   = `${site.domain}/og-image.png`;
   const schema    = [{
     '@context': 'https://schema.org',
@@ -109,7 +110,8 @@ function fillArticle(template, post, content, relatedLinks) {
     .replace(/\{\{ARTICLE_CATEGORY\}\}/g,   post.category || '')
     .replace(/\{\{ARTICLE_READ_TIME\}\}/g,  post.readTime || '')
     .replace(/\{\{RELATED_LINKS\}\}/g,      relatedLinks)
-    .replace(/\{\{CONTENT\}\}/g,            content);
+    .replace(/\{\{CONTENT\}\}/g,            content)
+    .replace(/\{\{BUILD_TS\}\}/g,           buildTs);
 }
 
 // ── Build ─────────────────────────────────────────────────────────────────────
