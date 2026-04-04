@@ -199,7 +199,7 @@ function buildSitemap() {
   const blogUrls = blogPosts.map(p => `
   <url>
     <loc>${site.domain}/blog/${p.slug}.html</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${p.isoDate || now}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>`).join('');
