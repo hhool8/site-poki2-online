@@ -73,7 +73,7 @@ function fillBase(template, page, content) {
 }
 
 function fillArticle(template, post, content, relatedLinks) {
-  const canonical = `${site.domain}/blog/${post.slug}.html`;
+  const canonical = `${site.domain}/blog/${post.slug}`;
   const ogImage   = `${site.domain}/og-image.png`;
   const schema    = [{
     '@context': 'https://schema.org',
@@ -145,7 +145,7 @@ function buildBlog() {
     const relatedLinks = blogPosts
       .filter(p => p.slug !== post.slug)
       .slice(0, 4)
-      .map(p => `<li><a href="/blog/${p.slug}.html">${esc(p.title)}</a></li>`)
+      .map(p => `<li><a href="/blog/${p.slug}">${esc(p.title)}</a></li>`)
       .join('\n          ');
 
     const html = fillArticle(articleTemplate, post, content, relatedLinks);
@@ -198,7 +198,7 @@ function buildSitemap() {
 
   const blogUrls = blogPosts.map(p => `
   <url>
-    <loc>${site.domain}/blog/${p.slug}.html</loc>
+    <loc>${site.domain}/blog/${p.slug}</loc>
     <lastmod>${p.isoDate || now}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
