@@ -77,11 +77,13 @@ function fillArticle(template, post, content, relatedLinks) {
   const ogImage   = `${site.domain}/og-image.png`;
   const schema    = [{
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
     headline:    post.title,
     description: post.description,
     url:         canonical,
     datePublished: post.isoDate || '2026-04-04',
+    dateModified:  post.isoDate || '2026-04-04',
     author: { '@type': 'Organization', name: 'Poki2', url: site.domain },
     publisher: {
       '@type': 'Organization', name: 'Poki2', url: site.domain,
