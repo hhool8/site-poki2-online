@@ -1,0 +1,8 @@
+# poki2.online — Cloudflare Pages redirects
+
+# Legacy game URLs → play subdomain (keep old links working)
+/game/*        https://play.poki2.online/game/:splat  301
+
+# Old game index path
+/games          https://play.poki2.online/             301
+/games/         https://play.poki2.online/             301
