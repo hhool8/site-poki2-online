@@ -205,14 +205,14 @@ ul { list-style: none; }
 .stat-label { font-size: .8rem; color: var(--text-muted); margin-top: 4px; }
 
 /* ===== Sections ===== */
-section { padding: 4rem 0; }
+section { padding: 2.5rem 0; }
 section:nth-of-type(even):not(.hero) { background: var(--surface); }
 
 .section-title {
   font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; color: #fff;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.4rem;
 }
-.section-sub { color: var(--text-muted); margin-bottom: 2.5rem; max-width: 560px; }
+.section-sub { color: var(--text-muted); margin-bottom: 1.5rem; max-width: 560px; }
 
 /* ===== Network Grid ===== */
 .network-grid {
@@ -280,7 +280,7 @@ section:nth-of-type(even):not(.hero) { background: var(--surface); }
 
 /* ===== About section on homepage ===== */
 .about-snippet { max-width: 820px; }
-.about-snippet p { margin-bottom: 1rem; color: var(--text-muted); }
+.about-snippet p { margin-bottom: 0.6rem; color: var(--text-muted); }
 .about-snippet p:last-child { margin-bottom: 0; }
 
 /* ===== Blog cards ===== */
