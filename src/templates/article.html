@@ -18,7 +18,19 @@
   <meta name="twitter:image" content="{{TWITTER_IMAGE}}">
   {{SCHEMA}}
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <!-- Google Consent Mode v2 — must precede AdSense -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', analytics_storage: 'denied',
+      ad_personalization: 'denied', ad_user_data: 'denied',
+      wait_for_update: 2000
+    });
+  </script>
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6199549323873133" crossorigin="anonymous"></script>
 </head>
 <body class="article-page">
@@ -56,6 +68,17 @@
           <span>🏷️ {{ARTICLE_CATEGORY}}</span>
           <span>⏱️ {{ARTICLE_READ_TIME}}</span>
         </div>
+      </div>
+
+      <!-- Responsive AdSense banner — fill data-ad-slot after account approval -->
+      <div class="ad-unit ad-unit--top" aria-label="Advertisement">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6199549323873133"
+             data-ad-format="auto"
+             data-full-width-responsive="true"
+             data-ad-slot=""></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
 
       <article class="article-body">
@@ -109,6 +132,64 @@
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { nDrop.classList.remove('open'); nBtn.setAttribute('aria-expanded', 'false'); } });
       }
     })();
+  </script>
+
+  <!-- Cookie Consent (vanilla-cookieconsent v3) -->
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+  <script>
+    CookieConsent.run({
+      guiOptions: {
+        consentModal: { layout: 'bar', position: 'bottom', equalWeightButtons: false }
+      },
+      categories: {
+        necessary: { enabled: true, readOnly: true },
+        analytics: {}
+      },
+      language: {
+        default: 'en',
+        translations: {
+          en: {
+            consentModal: {
+              title: 'We use cookies',
+              description: 'We use cookies to serve personalised ads (Google AdSense), keeping this site free for everyone. <a href="/privacy.html" class="cc__link">Privacy Policy</a>',
+              acceptAllBtn: 'Accept all',
+              acceptNecessaryBtn: 'Reject all',
+              showPreferencesBtn: 'Manage'
+            },
+            preferencesModal: {
+              title: 'Cookie preferences',
+              acceptAllBtn: 'Accept all',
+              acceptNecessaryBtn: 'Reject all',
+              savePreferencesBtn: 'Save preferences',
+              closeIconLabel: 'Close',
+              sections: [
+                {
+                  title: 'Strictly necessary',
+                  description: 'Required for the site to function correctly. Cannot be disabled.',
+                  linkedCategory: 'necessary'
+                },
+                {
+                  title: 'Advertising (Google AdSense)',
+                  description: 'Used by Google AdSense to serve relevant ads. Rejecting results in non-personalised ads — the site remains ad-supported.',
+                  linkedCategory: 'analytics'
+                }
+              ]
+            }
+          }
+        }
+      },
+      onConsent: function() {
+        if (CookieConsent.acceptedCategory('analytics')) {
+          gtag('consent', 'update', { ad_storage: 'granted', analytics_storage: 'granted', ad_personalization: 'granted', ad_user_data: 'granted' });
+        }
+      },
+      onChange: function({ changedCategories }) {
+        if (changedCategories.includes('analytics')) {
+          var ok = CookieConsent.acceptedCategory('analytics');
+          gtag('consent', 'update', { ad_storage: ok ? 'granted' : 'denied', analytics_storage: ok ? 'granted' : 'denied', ad_personalization: ok ? 'granted' : 'denied', ad_user_data: ok ? 'granted' : 'denied' });
+        }
+      }
+    });
   </script>
 </body>
 </html>
