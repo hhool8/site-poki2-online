@@ -21,16 +21,6 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <!-- Google Consent Mode v2 — must precede AdSense -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      ad_storage: 'denied', analytics_storage: 'denied',
-      ad_personalization: 'denied', ad_user_data: 'denied',
-      wait_for_update: 2000
-    });
-  </script>
 </head>
 <body class="article-page">
 
@@ -139,7 +129,7 @@
           en: {
             consentModal: {
               title: 'We use cookies',
-              description: 'We use cookies to serve personalised ads (Google AdSense), keeping this site free for everyone. <a href="/privacy" class="cc__link">Privacy Policy</a>',
+              description: 'We use cookies to help the site function correctly. <a href="/privacy" class="cc__link">Privacy Policy</a>',
               acceptAllBtn: 'Accept all',
               acceptNecessaryBtn: 'Reject all',
               showPreferencesBtn: 'Manage'
@@ -156,27 +146,13 @@
                   description: 'Required for the site to function correctly. Cannot be disabled.',
                   linkedCategory: 'necessary'
                 },
-                {
-                  title: 'Advertising (Google AdSense)',
-                  description: 'Used by Google AdSense to serve relevant ads. Rejecting results in non-personalised ads — the site remains ad-supported.',
-                  linkedCategory: 'analytics'
-                }
+
               ]
             }
           }
         }
       },
-      onConsent: function() {
-        if (CookieConsent.acceptedCategory('analytics')) {
-          gtag('consent', 'update', { ad_storage: 'granted', analytics_storage: 'granted', ad_personalization: 'granted', ad_user_data: 'granted' });
-        }
-      },
-      onChange: function({ changedCategories }) {
-        if (changedCategories.includes('analytics')) {
-          var ok = CookieConsent.acceptedCategory('analytics');
-          gtag('consent', 'update', { ad_storage: ok ? 'granted' : 'denied', analytics_storage: ok ? 'granted' : 'denied', ad_personalization: ok ? 'granted' : 'denied', ad_user_data: ok ? 'granted' : 'denied' });
-        }
-      }
+
     });
   </script>
 </body>
