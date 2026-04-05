@@ -516,3 +516,21 @@ section:nth-of-type(even):not(.hero) { background: var(--surface); }
 .author-bio-avatar { border-radius: 50%; flex-shrink: 0; }
 .author-bio-name { font-weight: 700; margin: 0 0 .25rem; font-size: .95rem; }
 .author-bio-desc { margin: 0; font-size: .875rem; color: var(--text-muted, #666); line-height: 1.5; }
+
+/* ── Contact FAQ / extended ──────────────────────────────────── */
+.contact-faq { margin-top: 4rem; }
+.contact-faq h2,
+.contact-about-support h2 { font-size: 1.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--primary, #7c3aed); padding-bottom: .5rem; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; }
+.faq-item h3 { font-size: 1.05rem; margin: 0 0 .75rem; color: var(--heading, #fff); }
+.faq-item p, .faq-item ol, .faq-item ul { font-size: .9rem; line-height: 1.7; margin: 0 0 .75rem; color: var(--text-muted, #ccc); }
+.faq-item ol, .faq-item ul { padding-left: 1.25rem; }
+.faq-item a { color: var(--primary, #a78bfa); }
+kbd { background: var(--surface-2, #2a2040); border: 1px solid var(--border); border-radius: 4px; padding: .1em .4em; font-size: .85em; font-family: monospace; }
+.contact-about-support { margin-top: 3rem; }
+.contact-about-support p { font-size: .95rem; line-height: 1.8; margin-bottom: 1rem; color: var(--text-muted, #ccc); }
+.contact-about-support a { color: var(--primary, #a78bfa); }
+@media (max-width: 768px) {
+  .faq-grid { grid-template-columns: 1fr; }
+}
