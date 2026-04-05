@@ -1,0 +1,81 @@
+<figure class="article-hero">
+  <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=1200&h=630&fit=crop&auto=format&q=80" alt="Person using a laptop easily at a desk" width="1200" height="630" loading="eager">
+</figure>
+
+<p>Playing games without downloading anything sounds obvious when you say it out loud, but a surprisingly large number of players still default to the App Store, Steam, or executable installers out of habit. Browser-based gaming has reached a level of quality in 2026 where most casual and mid-core game experiences are available directly in a browser tab — and the advantages go beyond mere convenience.</p>
+
+<p>This guide explains exactly how browser gaming works, why it's safer than downloading games, and how to get the best experience from the thousands of free browser games available across the <a href="https://poki2.online/">Poki2 network</a>.</p>
+
+<h2>What Are Browser Games?</h2>
+<p>Browser games are games that run inside a web browser — Chrome, Firefox, Safari, Edge — using web technologies. No plugin installation, no executable file, no permissions prompt. You navigate to a URL and the game loads directly in the browser window.</p>
+<p>Modern browser games use three primary technologies:</p>
+<ul>
+  <li><strong>HTML5 Canvas / WebGL:</strong> Renders 2D and 3D graphics using your GPU. WebGL in particular enables proper 3D games with shader effects, lighting, and geometry that rival mobile app quality.</li>
+  <li><strong>JavaScript:</strong> Handles all game logic — movement, physics, AI, scoring, and UI. Modern JavaScript engines (V8 in Chrome, SpiderMonkey in Firefox) are fast enough for games previously thought to require native code.</li>
+  <li><strong>WebAssembly (WASM):</strong> For performance-critical games, developers compile C++ or Rust game engines into WebAssembly — a binary format that runs at near-native speed in the browser. Games built in Unity, Godot, or Unreal can be exported as WASM browser builds.</li>
+</ul>
+
+<h2>Why Browser Gaming Is Safer Than Downloading</h2>
+
+<h3>No executable files</h3>
+<p>Downloaded games arrive as .exe, .apk, or .dmg files that can contain anything — including malware, adware, or spyware that most antivirus software doesn't catch until after infection. Browser games don't require you to run any file. The game code executes inside the browser's sandboxed JavaScript environment, which physically cannot access your file system, camera, or other apps without explicit permission.</p>
+
+<h3>No hidden permissions</h3>
+<p>Downloaded apps on iOS and Android request permissions — access to your contacts, location, microphone, photos. Many games request permissions far beyond what they need for legitimate gameplay. Browser games run in a tab and can only access what you explicitly permit (like the microphone if a game uses voice chat).</p>
+
+<h3>Automatic security updates</h3>
+<p>Browser game code runs from the server. When the developer patches a security issue or loads from updated servers, your browser runs the updated version automatically. Downloaded apps require you to update manually, and many users run old versions with known vulnerabilities for months.</p>
+
+<h3>No account creation (typically)</h3>
+<p>Most casual browser games require no login whatsoever. You don't hand over your email address or create a password that might be breached in a future hack. Poki2's games all have guest play by default — there's nothing to sign up for.</p>
+
+<h2>System Requirements: What You Actually Need</h2>
+
+<h3>Hardware</h3>
+<p>The vast majority of browser games run well on any hardware made in the last eight years. Specific requirements:</p>
+<ul>
+  <li><strong>Casual 2D games (2048, Bubble Shooter, Wordle):</strong> Any device, any browser, any screen size. Works on a 2013 Chromebook.</li>
+  <li><strong>Mid-core 2D games (Slither.io, Krunker.io, Basketball Stars):</strong> Any modern device from 2016 onwards. 2GB RAM minimum for smooth play.</li>
+  <li><strong>3D WebGL games (Drift Hunters, Shell Shockers):</strong> Discrete or integrated GPU with WebGL2 support (all devices from 2015 onwards). 4GB RAM recommended. Mobile play possible but desktop preferred.</li>
+  <li><strong>WebAssembly games (Unity-based):</strong> Modern browser with WASM support (Chrome 57+, Firefox 53+, Safari 11+, Edge 16+). These are the most demanding browser games — similar to mobile app performance.</li>
+</ul>
+
+<h3>Browser</h3>
+<p>Chrome is the recommended browser for gaming due to its V8 JavaScript engine and best-in-class WebGL performance. Firefox is a close second. Safari on iOS works for most 2D games but has historically had WebGL limitations now mostly resolved in Safari 16+. Edge (Chromium-based) performs identically to Chrome for gaming purposes.</p>
+<p>Avoid Internet Explorer — it doesn't support modern web standards and most browser games won't run at all.</p>
+
+<h3>Internet connection</h3>
+<p>Single-player browser games typically require 1-5 Mbps to load assets and play without stuttering. Once loaded, many run entirely locally with no further data needed. Multiplayer real-time games (IO games, online chess) need a stable connection — 5+ Mbps and low latency (under 80ms ping) for comfortable play. Mobile data works for most games; satellite internet can introduce latency issues in fast-paced multiplayer.</p>
+
+<h2>How to Get the Best Browser Gaming Experience</h2>
+
+<h3>Use fullscreen mode</h3>
+<p>Press F11 (Windows/Linux) or Control+Command+F (Mac) to put your browser in fullscreen mode, removing the toolbar and giving more space to the game. Most browser games also have their own fullscreen button within the game interface. Fullscreen is especially beneficial for 3D games and games with complex HUDs.</p>
+
+<h3>Hardware acceleration</h3>
+<p>Ensure hardware acceleration is enabled in your browser settings. In Chrome: Settings → System → Use hardware acceleration when available. This routes WebGL rendering through your GPU rather than software rendering, which can improve frame rate dramatically for 3D games.</p>
+
+<h3>Close unnecessary tabs</h3>
+<p>Each browser tab consumes RAM. If you're playing a memory-intensive WebAssembly game, having 20 other tabs open limits the memory available to the game. Keep your tab count under 10 for best performance, or use a dedicated browser window for gaming.</p>
+
+<h3>Disable extensions temporarily</h3>
+<p>Ad blockers and privacy extensions sometimes interfere with game code, particularly advertising-supported games that detect blockers to ensure compliance. If a game loads very slowly or shows an error, try disabling extensions for that tab. In Chrome, right-click any extension icon → Manage Extension → toggle off for that site.</p>
+
+<h3>Use a gamepad</h3>
+<p>Many 3D browser games (Drift Hunters, most racing games) support gamepads natively through the Gamepad API. Connect a USB or Bluetooth controller — Xbox, PlayStation, or generic — and most browsers detect it automatically. The game will show controller button prompts if it supports it. For racing games in particular, a controller dramatically improves the experience over keyboard play.</p>
+
+<h2>Saving Progress in Browser Games</h2>
+<p>Browser games save progress using one of several mechanisms:</p>
+<ul>
+  <li><strong>LocalStorage:</strong> Data saved in the browser on your device. Progress persists between browser closes but is device-specific and can be lost if you clear browsing data.</li>
+  <li><strong>Cookies:</strong> Older save mechanism, now less common due to privacy restrictions.</li>
+  <li><strong>Account-based cloud save:</strong> Some browser games offer optional accounts that sync progress across devices and browsers.</li>
+</ul>
+<p>If a game has valuable progress (a long idle game, a high score record), note the save location — some games provide an export code. Avoid clearing all browsing data without checking if saved games will be lost.</p>
+
+<h2>Mobile Browser Gaming</h2>
+<p>Almost all casual and 2D browser games work on mobile browsers. Open the game URL in Chrome or Safari on your phone or tablet and play directly — no app required, no App Store involved. Many IO games (Slither.io, Agar.io, Wormate.io) have excellent mobile touch controls. Stunt and racing games with complex keyboard controls typically work better on desktop.</p>
+<p>Add <a href="https://azgames.poki2.online/">AZ Games</a> or <a href="https://play.poki2.online/">Poki2 Play</a> to your phone's home screen (Share → Add to Home Screen in iOS Safari; three-dot menu → Add to Home Screen in Chrome for Android) for one-tap access without typing URLs.</p>
+
+<h2>Summary</h2>
+<p>Playing browser games without downloading anything is not a compromise — in most genres, it's the better experience. Faster to start, safer to run, easier to share, and now comparable in image and audio quality to standalone apps. The Poki2 network offers over 1,000 titles across <a href="https://play.poki2.online/">Poki2 Play</a>, <a href="https://azgames.poki2.online/">AZ Games</a>, and <a href="https://unblocked-games-g-plus.poki2.online/">Unblocked G+</a> — all playable from this browser tab, right now.</p>
