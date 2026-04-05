@@ -510,8 +510,12 @@ section:nth-of-type(even):not(.hero) { background: var(--surface); }
 .ad-unit { width: 100%; overflow: hidden; margin: 1.5rem 0; text-align: center; }
 .ad-unit--leaderboard { min-height: 0; }
 .ad-unit--article { min-height: 0; margin: 2rem 0; }
+/* Hide ad slots that AdSense has not yet processed (approval pending) */
+ins.adsbygoogle:not([data-ad-status]) { display: none !important; }
+.ad-unit:has(ins:not([data-ad-status])) { display: none !important; margin: 0 !important; }
+/* Hide explicitly unfilled slots */
 ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
-.ad-unit:has(ins[data-ad-status="unfilled"]) { display: none !important; }
+.ad-unit:has(ins[data-ad-status="unfilled"]) { display: none !important; margin: 0 !important; }
 
 /* ── Author bio ──────────────────────────────────────────────── */
 .author-bio { display: flex; gap: 1rem; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; margin: 2rem 0; }
