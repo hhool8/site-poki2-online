@@ -95,16 +95,30 @@ function fillBase(template, page, content) {
     .replace(/\{\{CONTENT\}\}/g,            content);
 }
 
+function extractHeroImage(content) {
+  // Match the first <img> inside <figure class="article-hero">
+  const m = content.match(/<figure[^>]*article-hero[^>]*>[\s\S]*?<img[^>]+src="([^"]+)"/);
+  if (m) return m[1];
+  // Fallback: first Unsplash image in content
+  const m2 = content.match(/src="(https:\/\/images\.unsplash\.com\/[^"]+)"/);
+  return m2 ? m2[1] : null;
+}
+
 function fillArticle(template, post, content, relatedLinks) {
   const canonical = `${site.domain}/blog/${post.slug}`;
   const buildTs   = new Date().toISOString();
-  const ogImage   = `${site.domain}/og-image.png`;
+  const heroImg   = extractHeroImage(content);
+  const ogImage   = heroImg || `${site.domain}/og-image.png`;
+  const schemaImage = heroImg
+    ? { '@type': 'ImageObject', url: heroImg, width: 1200, height: 630 }
+    : { '@type': 'ImageObject', url: `${site.domain}/og-image.png`, width: 1200, height: 630 };
   const schema    = [{
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
     headline:    post.title,
     description: post.description,
+    image:       schemaImage,
     url:         canonical,
     datePublished: post.isoDate || '2026-04-04',
     dateModified:  post.isoDate || '2026-04-04',
@@ -247,12 +261,45 @@ function buildSitemap() {
   write(path.join(DIST, 'sitemap.xml'), xml);
 }
 
+function minifyCss(src) {
+  return src
+    .replace(/\/\*[\s\S]*?\*\//g, '')      // remove /* comments */
+    .replace(/\s*([{}:;,>~+])\s*/g, '$1') // strip spaces around punctuation
+    .replace(/;\s*}/g, '}')               // remove trailing semicolons before }
+    .replace(/\s{2,}/g, ' ')              // collapse multiple spaces
+    .replace(/^\s+|\s+$/g, '')            // trim
+    .replace(/\n/g, '');                  // remove newlines
+}
+
 function copyAssets() {
   console.log('\n[4/4] Copying assets…');
-  copyDir(CSS_SRC, path.join(DIST, 'css'));
+
+  // Copy CSS and minify style.css → dist/css/style.css
+  const cssDest = path.join(DIST, 'css');
+  fs.mkdirSync(cssDest, { recursive: true });
+  for (const entry of fs.readdirSync(CSS_SRC, { withFileTypes: true })) {
+    const s = path.join(CSS_SRC, entry.name);
+    const d = path.join(cssDest, entry.name);
+    if (!entry.isDirectory() && entry.name === 'style.css') {
+      const minified = minifyCss(fs.readFileSync(s, 'utf8'));
+      fs.writeFileSync(d, minified, 'utf8');
+      const saved = ((1 - minified.length / fs.statSync(s).size) * 100).toFixed(1);
+      console.log(`  minified css/style.css (${saved}% smaller)`);
+    } else if (!entry.isDirectory()) {
+      fs.copyFileSync(s, d);
+    }
+  }
   console.log('  copied css/');
+
   copyDir(PUB_SRC, DIST);
   console.log('  copied public/');
+
+  // Remove any stale debug/test files that should not be served
+  const staleFiles = ['test.html'];
+  for (const f of staleFiles) {
+    const fp = path.join(DIST, f);
+    if (fs.existsSync(fp)) { fs.unlinkSync(fp); console.log('  removed stale:', f); }
+  }
 }
 
 // ── Entry point ───────────────────────────────────────────────────────────────
