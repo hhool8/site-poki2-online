@@ -28,6 +28,9 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/favicon.svg">
 
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6199549323873133" crossorigin="anonymous"></script>
+
   <!-- Google Analytics 4 (Consent Mode v2) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-T69PZL0ELE"></script>
   <script>
@@ -139,17 +142,27 @@
       },
       categories: {
         necessary: { enabled: true, readOnly: true },
-        analytics: {}
+        analytics: {},
+        advertising: {}
       },
       onConsent: function () {
         if (CookieConsent.acceptedCategory('analytics')) {
           gtag('consent', 'update', { analytics_storage: 'granted' });
           gtag('config', 'G-T69PZL0ELE', { send_page_view: true });
         }
+        if (CookieConsent.acceptedCategory('advertising')) {
+          gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });
+        }
       },
       onChange: function () {
-        var granted = CookieConsent.acceptedCategory('analytics');
-        gtag('consent', 'update', { analytics_storage: granted ? 'granted' : 'denied' });
+        var ads = CookieConsent.acceptedCategory('advertising');
+        var analytics = CookieConsent.acceptedCategory('analytics');
+        gtag('consent', 'update', {
+          analytics_storage: analytics ? 'granted' : 'denied',
+          ad_storage:        ads ? 'granted' : 'denied',
+          ad_user_data:      ads ? 'granted' : 'denied',
+          ad_personalization:ads ? 'granted' : 'denied'
+        });
       },
       language: {
         default: 'en',
@@ -174,7 +187,16 @@
                   description: 'Required for the site to function correctly. Cannot be disabled.',
                   linkedCategory: 'necessary'
                 },
-
+                {
+                  title: 'Analytics',
+                  description: 'Help us understand how visitors use the site. All data is aggregated and anonymous.',
+                  linkedCategory: 'analytics'
+                },
+                {
+                  title: 'Advertising',
+                  description: 'Allow Google AdSense to serve personalised ads based on your interests. Declining shows non-personalised ads instead.',
+                  linkedCategory: 'advertising'
+                }
               ]
             }
           }
