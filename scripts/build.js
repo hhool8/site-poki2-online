@@ -169,10 +169,18 @@ function buildBlog() {
     const rawContent = read(contentFile);
     const content = injectMidAd(rawContent);
 
-    // Build related links (all posts except current)
-    const relatedLinks = blogPosts
-      .filter(p => p.slug !== post.slug)
-      .slice(0, 4)
+    // Build related links: deterministic offset so every article is referenced
+    // For article at index i, pick others at i+[3,6,10,13] mod n (skip self)
+    const allPosts = blogPosts;
+    const idx = allPosts.indexOf(post);
+    const n = allPosts.length;
+    const offsets = [3, 6, 10, 13];
+    const picked = offsets.map(o => allPosts[(idx + o) % n]).filter(p => p.slug !== post.slug);
+    // deduplicate and pad if needed
+    const usedSlugs = new Set(picked.map(p => p.slug));
+    const fallback = allPosts.filter(p => p.slug !== post.slug && !usedSlugs.has(p.slug));
+    while (picked.length < 4 && fallback.length) picked.push(fallback.shift());
+    const relatedLinks = picked.slice(0, 4)
       .map(p => `<li><a href="/blog/${p.slug}">${esc(p.title)}</a></li>`)
       .join('\n          ');
 
