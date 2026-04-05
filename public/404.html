@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | Poki2</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://poki2.online/">
+  <link rel="stylesheet" href="/css/style.css?v=3">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="logo" href="/">
+      <span class="logo-emoji">🎮</span>
+      <span>Poki2</span>
+    </a>
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main style="display:flex;align-items:center;justify-content:center;min-height:60vh;padding:2rem;text-align:center;">
+    <div>
+      <p style="font-size:6rem;line-height:1;margin:0;opacity:.25;font-weight:800;">404</p>
+      <h1 style="font-size:1.8rem;margin:.75rem 0 1rem;">Page not found</h1>
+      <p style="max-width:38ch;margin:0 auto 2rem;opacity:.7;line-height:1.6;">
+        This page doesn't exist or may have been moved. Head back to the homepage to explore 500+ free browser games.
+      </p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="/" class="btn btn--primary">Back to Home</a>
+        <a href="/blog/" class="btn btn--secondary">Browse Blog</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-col footer-col--brand">
+        <a href="/" class="footer-logo" aria-label="Poki2 home">
+          <img src="/favicon.svg" alt="Poki2" width="48" height="48">
+        </a>
+        <p class="footer-tagline">The ultimate free browser games network — 1,000+ games, no download, no account.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-heading">Pages</h3>
+        <ul class="footer-link-list">
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/terms">Terms of Use</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Poki2. All rights reserved. <a href="/privacy">Cookie &amp; Ad Policy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    var btn = document.getElementById('nav-toggle');
+    var links = document.getElementById('nav-links');
+    if (btn && links) {
+      btn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        btn.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', open);
+      });
+    }
+  </script>
+
+</body>
+</html>

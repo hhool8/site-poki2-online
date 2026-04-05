@@ -98,9 +98,9 @@ function fillBase(template, page, content) {
 function extractHeroImage(content) {
   // Match the first <img> inside <figure class="article-hero">
   const m = content.match(/<figure[^>]*article-hero[^>]*>[\s\S]*?<img[^>]+src="([^"]+)"/);
-  if (m) return m[1];
+  if (m) return m[1].split('?')[0]; // strip query params for stable social sharing
   // Fallback: first Unsplash image in content
-  const m2 = content.match(/src="(https:\/\/images\.unsplash\.com\/[^"]+)"/);
+  const m2 = content.match(/src="(https:\/\/images\.unsplash\.com\/[^"?]+)/);
   return m2 ? m2[1] : null;
 }
 
@@ -127,6 +127,14 @@ function fillArticle(template, post, content, relatedLinks) {
       '@type': 'Organization', name: 'Poki2', url: site.domain,
       logo: { '@type': 'ImageObject', url: `${site.domain}/favicon.svg` }
     },
+  }, {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.domain}/` },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${site.domain}/blog/` },
+      { '@type': 'ListItem', position: 3, name: post.title, item: canonical },
+    ],
   }];
 
   return template
