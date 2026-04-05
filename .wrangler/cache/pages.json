@@ -1,3 +1,4 @@
 {
-  "account_id": "$CLOUDFLARE_ACCOUNT_ID"
+  "account_id": "$CLOUDFLARE_ACCOUNT_ID",
+  "project_name": "poki2-portal"
 }
