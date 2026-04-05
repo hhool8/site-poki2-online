@@ -455,11 +455,21 @@ section:nth-of-type(even):not(.hero) { background: var(--surface); }
   width: 100%; height: 100%; min-height: 140px;
   background: linear-gradient(135deg, var(--surface) 0%, var(--bg-card-alt) 100%);
 }
-.blog-card-img--1 { background: linear-gradient(135deg, #1e3a5f 0%, #0c2340 100%); }
-.blog-card-img--2 { background: linear-gradient(135deg, #1a1a4e 0%, #2d1b69 100%); }
-.blog-card-img--3 { background: linear-gradient(135deg, #1a3a1a 0%, #0d2b0d 100%); }
-.blog-card-img--4 { background: linear-gradient(135deg, #3a1a1a 0%, #2b0d0d 100%); }
-.blog-card-img--5 { background: linear-gradient(135deg, #2d2600 0%, #1a1600 100%); }
+.blog-card-img--1  { background: linear-gradient(135deg, #1e3a5f 0%, #0c2340 100%); }
+.blog-card-img--2  { background: linear-gradient(135deg, #1a1a4e 0%, #2d1b69 100%); }
+.blog-card-img--3  { background: linear-gradient(135deg, #1a3a1a 0%, #0d2b0d 100%); }
+.blog-card-img--4  { background: linear-gradient(135deg, #3a1a1a 0%, #2b0d0d 100%); }
+.blog-card-img--5  { background: linear-gradient(135deg, #2d2600 0%, #1a1600 100%); }
+.blog-card-img--6  { background: linear-gradient(135deg, #1a0d3a 0%, #0d0622 100%); }
+.blog-card-img--7  { background: linear-gradient(135deg, #0d2b2b 0%, #061818 100%); }
+.blog-card-img--8  { background: linear-gradient(135deg, #1e2b0d 0%, #111a06 100%); }
+.blog-card-img--9  { background: linear-gradient(135deg, #0d1e3a 0%, #060e22 100%); }
+.blog-card-img--10 { background: linear-gradient(135deg, #2b1a00 0%, #1a1000 100%); }
+.blog-card-img--11 { background: linear-gradient(135deg, #2b0d0d 0%, #1a0606 100%); }
+.blog-card-img--12 { background: linear-gradient(135deg, #1a0d2b 0%, #0b0617 100%); }
+.blog-card-img--13 { background: linear-gradient(135deg, #0d2b1e 0%, #061811 100%); }
+.blog-card-img--14 { background: linear-gradient(135deg, #2b1a0d 0%, #1a1006 100%); }
+.blog-card-img--15 { background: linear-gradient(135deg, #0d1a2b 0%, #060e1a 100%); }
 .blog-card-body { padding: 1.25rem 1.25rem 1.25rem 0; display: flex; flex-direction: column; justify-content: space-between; }
 .blog-card-meta { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
 .blog-cat { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--primary); }
