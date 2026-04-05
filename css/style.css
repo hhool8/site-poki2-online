@@ -509,3 +509,10 @@ section:nth-of-type(even):not(.hero) { background: var(--surface); }
 /* ── Ad units ────────────────────────────────────────────────── */
 .ad-unit { width: 100%; overflow: hidden; margin: 1.5rem 0; text-align: center; }
 .ad-unit--leaderboard { min-height: 90px; }
+.ad-unit--article { min-height: 80px; margin: 2rem 0; }
+
+/* ── Author bio ──────────────────────────────────────────────── */
+.author-bio { display: flex; gap: 1rem; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; margin: 2rem 0; }
+.author-bio-avatar { border-radius: 50%; flex-shrink: 0; }
+.author-bio-name { font-weight: 700; margin: 0 0 .25rem; font-size: .95rem; }
+.author-bio-desc { margin: 0; font-size: .875rem; color: var(--text-muted, #666); line-height: 1.5; }
