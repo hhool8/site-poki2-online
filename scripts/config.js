@@ -39,7 +39,7 @@ const network = [
     color:       '#a855f7',
     emoji:       '🔓',
     status:      'live',
-    gameCount:   '35+',
+    gameCount:   '474+',
     categories:  'Unblocked, School-Safe, Parkour, IO',
     description: "School-safe unblocked games in the G+ tradition. Works on Chromebook, survives most school firewalls, and includes the classics teachers haven't blocked yet.",
   },
