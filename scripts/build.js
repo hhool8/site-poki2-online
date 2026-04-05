@@ -52,6 +52,29 @@ function schemaTag(schema) {
   ).join('\n  ');
 }
 
+const MID_AD_HTML = `
+<div class="ad-unit ad-unit--article">
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center"
+       data-ad-layout="in-article"
+       data-ad-format="fluid"
+       data-ad-client="ca-pub-6199549323873133"
+       data-ad-slot="9336055885"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>
+</div>`;
+
+function injectMidAd(content) {
+  // Insert mid-article ad before the 2nd <h2>; fall back to 50% character split
+  const h2Re = /<h2[\s>]/gi;
+  let match, count = 0, insertAt = -1;
+  while ((match = h2Re.exec(content)) !== null) {
+    count++;
+    if (count === 2) { insertAt = match.index; break; }
+  }
+  if (insertAt === -1) insertAt = Math.floor(content.length / 2);
+  return content.slice(0, insertAt) + '\n' + MID_AD_HTML + '\n' + content.slice(insertAt);
+}
+
 function fillBase(template, page, content) {
   const ogImage = `${site.domain}/og-image.png`;
   return template
@@ -143,7 +166,8 @@ function buildBlog() {
       console.warn('  SKIP (missing content):', post.slug);
       continue;
     }
-    const content = read(contentFile);
+    const rawContent = read(contentFile);
+    const content = injectMidAd(rawContent);
 
     // Build related links (all posts except current)
     const relatedLinks = blogPosts
