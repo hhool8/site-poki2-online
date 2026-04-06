@@ -101,8 +101,8 @@ const pages = [
     slug:       'index',
     outputFile: 'index.html',
     bodyClass:  'home-page',
-    title:      'Poki2 — Free Browser Games Network: 500+ Games, No Download',
-    description:'Poki2 is a free browser games network. Explore 500+ games across 8 specialized sites — IO, action, puzzle, racing, and more. No downloads, instant play.',
+    title:      'Poki2 — Free Browser Games Network: 1000+ Games, No Download',
+    description:'Poki2 is a free browser games network. Explore 1000+ games across 8 specialized sites — IO, action, puzzle, racing, and more. No downloads, instant play.',
     keywords:   'free browser games, online games no download, poki2, free online games, browser games network',
     canonical:  'https://poki2.online/',
     schema: [
