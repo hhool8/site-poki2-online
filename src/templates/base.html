@@ -165,6 +165,7 @@
           var open = links.classList.toggle('open');
           btn.classList.toggle('open', open);
           btn.setAttribute('aria-expanded', open);
+          document.body.classList.toggle('nav-open', open);
         });
       }
       // Network dropdown
