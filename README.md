@@ -212,5 +212,5 @@ Remove this line from both `src/templates/base.html` and `src/templates/article.
 - [x] Policy pages: Privacy, Terms, DMCA, About, Contact
 - [x] Sitemap submitted to Google Search Console
 - [x] Cookie Consent + Consent Mode v2
-- [ ] formsubmit.co contact form activation (reply to verification email at `contact@poki2.online`)
+- [x] formsubmit.co contact form activation (reply to verification email at `contact@poki2.online`)
 - [ ] AdSense review application submitted at adsense.google.com
