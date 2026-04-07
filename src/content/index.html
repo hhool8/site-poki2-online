@@ -43,46 +43,56 @@
   <div class="container">
     <h2 class="section-title">Featured Games — Play Free Instantly</h2>
     <p class="section-sub">Click any game to open its own page with an embedded player, full controls guide, and strategy tips.</p>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:1.5rem">
-      <a href="/fgame/2048" style="display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0">
-        <img src="/imgs/fgame/2048.jpg" alt="2048" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover">
-        <div style="padding:.55rem .7rem .7rem"><div style="font-weight:600;font-size:.9rem;color:#f1f5f9">2048</div><div style="font-size:.75rem;color:#94a3b8">Puzzle</div></div>
+    <div class="featured-grid" style="margin-top:1.5rem">
+      <a href="/fgame/2048" class="featured-card">
+        <img src="/imgs/fgame/2048.jpg" alt="2048" loading="lazy" width="160" height="160">
+        <span class="featured-card-label">2048</span>
+        <span class="featured-card-src">Puzzle</span>
       </a>
-      <a href="/fgame/slope" style="display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0">
-        <img src="/imgs/fgame/slope.png" alt="Slope" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover">
-        <div style="padding:.55rem .7rem .7rem"><div style="font-weight:600;font-size:.9rem;color:#f1f5f9">Slope</div><div style="font-size:.75rem;color:#94a3b8">Endless Runner</div></div>
+      <a href="/fgame/slope" class="featured-card">
+        <img src="/imgs/fgame/slope.png" alt="Slope" loading="lazy" width="160" height="160">
+        <span class="featured-card-label">Slope</span>
+        <span class="featured-card-src">Endless Runner</span>
       </a>
-      <a href="/fgame/1v1lol" style="display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0">
-        <img src="/imgs/fgame/1v1lol.png" alt="1v1.LOL" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover">
-        <div style="padding:.55rem .7rem .7rem"><div style="font-weight:600;font-size:.9rem;color:#f1f5f9">1v1.LOL</div><div style="font-size:.75rem;color:#94a3b8">Action Shooter</div></div>
+      <a href="/fgame/1v1lol" class="featured-card">
+        <img src="/imgs/fgame/1v1lol.png" alt="1v1.LOL" loading="lazy" width="160" height="160">
+        <span class="featured-card-label">1v1.LOL</span>
+        <span class="featured-card-src">Action Shooter</span>
       </a>
-      <a href="/fgame/cookie-clicker" style="display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0">
-        <img src="/imgs/fgame/cookieclickerthumb.png" alt="Cookie Clicker" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover">
-        <div style="padding:.55rem .7rem .7rem"><div style="font-weight:600;font-size:.9rem;color:#f1f5f9">Cookie Clicker</div><div style="font-size:.75rem;color:#94a3b8">Idle / Clicker</div></div>
+      <a href="/fgame/cookie-clicker" class="featured-card">
+        <img src="/imgs/fgame/cookieclickerthumb.png" alt="Cookie Clicker" loading="lazy" width="160" height="160">
+        <span class="featured-card-label">Cookie Clicker</span>
+        <span class="featured-card-src">Idle / Clicker</span>
       </a>
-      <a href="/fgame/run-3" style="display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0">
-        <img src="/imgs/fgame/run3thumb.png" alt="Run 3" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover">
-        <div style="padding:.55rem .7rem .7rem"><div style="font-weight:600;font-size:.9rem;color:#f1f5f9">Run 3</div><div style="font-size:.75rem;color:#94a3b8">Endless Runner</div></div>
+      <a href="/fgame/run-3" class="featured-card">
+        <img src="/imgs/fgame/run3thumb.png" alt="Run 3" loading="lazy" width="160" height="160">
+        <span class="featured-card-label">Run 3</span>
+        <span class="featured-card-src">Endless Runner</span>
       </a>
-      <a href="/fgame/drift-hunters" style="display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0">
-        <img src="/imgs/fgame/drifthunters.jpg" alt="Drift Hunters" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover">
-        <div style="padding:.55rem .7rem .7rem"><div style="font-weight:600;font-size:.9rem;color:#f1f5f9">Drift Hunters</div><div style="font-size:.75rem;color:#94a3b8">Racing</div></div>
+      <a href="/fgame/drift-hunters" class="featured-card">
+        <img src="/imgs/fgame/drifthunters.jpg" alt="Drift Hunters" loading="lazy" width="160" height="160">
+        <span class="featured-card-label">Drift Hunters</span>
+        <span class="featured-card-src">Racing</span>
       </a>
-      <a href="/fgame/stickman-hook" style="display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0">
-        <img src="/imgs/fgame/stickmanhook.jpg" alt="Stickman Hook" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover">
-        <div style="padding:.55rem .7rem .7rem"><div style="font-weight:600;font-size:.9rem;color:#f1f5f9">Stickman Hook</div><div style="font-size:.75rem;color:#94a3b8">Skill Platformer</div></div>
+      <a href="/fgame/stickman-hook" class="featured-card">
+        <img src="/imgs/fgame/stickmanhook.jpg" alt="Stickman Hook" loading="lazy" width="160" height="160">
+        <span class="featured-card-label">Stickman Hook</span>
+        <span class="featured-card-src">Skill Platformer</span>
       </a>
-      <a href="/fgame/moto-x3m" style="display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0">
-        <img src="/imgs/fgame/moto-x3m.png" alt="Moto X3M" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover">
-        <div style="padding:.55rem .7rem .7rem"><div style="font-weight:600;font-size:.9rem;color:#f1f5f9">Moto X3M</div><div style="font-size:.75rem;color:#94a3b8">Stunt Racing</div></div>
+      <a href="/fgame/moto-x3m" class="featured-card">
+        <img src="/imgs/fgame/moto-x3m.png" alt="Moto X3M" loading="lazy" width="160" height="160">
+        <span class="featured-card-label">Moto X3M</span>
+        <span class="featured-card-src">Stunt Racing</span>
       </a>
-      <a href="/fgame/shell-shockers" style="display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0">
-        <img src="/imgs/fgame/shell-shockers.jpg" alt="Shell Shockers" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover">
-        <div style="padding:.55rem .7rem .7rem"><div style="font-weight:600;font-size:.9rem;color:#f1f5f9">Shell Shockers</div><div style="font-size:.75rem;color:#94a3b8">Multiplayer FPS</div></div>
+      <a href="/fgame/shell-shockers" class="featured-card">
+        <img src="/imgs/fgame/shell-shockers.jpg" alt="Shell Shockers" loading="lazy" width="160" height="160">
+        <span class="featured-card-label">Shell Shockers</span>
+        <span class="featured-card-src">Multiplayer FPS</span>
       </a>
-      <a href="/fgame/tetris" style="display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0">
-        <img src="/imgs/fgame/tetristhumb.png" alt="Tetris" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover">
-        <div style="padding:.55rem .7rem .7rem"><div style="font-weight:600;font-size:.9rem;color:#f1f5f9">Tetris</div><div style="font-size:.75rem;color:#94a3b8">Puzzle</div></div>
+      <a href="/fgame/tetris" class="featured-card">
+        <img src="/imgs/fgame/tetristhumb.png" alt="Tetris" loading="lazy" width="160" height="160">
+        <span class="featured-card-label">Tetris</span>
+        <span class="featured-card-src">Puzzle</span>
       </a>
     </div>
     <div style="text-align:center;margin-top:1.5rem">
