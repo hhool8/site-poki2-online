@@ -3,7 +3,7 @@
 const fs   = require('fs');
 const path = require('path');
 
-const { site, pages, blogPosts } = require('./config.js');
+const { site, pages, blogPosts, gamePosts } = require('./config.js');
 
 // ── Path helpers ──────────────────────────────────────────────────────────────
 const ROOT    = path.join(__dirname, '..');
@@ -159,6 +159,58 @@ function fillArticle(template, post, content, relatedLinks) {
     .replace(/\{\{BUILD_TS\}\}/g,           buildTs);
 }
 
+function fillGame(template, game, content, relatedLinks) {
+  const canonical = `${site.domain}/fgame/${game.slug}`;
+  const buildTs   = new Date().toISOString();
+  const schema    = [{
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name:        game.title,
+    description: game.description,
+    url:         canonical,
+    image:       game.imgUrl || `${site.domain}/og-image.png`,
+    genre:       game.genre,
+    numberOfPlayers: { '@type': 'QuantitativeValue', name: game.players },
+    gameEdition: 'Browser',
+    operatingSystem: 'Web Browser',
+    applicationCategory: 'Game',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+    publisher: { '@type': 'Organization', name: 'Poki2', url: site.domain },
+    datePublished: game.isoDate || '2026-04-07',
+  }, {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.domain}/` },
+      { '@type': 'ListItem', position: 2, name: 'Games', item: `${site.domain}/fgame/` },
+      { '@type': 'ListItem', position: 3, name: game.title, item: canonical },
+    ],
+  }];
+
+  return template
+    .replace(/\{\{TITLE\}\}/g,             esc(`${game.title} — Play Free Online | Poki2`))
+    .replace(/\{\{DESCRIPTION\}\}/g,       esc(game.description))
+    .replace(/\{\{CANONICAL\}\}/g,         canonical)
+    .replace(/\{\{OG_TITLE\}\}/g,          esc(game.title))
+    .replace(/\{\{OG_DESCRIPTION\}\}/g,    esc(game.description))
+    .replace(/\{\{OG_URL\}\}/g,            canonical)
+    .replace(/\{\{OG_IMAGE\}\}/g,          game.imgUrl || `${site.domain}/og-image.png`)
+    .replace(/\{\{TWITTER_TITLE\}\}/g,     esc(game.title))
+    .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(game.description))
+    .replace(/\{\{TWITTER_IMAGE\}\}/g,     game.imgUrl || `${site.domain}/og-image.png`)
+    .replace(/\{\{SCHEMA\}\}/g,            schemaTag(schema))
+    .replace(/\{\{GAME_TITLE\}\}/g,        game.title)
+    .replace(/\{\{GAME_TITLE_PLAIN\}\}/g,  esc(game.title))
+    .replace(/\{\{GAME_GENRE\}\}/g,        esc(game.genre))
+    .replace(/\{\{GAME_PLAYERS\}\}/g,      esc(game.players))
+    .replace(/\{\{GAME_CONTROLS\}\}/g,     esc(game.controls))
+    .replace(/\{\{GAME_EMBED_URL\}\}/g,    game.embedUrl)
+    .replace(/\{\{GAME_DATE\}\}/g,         game.date || '')
+    .replace(/\{\{RELATED_GAME_LINKS\}\}/g, relatedLinks)
+    .replace(/\{\{CONTENT\}\}/g,           content)
+    .replace(/\{\{BUILD_TS\}\}/g,          buildTs);
+}
+
 // ── Build ─────────────────────────────────────────────────────────────────────
 function buildPages() {
   console.log('\n[1/4] Building static pages…');
@@ -176,8 +228,93 @@ function buildPages() {
   }
 }
 
+function buildGames() {
+  console.log('\n[2/5] Building game pages…');
+  const gameTemplate = read(path.join(SRC, 'templates', 'game.html'));
+  const baseTemplate = read(path.join(SRC, 'templates', 'base.html'));
+
+  for (const game of gamePosts) {
+    const contentFile = path.join(SRC, 'content', 'fgame', `${game.slug}.html`);
+    if (!fs.existsSync(contentFile)) {
+      console.warn('  SKIP (missing content):', game.slug);
+      continue;
+    }
+    const content = read(contentFile);
+
+    // Related games: 4 games from the list (offset from current)
+    const idx  = gamePosts.indexOf(game);
+    const n    = gamePosts.length;
+    const offs = [2, 5, 9, 14];
+    const picked = offs.map(o => gamePosts[(idx + o) % n]).filter(g => g.slug !== game.slug);
+    const relatedLinks = picked.slice(0, 4).map(g =>
+      `<a href="/fgame/${g.slug}" class="related-game-card"><img src="${g.imgUrl}" alt="${esc(g.title)}" loading="lazy" width="28" height="28">${esc(g.title)}</a>`
+    ).join('\n          ');
+
+    const html = fillGame(gameTemplate, game, content, relatedLinks);
+    write(path.join(DIST, 'fgame', `${game.slug}.html`), html);
+  }
+
+  // Build games index page
+  const baseGamesPage = {
+    slug:       'games/index',
+    outputFile: 'games/index.html',
+    bodyClass:  'games-index-page',
+    title:      'Free Browser Games — Play Instantly, No Download | Poki2',
+    description:'Browse 20+ free browser games on Poki2. Play 2048, Slope, 1v1.LOL, Cookie Clicker, and more — no download, no account, instant play on any device.',
+    keywords:   'free browser games, online games no download, play 2048, slope game, 1v1 lol',
+    canonical:  `${site.domain}/fgame/`,
+    ogType:     'website',
+    schema: [{
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      url:  `${site.domain}/fgame/`,
+      name: 'Free Browser Games — Poki2',
+      description: 'Browse and play free browser games on Poki2. No download, no account required.',
+      publisher: { '@type': 'Organization', name: 'Poki2', url: site.domain },
+    }],
+  };
+
+  // Generate games index HTML — grouped by category
+  const CATEGORY_ORDER = ['Puzzle', 'Action & Shooter', 'Endless Runner', 'Racing', 'Platformer & Arcade', 'Sports & IO', 'Idle & Sandbox'];
+  const grouped = {};
+  for (const cat of CATEGORY_ORDER) grouped[cat] = [];
+  for (const g of gamePosts) {
+    const cat = g.category || 'Other';
+    if (!grouped[cat]) grouped[cat] = [];
+    grouped[cat].push(g);
+  }
+  const categorySections = CATEGORY_ORDER.filter(cat => grouped[cat].length > 0).map(cat => {
+    const cards = grouped[cat].map(g =>
+      `<a href="/fgame/${g.slug}" class="game-index-card"><img src="${g.imgUrl}" alt="${esc(g.title)}" loading="lazy" width="120" height="120"><div class="game-index-card-body"><h3 class="game-index-card-title">${esc(g.title)}</h3><span class="game-index-card-genre">${esc(g.genre)}</span><span class="game-index-card-players">${esc(g.players)}</span></div></a>`
+    ).join('');
+    return `<h2 class="game-cat-heading">${esc(cat)}</h2><div class="game-index-grid">${cards}</div>`;
+  }).join('');
+
+  const gamesIndexContent = `
+<section>
+  <div class="container">
+    <h1 class="section-title" style="text-align:left">Free Browser Games</h1>
+    <p class="section-sub" style="text-align:left">Play instantly — no download, no account, no install. Every game runs directly in your browser on desktop and mobile.</p>
+    <style>
+      .game-cat-heading{font-size:1.15rem;font-weight:700;color:#f1f5f9;margin:2.25rem 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid rgba(255,255,255,.08)}
+      .game-index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-bottom:.25rem}
+      .game-index-card{display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0;transition:transform .15s,border-color .15s}
+      .game-index-card:hover{transform:translateY(-3px);border-color:rgba(99,102,241,.5)}
+      .game-index-card img{width:100%;aspect-ratio:1/1;object-fit:cover}
+      .game-index-card-body{padding:.6rem .75rem .75rem}
+      .game-index-card-title{font-size:.95rem;font-weight:600;margin:0 0 .3rem;color:#f1f5f9}
+      .game-index-card-genre,.game-index-card-players{font-size:.75rem;color:#94a3b8;display:block}
+    </style>
+    ${categorySections}
+  </div>
+</section>`;
+
+  const gamesIndexHtml = fillBase(baseTemplate, baseGamesPage, gamesIndexContent);
+  write(path.join(DIST, 'fgame', 'index.html'), gamesIndexHtml);
+}
+
 function buildBlog() {
-  console.log('\n[2/4] Building blog…');
+  console.log('\n[3/5] Building blog…');
   const articleTemplate = read(path.join(SRC, 'templates', 'article.html'));
   const baseTemplate    = read(path.join(SRC, 'templates', 'base.html'));
 
@@ -235,7 +372,7 @@ function buildBlog() {
 }
 
 function buildSitemap() {
-  console.log('\n[3/4] Building sitemap…');
+  console.log('\n[4/5] Building sitemap…');
   const now = new Date().toISOString().split('T')[0];
 
   const pageUrls = pages.map(p => `
@@ -254,6 +391,14 @@ function buildSitemap() {
     <priority>0.9</priority>
   </url>`;
 
+  const gamesIndexUrl = `
+  <url>
+    <loc>${site.domain}/fgame/</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>`;
+
   const blogUrls = blogPosts.map(p => `
   <url>
     <loc>${site.domain}/blog/${p.slug}</loc>
@@ -262,8 +407,16 @@ function buildSitemap() {
     <priority>0.7</priority>
   </url>`).join('');
 
+  const gameUrls = gamePosts.map(g => `
+  <url>
+    <loc>${site.domain}/fgame/${g.slug}</loc>
+    <lastmod>${g.isoDate || now}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`).join('');
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pageUrls}${blogIndexUrl}${blogUrls}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pageUrls}${blogIndexUrl}${gamesIndexUrl}${blogUrls}${gameUrls}
 </urlset>`;
 
   write(path.join(DIST, 'sitemap.xml'), xml);
@@ -280,7 +433,7 @@ function minifyCss(src) {
 }
 
 function copyAssets() {
-  console.log('\n[4/4] Copying assets…');
+  console.log('\n[5/5] Copying assets…');
 
   // Copy CSS and minify style.css → dist/css/style.css
   const cssDest = path.join(DIST, 'css');
@@ -315,6 +468,7 @@ function main() {
   console.log('=== Poki2 Portal Build ===');
   fs.mkdirSync(DIST, { recursive: true });
   buildPages();
+  buildGames();
   buildBlog();
   buildSitemap();
   copyAssets();
