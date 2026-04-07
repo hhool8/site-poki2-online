@@ -61,7 +61,7 @@
     <ul class="nav-links" id="nav-links" role="list">
       <li><a href="/">Home</a></li>
       <li class="nav-has-dropdown">
-        <a href="/fgame/">Games ▾</a>
+        <a href="/fgame/" aria-haspopup="true" aria-expanded="false"><span>Games</span><span class="nav-caret" aria-hidden="true"></span></a>
         <ul class="nav-dropdown" role="menu">
           <li><a href="/fgame/">All Games</a></li>
           <li><a href="/fgame/#action-shooter">Action &amp; Shooter</a></li>
@@ -173,14 +173,118 @@
       // Hamburger toggle
       var btn   = document.getElementById('nav-toggle');
       var links = document.getElementById('nav-links');
+      var topNavLinks = document.querySelectorAll('.nav-links > li > a');
+      var gameNavItem = document.querySelector('.nav-has-dropdown');
+      var gameNavLink = gameNavItem ? gameNavItem.querySelector('a') : null;
+      var gameDropdownLinks = gameNavItem ? gameNavItem.querySelectorAll('.nav-dropdown a') : [];
+
+      function syncTopNavState() {
+        var path = window.location.pathname.replace(/\/+$/, '') || '/';
+        var activeHref = '';
+
+        if (path === '/') {
+          activeHref = '/';
+        } else if (path.indexOf('/fgame') === 0) {
+          activeHref = '/fgame/';
+        } else if (path.indexOf('/blog') === 0) {
+          activeHref = '/blog/';
+        } else if (path === '/about') {
+          activeHref = '/about';
+        } else if (path === '/contact') {
+          activeHref = '/contact';
+        }
+
+        Array.prototype.forEach.call(topNavLinks, function (link) {
+          if (activeHref && link.getAttribute('href') === activeHref) {
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      }
+
+      function closeMainMenu() {
+        if (!btn || !links) return;
+        links.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      }
+
+      function closeGameDropdown() {
+        if (!gameNavItem || !gameNavLink) return;
+        gameNavItem.classList.remove('open');
+        gameNavLink.setAttribute('aria-expanded', 'false');
+      }
+
+      function syncGameCategoryState() {
+        if (!gameNavItem || !gameNavLink) return;
+
+        var path = window.location.pathname.replace(/\/+$/, '') || '/';
+        var hash = window.location.hash || '';
+        var isGamePath = path === '/fgame' || path.indexOf('/fgame/') === 0;
+
+        if (isGamePath) {
+          gameNavLink.setAttribute('aria-current', 'page');
+        } else {
+          gameNavLink.removeAttribute('aria-current');
+        }
+
+        Array.prototype.forEach.call(gameDropdownLinks, function (link) {
+          link.removeAttribute('aria-current');
+        });
+
+        if (path === '/fgame') {
+          var activeHref = hash ? '/fgame/' + hash : '/fgame/';
+          var activeLink = null;
+
+          Array.prototype.forEach.call(gameDropdownLinks, function (link) {
+            if (!activeLink && link.getAttribute('href') === activeHref) {
+              activeLink = link;
+            }
+          });
+
+          if (!activeLink) {
+            Array.prototype.forEach.call(gameDropdownLinks, function (link) {
+              if (!activeLink && link.getAttribute('href') === '/fgame/') {
+                activeLink = link;
+              }
+            });
+          }
+
+          if (activeLink) {
+            activeLink.setAttribute('aria-current', 'page');
+          }
+        }
+      }
+
       if (btn && links) {
         btn.addEventListener('click', function () {
           var open = links.classList.toggle('open');
           btn.classList.toggle('open', open);
           btn.setAttribute('aria-expanded', open);
           document.body.classList.toggle('nav-open', open);
+          if (!open) closeGameDropdown();
         });
       }
+
+      if (gameNavItem && gameNavLink) {
+        gameNavLink.addEventListener('click', function (e) {
+          if (!window.matchMedia('(max-width: 768px)').matches) return;
+          e.preventDefault();
+          var open = gameNavItem.classList.toggle('open');
+          gameNavLink.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+
+        Array.prototype.forEach.call(gameDropdownLinks, function (link) {
+          link.addEventListener('click', function () {
+            if (!window.matchMedia('(max-width: 768px)').matches) return;
+            closeGameDropdown();
+            closeMainMenu();
+          });
+        });
+      }
+
       // Network dropdown
       var nBtn  = document.getElementById('nav-network-btn');
       var nDrop = document.getElementById('nav-network-dropdown');
@@ -198,9 +302,27 @@
           if (e.key === 'Escape') {
             nDrop.classList.remove('open');
             nBtn.setAttribute('aria-expanded', 'false');
+            closeGameDropdown();
           }
         });
       }
+
+      document.addEventListener('click', function (e) {
+        if (!gameNavItem || !window.matchMedia('(max-width: 768px)').matches) return;
+        if (!gameNavItem.contains(e.target)) {
+          closeGameDropdown();
+        }
+      });
+
+      window.addEventListener('resize', function () {
+        if (!window.matchMedia('(max-width: 768px)').matches) {
+          closeGameDropdown();
+        }
+      });
+
+      syncTopNavState();
+      window.addEventListener('hashchange', syncGameCategoryState);
+      syncGameCategoryState();
     })();
   </script>
 

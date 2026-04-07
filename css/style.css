@@ -83,8 +83,11 @@ ul { list-style: none; }
   display: flex; gap: 0.1rem; flex: 1;
 }
 .nav-links a {
+  display: inline-flex;
+  align-items: center;
   color: var(--text-muted); padding: 0.4rem 0.75rem;
   border-radius: var(--radius); font-size: .88rem; font-weight: 500;
+  line-height: 1;
   white-space: nowrap;
   transition: background var(--transition), color var(--transition);
 }
@@ -94,7 +97,25 @@ ul { list-style: none; }
 
 /* Games category dropdown */
 .nav-has-dropdown { position: relative; }
-.nav-has-dropdown > a { cursor: pointer; }
+.nav-has-dropdown > a {
+  cursor: pointer;
+  gap: 0.45rem;
+}
+.nav-caret {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  flex-shrink: 0;
+  transform-origin: center;
+  transform: translateY(-1px) rotate(45deg);
+  transition: transform var(--transition);
+}
+.nav-has-dropdown.open > a .nav-caret,
+.nav-has-dropdown > a[aria-expanded="true"] .nav-caret {
+  transform: translateY(-1px) rotate(-135deg);
+}
 .nav-dropdown {
   display: none; position: absolute; top: calc(100% + 4px); left: 0;
   background: var(--bg-card); border: 1px solid var(--border);
