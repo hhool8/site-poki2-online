@@ -529,6 +529,19 @@ section:nth-of-type(even):not(.hero) { background: var(--surface); }
 .read-more-link { display: inline-block; margin-top: 0.9rem; font-size: .85rem; font-weight: 600; color: var(--primary); }
 .read-more-link:hover { text-decoration: none; opacity: .8; }
 
+/* ===== Blog editorial (page-like) ===== */
+.blog-listing-editorial {
+  max-width: var(--max-width);
+  margin: 2rem auto 0;
+  padding: 2.25rem 1.5rem;
+  background: transparent;
+  color: var(--text);
+}
+.blog-listing-editorial h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; color: #fff; margin-bottom: 0.6rem; }
+.blog-listing-editorial p { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+.blog-listing-editorial ul { margin-bottom: 1rem; }
+.blog-listing-editorial strong { color: var(--text); }
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .nav-links { display: none; }
