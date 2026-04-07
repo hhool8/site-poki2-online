@@ -284,10 +284,11 @@ function buildGames() {
     grouped[cat].push(g);
   }
   const categorySections = CATEGORY_ORDER.filter(cat => grouped[cat].length > 0).map(cat => {
+    const catId = cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
     const cards = grouped[cat].map(g =>
       `<a href="/fgame/${g.slug}" class="game-index-card"><img src="${g.imgUrl}" alt="${esc(g.title)}" loading="lazy" width="120" height="120"><div class="game-index-card-body"><h3 class="game-index-card-title">${esc(g.title)}</h3><span class="game-index-card-genre">${esc(g.genre)}</span><span class="game-index-card-players">${esc(g.players)}</span></div></a>`
     ).join('');
-    return `<h2 class="game-cat-heading">${esc(cat)}</h2><div class="game-index-grid">${cards}</div>`;
+    return `<h2 id="${catId}" class="game-cat-heading">${esc(cat)}</h2><div class="game-index-grid">${cards}</div>`;
   }).join('');
 
   const gamesIndexContent = `

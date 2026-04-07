@@ -92,6 +92,26 @@ ul { list-style: none; }
   background: rgba(34, 211, 238, 0.1); color: var(--primary); text-decoration: none;
 }
 
+/* Games category dropdown */
+.nav-has-dropdown { position: relative; }
+.nav-has-dropdown > a { cursor: pointer; }
+.nav-dropdown {
+  display: none; position: absolute; top: calc(100% + 4px); left: 0;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 0.5rem 0;
+  min-width: 200px; box-shadow: var(--shadow-lg); z-index: 200;
+  list-style: none; margin: 0;
+}
+.nav-has-dropdown:hover .nav-dropdown,
+.nav-has-dropdown:focus-within .nav-dropdown { display: block; }
+.nav-dropdown li a {
+  display: block; padding: 0.45rem 1rem;
+  color: var(--text); font-size: .85rem; font-weight: 500;
+  border-radius: 0;
+  transition: background var(--transition);
+}
+.nav-dropdown li a:hover { background: rgba(255,255,255,0.06); color: #fff; text-decoration: none; }
+
 /* Network quick dropdown */
 .nav-network-wrap { position: relative; flex-shrink: 0; }
 .nav-network-btn {
