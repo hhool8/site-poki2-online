@@ -311,19 +311,21 @@ section:nth-of-type(even):not(.hero) { background: var(--surface); }
 
 /* ===== Featured Games Grid ===== */
 .featured-grid {
-  display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
 }
 .featured-card {
   background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
   overflow: hidden; transition: transform var(--transition), box-shadow var(--transition);
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; text-decoration: none; color: inherit;
 }
-.featured-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); text-decoration: none; }
-.featured-card img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.featured-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: rgba(99,102,241,0.4); }
+.featured-card img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
 .featured-card-label {
-  padding: 0.55rem 0.75rem; font-size: .85rem; font-weight: 600; color: var(--text);
+  padding: 0.55rem 0.75rem 0.2rem; font-size: .88rem; font-weight: 700; color: #fff; text-align: center;
 }
-.featured-card-src { font-size: .72rem; color: var(--text-muted); padding: 0 0.75rem 0.55rem; }
+.featured-card-src { font-size: .72rem; color: var(--text-muted); padding: 0 0.75rem 0.55rem; text-align: center; }
 .featured-view-all { margin-top: 2rem; text-align: center; }
 
 /* ===== About section on homepage ===== */
@@ -562,7 +564,7 @@ section:nth-of-type(even):not(.hero) { background: var(--surface); }
   .stat-item { padding: 1.25rem 1.25rem; }
   .stat-value { font-size: 1.5rem; }
   .network-grid { grid-template-columns: 1fr 1fr; }
-  .featured-grid { grid-template-columns: repeat(4, 1fr); }
+  .featured-grid { grid-template-columns: repeat(4, 1fr); } /* ≤768px */
   .blog-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: repeat(3, 1fr); text-align: left; align-items: flex-start; }
   .footer-col--brand { grid-column: 1 / -1; }
@@ -575,7 +577,7 @@ section:nth-of-type(even):not(.hero) { background: var(--surface); }
 }
 @media (max-width: 520px) {
   .network-grid { grid-template-columns: 1fr; }
-  .featured-grid { grid-template-columns: repeat(3, 1fr); }
+  .featured-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-ctas .btn { width: 100%; text-align: center; }
   .stats-bar { flex-direction: row; }
   .stat-item { flex: 1; padding: 1rem 0.5rem; }

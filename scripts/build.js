@@ -1,9 +1,12 @@
-'use strict';
+"use strict";
 
 const fs   = require('fs');
 const path = require('path');
 
 const { site, pages, blogPosts, gamePosts } = require('./config.js');
+
+// Only include non-deprecated games in frontend listings and sitemap
+const visibleGames = gamePosts.filter(g => !g.deprecated);
 
 // ── Path helpers ──────────────────────────────────────────────────────────────
 const ROOT    = path.join(__dirname, '..');
@@ -36,7 +39,7 @@ function copyDir(src, dest) {
   }
 }
 
-// ── Template fill ─────────────────────────────────────────────────────────────
+// ── Template helpers ─────────────────────────────────────────────────────────
 function esc(str) {
   return String(str || '')
     .replace(/&/g, '&amp;')
@@ -64,7 +67,6 @@ const MID_AD_HTML = `
 </div>`;
 
 function injectMidAd(content) {
-  // Insert mid-article ad before the 2nd <h2>; fall back to 50% character split
   const h2Re = /<h2[\s>]/gi;
   let match, count = 0, insertAt = -1;
   while ((match = h2Re.exec(content)) !== null) {
@@ -95,19 +97,10 @@ function fillBase(template, page, content) {
     .replace(/\{\{CONTENT\}\}/g,            content);
 }
 
-function extractHeroImage(content) {
-  // Match the first <img> inside <figure class="article-hero">
-  const m = content.match(/<figure[^>]*article-hero[^>]*>[\s\S]*?<img[^>]+src="([^"]+)"/);
-  if (m) return m[1].split('?')[0]; // strip query params for stable social sharing
-  // Fallback: first Unsplash image in content
-  const m2 = content.match(/src="(https:\/\/images\.unsplash\.com\/[^"?]+)/);
-  return m2 ? m2[1] : null;
-}
-
 function fillArticle(template, post, content, relatedLinks) {
   const canonical = `${site.domain}/blog/${post.slug}`;
   const buildTs   = new Date().toISOString();
-  const heroImg   = extractHeroImage(content);
+  const heroImg   = (content.match(/<figure[^>]*article-hero[^>]*>[\s\S]*?<img[^>]+src="([^"]+)"/) || [])[1];
   const ogImage   = heroImg || `${site.domain}/og-image.png`;
   const schemaImage = heroImg
     ? { '@type': 'ImageObject', url: heroImg, width: 1200, height: 630 }
@@ -211,7 +204,7 @@ function fillGame(template, game, content, relatedLinks) {
     .replace(/\{\{BUILD_TS\}\}/g,          buildTs);
 }
 
-// ── Build ─────────────────────────────────────────────────────────────────────
+// ── Build steps ─────────────────────────────────────────────────────────────
 function buildPages() {
   console.log('\n[1/4] Building static pages…');
   const baseTemplate = read(path.join(SRC, 'templates', 'base.html'));
@@ -223,7 +216,31 @@ function buildPages() {
       continue;
     }
     const content = read(contentFile);
-    const html    = fillBase(baseTemplate, page, content);
+    let finalContent = content;
+
+    // If building the homepage, inject generated featured + editor pick grids
+    if (page.slug === 'index') {
+      function renderFeaturedGrid(games) {
+        const cards = games.slice(0, 12).map(g =>
+          `<a href="/fgame/${g.slug}" class="featured-card"><img src="${g.imgUrl}" alt="${esc(g.title)}" loading="lazy" width="160" height="160"><span class="featured-card-label">${esc(g.title)}</span><span class="featured-card-src">${esc(g.category || g.genre || '')}</span></a>`
+        ).join('\n      ');
+        return `<div class="featured-grid" style="margin-top:1.5rem">\n      ${cards}\n    </div>`;
+      }
+
+      function renderEditorsPicks(games) {
+        // 6 cards from games[6..12] – no overlap with Featured
+        const picks = games.length >= 24 ? games.slice(12, 24) : games.slice(0, 12);
+        const cards = picks.map(g =>
+          `<a href="/fgame/${g.slug}" class="featured-card"><img src="${g.imgUrl}" alt="${esc(g.title)}" loading="lazy" width="160" height="160"><span class="featured-card-label">${esc(g.title)}</span><span class="featured-card-src">${esc(g.category || g.genre || '')}</span></a>`
+        ).join('\n      ');
+        return `<div class="featured-grid" style="margin-top:1.5rem">\n      ${cards}\n    </div>`;
+      }
+
+      finalContent = finalContent.replace('<!-- GENERATED_FEATURED_GRID -->', renderFeaturedGrid(visibleGames));
+      finalContent = finalContent.replace('<!-- GENERATED_EDITORS_PICKS -->', renderEditorsPicks(visibleGames));
+    }
+
+    const html    = fillBase(baseTemplate, page, finalContent);
     write(path.join(DIST, page.outputFile), html);
   }
 }
@@ -233,7 +250,8 @@ function buildGames() {
   const gameTemplate = read(path.join(SRC, 'templates', 'game.html'));
   const baseTemplate = read(path.join(SRC, 'templates', 'base.html'));
 
-  for (const game of gamePosts) {
+  // Individual game pages — only for visible games
+  for (const game of visibleGames) {
     const contentFile = path.join(SRC, 'content', 'fgame', `${game.slug}.html`);
     if (!fs.existsSync(contentFile)) {
       console.warn('  SKIP (missing content):', game.slug);
@@ -241,11 +259,11 @@ function buildGames() {
     }
     const content = read(contentFile);
 
-    // Related games: 4 games from the list (offset from current)
-    const idx  = gamePosts.indexOf(game);
-    const n    = gamePosts.length;
+    // Related games: deterministic offsets from visibleGames
+    const idx  = visibleGames.indexOf(game);
+    const n    = visibleGames.length;
     const offs = [2, 5, 9, 14];
-    const picked = offs.map(o => gamePosts[(idx + o) % n]).filter(g => g.slug !== game.slug);
+    const picked = offs.map(o => visibleGames[(idx + o) % n]).filter(g => g.slug !== game.slug);
     const relatedLinks = picked.slice(0, 4).map(g =>
       `<a href="/fgame/${g.slug}" class="related-game-card"><img src="${g.imgUrl}" alt="${esc(g.title)}" loading="lazy" width="28" height="28">${esc(g.title)}</a>`
     ).join('\n          ');
@@ -274,15 +292,16 @@ function buildGames() {
     }],
   };
 
-  // Generate games index HTML — grouped by category
+  // Group visible games by category
   const CATEGORY_ORDER = ['Puzzle', 'Action & Shooter', 'Endless Runner', 'Racing', 'Platformer & Arcade', 'Sports & IO', 'Idle & Sandbox'];
   const grouped = {};
   for (const cat of CATEGORY_ORDER) grouped[cat] = [];
-  for (const g of gamePosts) {
+  for (const g of visibleGames) {
     const cat = g.category || 'Other';
     if (!grouped[cat]) grouped[cat] = [];
     grouped[cat].push(g);
   }
+
   const categorySections = CATEGORY_ORDER.filter(cat => grouped[cat].length > 0).map(cat => {
     const catId = cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
     const cards = grouped[cat].map(g =>
@@ -319,7 +338,6 @@ function buildBlog() {
   const articleTemplate = read(path.join(SRC, 'templates', 'article.html'));
   const baseTemplate    = read(path.join(SRC, 'templates', 'base.html'));
 
-  // Build each article
   for (const post of blogPosts) {
     const contentFile = path.join(SRC, 'content', 'blog', `${post.slug}.html`);
     if (!fs.existsSync(contentFile)) {
@@ -329,14 +347,11 @@ function buildBlog() {
     const rawContent = read(contentFile);
     const content = injectMidAd(rawContent);
 
-    // Build related links: deterministic offset so every article is referenced
-    // For article at index i, pick others at i+[3,6,10,13] mod n (skip self)
     const allPosts = blogPosts;
     const idx = allPosts.indexOf(post);
     const n = allPosts.length;
     const offsets = [3, 6, 10, 13];
     const picked = offsets.map(o => allPosts[(idx + o) % n]).filter(p => p.slug !== post.slug);
-    // deduplicate and pad if needed
     const usedSlugs = new Set(picked.map(p => p.slug));
     const fallback = allPosts.filter(p => p.slug !== post.slug && !usedSlugs.has(p.slug));
     while (picked.length < 4 && fallback.length) picked.push(fallback.shift());
@@ -348,7 +363,6 @@ function buildBlog() {
     write(path.join(DIST, 'blog', `${post.slug}.html`), html);
   }
 
-  // Build blog index
   const blogIndexContent = read(path.join(SRC, 'content', 'blog', 'index.html'));
   const blogIndexPage = {
     slug:       'blog/index',
@@ -408,7 +422,8 @@ function buildSitemap() {
     <priority>0.7</priority>
   </url>`).join('');
 
-  const gameUrls = gamePosts.map(g => `
+  // Only include visible (non-deprecated) games in the sitemap
+  const gameUrls = visibleGames.map(g => `
   <url>
     <loc>${site.domain}/fgame/${g.slug}</loc>
     <lastmod>${g.isoDate || now}</lastmod>
@@ -436,7 +451,6 @@ function minifyCss(src) {
 function copyAssets() {
   console.log('\n[5/5] Copying assets…');
 
-  // Copy CSS and minify style.css → dist/css/style.css
   const cssDest = path.join(DIST, 'css');
   fs.mkdirSync(cssDest, { recursive: true });
   for (const entry of fs.readdirSync(CSS_SRC, { withFileTypes: true })) {
@@ -456,7 +470,6 @@ function copyAssets() {
   copyDir(PUB_SRC, DIST);
   console.log('  copied public/');
 
-  // Remove any stale debug/test files that should not be served
   const staleFiles = ['test.html'];
   for (const f of staleFiles) {
     const fp = path.join(DIST, f);
@@ -464,7 +477,6 @@ function copyAssets() {
   }
 }
 
-// ── Entry point ───────────────────────────────────────────────────────────────
 function main() {
   console.log('=== Poki2 Portal Build ===');
   fs.mkdirSync(DIST, { recursive: true });
