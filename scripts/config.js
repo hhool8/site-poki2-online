@@ -387,7 +387,7 @@ const blogPosts = [
   {
     slug:       'best-sports-browser-games',
     title:      'Best Sports Browser Games 2026: Basketball, Tennis, Baseball & More',
-    description:'The best free sports browser games in 2026 — Basketball Stars, Basket Random, Arcade Tennis, Ball Orbit, Bat Smash, Arcade Volley, and Billiards Master. No download required.',
+    description:'The best free sports browser games in 2026 — Basketball Stars, Retro Bowl, Arcade Tennis, Ball Orbit, Bat Smash, Arcade Volley, and Billiards Master. No download required.',
     date:       'April 9, 2026',
     isoDate:    '2026-04-09',
     category:   'Sports & IO',
@@ -404,8 +404,8 @@ const blogPosts = [
   },
   {
     slug:       'best-simulation-adventure-browser-games',
-    title:      'Best Simulation & Adventure Browser Games 2026: BitLife, Age of War & More',
-    description:'Top free simulation and adventure browser games in 2026 — BitLife, Age of War, Animal Craft, Crazy Animal City, Astro Tycoon, American Truck Driving, and more.',
+    title:      'Best Simulation & Adventure Browser Games 2026: Age of War, Animal Craft & More',
+    description:'Top free simulation and adventure browser games in 2026 — Age of War, Animal Craft, Crazy Animal City, Astro Tycoon, Astro Robot Clicker, American Truck Driving, and more.',
     date:       'April 9, 2026',
     isoDate:    '2026-04-09',
     category:   'Platformer & Arcade',
@@ -422,8 +422,8 @@ const blogPosts = [
   },
   {
     slug:       'best-shooting-browser-games',
-    title:      'Best Shooting Browser Games 2026: Blocky Hunter, Shell Shockers, Krunker & More',
-    description:'Top free shooting browser games in 2026 — Blocky Hunter, Chicken Jockey Combat, Bricky Break, Shell Shockers, Krunker.io, and more. No download, no install, just play.',
+    title:      'Best Shooting Browser Games 2026: Blocky Hunter, Shell Shockers, Bricky Break & More',
+    description:'Top free shooting browser games in 2026 — Blocky Hunter, Chicken Jockey Combat, Bricky Break, Shell Shockers, 1v1.LOL, and more. No download, no install, just play.',
     date:       'April 10, 2026',
     isoDate:    '2026-04-10',
     category:   'Action & Shooter',
@@ -706,6 +706,8 @@ const gamePosts = [
     controls:  'Mouse / Touch / Arrow Keys',
     date:      'April 7, 2026',
     isoDate:   '2026-04-07',
+    deprecated: true,
+    deprecationReason: 'Access denied. Authorization required."',
   },
   {
     slug:      'color-switch',
@@ -719,6 +721,8 @@ const gamePosts = [
     controls:  'Click / Tap',
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
+    deprecated: true,
+    deprecationReason: 'Access denied. Authorization required."',
   },
   {
     slug:      'cut-the-rope',
@@ -732,6 +736,8 @@ const gamePosts = [
     controls:  'Mouse / Tap',
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
+    deprecated: true,
+    deprecationReason: 'Access denied. Authorization required."',
   },
   {
     slug:      'hill-climb-racing',
@@ -745,6 +751,8 @@ const gamePosts = [
     controls:  'Arrow Keys',
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
+    deprecated: true,
+    deprecationReason: 'Access denied. Authorization required."',
   },
   {
     slug:      'slither-io',
@@ -771,6 +779,8 @@ const gamePosts = [
     controls:  'Mouse / Touch',
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
+    deprecated: true,
+    deprecationReason: 'Access denied. Authorization required."',
   },
   {
     slug:      'krunker-io',
@@ -784,6 +794,8 @@ const gamePosts = [
     controls:  'WASD + Mouse',
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
+    deprecated: true,
+    deprecationReason: 'Access denied. Authorization required."',
   },
   {
     slug:      'soccer-random',
@@ -797,6 +809,8 @@ const gamePosts = [
     controls:  'Arrow Keys / Z / X',
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
+    deprecated: true,
+    deprecationReason: 'Access denied. Authorization required."',
   },,
 {
     slug:      '2048-drop',
@@ -953,6 +967,8 @@ const gamePosts = [
     controls:  'Mouse / Keyboard',
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
+    deprecated: true,
+    deprecationReason: 'Access denied. Authorization required."',
   },
   {
     slug:      'bat-smash',
@@ -1018,6 +1034,8 @@ const gamePosts = [
     controls:  'Mouse / Keyboard',
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
+    deprecated: true,
+    deprecationReason: 'Access denied. Authorization required."',
   },
   {
     slug:      'blocky-hunter',
