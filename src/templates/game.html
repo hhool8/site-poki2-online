@@ -40,8 +40,26 @@
     gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', wait_for_update: 500 });
   </script>
   <style>
-    .game-frame-wrap{background:#0f172a;border-radius:12px;overflow:hidden;margin:1.25rem 0;position:relative;text-align:center}
-    .game-frame-wrap iframe{display:block;width:100%;border:none}
+    .game-frame-wrap{background:#0f172a;border-radius:12px;overflow:hidden;margin:1.25rem 0;position:relative;display:flex;flex-direction:column}
+    .game-frame-wrap iframe{display:block;width:100%;border:none;flex-shrink:0}
+    /* Game Toolbar */
+    .game-toolbar{display:flex;align-items:center;justify-content:space-between;background:#1e293b;padding:0 .75rem;height:48px;border-top:1px solid rgba(255,255,255,.08);flex-shrink:0}
+    .game-toolbar-left{overflow:hidden;min-width:0;flex:1}
+    .game-tb-title{font-size:.875rem;font-weight:600;color:#f1f5f9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+    .game-toolbar-right{display:flex;align-items:center;gap:.1rem;flex-shrink:0;margin-left:.5rem}
+    .tb-btn{display:inline-flex;align-items:center;gap:.3rem;background:transparent;border:none;color:#94a3b8;cursor:pointer;padding:.35rem .45rem;border-radius:6px;font-size:.8rem;font-family:inherit;line-height:1;transition:background .15s,color .15s}
+    .tb-btn:hover{background:rgba(255,255,255,.09);color:#e2e8f0}
+    .tb-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;display:block}
+    .tb-btn.tb-liked{color:#6366f1}.tb-btn.tb-liked svg{fill:rgba(99,102,241,.25)}
+    .tb-btn.tb-favorited{color:#ec4899}.tb-btn.tb-favorited svg{fill:rgba(236,72,153,.25)}
+    #tb-like-count{font-variant-numeric:tabular-nums;min-width:2ch}
+    /* Theater mode — preserve iframe aspect ratio to reduce game resize/reload */
+    #game-wrap.theater-mode{position:fixed;inset:0;z-index:9000;border-radius:0;margin:0;max-width:none;background:#000;align-items:center;justify-content:center}
+    #game-wrap.theater-mode #game-iframe{height:calc(100vh - 48px)!important;width:auto!important;aspect-ratio:16/9;max-width:100vw}
+    /* Click-to-resume shield */
+    .game-click-shield{position:absolute;inset:0 0 48px 0;z-index:20;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.42);cursor:pointer;border-radius:8px 8px 0 0;opacity:0;pointer-events:none;transition:opacity .15s}
+    .game-click-shield.active{opacity:1;pointer-events:all}
+    .game-click-shield span{color:#fff;font-size:.95rem;font-weight:600;background:rgba(0,0,0,.6);padding:.5rem 1.1rem;border-radius:8px;pointer-events:none}
     .game-meta-bar{display:flex;flex-wrap:wrap;gap:.5rem .75rem;margin:.75rem 0 1.25rem;font-size:.85rem;color:#94a3b8}
     .game-meta-bar span{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:.2rem .55rem}
     .game-play-cta{display:inline-block;margin-top:1.25rem;padding:.6rem 1.25rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:.95rem}
@@ -106,8 +124,9 @@
       </div>
 
       <!-- Game iframe -->
-      <div class="game-frame-wrap">
+      <div class="game-frame-wrap" id="game-wrap">
         <iframe
+          id="game-iframe"
           src="{{GAME_EMBED_URL}}"
           referrerpolicy="no-referrer"
           width="100%"
@@ -116,6 +135,39 @@
           loading="lazy"
           allowfullscreen
         ></iframe>
+        <div class="game-click-shield" id="game-click-shield"><span>&#9654; Click to resume</span></div>
+        <div class="game-toolbar" id="game-toolbar">
+          <div class="game-toolbar-left">
+            <span class="game-tb-title">{{GAME_TITLE_PLAIN}}</span>
+          </div>
+          <div class="game-toolbar-right">
+            <!-- Like -->
+            <button class="tb-btn" id="tb-like" data-slug="{{GAME_SLUG}}" aria-label="Like this game" aria-pressed="false" title="Like">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+              <span id="tb-like-count">–</span>
+            </button>
+            <!-- Favorite -->
+            <button class="tb-btn" id="tb-fav" data-slug="{{GAME_SLUG}}" aria-label="Add to favorites" aria-pressed="false" title="Favorite">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <!-- Report -->
+            <button class="tb-btn" id="tb-report" aria-label="Report a problem" title="Report a problem">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+            </button>
+            <!-- Reset -->
+            <button class="tb-btn" id="tb-reset" aria-label="Reset game" title="Reset game">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            </button>
+            <!-- In-page expand -->
+            <button class="tb-btn" id="tb-expand" aria-label="Expand in page" title="Expand in page">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            </button>
+            <!-- Fullscreen -->
+            <button class="tb-btn" id="tb-fullscreen" aria-label="Fullscreen" title="Fullscreen">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- Ad: below game (paused during review) -->
@@ -204,6 +256,127 @@
       <p>&copy; 2026 Poki2. All rights reserved. This site is supported by advertising. <a href="/privacy">Cookie &amp; Ad Policy</a></p>
     </div>
   </footer>
+
+  <script>
+    /* ── Game Toolbar ── */
+    (function () {
+      var likeBtn   = document.getElementById('tb-like');
+      var favBtn    = document.getElementById('tb-fav');
+      var reportBtn = document.getElementById('tb-report');
+      var resetBtn  = document.getElementById('tb-reset');
+      var expandBtn = document.getElementById('tb-expand');
+      var fsBtn     = document.getElementById('tb-fullscreen');
+      var wrap      = document.getElementById('game-wrap');
+      var iframe    = document.getElementById('game-iframe');
+      var countEl   = document.getElementById('tb-like-count');
+      var shield    = document.getElementById('game-click-shield');
+      var slug      = likeBtn ? likeBtn.dataset.slug : '';
+
+      /* ── Click-to-resume shield ── */
+      function showShield() { shield.classList.add('active'); }
+      function hideShield() { shield.classList.remove('active'); iframe.focus(); }
+      shield.addEventListener('click', hideShield);
+      /* After toolbar interaction: restore keyboard focus + show mouse re-engage cue */
+      function refocus() { iframe.focus(); showShield(); }
+
+      /* deterministic base like count from slug */
+      function hashSlug(s) {
+        var h = 5381;
+        for (var i = 0; i < s.length; i++) h = ((h * 33) ^ s.charCodeAt(i)) >>> 0;
+        return h;
+      }
+      var BASE_LIKES = 100 + hashSlug(slug) % 800;
+
+      /* ── Like ── */
+      var liked = localStorage.getItem('like_' + slug) === '1';
+      function refreshLike() {
+        var n = BASE_LIKES + (liked ? 1 : 0);
+        countEl.textContent = n;
+        likeBtn.classList.toggle('tb-liked', liked);
+        likeBtn.setAttribute('aria-pressed', liked);
+      }
+      refreshLike();
+      likeBtn.addEventListener('click', function () {
+        liked = !liked;
+        localStorage.setItem('like_' + slug, liked ? '1' : '0');
+        refreshLike();
+        refocus();
+      });
+
+      /* ── Favorite ── */
+      var favd = localStorage.getItem('fav_' + slug) === '1';
+      function refreshFav() {
+        favBtn.classList.toggle('tb-favorited', favd);
+        favBtn.setAttribute('aria-pressed', favd);
+      }
+      refreshFav();
+      favBtn.addEventListener('click', function () {
+        favd = !favd;
+        localStorage.setItem('fav_' + slug, favd ? '1' : '0');
+        refreshFav();
+        refocus();
+      });
+
+      reportBtn.addEventListener('click', function () {
+        window.open('/contact?game=' + encodeURIComponent(slug) + '&issue=unavailable', '_blank', 'noopener');
+        refocus();
+      });
+
+      resetBtn.addEventListener('click', function () {
+        hideShield();
+        var src = iframe.src;
+        iframe.src = '';
+        setTimeout(function () {
+          iframe.src = src;
+          setTimeout(function () { iframe.focus(); }, 800);
+        }, 80);
+      });
+
+      /* SVG paths for expand/collapse */
+      var EXPAND_PATH   = '<path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>';
+      var COLLAPSE_PATH = '<path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>';
+      var FS_PATH       = '<polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>';
+      var FS_EXIT_PATH  = '<polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="10" y1="14" x2="21" y2="3"/><line x1="3" y1="21" x2="14" y2="10"/>';
+
+      /* ── In-page expand (theater mode)
+         wrap goes fixed; iframe keeps 16:9 via CSS — less width-change = less game reset
+      ── */
+      var theater = false;
+      function setTheater(on) {
+        theater = on;
+        wrap.classList.toggle('theater-mode', on);
+        document.body.style.overflow = on ? 'hidden' : '';
+        expandBtn.querySelector('svg').innerHTML = on ? COLLAPSE_PATH : EXPAND_PATH;
+        expandBtn.setAttribute('aria-label', on ? 'Exit expand' : 'Expand in page');
+        setTimeout(function () { iframe.focus(); showShield(); }, 200);
+      }
+      expandBtn.addEventListener('click', function () { setTheater(!theater); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && theater) setTheater(false);
+      });
+
+      /* ── Fullscreen — request on iframe so browser scales natively,
+         avoiding layout resize that can reset/reload the game.
+      ── */
+      function reqFS() {
+        var el = (iframe.requestFullscreen || iframe.webkitRequestFullscreen) ? iframe : wrap;
+        (el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || function(){}).call(el);
+      }
+      fsBtn.addEventListener('click', function () {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        } else {
+          reqFS();
+        }
+      });
+      document.addEventListener('fullscreenchange', function () {
+        var full = !!document.fullscreenElement;
+        fsBtn.querySelector('svg').innerHTML = full ? FS_EXIT_PATH : FS_PATH;
+        fsBtn.setAttribute('aria-label', full ? 'Exit fullscreen' : 'Fullscreen');
+        if (!full) setTimeout(function () { iframe.focus(); showShield(); }, 200);
+      });
+    })();
+  </script>
 
   <script>
     (function () {

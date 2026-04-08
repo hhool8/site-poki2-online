@@ -192,6 +192,7 @@ function fillGame(template, game, content, relatedLinks) {
     .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(game.description))
     .replace(/\{\{TWITTER_IMAGE\}\}/g,     game.imgUrl || `${site.domain}/og-image.png`)
     .replace(/\{\{SCHEMA\}\}/g,            schemaTag(schema))
+    .replace(/\{\{GAME_SLUG\}\}/g,         game.slug)
     .replace(/\{\{GAME_TITLE\}\}/g,        game.title)
     .replace(/\{\{GAME_TITLE_PLAIN\}\}/g,  esc(game.title))
     .replace(/\{\{GAME_GENRE\}\}/g,        esc(game.genre))
