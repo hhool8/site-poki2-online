@@ -94,13 +94,14 @@
       <li><a href="/about">About</a></li>
       <li><a href="/contact">Contact</a></li>
     </ul>
-    <div class="nav-network-wrap">
-      <button class="nav-network-btn" id="nav-network-btn" aria-haspopup="true" aria-expanded="false">Play Games</button>
-      <div class="nav-network-dropdown" id="nav-network-dropdown" role="menu">
-        <a href="https://play.poki2.online/" rel="noopener">🎮 Poki2 Play <span class="dd-badge">200+</span></a>
-        <a href="https://azgames.poki2.online/" rel="noopener">🕹️ AZ Games <span class="dd-badge">300+</span></a>
-        <a href="https://unblocked-games-g-plus.poki2.online/" rel="noopener">🔓 Unblocked G+ <span class="dd-badge">474+</span></a>
-      </div>
+    <div class="nav-search-wrap" id="nav-search-wrap">
+      <form class="nav-search-form" action="/search/" method="get" role="search" aria-label="Search Poki2" autocomplete="off">
+        <input class="nav-search-input" id="nav-search-input" type="search" name="q" placeholder="Search games..." aria-label="Search games" autocomplete="off" maxlength="100" aria-autocomplete="list" aria-controls="nav-search-dropdown" aria-expanded="false">
+        <button class="nav-search-btn" type="submit" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+      <div class="nav-search-dropdown" id="nav-search-dropdown" role="listbox" aria-label="Search suggestions" hidden></div>
     </div>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -446,27 +447,6 @@
         });
       }
 
-      var nBtn  = document.getElementById('nav-network-btn');
-      var nDrop = document.getElementById('nav-network-dropdown');
-      if (nBtn && nDrop) {
-        nBtn.addEventListener('click', function (e) {
-          e.stopPropagation();
-          var open = nDrop.classList.toggle('open');
-          nBtn.setAttribute('aria-expanded', open);
-        });
-        document.addEventListener('click', function () {
-          nDrop.classList.remove('open');
-          nBtn.setAttribute('aria-expanded', 'false');
-        });
-        document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape') {
-            nDrop.classList.remove('open');
-            nBtn.setAttribute('aria-expanded', 'false');
-            closeGameDropdown();
-          }
-        });
-      }
-
       document.addEventListener('click', function (e) {
         if (!gameNavItem || !window.matchMedia('(max-width: 768px)').matches) return;
         if (!gameNavItem.contains(e.target)) closeGameDropdown();
@@ -477,6 +457,80 @@
       });
 
       syncTopNavState();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var index = null;
+      var wrap = document.getElementById('nav-search-wrap');
+      var input = document.getElementById('nav-search-input');
+      var drop = document.getElementById('nav-search-dropdown');
+      if (!wrap || !input || !drop) return;
+
+      function esc(s) {
+        return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function closeDrop() {
+        drop.hidden = true;
+        drop.innerHTML = '';
+        input.setAttribute('aria-expanded', 'false');
+      }
+
+      function rank(item, query) {
+        var hay = ((item.title || '') + ' ' + (item.description || '') + ' ' + (item.tags || '')).toLowerCase();
+        var score = 0;
+        if (item.title && item.title.toLowerCase() === query) score += 100;
+        if (item.title && item.title.toLowerCase().indexOf(query) === 0) score += 35;
+        if (item.title && item.title.toLowerCase().indexOf(query) !== -1) score += 15;
+        if (hay.indexOf(query) !== -1) score += 8;
+        return score;
+      }
+
+      function render(items, query) {
+        if (!query || !items.length) return closeDrop();
+        var lower = query.toLowerCase();
+        var matches = items
+          .map(function (item) { return { item: item, score: rank(item, lower) }; })
+          .filter(function (entry) { return entry.score > 0; })
+          .sort(function (a, b) { return b.score - a.score || a.item.title.localeCompare(b.item.title); })
+          .slice(0, 8)
+          .map(function (entry) { return entry.item; });
+        if (!matches.length) return closeDrop();
+
+        drop.innerHTML = matches.map(function (item) {
+          var href = String(item.url || '').replace('https://poki2.online', '') || '/search/';
+          var thumb = item.image
+            ? '<img src="' + esc(item.image) + '" alt="" loading="lazy">'
+            : '<span class="nsd-thumb-placeholder"></span>';
+          return '<a class="nsd-item" href="' + esc(href) + '" role="option">'
+            + '<span class="nsd-thumb">' + thumb + '</span>'
+            + '<span class="nsd-copy"><span class="nsd-label">' + esc(item.title) + '</span><span class="nsd-meta">Game</span></span>'
+            + '</a>';
+        }).join('') + '<a class="nsd-more" href="/search/?q=' + encodeURIComponent(query) + '">See all results for “' + esc(query) + '” →</a>';
+
+        drop.hidden = false;
+        input.setAttribute('aria-expanded', 'true');
+      }
+
+      function onInput() {
+        var q = input.value.trim();
+        if (!q || !index) return closeDrop();
+        render(index, q);
+      }
+
+      input.addEventListener('focus', function () {
+        if (index !== null) return;
+        fetch('/search-index.json')
+          .then(function (res) { return res.json(); })
+          .then(function (data) { index = (data || []).filter(function (item) { return item && item.type === 'game'; }); if (input.value.trim()) onInput(); })
+          .catch(function () { index = []; });
+      }, { once: true });
+
+      input.addEventListener('input', onInput);
+      document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) closeDrop(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrop(); });
     })();
   </script>
 </body>

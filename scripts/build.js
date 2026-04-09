@@ -387,8 +387,26 @@ function buildBlog() {
   write(path.join(DIST, 'blog', 'index.html'), html);
 }
 
+function buildSearchIndex() {
+  console.log('\n[4/6] Building search index…');
+
+  const gameEntries = visibleGames.map((game) => ({
+    type: 'game',
+    title: game.title,
+    description: game.description || '',
+    url: `${site.domain}/fgame/${game.slug}`,
+    image: game.imgUrl || '',
+    tags: [game.slug, game.genre || '', game.category || '', game.players || '', game.controls || ''].join(' '),
+  }));
+
+  write(
+    path.join(DIST, 'search-index.json'),
+    JSON.stringify(gameEntries, null, 2)
+  );
+}
+
 function buildSitemap() {
-  console.log('\n[4/5] Building sitemap…');
+  console.log('\n[5/6] Building sitemap…');
   const now = new Date().toISOString().split('T')[0];
 
   const pageUrls = pages.map(p => `
@@ -450,7 +468,7 @@ function minifyCss(src) {
 }
 
 function copyAssets() {
-  console.log('\n[5/5] Copying assets…');
+  console.log('\n[6/6] Copying assets…');
 
   const cssDest = path.join(DIST, 'css');
   fs.mkdirSync(cssDest, { recursive: true });
@@ -480,10 +498,13 @@ function copyAssets() {
 
 function main() {
   console.log('=== Poki2 Portal Build ===');
+  // Always rebuild from a clean output directory to prevent stale pages from being deployed.
+  fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
   buildPages();
   buildGames();
   buildBlog();
+  buildSearchIndex();
   buildSitemap();
   copyAssets();
   console.log('\n✓ Build complete → dist/');
