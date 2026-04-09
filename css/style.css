@@ -76,8 +76,13 @@ ul { list-style: none; }
   background-clip: text;
   white-space: nowrap; flex-shrink: 0;
 }
+.site-nav .logo .logo-mark {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: block;
+}
 .site-nav .logo:hover { text-decoration: none; opacity: .85; }
-.site-nav .logo .logo-emoji { -webkit-text-fill-color: initial; }
 
 .nav-links {
   display: flex; gap: 0.1rem; flex: 1;
