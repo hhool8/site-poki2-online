@@ -112,8 +112,14 @@ const pages = [
         name: 'Poki2',
         url:  'https://poki2.online/',
         logo: 'https://poki2.online/favicon.svg',
+        description: 'Poki2 is a free browser games network with 1000+ instant-play games across multiple specialized sites.',
         contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', email: 'contact@poki2.online' }],
-        sameAs: ['https://azgames.poki2.online', 'https://unblocked-games-g-plus.poki2.online'],
+        sameAs: [
+          'https://www.youtube.com/@poki2online',
+          'https://x.com/poki2online',
+          'https://www.tiktok.com/@poki2online',
+          'https://www.instagram.com/poki2online'
+        ],
       },
       {
         '@context': 'https://schema.org',
@@ -123,11 +129,62 @@ const pages = [
         publisher: { '@type': 'Organization', name: 'Poki2', url: 'https://poki2.online/' },
         potentialAction: {
           '@type': 'SearchAction',
-          target: { '@type': 'EntryPoint', urlTemplate: 'https://azgames.poki2.online/?q={search_term_string}' },
+          target: { '@type': 'EntryPoint', urlTemplate: 'https://poki2.online/search/?q={search_term_string}' },
           'query-input': 'required name=search_term_string'
         }
       },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'SiteNavigationElement',
+        name: 'Games',
+        url: 'https://poki2.online/fgame/'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'SiteNavigationElement',
+        name: 'Blog',
+        url: 'https://poki2.online/blog/'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'SiteNavigationElement',
+        name: 'About',
+        url: 'https://poki2.online/about'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'SiteNavigationElement',
+        name: 'Contact',
+        url: 'https://poki2.online/contact'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'SiteNavigationElement',
+        name: 'Privacy Policy',
+        url: 'https://poki2.online/privacy'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'SiteNavigationElement',
+        name: 'Terms of Use',
+        url: 'https://poki2.online/terms'
+      },
     ],
+  },
+  {
+    slug:       'search',
+    outputFile: 'search/index.html',
+    bodyClass:  'search-page',
+    title:      'Search Poki2 — Find Games, Guides & Pages',
+    description:'Search the Poki2 network for browser games, guides, categories, and site pages.',
+    canonical:  'https://poki2.online/search/',
+    schema: [{
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      url: 'https://poki2.online/search/',
+      name: 'Search Poki2',
+      description: 'Search browser games, blog posts, and key pages across the Poki2 network.'
+    }],
   },
   {
     slug:       'about',

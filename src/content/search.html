@@ -1,0 +1,108 @@
+<section class="page-content">
+  <div class="container" style="max-width:960px">
+    <div style="text-align:center;margin-bottom:2rem">
+      <h1 style="font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:.75rem">Search Poki2</h1>
+      <p class="section-sub" style="margin-bottom:1.5rem">Search only games across Poki2.</p>
+    </div>
+
+    <form id="site-search-form" action="/search/" method="get" role="search" aria-label="Search Poki2" style="display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem">
+      <input
+        id="site-search-input"
+        type="search"
+        name="q"
+        placeholder="Search games…"
+        aria-label="Search query"
+        maxlength="100"
+        style="flex:1 1 420px;min-width:260px;max-width:680px;padding:.95rem 1.1rem;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#fff;font-size:1rem;outline:none"
+      >
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+
+    <div id="site-search-status" class="section-sub" style="text-align:left;margin-bottom:1rem"></div>
+    <div id="site-search-results" style="display:grid;gap:1rem"></div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var form = document.getElementById('site-search-form');
+  var input = document.getElementById('site-search-input');
+  var status = document.getElementById('site-search-status');
+  var results = document.getElementById('site-search-results');
+  if (!form || !input || !status || !results) return;
+
+  var params = new URLSearchParams(window.location.search);
+  var query = (params.get('q') || '').trim();
+  input.value = query;
+
+  function esc(str) {
+    return String(str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function score(item, term) {
+    var hay = (item.title + ' ' + item.description + ' ' + (item.tags || '')).toLowerCase();
+    var total = 0;
+    if (item.title && item.title.toLowerCase() === term) total += 100;
+    if (item.title && item.title.toLowerCase().indexOf(term) === 0) total += 40;
+    if (item.title && item.title.toLowerCase().indexOf(term) !== -1) total += 20;
+    if (hay.indexOf(term) !== -1) total += 10;
+    return total;
+  }
+
+  function render(items, term) {
+    if (!term) {
+      status.textContent = 'Try searching for a game title like Slope, Run 3, Cookie Clicker, or Geometry Dash.';
+      results.innerHTML = '';
+      return;
+    }
+
+    var lower = term.toLowerCase();
+    var matches = items
+      .filter(function (item) { return item.type === 'game'; })
+      .map(function (item) { return { item: item, score: score(item, lower) }; })
+      .filter(function (entry) { return entry.score > 0; })
+      .sort(function (a, b) { return b.score - a.score || a.item.title.localeCompare(b.item.title); })
+      .slice(0, 24)
+      .map(function (entry) { return entry.item; });
+
+    status.textContent = matches.length
+      ? matches.length + ' result' + (matches.length === 1 ? '' : 's') + ' for "' + term + '"'
+      : 'No results for "' + term + '". Try a broader game or category keyword.';
+
+    results.innerHTML = matches.map(function (item) {
+      var thumb = item.image
+        ? '<img src="' + esc(item.image) + '" alt="" loading="lazy" style="width:72px;height:72px;object-fit:cover;border-radius:12px;flex-shrink:0">'
+        : '<div style="width:72px;height:72px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);flex-shrink:0"></div>';
+      return '<a href="' + esc(item.url) + '" style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.1rem;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);text-decoration:none;color:inherit">'
+        + thumb
+        + '<span style="display:flex;flex-direction:column;gap:.35rem;min-width:0">'
+        + '<span style="display:flex;align-items:center;gap:.55rem;flex-wrap:wrap">'
+        + '<strong style="font-size:1rem;color:#fff">' + esc(item.title) + '</strong>'
+        + '<span style="font-size:.72rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#22d3ee;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.2);padding:.2rem .45rem;border-radius:999px">Game</span>'
+        + '</span>'
+        + '<span style="font-size:.92rem;color:#94a3b8;line-height:1.6">' + esc(item.description || '') + '</span>'
+        + '<span style="font-size:.84rem;color:#22d3ee">' + esc(item.url.replace('https://poki2.online', '')) + '</span>'
+        + '</span>'
+        + '</a>';
+    }).join('');
+  }
+
+  fetch('/search-index.json')
+    .then(function (res) { return res.json(); })
+    .then(function (items) { render(items, query); })
+    .catch(function () {
+      status.textContent = 'Search is temporarily unavailable. Please try again later.';
+    });
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var next = input.value.trim();
+    var nextUrl = next ? '/search/?q=' + encodeURIComponent(next) : '/search/';
+    window.location.href = nextUrl;
+  });
+})();
+</script>
