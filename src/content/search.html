@@ -18,6 +18,7 @@
     </form>
 
     <div id="site-search-results" style="display:grid;gap:1rem;justify-items:center"></div>
+    <nav id="site-search-pagination" aria-label="Search result pages" style="display:flex;gap:.45rem;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:1.25rem"></nav>
   </div>
 </section>
 
@@ -26,11 +27,25 @@
   var form = document.getElementById('site-search-form');
   var input = document.getElementById('site-search-input');
   var results = document.getElementById('site-search-results');
-  if (!form || !input || !results) return;
+  var pagination = document.getElementById('site-search-pagination');
+  if (!form || !input || !results || !pagination) return;
 
   var params = new URLSearchParams(window.location.search);
   var query = (params.get('q') || '').trim();
+  var currentPage = Math.max(parseInt(params.get('p') || '1', 10) || 1, 1);
   input.value = query;
+
+  function getPageSize() {
+    return window.matchMedia('(max-width: 768px)').matches ? 8 : 16;
+  }
+
+  function buildPageUrl(term, page) {
+    var nextParams = new URLSearchParams();
+    if (term) nextParams.set('q', term);
+    if (page > 1) nextParams.set('p', String(page));
+    var text = nextParams.toString();
+    return text ? '/search/?' + text : '/search/';
+  }
 
   function esc(str) {
     return String(str || '')
@@ -53,6 +68,7 @@
   function render(items, term) {
     if (!term) {
       results.innerHTML = '';
+      pagination.innerHTML = '';
       return;
     }
 
@@ -62,10 +78,17 @@
       .map(function (item) { return { item: item, score: score(item, lower) }; })
       .filter(function (entry) { return entry.score > 0; })
       .sort(function (a, b) { return b.score - a.score || a.item.title.localeCompare(b.item.title); })
-      .slice(0, 24)
       .map(function (entry) { return entry.item; });
 
-    results.innerHTML = matches.map(function (item) {
+    var pageSize = getPageSize();
+    var totalPages = Math.max(Math.ceil(matches.length / pageSize), 1);
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+
+    var start = (currentPage - 1) * pageSize;
+    var pageItems = matches.slice(start, start + pageSize);
+
+    results.innerHTML = pageItems.map(function (item) {
       var thumb = item.image
         ? '<img src="' + esc(item.image) + '" alt="" loading="lazy" style="width:72px;height:72px;object-fit:cover;border-radius:12px;flex-shrink:0">'
         : '<div style="width:72px;height:72px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);flex-shrink:0"></div>';
@@ -81,18 +104,71 @@
         + '</span>'
         + '</a>';
     }).join('');
+
+    if (totalPages <= 1) {
+      pagination.innerHTML = '';
+      return;
+    }
+
+    var pages = [];
+    pages.push(1);
+    if (currentPage - 1 > 2) pages.push('dots-left');
+    for (var i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) pages.push(i);
+    if (currentPage + 1 < totalPages - 1) pages.push('dots-right');
+    if (totalPages > 1) pages.push(totalPages);
+
+    var prevDisabled = currentPage <= 1 ? 'disabled' : '';
+    var nextDisabled = currentPage >= totalPages ? 'disabled' : '';
+    var html = '<button type="button" data-page="' + (currentPage - 1) + '" ' + prevDisabled + ' style="padding:.45rem .72rem;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:' + (currentPage <= 1 ? 'rgba(255,255,255,.04)' : 'rgba(255,255,255,.08)') + ';color:#e2e8f0;cursor:' + (currentPage <= 1 ? 'not-allowed' : 'pointer') + '">Prev</button>';
+    html += pages.map(function (p) {
+      if (typeof p !== 'number') {
+        return '<span style="padding:.45rem .2rem;color:#94a3b8">...</span>';
+      }
+      var active = p === currentPage;
+      return '<button type="button" data-page="' + p + '" style="min-width:2.15rem;padding:.45rem .6rem;border-radius:999px;border:1px solid ' + (active ? 'rgba(34,211,238,.5)' : 'rgba(255,255,255,.18)') + ';background:' + (active ? 'rgba(34,211,238,.22)' : 'rgba(255,255,255,.08)') + ';color:' + (active ? '#67e8f9' : '#e2e8f0') + ';font-weight:' + (active ? '700' : '500') + ';cursor:pointer">' + p + '</button>';
+    }).join('');
+    html += '<button type="button" data-page="' + (currentPage + 1) + '" ' + nextDisabled + ' style="padding:.45rem .72rem;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:' + (currentPage >= totalPages ? 'rgba(255,255,255,.04)' : 'rgba(255,255,255,.08)') + ';color:#e2e8f0;cursor:' + (currentPage >= totalPages ? 'not-allowed' : 'pointer') + '">Next</button>';
+    pagination.innerHTML = html;
   }
 
   fetch('/search-index.json')
     .then(function (res) { return res.json(); })
     .then(function (items) { render(items, query); })
-    .catch(function () { results.innerHTML = ''; });
+    .catch(function () {
+      results.innerHTML = '';
+      pagination.innerHTML = '';
+    });
+
+  pagination.addEventListener('click', function (event) {
+    var target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    var page = parseInt(target.getAttribute('data-page') || '', 10);
+    if (!page || page < 1 || target.hasAttribute('disabled')) return;
+    window.location.href = buildPageUrl(query, page);
+  });
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();
     var next = input.value.trim();
-    var nextUrl = next ? '/search/?q=' + encodeURIComponent(next) : '/search/';
+    var nextUrl = buildPageUrl(next, 1);
     window.location.href = nextUrl;
   });
+
+  var mq = window.matchMedia('(max-width: 768px)');
+  function onViewportChange() {
+    if (!query) return;
+    fetch('/search-index.json')
+      .then(function (res) { return res.json(); })
+      .then(function (items) { render(items, query); })
+      .catch(function () {
+        results.innerHTML = '';
+        pagination.innerHTML = '';
+      });
+  }
+  if (typeof mq.addEventListener === 'function') {
+    mq.addEventListener('change', onViewportChange);
+  } else if (typeof mq.addListener === 'function') {
+    mq.addListener(onViewportChange);
+  }
 })();
 </script>
