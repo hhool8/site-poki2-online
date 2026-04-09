@@ -136,6 +136,12 @@ const pages = [
       {
         '@context': 'https://schema.org',
         '@type': 'SiteNavigationElement',
+        name: 'Home',
+        url: 'https://poki2.online/'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'SiteNavigationElement',
         name: 'Games',
         url: 'https://poki2.online/fgame/'
       },
@@ -157,18 +163,6 @@ const pages = [
         name: 'Contact',
         url: 'https://poki2.online/contact'
       },
-      {
-        '@context': 'https://schema.org',
-        '@type': 'SiteNavigationElement',
-        name: 'Privacy Policy',
-        url: 'https://poki2.online/privacy'
-      },
-      {
-        '@context': 'https://schema.org',
-        '@type': 'SiteNavigationElement',
-        name: 'Terms of Use',
-        url: 'https://poki2.online/terms'
-      },
     ],
   },
   {
@@ -178,6 +172,7 @@ const pages = [
     title:      'Search Poki2 — Find Games, Guides & Pages',
     description:'Search the Poki2 network for browser games, guides, categories, and site pages.',
     canonical:  'https://poki2.online/search/',
+    indexable:  false,
     schema: [{
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
