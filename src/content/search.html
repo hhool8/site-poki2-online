@@ -1,8 +1,7 @@
 <section class="page-content">
-  <div class="container" style="max-width:960px">
+  <div class="container" style="max-width:960px;text-align:center">
     <div style="text-align:center;margin-bottom:2rem">
       <h1 style="font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:.75rem">Search Poki2</h1>
-      <p class="section-sub" style="margin-bottom:1.5rem">Search only games across Poki2.</p>
     </div>
 
     <form id="site-search-form" action="/search/" method="get" role="search" aria-label="Search Poki2" style="display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem">
@@ -18,8 +17,7 @@
       <button class="btn btn-primary" type="submit">Search</button>
     </form>
 
-    <div id="site-search-status" class="section-sub" style="text-align:left;margin-bottom:1rem"></div>
-    <div id="site-search-results" style="display:grid;gap:1rem"></div>
+    <div id="site-search-results" style="display:grid;gap:1rem;justify-items:center"></div>
   </div>
 </section>
 
@@ -27,9 +25,8 @@
 (function () {
   var form = document.getElementById('site-search-form');
   var input = document.getElementById('site-search-input');
-  var status = document.getElementById('site-search-status');
   var results = document.getElementById('site-search-results');
-  if (!form || !input || !status || !results) return;
+  if (!form || !input || !results) return;
 
   var params = new URLSearchParams(window.location.search);
   var query = (params.get('q') || '').trim();
@@ -55,7 +52,6 @@
 
   function render(items, term) {
     if (!term) {
-      status.textContent = 'Try searching for a game title like Slope, Run 3, Cookie Clicker, or Geometry Dash.';
       results.innerHTML = '';
       return;
     }
@@ -69,15 +65,11 @@
       .slice(0, 24)
       .map(function (entry) { return entry.item; });
 
-    status.textContent = matches.length
-      ? matches.length + ' result' + (matches.length === 1 ? '' : 's') + ' for "' + term + '"'
-      : 'No results for "' + term + '". Try a broader game or category keyword.';
-
     results.innerHTML = matches.map(function (item) {
       var thumb = item.image
         ? '<img src="' + esc(item.image) + '" alt="" loading="lazy" style="width:72px;height:72px;object-fit:cover;border-radius:12px;flex-shrink:0">'
         : '<div style="width:72px;height:72px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);flex-shrink:0"></div>';
-      return '<a href="' + esc(item.url) + '" style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.1rem;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);text-decoration:none;color:inherit">'
+      return '<a href="' + esc(item.url) + '" style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.1rem;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);text-decoration:none;color:inherit;max-width:960px;width:100%;text-align:left">'
         + thumb
         + '<span style="display:flex;flex-direction:column;gap:.35rem;min-width:0">'
         + '<span style="display:flex;align-items:center;gap:.55rem;flex-wrap:wrap">'
@@ -94,9 +86,7 @@
   fetch('/search-index.json')
     .then(function (res) { return res.json(); })
     .then(function (items) { render(items, query); })
-    .catch(function () {
-      status.textContent = 'Search is temporarily unavailable. Please try again later.';
-    });
+    .catch(function () { results.innerHTML = ''; });
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();

@@ -142,6 +142,9 @@ ul { list-style: none; }
   position: relative;
   flex-shrink: 0;
 }
+.search-page .nav-search-wrap {
+  display: none;
+}
 .nav-search-form {
   display: flex;
   align-items: center;
