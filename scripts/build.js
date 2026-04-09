@@ -55,6 +55,12 @@ function schemaTag(schema) {
   ).join('\n  ');
 }
 
+function withBrand(title) {
+  const value = String(title || '').trim();
+  if (!value) return site.name;
+  return value.toLowerCase().includes(site.name.toLowerCase()) ? value : `${value} | ${site.name}`;
+}
+
 const MID_AD_HTML = `
 <div class="ad-unit ad-unit--article">
   <ins class="adsbygoogle"
@@ -79,17 +85,22 @@ function injectMidAd(content) {
 
 function fillBase(template, page, content) {
   const ogImage = `${site.domain}/og-image.png`;
+  const brandedTitle = withBrand(page.title);
+  const robotsMeta = page.indexable === false
+    ? '<meta name="robots" content="noindex,follow">'
+    : '<meta name="robots" content="index,follow">';
   return template
-    .replace(/\{\{TITLE\}\}/g,               esc(page.title))
+    .replace(/\{\{TITLE\}\}/g,               esc(brandedTitle))
     .replace(/\{\{DESCRIPTION\}\}/g,         esc(page.description || ''))
+    .replace(/\{\{ROBOTS_META\}\}/g,         robotsMeta)
     .replace(/\{\{KEYWORDS\}\}/g,            esc(page.keywords || ''))
     .replace(/\{\{CANONICAL\}\}/g,           page.canonical || '')
-    .replace(/\{\{OG_TITLE\}\}/g,            esc(page.title))
+    .replace(/\{\{OG_TITLE\}\}/g,            esc(brandedTitle))
     .replace(/\{\{OG_DESCRIPTION\}\}/g,      esc(page.description || ''))
     .replace(/\{\{OG_URL\}\}/g,             page.canonical || '')
     .replace(/\{\{OG_TYPE\}\}/g,            page.ogType || 'website')
     .replace(/\{\{OG_IMAGE\}\}/g,           ogImage)
-    .replace(/\{\{TWITTER_TITLE\}\}/g,      esc(page.title))
+    .replace(/\{\{TWITTER_TITLE\}\}/g,      esc(brandedTitle))
     .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(page.description || ''))
     .replace(/\{\{TWITTER_IMAGE\}\}/g,      ogImage)
     .replace(/\{\{SCHEMA\}\}/g,             schemaTag(page.schema || []))
@@ -107,7 +118,7 @@ function fillArticle(template, post, content, relatedLinks) {
     : { '@type': 'ImageObject', url: `${site.domain}/og-image.png`, width: 1200, height: 630 };
   const schema    = [{
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
+    '@type': ['Article', 'BlogPosting'],
     mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
     headline:    post.title,
     description: post.description,
@@ -130,15 +141,18 @@ function fillArticle(template, post, content, relatedLinks) {
     ],
   }];
 
+  const brandedTitle = withBrand(`${post.title} — Poki2 Blog`);
+
   return template
-    .replace(/\{\{TITLE\}\}/g,               esc(`${post.title} — Poki2 Blog`))
+    .replace(/\{\{TITLE\}\}/g,               esc(brandedTitle))
     .replace(/\{\{DESCRIPTION\}\}/g,         esc(post.description || ''))
+    .replace(/\{\{ROBOTS_META\}\}/g,         '<meta name="robots" content="index,follow">')
     .replace(/\{\{CANONICAL\}\}/g,           canonical)
-    .replace(/\{\{OG_TITLE\}\}/g,            esc(post.title))
+    .replace(/\{\{OG_TITLE\}\}/g,            esc(brandedTitle))
     .replace(/\{\{OG_DESCRIPTION\}\}/g,      esc(post.description || ''))
     .replace(/\{\{OG_URL\}\}/g,              canonical)
     .replace(/\{\{OG_IMAGE\}\}/g,           ogImage)
-    .replace(/\{\{TWITTER_TITLE\}\}/g,      esc(post.title))
+    .replace(/\{\{TWITTER_TITLE\}\}/g,      esc(brandedTitle))
     .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(post.description || ''))
     .replace(/\{\{TWITTER_IMAGE\}\}/g,      ogImage)
     .replace(/\{\{SCHEMA\}\}/g,             schemaTag(schema))
@@ -158,6 +172,7 @@ function fillGame(template, game, content, relatedLinks) {
   const schema    = [{
     '@context': 'https://schema.org',
     '@type': 'VideoGame',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
     name:        game.title,
     description: game.description,
     url:         canonical,
@@ -180,15 +195,18 @@ function fillGame(template, game, content, relatedLinks) {
     ],
   }];
 
+  const brandedTitle = withBrand(`${game.title} — Play Free Online`);
+
   return template
-    .replace(/\{\{TITLE\}\}/g,             esc(`${game.title} — Play Free Online | Poki2`))
+    .replace(/\{\{TITLE\}\}/g,             esc(brandedTitle))
     .replace(/\{\{DESCRIPTION\}\}/g,       esc(game.description))
+    .replace(/\{\{ROBOTS_META\}\}/g,       '<meta name="robots" content="index,follow">')
     .replace(/\{\{CANONICAL\}\}/g,         canonical)
-    .replace(/\{\{OG_TITLE\}\}/g,          esc(game.title))
+    .replace(/\{\{OG_TITLE\}\}/g,          esc(brandedTitle))
     .replace(/\{\{OG_DESCRIPTION\}\}/g,    esc(game.description))
     .replace(/\{\{OG_URL\}\}/g,            canonical)
     .replace(/\{\{OG_IMAGE\}\}/g,          game.imgUrl || `${site.domain}/og-image.png`)
-    .replace(/\{\{TWITTER_TITLE\}\}/g,     esc(game.title))
+    .replace(/\{\{TWITTER_TITLE\}\}/g,     esc(brandedTitle))
     .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(game.description))
     .replace(/\{\{TWITTER_IMAGE\}\}/g,     game.imgUrl || `${site.domain}/og-image.png`)
     .replace(/\{\{SCHEMA\}\}/g,            schemaTag(schema))
@@ -315,7 +333,7 @@ function buildGames() {
 <section>
   <div class="container">
     <h1 class="section-title" style="text-align:left">Free Browser Games</h1>
-    <p class="section-sub" style="text-align:left">Play instantly — no download, no account, no install. Every game runs directly in your browser on desktop and mobile.</p>
+    <p class="section-sub" style="text-align:left">Find your next game in seconds on Poki2. Browse by genre, open any game page, and start playing instantly with no download or account.</p>
     <style>
       .game-cat-heading{font-size:1.15rem;font-weight:700;color:#f1f5f9;margin:2.25rem 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid rgba(255,255,255,.08)}
       .game-index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-bottom:.25rem}
@@ -409,7 +427,9 @@ function buildSitemap() {
   console.log('\n[5/6] Building sitemap…');
   const now = new Date().toISOString().split('T')[0];
 
-  const pageUrls = pages.map(p => `
+  const indexablePages = pages.filter((p) => p.indexable !== false);
+
+  const pageUrls = indexablePages.map(p => `
   <url>
     <loc>${p.canonical || `${site.domain}/${p.outputFile}`}</loc>
     <lastmod>${now}</lastmod>
