@@ -111,7 +111,7 @@ const pages = [
         '@type': 'Organization',
         name: 'Poki2',
         url:  'https://poki2.online/',
-        logo: 'https://poki2.online/favicon.svg',
+        logo: 'https://poki2.online/favicon-512.png',
         description: 'Poki2 is a free browser games network with 1000+ instant-play games across multiple specialized sites.',
         contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', email: 'contact@poki2.online' }],
         sameAs: [
@@ -624,6 +624,7 @@ const gamePosts = [
     controls:  'Arrow Keys',
     date:      'April 7, 2026',
     isoDate:   '2026-04-07',
+    orientation: 'landscape',
   },
   {
     slug:      'basketball-stars',
@@ -637,6 +638,7 @@ const gamePosts = [
     controls:  'Arrow Keys / Mouse',
     date:      'April 7, 2026',
     isoDate:   '2026-04-07',
+    orientation: 'landscape',
   },
   {
     slug:      'crossy-road',
@@ -876,6 +878,7 @@ const gamePosts = [
     controls:  'Mouse / Keyboard',
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
+    orientation: 'landscape',
   },
   {
     slug:      '2048-italian-brainrot',
@@ -899,7 +902,7 @@ const gamePosts = [
     genre:     'Puzzle',
     category:  'Puzzle',
     players:   '1 Player',
-    controls:  'Mouse / Keyboard',
+    controls:  'Mouse / Keyboard / Touch',
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
   },
@@ -915,6 +918,7 @@ const gamePosts = [
     controls:  'Mouse / Keyboard',
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
+    orientation: 'landscape',
   },
   {
     slug:      'american-truck-driving',
@@ -980,6 +984,7 @@ const gamePosts = [
     controls:  'Mouse / Keyboard',
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
+    orientation: 'landscape',
   },
   {
     slug:      'astro-tycoon',
@@ -1179,6 +1184,7 @@ const gamePosts = [
     controls:  'Mouse / Keyboard',
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
+    orientation: 'landscape',
   }
 ];
 module.exports = { site, network, pages, blogPosts, gamePosts };
