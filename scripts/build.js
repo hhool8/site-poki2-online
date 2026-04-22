@@ -217,6 +217,7 @@ function fillGame(template, game, content, relatedLinks) {
     .replace(/\{\{GAME_PLAYERS\}\}/g,      esc(game.players))
     .replace(/\{\{GAME_CONTROLS\}\}/g,     esc(game.controls))
     .replace(/\{\{GAME_EMBED_URL\}\}/g,    game.embedUrl)
+    .replace(/\{\{GAME_IMG_URL\}\}/g,      game.imgUrl || `${site.domain}/og-image.png`)
     .replace(/\{\{GAME_DATE\}\}/g,         game.date || '')
     .replace(/\{\{RELATED_GAME_LINKS\}\}/g, relatedLinks)
     .replace(/\{\{CONTENT\}\}/g,           content)
