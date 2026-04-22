@@ -34,7 +34,7 @@ const network = [
   },
   {
     slug:        'gplus',
-    name:        'Unblocked G+',
+    name:        'Unblocked Games',
     url:         'https://ubg66.poki2.online/',
     color:       '#a855f7',
     emoji:       '🔓',

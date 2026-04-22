@@ -8,14 +8,19 @@ Static site powering [poki2.online](https://poki2.online/). Built with a zero-de
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Project Structure](#project-structure)
-- [Development](#development)
-- [Deployment](#deployment)
-- [Adding Content](#adding-content)
-- [Ad Infrastructure](#ad-infrastructure)
-- [SEO & Analytics](#seo--analytics)
-- [Network Sites](#network-sites)
+- [Poki2 Portal — poki2.online](#poki2-portal--poki2online)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Project Structure](#project-structure)
+  - [Development](#development)
+  - [Deployment](#deployment)
+  - [Adding Content](#adding-content)
+    - [New static page](#new-static-page)
+    - [New blog article](#new-blog-article)
+  - [Ad Infrastructure](#ad-infrastructure)
+  - [SEO \& Analytics](#seo--analytics)
+  - [Network Sites](#network-sites)
+  - [AdSense Review Checklist](#adsense-review-checklist)
 
 ---
 
@@ -197,7 +202,7 @@ Remove this line from both `src/templates/base.html` and `src/templates/article.
 |------|-----|--------|-------|
 | Poki2 Play | [play.poki2.online](https://play.poki2.online/) | Live | 200+ |
 | AZ Games | [azgames.poki2.online](https://azgames.poki2.online/) | Live | 300+ |
-| Unblocked G+ | [unblocked-games-g-plus.poki2.online](https://unblocked-games-g-plus.poki2.online/) | Live | 474+ |
+| Unblocked Games | [ubg66.poki2.online](https://ubg66.poki2.online/) | Live | 474+ |
 | IO Arena | [io.poki2.online](https://io.poki2.online/) | Coming soon | — |
 | Kids Games | [kids.poki2.online](https://kids.poki2.online/) | Coming soon | 100+ |
 
