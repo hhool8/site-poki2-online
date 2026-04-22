@@ -368,10 +368,13 @@
       var imgMask = document.getElementById('game-img-mask');
       if (imgMask) {
         window.addEventListener('blur', function onBlur() {
-          imgMask.style.opacity = '0';
+          /* Play Now clicked → wait 3 s → fade mask */
           setTimeout(function () {
-            if (imgMask.parentNode) imgMask.parentNode.removeChild(imgMask);
-          }, 520);
+            imgMask.style.opacity = '0';
+            setTimeout(function () {
+              if (imgMask.parentNode) imgMask.parentNode.removeChild(imgMask);
+            }, 520);
+          }, 3000);
         }, { once: true });
       }
 
