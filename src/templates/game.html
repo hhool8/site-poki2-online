@@ -75,6 +75,9 @@
     .related-game-card{display:flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.5rem .65rem;text-decoration:none;color:#cbd5e1;font-size:.82rem;transition:background .15s}
     .related-game-card:hover{background:rgba(99,102,241,.15)}
     .related-game-card img{width:28px;height:28px;border-radius:4px;object-fit:cover;flex-shrink:0}
+    /* Image mask: covers azgames broken thumbnail; pointer-events:none passes all clicks through to Play Now */
+    #game-img-mask{position:absolute;inset:0 0 48px 0;z-index:15;pointer-events:none;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,#000 58%,transparent 76%);mask-image:linear-gradient(to bottom,#000 58%,transparent 76%);transition:opacity .5s}
+    #game-img-mask img{display:block;width:100%;height:100%;object-fit:cover}
   </style>
 </head>
 <body class="article-page">
@@ -131,6 +134,7 @@
 
       <!-- Game iframe -->
       <div class="game-frame-wrap" id="game-wrap">
+        <div id="game-img-mask"><img src="{{GAME_IMG_URL}}" alt="{{GAME_TITLE_PLAIN}}" loading="eager"></div>
         <iframe
           id="game-iframe"
           src="{{GAME_EMBED_URL}}"
@@ -360,6 +364,17 @@
         expandBtn.setAttribute('aria-label', on ? 'Exit expand' : 'Expand in page');
         setTimeout(function () { iframe.focus(); showShield(); }, 200);
       }
+      /* ── Image mask: fade out when user clicks into iframe (Play Now) ── */
+      var imgMask = document.getElementById('game-img-mask');
+      if (imgMask) {
+        window.addEventListener('blur', function onBlur() {
+          imgMask.style.opacity = '0';
+          setTimeout(function () {
+            if (imgMask.parentNode) imgMask.parentNode.removeChild(imgMask);
+          }, 520);
+        }, { once: true });
+      }
+
       expandBtn.addEventListener('click', function () { setTheater(!theater); });
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && theater) setTheater(false);
