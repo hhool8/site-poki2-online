@@ -83,6 +83,19 @@ function injectMidAd(content) {
   return content.slice(0, insertAt) + '\n' + MID_AD_HTML + '\n' + content.slice(insertAt);
 }
 
+function extractFirstImageSrc(content) {
+  const imgMatch = String(content || '').match(/<img[^>]+src=["']([^"']+)["']/i);
+  return imgMatch ? String(imgMatch[1]).trim() : '';
+}
+
+function cssUrlValue(url) {
+  return String(url || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+}
+
+function escRegExp(str) {
+  return String(str || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 function fillBase(template, page, content) {
   const ogImage = `${site.domain}/og-image.png`;
   const brandedTitle = withBrand(page.title);
@@ -111,7 +124,7 @@ function fillBase(template, page, content) {
 function fillArticle(template, post, content, relatedLinks) {
   const canonical = `${site.domain}/blog/${post.slug}`;
   const buildTs   = new Date().toISOString();
-  const heroImg   = (content.match(/<figure[^>]*article-hero[^>]*>[\s\S]*?<img[^>]+src="([^"]+)"/) || [])[1];
+  const heroImg   = extractFirstImageSrc(content);
   const ogImage   = heroImg || `${site.domain}/og-image.png`;
   const schemaImage = heroImg
     ? { '@type': 'ImageObject', url: heroImg, width: 1200, height: 630 }
@@ -383,7 +396,23 @@ function buildBlog() {
     write(path.join(DIST, 'blog', `${post.slug}.html`), html);
   }
 
-  const blogIndexContent = read(path.join(SRC, 'content', 'blog', 'index.html'));
+  let blogIndexContent = read(path.join(SRC, 'content', 'blog', 'index.html'));
+  const defaultBlogCardImage = `${site.domain}/favicon.svg`;
+
+  for (const post of blogPosts) {
+    const contentFile = path.join(SRC, 'content', 'blog', `${post.slug}.html`);
+    if (!fs.existsSync(contentFile)) continue;
+
+    const postContent = read(contentFile);
+    const firstImage = extractFirstImageSrc(postContent) || defaultBlogCardImage;
+    const imgStyle = ` style="background-image:url('${cssUrlValue(firstImage)}');background-size:cover;background-position:center;background-repeat:no-repeat"`;
+    const cardImgPattern = new RegExp(
+      `(<a\\s+href="/blog/${escRegExp(post.slug)}"[\\s\\S]*?<div\\s+class="blog-card-img(?:\\s+blog-card-img--\\d+)?"[^>]*?)(\\s*></div>)`,
+      'i'
+    );
+    blogIndexContent = blogIndexContent.replace(cardImgPattern, `$1${imgStyle}$2`);
+  }
+
   const blogIndexPage = {
     slug:       'blog/index',
     outputFile: 'blog/index.html',
