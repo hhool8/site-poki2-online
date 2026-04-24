@@ -92,8 +92,13 @@ function cssUrlValue(url) {
   return String(url || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 }
 
-function escRegExp(str) {
-  return String(str || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+function decodeBasicHtmlEntities(str) {
+  return String(str || '')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
 }
 
 function fillBase(template, page, content) {
@@ -399,19 +404,44 @@ function buildBlog() {
   let blogIndexContent = read(path.join(SRC, 'content', 'blog', 'index.html'));
   const defaultBlogCardImage = `${site.domain}/favicon.svg`;
 
-  for (const post of blogPosts) {
-    const contentFile = path.join(SRC, 'content', 'blog', `${post.slug}.html`);
-    if (!fs.existsSync(contentFile)) continue;
+  const sortedBlogPosts = blogPosts
+    .map((post, index) => ({ post, index, ts: Date.parse(post.isoDate || '') || 0 }))
+    .sort((a, b) => (b.ts - a.ts) || (b.index - a.index))
+    .map(item => item.post);
 
-    const postContent = read(contentFile);
+  const cardsHtml = sortedBlogPosts.map((post) => {
+    const contentFile = path.join(SRC, 'content', 'blog', `${post.slug}.html`);
+    const postContent = fs.existsSync(contentFile) ? read(contentFile) : '';
     const firstImage = extractFirstImageSrc(postContent) || defaultBlogCardImage;
     const imgStyle = ` style="background-image:url('${cssUrlValue(firstImage)}');background-size:cover;background-position:center;background-repeat:no-repeat"`;
-    const cardImgPattern = new RegExp(
-      `(<a\\s+href="/blog/${escRegExp(post.slug)}"[\\s\\S]*?<div\\s+class="blog-card-img(?:\\s+blog-card-img--\\d+)?"[^>]*?)(\\s*></div>)`,
-      'i'
-    );
-    blogIndexContent = blogIndexContent.replace(cardImgPattern, `$1${imgStyle}$2`);
-  }
+    const safeTitle = esc(decodeBasicHtmlEntities(post.title));
+    const safeCategory = esc(decodeBasicHtmlEntities(post.category || 'Guides'));
+    const safeDescription = esc(decodeBasicHtmlEntities(post.description || ''));
+    const safeDate = esc(post.date || '');
+    const safeReadTime = esc(post.readTime || '');
+
+    return `
+    <article class="blog-listing-card">
+      <a href="/blog/${post.slug}" class="blog-card-img-link" tabindex="-1" aria-hidden="true">
+        <div class="blog-card-img" role="img" aria-label="${safeTitle}"${imgStyle}></div>
+      </a>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-cat">${safeCategory}</span>
+          <span class="blog-date">${safeDate}</span>
+          <span class="blog-time">${safeReadTime}</span>
+        </div>
+        <h2><a href="/blog/${post.slug}">${safeTitle}</a></h2>
+        <p>${safeDescription}</p>
+        <a href="/blog/${post.slug}" class="read-more-link">Read article →</a>
+      </div>
+    </article>`;
+  }).join('\n');
+
+  blogIndexContent = blogIndexContent.replace(
+    /<div class="blog-listing-grid">[\s\S]*?<\/div>\s*<div class="blog-listing-editorial/g,
+    `<div class="blog-listing-grid">\n${cardsHtml}\n\n  </div>\n\n  <div class="blog-listing-editorial`
+  );
 
   const blogIndexPage = {
     slug:       'blog/index',
