@@ -163,6 +163,25 @@ const pages = [
         name: 'Contact',
         url: 'https://poki2.online/contact'
       },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Top Destinations on Poki2',
+        itemListOrder: 'https://schema.org/ItemListOrderAscending',
+        numberOfItems: 10,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, url: 'https://poki2.online/fgame/', name: 'All Games' },
+          { '@type': 'ListItem', position: 2, url: 'https://poki2.online/blog/', name: 'Blog Home' },
+          { '@type': 'ListItem', position: 3, url: 'https://poki2.online/blog/best-browser-games-2026', name: 'Best Browser Games 2026' },
+          { '@type': 'ListItem', position: 4, url: 'https://poki2.online/blog/what-are-io-games', name: 'What Are IO Games?' },
+          { '@type': 'ListItem', position: 5, url: 'https://poki2.online/blog/best-multiplayer-browser-games', name: 'Best Multiplayer Browser Games' },
+          { '@type': 'ListItem', position: 6, url: 'https://poki2.online/fgame/2048', name: '2048' },
+          { '@type': 'ListItem', position: 7, url: 'https://poki2.online/fgame/slope', name: 'Slope' },
+          { '@type': 'ListItem', position: 8, url: 'https://poki2.online/fgame/1v1lol', name: '1v1.LOL' },
+          { '@type': 'ListItem', position: 9, url: 'https://poki2.online/fgame/cookie-clicker', name: 'Cookie Clicker' },
+          { '@type': 'ListItem', position: 10, url: 'https://poki2.online/fgame/drift-hunters', name: 'Drift Hunters' },
+        ],
+      },
     ],
   },
   {
