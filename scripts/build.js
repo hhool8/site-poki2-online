@@ -327,6 +327,25 @@ function buildGames() {
       name: 'Free Browser Games — Poki2',
       description: 'Browse and play free browser games on Poki2. No download, no account required.',
       publisher: { '@type': 'Organization', name: 'Poki2', url: site.domain },
+    }, {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.domain}/` },
+        { '@type': 'ListItem', position: 2, name: 'Games', item: `${site.domain}/fgame/` },
+      ],
+    }, {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Poki2 Games List',
+      itemListOrder: 'https://schema.org/ItemListUnordered',
+      numberOfItems: visibleGames.length,
+      itemListElement: visibleGames.slice(0, 120).map((g, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${site.domain}/fgame/${g.slug}`,
+        name: g.title,
+      })),
     }],
   };
 
@@ -459,6 +478,25 @@ function buildBlog() {
       name: 'Poki2 Blog',
       description: 'Browser game guides, recommendations, and tips.',
       publisher: { '@type': 'Organization', name: 'Poki2', url: site.domain },
+    }, {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.domain}/` },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${site.domain}/blog/` },
+      ],
+    }, {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Poki2 Blog Articles',
+      itemListOrder: 'https://schema.org/ItemListOrderDescending',
+      numberOfItems: sortedBlogPosts.length,
+      itemListElement: sortedBlogPosts.slice(0, 120).map((post, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${site.domain}/blog/${post.slug}`,
+        name: decodeBasicHtmlEntities(post.title),
+      })),
     }],
   };
   const html = fillBase(baseTemplate, blogIndexPage, blogIndexContent);
