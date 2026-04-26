@@ -368,23 +368,23 @@ function buildGames() {
   }).join('');
 
   const gamesIndexContent = `
-<section>
-  <div class="container">
-    <h1 class="section-title" style="text-align:left">Free Browser Games</h1>
-    <p class="section-sub" style="text-align:left">Find your next game in seconds on Poki2. Browse by genre, open any game page, and start playing instantly with no download or account.</p>
-    <style>
-      .game-cat-heading{font-size:1.15rem;font-weight:700;color:#f1f5f9;margin:2.25rem 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid rgba(255,255,255,.08)}
-      .game-index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-bottom:.25rem}
-      .game-index-card{display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0;transition:transform .15s,border-color .15s}
-      .game-index-card:hover{transform:translateY(-3px);border-color:rgba(99,102,241,.5)}
-      .game-index-card img{width:100%;aspect-ratio:1/1;object-fit:cover}
-      .game-index-card-body{padding:.6rem .75rem .75rem}
-      .game-index-card-title{font-size:.95rem;font-weight:600;margin:0 0 .3rem;color:#f1f5f9}
-      .game-index-card-genre,.game-index-card-players{font-size:.75rem;color:#94a3b8;display:block}
-    </style>
-    ${categorySections}
+<div class="blog-listing-wrap">
+  <div class="blog-listing-header">
+    <h1>Free Browser Games</h1>
+    <p>Find your next game in seconds on Poki2. Browse by genre, open any game page, and start playing instantly with no download or account.</p>
   </div>
-</section>`;
+  <style>
+    .game-cat-heading{font-size:1.15rem;font-weight:700;color:#f1f5f9;margin:2.25rem 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid rgba(255,255,255,.08)}
+    .game-index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-bottom:.25rem}
+    .game-index-card{display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0;transition:transform .15s,border-color .15s}
+    .game-index-card:hover{transform:translateY(-3px);border-color:rgba(99,102,241,.5)}
+    .game-index-card img{width:100%;aspect-ratio:1/1;object-fit:cover}
+    .game-index-card-body{padding:.6rem .75rem .75rem}
+    .game-index-card-title{font-size:.95rem;font-weight:600;margin:0 0 .3rem;color:#f1f5f9}
+    .game-index-card-genre,.game-index-card-players{font-size:.75rem;color:#94a3b8;display:block}
+  </style>
+  ${categorySections}
+</div>`;
 
   const gamesIndexHtml = fillBase(baseTemplate, baseGamesPage, gamesIndexContent);
   write(path.join(DIST, 'fgame', 'index.html'), gamesIndexHtml);
