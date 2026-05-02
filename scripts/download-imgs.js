@@ -30,6 +30,7 @@ const KNOWN = {
   'smash-karts':       'smash-karts.jpg',
   'subway-surfers':    'subwaysurfers.png',
   'paper-io':          'paper-io.jpeg',
+  'brain-lines':       'brainlines.png',
 };
 
 function download(url, destPath) {

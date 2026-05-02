@@ -1190,6 +1190,19 @@ const gamePosts = [
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
     orientation: 'landscape',
+  },
+  {
+    slug:      'brain-lines',
+    title:     'Brain Lines',
+    description: 'Play Brain Lines free online — draw lines to guide the ball to the target in each puzzle. A satisfying physics-based drawing game that challenges your spatial thinking, no download needed.',
+    embedUrl:  'https://azgames.io/brain-lines.embed',
+    imgUrl:    '/imgs/fgame/brain-lines.png',
+    genre:     'Puzzle',
+    category:  'Idle & Sandbox',
+    players:   '1 Player',
+    controls:  'Mouse / Touch',
+    date:      'May 2, 2026',
+    isoDate:   '2026-05-02',
   }
 ];
 module.exports = { site, network, pages, blogPosts, gamePosts };
