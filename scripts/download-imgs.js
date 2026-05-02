@@ -31,6 +31,7 @@ const KNOWN = {
   'subway-surfers':    'subwaysurfers.png',
   'paper-io':          'paper-io.jpeg',
   'brain-lines':       'brainlines.png',
+  'temple-runner':     'temple-runner.png',
 };
 
 function download(url, destPath) {
