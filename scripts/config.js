@@ -1216,6 +1216,19 @@ const gamePosts = [
     controls:  'Arrow Keys / Swipe',
     date:      'May 2, 2026',
     isoDate:   '2026-05-02',
+  },
+  {
+    slug:      'glide-in',
+    title:     'Glide In',
+    description: 'Play Glide In free online — glide through narrow gaps and obstacles with precision timing. A fast-paced action skill game that tests your reflexes and focus, no download needed.',
+    embedUrl:  'https://azgames.io/glide-in.embed',
+    imgUrl:    '/imgs/fgame/glide-in.png',
+    genre:     'Action',
+    category:  'Action & Shooter',
+    players:   '1 Player',
+    controls:  'Mouse / Tap',
+    date:      'May 2, 2026',
+    isoDate:   '2026-05-02',
   }
 ];
 module.exports = { site, network, pages, blogPosts, gamePosts };
