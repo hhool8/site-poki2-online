@@ -1203,6 +1203,19 @@ const gamePosts = [
     controls:  'Mouse / Touch',
     date:      'May 2, 2026',
     isoDate:   '2026-05-02',
+  },
+  {
+    slug:      'temple-runner',
+    title:     'Temple Runner',
+    description: 'Play Temple Runner free online — sprint through ancient temple ruins, dodge traps, leap over gaps, and collect coins as you race to survive in this classic endless runner.',
+    embedUrl:  'https://azgames.io/temple-runner.embed',
+    imgUrl:    '/imgs/fgame/temple-runner.png',
+    genre:     'Endless Runner',
+    category:  'Endless Runner',
+    players:   '1 Player',
+    controls:  'Arrow Keys / Swipe',
+    date:      'May 2, 2026',
+    isoDate:   '2026-05-02',
   }
 ];
 module.exports = { site, network, pages, blogPosts, gamePosts };
