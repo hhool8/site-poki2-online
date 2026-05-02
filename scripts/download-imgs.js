@@ -16,7 +16,6 @@ const CONFIG_PATH = path.join(__dirname, 'config.js');
 const KNOWN = {
   '2048':              '2048.jpg',
   'slope':             'slope.png',
-  '1v1lol':            '1v1lol.png',
   'cookie-clicker':    'cookieclickerthumb.png',
   'run-3':             'run3thumb.png',
   'stickman-hook':     'stickmanhook.jpg',
