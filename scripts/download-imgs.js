@@ -32,6 +32,7 @@ const KNOWN = {
   'paper-io':          'paper-io.jpeg',
   'brain-lines':       'brainlines.png',
   'temple-runner':     'temple-runner.png',
+  'glide-in':          'glide-in.png',
 };
 
 function download(url, destPath) {
