@@ -1198,7 +1198,7 @@ const gamePosts = [
     embedUrl:  'https://azgames.io/brain-lines.embed',
     imgUrl:    '/imgs/fgame/brain-lines.png',
     genre:     'Puzzle',
-    category:  'Idle & Sandbox',
+    category:  'Puzzle',
     players:   '1 Player',
     controls:  'Mouse / Touch',
     date:      'May 2, 2026',
