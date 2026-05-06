@@ -51,9 +51,21 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-T69PZL0ELE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
+    window.__poki2GaConfigured = window.__poki2GaConfigured || false;
     function gtag(){dataLayer.push(arguments);}
+    function poki2InitAnalytics() {
+      if (window.__poki2GaConfigured) return;
+      gtag('config', 'G-T69PZL0ELE', { send_page_view: true });
+      window.__poki2GaConfigured = true;
+    }
     gtag('js', new Date());
-    gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', wait_for_update: 500 });
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
   </script>
 </head>
 <body class="{{BODY_CLASS}}">
@@ -419,7 +431,7 @@
       onConsent: function () {
         if (CookieConsent.acceptedCategory('analytics')) {
           gtag('consent', 'update', { analytics_storage: 'granted' });
-          gtag('config', 'G-T69PZL0ELE', { send_page_view: true });
+          poki2InitAnalytics();
         }
         if (CookieConsent.acceptedCategory('advertising')) {
           gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });
@@ -428,6 +440,7 @@
       onChange: function () {
         var ads = CookieConsent.acceptedCategory('advertising');
         var analytics = CookieConsent.acceptedCategory('analytics');
+        if (analytics) poki2InitAnalytics();
         gtag('consent', 'update', {
           analytics_storage: analytics ? 'granted' : 'denied',
           ad_storage:        ads ? 'granted' : 'denied',
