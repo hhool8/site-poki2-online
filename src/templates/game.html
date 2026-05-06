@@ -43,9 +43,21 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-T69PZL0ELE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
+    window.__poki2GaConfigured = window.__poki2GaConfigured || false;
     function gtag(){dataLayer.push(arguments);}
+    function poki2InitAnalytics() {
+      if (window.__poki2GaConfigured) return;
+      gtag('config', 'G-T69PZL0ELE', { send_page_view: true });
+      window.__poki2GaConfigured = true;
+    }
     gtag('js', new Date());
-    gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', wait_for_update: 500 });
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
   </script>
   <style>
     .game-frame-wrap{background:#0f172a;border-radius:12px;overflow:hidden;margin:1.25rem 0;position:relative;display:flex;flex-direction:column}
@@ -559,6 +571,79 @@
       document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) closeDrop(); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrop(); });
     })();
+  </script>
+
+  <!-- Cookie Consent (vanilla-cookieconsent v3) -->
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+  <script>
+    CookieConsent.run({
+      guiOptions: {
+        consentModal: { layout: 'bar', position: 'bottom', equalWeightButtons: false }
+      },
+      categories: {
+        necessary: { enabled: true, readOnly: true },
+        analytics: {},
+        advertising: {}
+      },
+      onConsent: function () {
+        if (CookieConsent.acceptedCategory('analytics')) {
+          gtag('consent', 'update', { analytics_storage: 'granted' });
+          poki2InitAnalytics();
+        }
+        if (CookieConsent.acceptedCategory('advertising')) {
+          gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });
+        }
+      },
+      onChange: function () {
+        var ads = CookieConsent.acceptedCategory('advertising');
+        var analytics = CookieConsent.acceptedCategory('analytics');
+        if (analytics) poki2InitAnalytics();
+        gtag('consent', 'update', {
+          analytics_storage: analytics ? 'granted' : 'denied',
+          ad_storage: ads ? 'granted' : 'denied',
+          ad_user_data: ads ? 'granted' : 'denied',
+          ad_personalization: ads ? 'granted' : 'denied'
+        });
+      },
+      language: {
+        default: 'en',
+        translations: {
+          en: {
+            consentModal: {
+              title: 'We use cookies',
+              description: 'We use cookies to help the site function correctly. <a href="/privacy" class="cc__link">Privacy Policy</a>',
+              acceptAllBtn: 'Accept all',
+              acceptNecessaryBtn: 'Reject all',
+              showPreferencesBtn: 'Manage'
+            },
+            preferencesModal: {
+              title: 'Cookie preferences',
+              acceptAllBtn: 'Accept all',
+              acceptNecessaryBtn: 'Reject all',
+              savePreferencesBtn: 'Save preferences',
+              closeIconLabel: 'Close',
+              sections: [
+                {
+                  title: 'Strictly necessary',
+                  description: 'Required for the site to function correctly. Cannot be disabled.',
+                  linkedCategory: 'necessary'
+                },
+                {
+                  title: 'Analytics',
+                  description: 'Help us understand how visitors use the site. All data is aggregated and anonymous.',
+                  linkedCategory: 'analytics'
+                },
+                {
+                  title: 'Advertising',
+                  description: 'Allow Google AdSense to serve personalised ads based on your interests. Declining shows non-personalised ads instead.',
+                  linkedCategory: 'advertising'
+                }
+              ]
+            }
+          }
+        }
+      }
+    });
   </script>
 </body>
 </html>
