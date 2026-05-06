@@ -41,33 +41,38 @@ Static site powering [poki2.online](https://poki2.online/). Built with a zero-de
 ## Project Structure
 
 ```
-h5games_poki2_redesign/
+h5games_poki2_site/
 ├── css/
 │   └── style.css              # Single source stylesheet (minified into dist/)
 ├── public/                    # Static assets copied verbatim to dist/
 │   ├── ads.txt
 │   ├── robots.txt
-│   ├── sitemap.xml            # Overwritten by build
-│   ├── favicon.svg
-│   ├── og-image.png
 │   ├── _headers               # Cloudflare Pages HTTP headers (HSTS, CSP…)
 │   ├── _redirects             # Cloudflare Pages URL redirects
+│   ├── favicon.svg
+│   ├── og-image.png
 │   ├── 404.html
 │   └── google65c93755d768ab97.html  # Search Console verification
 ├── scripts/
 │   ├── build.js               # Build script — templates + content → dist/
-│   └── config.js              # Site constants, network config, page metadata, blog post list
+│   ├── config.js              # Site constants + page/blog/game metadata + AdSense switch
+│   ├── gen-favicons.js
+│   └── gen-og-image.js
 ├── src/
 │   ├── templates/
 │   │   ├── base.html          # Shell for all static pages (nav, footer, AdSense, GA4, cookie consent)
-│   │   └── article.html       # Shell for blog articles (breadcrumbs, author bio, related posts, 3 ad units)
+│   │   ├── article.html       # Shell for blog articles (breadcrumbs, author bio, related posts, 3 ad units)
+│   │   └── game.html          # Shell for individual game pages
 │   └── content/
 │       ├── index.html         # Homepage body fragment
+│       ├── search.html
 │       ├── about.html
 │       ├── contact.html
 │       ├── privacy.html
 │       ├── terms.html
 │       ├── dmca.html
+│       ├── fgame/
+│       │   └── *.html         # Individual game content fragments
 │       └── blog/
 │           ├── index.html     # Blog listing page (15 cards + editorial)
 │           └── *.html         # 15 individual article body fragments
@@ -94,9 +99,11 @@ npm run clean
 The build script (`scripts/build.js`) does the following in sequence:
 
 1. **Static pages** — fills `src/templates/base.html` with each page's content fragment and metadata from `scripts/config.js`
-2. **Blog articles** — fills `src/templates/article.html`, auto-injects a mid-article ad before the 2nd `<h2>`, generates related-post links, and emits `BlogPosting` + `BreadcrumbList` JSON-LD
-3. **Sitemap** — generates `dist/sitemap.xml` with all 22 URLs (6 static + blog index + 15 articles)
-4. **Assets** — minifies `css/style.css` (~18% smaller) and copies `public/` into `dist/`
+2. **Game pages** — fills `src/templates/game.html`, generates related-game links, and emits `VideoGame` + `BreadcrumbList` JSON-LD
+3. **Blog articles** — fills `src/templates/article.html`, auto-injects a mid-article ad before the 2nd `<h2>`, generates related-post links, and emits `BlogPosting` + `BreadcrumbList` JSON-LD
+4. **Search index** — generates `dist/search-index.json` for nav search suggestions and `/search/` result page
+5. **Sitemap** — generates `dist/sitemap.xml` from all indexable pages + blog posts + non-deprecated game pages
+6. **Assets** — minifies `css/style.css` and copies `public/` into `dist/`
 
 ---
 
@@ -169,14 +176,19 @@ npm run deploy
 | Blog index | Leaderboard above grid | `8151800876` |
 | About page | Leaderboard | `1919331375` |
 
-**No-op override** is active while awaiting AdSense approval:
+AdSense behavior is controlled centrally via `scripts/config.js`:
 
-```html
-<!-- TODO: remove after AdSense approval -->
-<script>window.adsbygoogle = { push: function(){} };</script>
+```js
+const site = {
+  // ...
+  adsenseApproved: false,
+};
 ```
 
-Remove this line from both `src/templates/base.html` and `src/templates/article.html` once the account is approved, then rebuild and deploy.
+- `adsenseApproved: false` — build injects a no-op `window.adsbygoogle` bootstrap (safe for review period)
+- `adsenseApproved: true` — build injects standard `window.adsbygoogle = window.adsbygoogle || []`
+
+This switch applies consistently to `base.html`, `article.html`, and `game.html` through the build placeholders.
 
 **Unfilled slot hiding:** `ins.adsbygoogle:not([data-ad-status])` is hidden via CSS so empty ad boxes never affect layout.
 

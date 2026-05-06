@@ -61,6 +61,18 @@ function withBrand(title) {
   return value.toLowerCase().includes(site.name.toLowerCase()) ? value : `${value} | ${site.name}`;
 }
 
+function getAdsenseTemplateVars() {
+  const approved = site.adsenseApproved === true;
+  return {
+    bootstrap: approved
+      ? '<script>window.adsbygoogle = window.adsbygoogle || [];<\/script>'
+      : '<script>window.adsbygoogle = { push: function(){} };<\/script>',
+    loader: '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6199549323873133" crossorigin="anonymous"><\/script>',
+  };
+}
+
+const adsenseTemplateVars = getAdsenseTemplateVars();
+
 const MID_AD_HTML = `
 <div class="ad-unit ad-unit--article">
   <ins class="adsbygoogle"
@@ -122,6 +134,8 @@ function fillBase(template, page, content) {
     .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(page.description || ''))
     .replace(/\{\{TWITTER_IMAGE\}\}/g,      ogImage)
     .replace(/\{\{SCHEMA\}\}/g,             schemaTag(page.schema || []))
+    .replace(/\{\{ADSENSE_BOOTSTRAP\}\}/g,  adsenseTemplateVars.bootstrap)
+    .replace(/\{\{ADSENSE_LOADER\}\}/g,     adsenseTemplateVars.loader)
     .replace(/\{\{BODY_CLASS\}\}/g,         page.bodyClass || '')
     .replace(/\{\{CONTENT\}\}/g,            content);
 }
@@ -174,6 +188,8 @@ function fillArticle(template, post, content, relatedLinks) {
     .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(post.description || ''))
     .replace(/\{\{TWITTER_IMAGE\}\}/g,      ogImage)
     .replace(/\{\{SCHEMA\}\}/g,             schemaTag(schema))
+    .replace(/\{\{ADSENSE_BOOTSTRAP\}\}/g,  adsenseTemplateVars.bootstrap)
+    .replace(/\{\{ADSENSE_LOADER\}\}/g,     adsenseTemplateVars.loader)
     .replace(/\{\{ARTICLE_TITLE\}\}/g,      post.title)
     .replace(/\{\{ARTICLE_TITLE_PLAIN\}\}/g, esc(post.title))
     .replace(/\{\{ARTICLE_DATE\}\}/g,       post.date || '')
@@ -228,6 +244,8 @@ function fillGame(template, game, content, relatedLinks) {
     .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(game.description))
     .replace(/\{\{TWITTER_IMAGE\}\}/g,     game.imgUrl || `${site.domain}/og-image.png`)
     .replace(/\{\{SCHEMA\}\}/g,            schemaTag(schema))
+    .replace(/\{\{ADSENSE_BOOTSTRAP\}\}/g, adsenseTemplateVars.bootstrap)
+    .replace(/\{\{ADSENSE_LOADER\}\}/g,    adsenseTemplateVars.loader)
     .replace(/\{\{GAME_SLUG\}\}/g,         game.slug)
     .replace(/\{\{GAME_TITLE\}\}/g,        game.title)
     .replace(/\{\{GAME_TITLE_PLAIN\}\}/g,  esc(game.title))

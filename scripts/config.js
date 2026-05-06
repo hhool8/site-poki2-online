@@ -6,6 +6,8 @@ const site = {
   domain:    'https://poki2.online',
   tagline:   'The Ultimate Free Browser Games Network',
   faviconUrl:'https://poki2.online/favicon.svg',
+  // Single switch for all templates: false uses no-op adsbygoogle during review.
+  adsenseApproved: false,
 };
 
 // ── Subdomain network ─────────────────────────────────────────────────────────
