@@ -113,6 +113,15 @@ function decodeBasicHtmlEntities(str) {
     .replace(/&#39;/g, "'");
 }
 
+function toAbsoluteUrl(url) {
+  const value = String(url || '').trim();
+  if (!value) return `${site.domain}/og-image.png`;
+  if (/^https?:\/\//i.test(value)) return value;
+  if (value.startsWith('//')) return `https:${value}`;
+  if (value.startsWith('/')) return `${site.domain}${value}`;
+  return `${site.domain}/${value}`;
+}
+
 function fillBase(template, page, content) {
   const ogImage = `${site.domain}/og-image.png`;
   const brandedTitle = withBrand(page.title);
@@ -203,6 +212,8 @@ function fillArticle(template, post, content, relatedLinks) {
 function fillGame(template, game, content, relatedLinks) {
   const canonical = `${site.domain}/fgame/${game.slug}`;
   const buildTs   = new Date().toISOString();
+  const gameImageRaw = game.imgUrl || '/og-image.png';
+  const gameImageAbs = toAbsoluteUrl(gameImageRaw);
   const schema    = [{
     '@context': 'https://schema.org',
     '@type': 'VideoGame',
@@ -210,7 +221,7 @@ function fillGame(template, game, content, relatedLinks) {
     name:        game.title,
     description: game.description,
     url:         canonical,
-    image:       game.imgUrl || `${site.domain}/og-image.png`,
+    image:       gameImageAbs,
     genre:       game.genre,
     numberOfPlayers: { '@type': 'QuantitativeValue', name: game.players },
     gameEdition: 'Browser',
@@ -239,10 +250,10 @@ function fillGame(template, game, content, relatedLinks) {
     .replace(/\{\{OG_TITLE\}\}/g,          esc(brandedTitle))
     .replace(/\{\{OG_DESCRIPTION\}\}/g,    esc(game.description))
     .replace(/\{\{OG_URL\}\}/g,            canonical)
-    .replace(/\{\{OG_IMAGE\}\}/g,          game.imgUrl || `${site.domain}/og-image.png`)
+    .replace(/\{\{OG_IMAGE\}\}/g,          gameImageAbs)
     .replace(/\{\{TWITTER_TITLE\}\}/g,     esc(brandedTitle))
     .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(game.description))
-    .replace(/\{\{TWITTER_IMAGE\}\}/g,     game.imgUrl || `${site.domain}/og-image.png`)
+    .replace(/\{\{TWITTER_IMAGE\}\}/g,     gameImageAbs)
     .replace(/\{\{SCHEMA\}\}/g,            schemaTag(schema))
     .replace(/\{\{ADSENSE_BOOTSTRAP\}\}/g, adsenseTemplateVars.bootstrap)
     .replace(/\{\{ADSENSE_LOADER\}\}/g,    adsenseTemplateVars.loader)
@@ -253,7 +264,7 @@ function fillGame(template, game, content, relatedLinks) {
     .replace(/\{\{GAME_PLAYERS\}\}/g,      esc(game.players))
     .replace(/\{\{GAME_CONTROLS\}\}/g,     esc(game.controls))
     .replace(/\{\{GAME_EMBED_URL\}\}/g,    game.embedUrl)
-    .replace(/\{\{GAME_IMG_URL\}\}/g,      game.imgUrl || `${site.domain}/og-image.png`)
+    .replace(/\{\{GAME_IMG_URL\}\}/g,      gameImageRaw)
     .replace(/\{\{GAME_DATE\}\}/g,         game.date || '')
     .replace(/\{\{RELATED_GAME_LINKS\}\}/g, relatedLinks)
     .replace(/\{\{CONTENT\}\}/g,           content)
