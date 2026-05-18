@@ -23,7 +23,6 @@ const KNOWN = {
   'shell-shockers':    'shell-shockers.jpg',
   'tetris':            'tetristhumb.png',
   'basketball-stars':  'basketballstarsgamelogo2.png',
-  'crossy-road':       'crossyroad1.png',
   'pacman':            'pacman.jpg',
   'retro-bowl':        'retro-bowl.jpg',
   'geometry-dash':     'geometrydash.png',
