@@ -2,9 +2,6 @@
 User-agent: *
 Allow: /
 
-# Block dist build artifacts if accidentally published
-Disallow: /dist/
-
 # Bing Webmaster: explicit crawl-delay to prevent rate-limiting (seconds)
 User-agent: Bingbot
 Allow: /

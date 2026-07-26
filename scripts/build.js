@@ -2,6 +2,7 @@
 
 const fs   = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const { site, pages, blogPosts, gamePosts } = require('./config.js');
 
@@ -23,6 +24,25 @@ function write(filePath, content) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, content, 'utf8');
   console.log('  wrote', path.relative(ROOT, filePath));
+}
+
+// Last git commit date (YYYY-MM-DD) of a source file — used for accurate
+// sitemap <lastmod>. Falls back to today when the file is untracked, has no
+// git history, or git is unavailable, so builds never break.
+function gitLastMod(filePath) {
+  try {
+    const out = execSync(
+      `git log -1 --format=%ad --date=short -- ${JSON.stringify(filePath)}`,
+      { cwd: ROOT, encoding: 'utf8', stdio: ['pipe', 'pipe', 'ignore'] }
+    ).trim();
+    return out || today();
+  } catch {
+    return today();
+  }
+}
+
+function today() {
+  return new Date().toISOString().split('T')[0];
 }
 
 function copyDir(src, dest) {
@@ -552,30 +572,41 @@ function buildSearchIndex() {
 
 function buildSitemap() {
   console.log('\n[5/6] Building sitemap…');
-  const now = new Date().toISOString().split('T')[0];
+  const now = today();
 
   const indexablePages = pages.filter((p) => p.indexable !== false);
 
+  // Base pages: use each page's real git last-modified date (the source file
+  // is src/content/<slug>.html) so lastmod only moves when the page actually
+  // changes — not on every rebuild.
   const pageUrls = indexablePages.map(p => `
   <url>
     <loc>${p.canonical || `${site.domain}/${p.outputFile}`}</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${gitLastMod(path.join(SRC, 'content', `${p.slug}.html`))}</lastmod>
     <changefreq>${p.slug === 'index' ? 'weekly' : 'monthly'}</changefreq>
     <priority>${p.slug === 'index' ? '1.0' : '0.8'}</priority>
   </url>`).join('');
 
+  // /blog/ index: a real source file (src/content/blog/index.html) — use its git date.
   const blogIndexUrl = `
   <url>
     <loc>${site.domain}/blog/</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${gitLastMod(path.join(SRC, 'content', 'blog', 'index.html'))}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>`;
 
+  // /fgame/ index is generated dynamically from the game list (no source
+  // file), so its lastmod is the newest game's isoDate — i.e. it updates
+  // exactly when a game is added or changed.
+  const latestGameDate = visibleGames
+    .map(g => g.isoDate || now)
+    .sort()
+    .pop() || now;
   const gamesIndexUrl = `
   <url>
     <loc>${site.domain}/fgame/</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${latestGameDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>`;
