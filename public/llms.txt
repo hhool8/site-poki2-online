@@ -1,0 +1,64 @@
+# Poki2
+
+> Poki2 (poki2.online) is a free web-based gaming platform that offers instant access to popular HTML5 and WebGL games directly in the browser with no downloads, installs, or account registrations required. The Poki2 network brings together eight specialized game sites under one umbrella, covering IO games, action, puzzle, racing, sports, 2-player, idle clicker, and unblocked school-safe titles.
+
+## Core Features
+- 100% Free to Play: Every game across the network is free, ad-supported, with no paywalls or in-app purchases.
+- No Download / No Account: All titles run instantly in modern browsers (Chrome, Safari, Firefox, Edge) via HTML5 and WebGL.
+- Cross-Platform: Fully optimized for desktop computers, Chromebooks, iPhones, iPads, and Android devices.
+- Unblocked for School & Work: Curated titles that load smoothly on restricted networks (see Unblocked Games portal).
+- 1,000+ Games: Distributed across eight specialized sites in the Poki2 network.
+
+## Game Categories
+- Puzzle: 2048, Brain Lines, Cut the Rope, Trap the Cat, Merge Infinity, Golf Puzzle
+- Action & Shooter: Shell Shockers, Blocky Hunter, Chicken Jockey Combat, Glide In
+- Endless Runner: Slope, Run 3, Subway Surfers, Temple Runner, Run 3D
+- Racing: Drift Hunters, Bike Xtreme, American Truck Driving, Blocky Rider, Battle Karts
+- Platformer & Arcade: Stickman Hook, Geometry Dash, Mr Flip, Crazy Animal City, Wave Road
+- Sports & IO: Basketball Stars, Retro Bowl, Arcade Tennis, Smash Karts, Slither.io
+- Idle & Sandbox: Cookie Clicker, Bombardino Crocodilo Clicker, Plants vs Brainrots
+
+## Popular Games
+- [2048](https://poki2.online/fgame/2048): The classic tile-merging puzzle game.
+- [Slope](https://poki2.online/fgame/slope): High-speed 3D endless ball-rolling game.
+- [Cookie Clicker](https://poki2.online/fgame/cookie-clicker): The iconic idle clicker game.
+- [Run 3](https://poki2.online/fgame/run-3): Outer-space endless runner in a 3D tunnel.
+- [Stickman Hook](https://poki2.online/fgame/stickman-hook): Physics-based swinging platformer.
+- [Drift Hunters](https://poki2.online/fgame/drift-hunters): Realistic 3D drift racing with tunable cars.
+- [Shell Shockers](https://poki2.online/fgame/shell-shockers): Multiplayer egg-based first-person shooter.
+- [Geometry Dash](https://poki2.online/fgame/geometry-dash): Rhythm-based obstacle platformer.
+- [Basketball Stars](https://poki2.online/fgame/basketball-stars): 1v1 street basketball with trick shots.
+- [Retro Bowl](https://poki2.online/fgame/retro-bowl): Retro-style American football management game.
+
+## The Poki2 Network (Specialized Sites)
+- [Poki2 Play](https://play.poki2.online/): 200+ hand-picked HTML5 games across every genre.
+- [AZ Games](https://azgames.poki2.online/): 300+ game collection sorted A to Z, powered by the azgames.io catalog.
+- [Unblocked Games](https://ubg66.poki2.online/): 474+ school-safe unblocked games that work on Chromebooks.
+- [2048 Collection](https://2048.poki2.online/): Dedicated portal for 2048 and its variants.
+
+## Key Guides & Articles
+- [The 15 Best Free Browser Games of 2026](https://poki2.online/blog/best-browser-games-2026): Editor-picked top 15 free browser games.
+- [What Are .IO Games? Your Complete Guide](https://poki2.online/blog/what-are-io-games): Explains the IO multiplayer browser-game genre.
+- [10 Best Multiplayer Browser Games](https://poki2.online/blog/best-multiplayer-browser-games): Top real-time multiplayer browser games.
+- [Cookie Clicker Complete Guide](https://poki2.online/blog/cookie-clicker-complete-guide): Buildings, Grandmapocalypse, prestige, and tips.
+- [Geometry Dash Complete Guide](https://poki2.online/blog/geometry-dash-complete-guide): All 21 levels, secret coins, and game modes.
+- [Best Unblocked Games for Chromebooks](https://poki2.online/blog/unblocked-games-chromebook-guide): How to play safely on school Chromebooks.
+- [Beginner's Guide to Browser Games](https://poki2.online/blog/beginners-guide-to-browser-games): What HTML5 games are and where to start.
+
+## Important Pages
+- [Homepage](https://poki2.online/): Top trending and featured browser games.
+- [All Games Catalog](https://poki2.online/fgame/): Complete index of every available free game, grouped by category.
+- [Blog & Guides](https://poki2.online/blog/): In-depth gaming guides, walkthroughs, recommendations, and news.
+- [Search](https://poki2.online/search/): Find games, guides, and pages across Poki2.
+
+## Trust & Policies
+- [About Us](https://poki2.online/about): Who Poki2 is, our mission, and our editorial process.
+- [Contact Us](https://poki2.online/contact): Support, game submissions, and partnership enquiries.
+- [Privacy Policy](https://poki2.online/privacy): How we handle data and advertising cookies.
+- [Terms of Use](https://poki2.online/terms): Acceptable use and your rights as a visitor.
+- [DMCA Policy](https://poki2.online/dmca): How to submit a copyright removal request.
+
+## Technical Notes
+- Games are embedded via iframe from a vetted upstream catalog (azgames.io) and served over HTTPS from Cloudflare's global CDN.
+- All pages use semantic HTML5, JSON-LD structured data (Organization, WebSite, VideoGame, Article, FAQPage, BreadcrumbList), and an XML sitemap at https://poki2.online/sitemap.xml.
+- Editorial content is written and reviewed by the Poki2 Editorial Team; each article carries a visible byline and publication/update date.

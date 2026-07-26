@@ -20,6 +20,11 @@
 <h3>No executable files</h3>
 <p>Downloaded games arrive as .exe, .apk, or .dmg files that can contain anything — including malware, adware, or spyware that most antivirus software doesn't catch until after infection. Browser games don't require you to run any file. The game code executes inside the browser's sandboxed JavaScript environment, which physically cannot access your file system, camera, or other apps without explicit permission.</p>
 
+<blockquote cite="https://developer.mozilla.org/en-US/docs/Web/Security" style="border-left:4px solid var(--primary);margin:1.5rem 0;padding:.75rem 1.25rem;background:rgba(99,102,241,.07);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-muted)">
+  <p style="margin:0">"There's one main security rule that Web content is subject to: <strong>same-origin policy</strong> &mdash; this means that content from one website's origin cannot read the contents of another website's origin&hellip; The browser implements a sandbox that prevents content from accessing the local file system or executing programs."</p>
+  <footer style="margin-top:.5rem;font-size:.85rem">&mdash; <cite><a href="https://developer.mozilla.org/en-US/docs/Web/Security" rel="noopener noreferrer">Mozilla Developer Network (MDN), &laquo;Web Security&raquo;</a></cite>, describing the same-origin policy and sandbox model that keeps browser games isolated from your operating system.</footer>
+</blockquote>
+
 <h3>No hidden permissions</h3>
 <p>Downloaded apps on iOS and Android request permissions — access to your contacts, location, microphone, photos. Many games request permissions far beyond what they need for legitimate gameplay. Browser games run in a tab and can only access what you explicitly permit (like the microphone if a game uses voice chat).</p>
 

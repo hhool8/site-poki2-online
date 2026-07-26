@@ -186,8 +186,14 @@ function fillArticle(template, post, content, relatedLinks) {
     image:       schemaImage,
     url:         canonical,
     datePublished: post.isoDate || '2026-04-04',
-    dateModified:  post.isoDate || '2026-04-04',
-    author: { '@type': 'Organization', name: 'Poki2', url: site.domain },
+    dateModified:  post.isoUpdated || post.isoDate || '2026-04-04',
+    inLanguage: 'en-US',
+    articleSection: post.category || 'Guides',
+    author: {
+      '@type': 'Organization',
+      name: 'Poki2 Editorial Team',
+      url: `${site.domain}/about`,
+    },
     publisher: {
       '@type': 'Organization', name: 'Poki2', url: site.domain,
       logo: { '@type': 'ImageObject', url: `${site.domain}/favicon.svg` }
@@ -222,6 +228,9 @@ function fillArticle(template, post, content, relatedLinks) {
     .replace(/\{\{ARTICLE_TITLE\}\}/g,      post.title)
     .replace(/\{\{ARTICLE_TITLE_PLAIN\}\}/g, esc(post.title))
     .replace(/\{\{ARTICLE_DATE\}\}/g,       post.date || '')
+    .replace(/\{\{ARTICLE_UPDATED_SPAN\}\}/g, post.updated
+      ? `\n          <span>🔄 Updated ${post.updated}</span>`
+      : '')
     .replace(/\{\{ARTICLE_CATEGORY\}\}/g,   post.category || '')
     .replace(/\{\{ARTICLE_READ_TIME\}\}/g,  post.readTime || '')
     .replace(/\{\{RELATED_LINKS\}\}/g,      relatedLinks)
@@ -247,8 +256,11 @@ function fillGame(template, game, content, relatedLinks) {
     gameEdition: 'Browser',
     operatingSystem: 'Web Browser',
     applicationCategory: 'Game',
+    playMode: 'SinglePlayer',
+    isAccessibleForFree: true,
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
     publisher: { '@type': 'Organization', name: 'Poki2', url: site.domain },
+    author: { '@type': 'Organization', name: 'Poki2 Games', url: site.domain },
     datePublished: game.isoDate || '2026-04-07',
   }, {
     '@context': 'https://schema.org',
