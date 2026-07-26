@@ -183,6 +183,70 @@ const pages = [
           { '@type': 'ListItem', position: 9, url: 'https://poki2.online/fgame/drift-hunters', name: 'Drift Hunters' },
         ],
       },
+      // FAQPage — mirrors the visible <details> FAQ block on the homepage.
+      // Google requires structured-data answers to match on-page visible text.
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'Are all games on Poki2 completely free?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Every game across the entire Poki2 network is free to play with no purchase required. The sites are supported by display advertising (powered by Google AdSense), which keeps everything free for players. There are no premium tiers, no paywalled games, no in-app purchases you need to make progress, and no subscription fees. You can play every game on every site as many times as you want at no cost.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'Do I need to create an account to play?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'No account is required to play any game on the Poki2 network. You can go directly from clicking a link to playing a game in seconds — no registration form, no email verification, no password to remember. Some games save progress locally in your browser using local storage, which means your progress persists between sessions without any account.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'Do the games work on mobile and tablet?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Most games on the Poki2 network are designed to work on both desktop and mobile browsers. Touch controls are supported on games that have been optimised for touchscreen. Some games — particularly those that require keyboard shortcuts, precise mouse control, or split-keyboard two-player input — are better suited to desktop play. Each game page notes the recommended platform.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'Do the games work on school Chromebooks or restricted networks?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Many games on the Poki2 network are specifically chosen to work in school and office environments. Unblocked Games G+ is our dedicated school-safe portal with 474+ games that work on most filtered networks and Chromebooks. All Poki2 sites are served over HTTPS from Cloudflare\'s global CDN, which gives them a better chance of being accessible on filtered networks than older gaming portals.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'How do I suggest a game for the network?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'We welcome game suggestions from the community. Use the Poki2 contact form and include the game\'s name, the platform or URL where it is hosted, and note which Poki2 site you think it fits best. Our editorial team reviews every suggestion based on control responsiveness, performance on modest hardware, content appropriateness, and how it fits the existing catalogue.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'Why are some games loading slowly?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Game load speed depends on your connection speed, browser, and the size of the game\'s assets. On your first visit to a game, all assets must be downloaded — this can take a few seconds on a slow connection. On repeat visits, cached assets load nearly instantly. All Poki2 sites are served from Cloudflare\'s global CDN, which minimises distance-based latency.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'Are the games safe for children?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'All games in the Poki2 network are manually reviewed before listing. We do not host games with adult content, graphic violence, or gambling mechanics. Most titles are appropriate for players 10 and up. For younger children (ages 4–12), we are building a dedicated Kids Games portal with age-appropriate content and a no-ads-during-play policy — coming soon.'
+            }
+          },
+        ],
+      },
     ],
   },
   {
@@ -275,6 +339,11 @@ const pages = [
 ];
 
 // ── Blog articles metadata ────────────────────────────────────────────────────
+//   date/isoDate  — original publication date (never changes).
+//   updated/isoUpdated — optional last-content-revision date. Drives the
+//     Article schema `dateModified` and the visible "Updated" byline, which
+//     together signal freshness to Google and AI search (E-E-A-T). Omit for
+//     posts that have never been revised after publication.
 const blogPosts = [
   {
     slug:       'best-browser-games-2026',
@@ -282,6 +351,8 @@ const blogPosts = [
     description:'Our editors picked the 15 best free browser games you can play right now — no download, no login, just open and play.',
     date:       'April 2, 2026',
     isoDate:    '2026-04-02',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Top Lists',
     readTime:   '8 min read',
   },
@@ -291,6 +362,8 @@ const blogPosts = [
     description:'.IO games are lightweight multiplayer browser games. Learn what makes them special, which ones are the best, and where to play them free.',
     date:       'March 28, 2026',
     isoDate:    '2026-03-28',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Guides',
     readTime:   '7 min read',
   },
@@ -300,6 +373,8 @@ const blogPosts = [
     description:'A practical guide to finding and playing unblocked browser games legally and safely, without putting your network access at risk.',
     date:       'March 20, 2026',
     isoDate:    '2026-03-20',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Guides',
     readTime:   '6 min read',
   },
@@ -309,6 +384,8 @@ const blogPosts = [
     description:'Compete against real players in these top multiplayer games. No downloads, no accounts — just open your browser and start playing.',
     date:       'March 12, 2026',
     isoDate:    '2026-03-12',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Top Lists',
     readTime:   '7 min read',
   },
@@ -318,6 +395,8 @@ const blogPosts = [
     description:'Whether you love puzzles, racing, action, or casual fun — we\'ve picked the single best browser game for each type of player.',
     date:       'March 5, 2026',
     isoDate:    '2026-03-05',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Reviews',
     readTime:   '6 min read',
   },
@@ -327,6 +406,8 @@ const blogPosts = [
     description:'Play together on one keyboard or across the internet — these are the best free 2-player browser games available right now, no download needed.',
     date:       'April 3, 2026',
     isoDate:    '2026-04-03',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Top Lists',
     readTime:   '7 min read',
   },
@@ -336,6 +417,8 @@ const blogPosts = [
     description:'Looking for IO games that work on school Chromebooks and bypass most content filters? Here are 10 unblocked IO games you can actually play.',
     date:       'March 30, 2026',
     isoDate:    '2026-03-30',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Top Lists',
     readTime:   '6 min read',
   },
@@ -345,6 +428,8 @@ const blogPosts = [
     description:'From arcade drift cars to off-road stunt bikes — the definitive list of the best free racing games you can play in your browser right now.',
     date:       'March 18, 2026',
     isoDate:    '2026-03-18',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Top Lists',
     readTime:   '7 min read',
   },
@@ -354,6 +439,8 @@ const blogPosts = [
     description:'Brain teasers, match-3, logic puzzles, and word games — the best free puzzle browser games ranked by quality, replayability, and zero-download access.',
     date:       'March 10, 2026',
     isoDate:    '2026-03-10',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Top Lists',
     readTime:   '8 min read',
   },
@@ -363,6 +450,8 @@ const blogPosts = [
     description:'A complete guide to free browser gaming — what browser games are, why they\'re safer than downloads, and how to get the best experience on any device.',
     date:       'March 3, 2026',
     isoDate:    '2026-03-03',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Guides',
     readTime:   '7 min read',
   },
@@ -372,6 +461,8 @@ const blogPosts = [
     description:'From browser FPS to ragdoll fighters — our definitive list of the best free action browser games you can play instantly, no download, no install.',
     date:       'April 4, 2026',
     isoDate:    '2026-04-04',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Top Lists',
     readTime:   '8 min read',
   },
@@ -381,6 +472,8 @@ const blogPosts = [
     description:'A practical guide to browser games that work on school Chromebooks and strict networks — including Google built-ins, NYT Games, and verified unblocked portals.',
     date:       'April 4, 2026',
     isoDate:    '2026-04-04',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Guides',
     readTime:   '8 min read',
   },
@@ -390,6 +483,8 @@ const blogPosts = [
     description:'Cookie Clicker, Clicker Heroes, Realm Grinder and more — the best idle and incremental browser games ranked by depth, replayability, and session flexibility.',
     date:       'April 5, 2026',
     isoDate:    '2026-04-05',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Top Lists',
     readTime:   '7 min read',
   },
@@ -399,6 +494,8 @@ const blogPosts = [
     description:'10 browser games with excellent mobile touch controls — play Slither.io, Cut the Rope, 2048, and more directly in your phone browser, no app install required.',
     date:       'April 5, 2026',
     isoDate:    '2026-04-05',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Top Lists',
     readTime:   '7 min read',
   },
@@ -408,6 +505,8 @@ const blogPosts = [
     description:'Forge of Empires, OGame, Tribal Wars, Diep.io and more — the best free strategy browser games ranked from casual city builders to deep 4X multiplayer.',
     date:       'April 6, 2026',
     isoDate:    '2026-04-06',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Top Lists',
     readTime:   '9 min read',
   },
@@ -417,6 +516,8 @@ const blogPosts = [
     description:'Master every official Geometry Dash level with our complete guide — all 21 levels explained, secret coins, game modes, and tips for beginners through experts.',
     date:       'April 7, 2026',
     isoDate:    '2026-04-07',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Guides',
     readTime:   '9 min read',
   },
@@ -426,6 +527,8 @@ const blogPosts = [
     description:'A complete guide to playing unblocked games on school Chromebooks — how game blocking works, how to find safe sites, and 10 games that work on strict school networks.',
     date:       'April 7, 2026',
     isoDate:    '2026-04-07',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Guides',
     readTime:   '8 min read',
   },
@@ -435,6 +538,8 @@ const blogPosts = [
     description:'Everything you need to know about Cookie Clicker — all buildings explained, the Grandmapocalypse walkthrough, golden cookie combos, and the prestige/ascension system.',
     date:       'April 8, 2026',
     isoDate:    '2026-04-08',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Guides',
     readTime:   '9 min read',
   },
@@ -444,6 +549,8 @@ const blogPosts = [
     description:'8 two-player browser games with full controls listed — whether you\'re on the same keyboard or playing across the internet, these are the best options available.',
     date:       'April 8, 2026',
     isoDate:    '2026-04-08',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Top Lists',
     readTime:   '8 min read',
   },
@@ -453,6 +560,8 @@ const blogPosts = [
     description:'New to browser gaming? This complete beginner\'s guide explains what HTML5 games are, how they compare to console games, and which titles to start with by playstyle.',
     date:       'April 9, 2026',
     isoDate:    '2026-04-09',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Guides',
     readTime:   '8 min read',
   },
@@ -462,6 +571,8 @@ const blogPosts = [
     description:'The best free sports browser games in 2026 — Basketball Stars, Retro Bowl, Arcade Tennis, Ball Orbit, Bat Smash, Arcade Volley, and Billiards Master. No download required.',
     date:       'April 9, 2026',
     isoDate:    '2026-04-09',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Sports & IO',
     readTime:   '7 min read',
   },
@@ -471,6 +582,8 @@ const blogPosts = [
     description:'Your complete guide to Italian Brainrot browser games — Bombardino Crocodilo Clicker, Chicken Jockey Clicker, 2048 Italian Brainrot, Chicken Jockey Combat, and more.',
     date:       'April 9, 2026',
     isoDate:    '2026-04-09',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Trending',
     readTime:   '6 min read',
   },
@@ -480,6 +593,8 @@ const blogPosts = [
     description:'Top free simulation and adventure browser games in 2026 — Age of War, Animal Craft, Crazy Animal City, Astro Tycoon, Astro Robot Clicker, American Truck Driving, and more.',
     date:       'April 9, 2026',
     isoDate:    '2026-04-09',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Platformer & Arcade',
     readTime:   '8 min read',
   },
@@ -489,6 +604,8 @@ const blogPosts = [
     description:'Beyond the original, 2048 has spawned brilliant variants — 2048 Drop, 2048 Rogue, and 2048 Italian Brainrot. This guide covers every variant and the strategy that wins each one.',
     date:       'April 10, 2026',
     isoDate:    '2026-04-10',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Puzzle',
     readTime:   '6 min read',
   },
@@ -498,6 +615,8 @@ const blogPosts = [
     description:'Top free shooting browser games in 2026 — Blocky Hunter, Chicken Jockey Combat, Bricky Break, Shell Shockers, 1v1.LOL, and more. No download, no install, just play.',
     date:       'April 10, 2026',
     isoDate:    '2026-04-10',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Action & Shooter',
     readTime:   '7 min read',
   },
@@ -507,6 +626,8 @@ const blogPosts = [
     description:'Top free racing and driving browser games in 2026 — Bike Xtreme, Drift Hunters, American Truck Driving, Blocky Rider, Battle Karts, and more. Zero downloads required.',
     date:       'April 10, 2026',
     isoDate:    '2026-04-10',
+    updated:    'July 27, 2026',
+    isoUpdated: '2026-07-27',
     category:   'Racing',
     readTime:   '7 min read',
   },

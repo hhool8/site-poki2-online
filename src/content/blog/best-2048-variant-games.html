@@ -5,6 +5,11 @@
 <h2>The Original: 2048</h2>
 <p><a href="/fgame/2048">2048</a> is the benchmark. Tiles on a 4×4 grid slide in one of four directions; matching numbers merge into their sum. Reach 2048 to win — though the real challenge is pushing past 4096 and 8192. The key principle that carries into every variant: <strong>never let your highest tile move away from one corner</strong>. Lock the largest tile in a corner, build the second-largest beside it, and work outward in a snake pattern.</p>
 
+<blockquote cite="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API" style="border-left:4px solid var(--primary);margin:1.5rem 0;padding:.75rem 1.25rem;background:rgba(99,102,241,.07);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-muted)">
+  <p style="margin:0">"The Web Storage API provides mechanisms by which browsers can securely store key/value pairs in a much more intuitive fashion than using cookies."</p>
+  <footer style="margin-top:.5rem;font-size:.85rem">&mdash; <cite><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API" rel="noopener noreferrer">Mozilla Developer Network (MDN), &laquo;Web Storage API&raquo;</a></cite>, the localStorage mechanism these browser puzzle games use to remember your board and high score between sessions.</footer>
+</blockquote>
+
 <h2>2048 Drop — Tetris Meets 2048</h2>
 <p><a href="/fgame/2048-drop">2048 Drop</a> replaces the sliding grid with a falling-chip mechanic. Chips drop from the top of the screen; you position them with ← → and they stack like Tetris pieces. When two matching numbers touch, they merge. The board fills from the bottom up, so clutter accumulates faster than in the original.</p>
 <p><strong>Strategy shift:</strong> In classic 2048 you control the whole board in one move. In Drop, you control only the next chip's column. Prioritise keeping one column as an "escape valve" — an almost-empty column you can dump awkward low-value chips into rather than blocking your merge lanes.</p>
