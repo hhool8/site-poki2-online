@@ -9,3 +9,30 @@
 </ul>
 <h2>Tips</h2>
 <p>Short distances need less power — over-charging sends you past the platform. Watch the rotation indicator and release when Mr Flip's feet are pointing roughly downward. Platforms get smaller and farther apart as you progress, so conservative power increases are safer than big jumps.</p>
+
+<h2>Trajectory Physics</h2>
+<p>Mr Flip uses a classic projectile-physics model. Launch power maps directly to initial velocity; angle maps to initial trajectory. Gravity is fixed and applies continuously. Wind appears in later levels as a horizontal force on the projectile.</p>
+<p>Rotation is governed by an angular velocity that increases based on the launch angle. A steep angle (high-arc shot) gives more rotation than a shallow angle (low-arc shot). Landing detection checks if the character's feet are pointing within ~30° of vertical at touchdown.</p>
+
+<h2>Strategy</h2>
+<p><strong>Match power to distance.</strong> Short platforms need low power — over-flipping sends you past the goal.</p>
+<p><strong>Watch the rotation indicator.</strong> The colour change at the apex of each flip tells you whether you're rotating fast enough or need to wait.</p>
+<p><strong>Hold for high-power jumps.</strong> Beyond a certain distance threshold, you need to hold the launch longer for maximum power. The character stretches during charging.</p>
+
+<h2>FAQ</h2>
+<dl>
+  <dt>Q: How many characters are unlockable?</dt>
+  <dd>A: 12 characters with different physics profiles — heavier ones flip slower but with more momentum.</dd>
+  <dt>Q: Are there power-ups?</dt>
+  <dd>A: Yes — slow-motion orbs and double-jump power-ups appear on later levels.</dd>
+  <dt>Q: Is there multiplayer?</dt>
+  <dd>A: No — single-player only.</dd>
+  <dt>Q: Are scores tracked globally?</dt>
+  <dd>A: Yes — leaderboards rank players by total accumulated points across all sessions.</dd>
+</dl>
+<h2>Similar Arcade Games</h2>
+<ul>
+  <li><a href="/fgame/glide-in/">Glide In</a> — precision action</li>
+  <li><a href="/fgame/wave-road/">Wave Road</a> — wave runner</li>
+  <li><a href="/fgame/mr-flip/">Mr Flip</a> — acrobatic stunt</li>
+</ul>

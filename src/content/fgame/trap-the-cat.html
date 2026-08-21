@@ -8,3 +8,30 @@
 </ul>
 <h2>Tips</h2>
 <p>Work on the side closest to the edge first — those are the most dangerous escape paths. Don't chase the cat; instead, cut off the direction it is heading. Pre-existing blocked cells form natural walls; build your trap outward from them to minimize the clicks needed.</p>
+
+<h2>Hex Grid Mathematics</h2>
+<p>Trap the Cat plays on a hex grid where each cell has 6 neighbours. The cat's movement algorithm always chooses the cell with the lowest number of escape paths left. Understanding this bias lets you corner the cat by leaving high-occupancy cells open — the cat then naturally drifts toward whatever you want.</p>
+<p>Each move creates a propagating effect on the cat's available moves. Two moves ahead, you should consider which neighbour will have the fewest open paths after your next move.</p>
+
+<h2>Strategy</h2>
+<p><strong>Trap from the edges inward.</strong> Block edge cells first — they're the closest to escape. Wait to play interior cells until the cat has fewer options.</p>
+<p><strong>Set up zig-zag barriers.</strong> The hex grid lets you create barriers the cat can't bypass without crossing your block. Zig-zag shapes are the most economical.</p>
+<p><strong>Don't chase.</strong> The cat moves toward whatever has the lowest occupancy. If you close ahead of it, you trap it.</p>
+
+<h2>FAQ</h2>
+<dl>
+  <dt>Q: How many puzzles are there?</dt>
+  <dd>A: Practically unlimited — each puzzle generates from random initial conditions.</dd>
+  <dt>Q: Can I skip a hard level?</dt>
+  <dd>A: Yes — most versions allow skipping with a small coin cost.</dd>
+  <dt>Q: Are there different grid sizes?</dt>
+  <dd>A: Yes — small (4×4), medium (6×6), and large (8×8) grids.</dd>
+  <dt>Q: Are there global leaderboards?</dt>
+  <dd>A: Some versions track fastest solves — most don't.</dd>
+</dl>
+<h2>Similar Puzzle Games</h2>
+<ul>
+  <li><a href="/fgame/trap-the-cat/">Trap the Cat</a> — hex strategy</li>
+  <li><a href="/fgame/golf-puzzle/">Golf Puzzle</a> — angle puzzle</li>
+  <li><a href="/fgame/brain-lines/">Brain Lines</a> — line drawing</li>
+</ul>
