@@ -10,3 +10,32 @@
 </ul>
 <h2>Tips</h2>
 <p>Keep your largest tile in a corner and build toward it. Clear chain-merges whenever possible to keep the board clear. If you get stuck, look for the column that unblocks the most future moves.</p>
+
+<h2>Gameplay Mechanics in Depth</h2>
+<p>2048 Drop uses a falling-piece format similar to Tetris — a new chip appears at the top of the board each turn, you position it horizontally, then release it. Once a chip lands, it immediately checks its neighbours for matching values. If the chip is adjacent to an identical number, they fuse into a single chip with the doubled value (2+2=4, 4+4=8, and so on). Chain merges happen instantly: a chip falling into a position that triggers a merge might uncover a new match, which then merges, cascading down the board in seconds.</p>
+<p>The board is typically 6 columns wide and 12 rows tall — taller than wide, which means short game sessions can still last a while if you plan drops carefully. The chip values max out at 2048, but the board keeps generating merges and tracking your score long after you've made your first 2048 tile.</p>
+
+<h2>Advanced Strategy</h2>
+<p><strong>Stack the low values in one column.</strong> Reserve a single column for small chips (2s and 4s) that you'll merge later — never drop a high-value chip into that column, only low-value ones.</p>
+<p><strong>Watch for chain opportunities.</strong> A drop that triggers two merges in sequence scores more than two separate drops. Look one move ahead for cascade setups.</p>
+<p><strong>Avoid filling the top row.</strong> Once the top row is full, the game becomes unwinnable because you can't place new chips. Keep at least one empty cell in the top row at all times.</p>
+<p><strong>Use both edges.</strong> Most players anchor to one side, but experienced drop players often use both edges — a high chip on the left and a high chip on the right, with chain merges forming in the middle.</p>
+
+<h2>FAQ</h2>
+<dl>
+  <dt>Q: What happens after 2048?</dt>
+  <dd>A: The board keeps accepting drops and scoring. Many players push for 4096 or 8192 as a personal challenge — the chip values continue climbing.</dd>
+  <dt>Q: Does the game give hints?</dt>
+  <dd>A: No. Each drop is permanent — place strategically and don't rush.</dd>
+  <dt>Q: Can I undo a move?</dt>
+  <dd>A: No undo feature. The lack of undo is what gives 2048 Drop its puzzle tension — every drop must be planned.</dd>
+  <dt>Q: Is the next chip value previewed?</dt>
+  <dd>A: Most versions show the next chip value at the top of the screen so you can plan your drops one move in advance.</dd>
+</dl>
+
+<h2>Similar Puzzle Games</h2>
+<ul>
+  <li><a href="/fgame/2048">2048</a> — the original sliding-tile classic</li>
+  <li><a href="/fgame/2048-rogue/">2048 Rogue</a> — roguelike spin with creature tiles</li>
+  <li><a href="/fgame/2048-italian-brainrot/">2048 Italian Brainrot</a> — meme-character tile merge</li>
+</ul>

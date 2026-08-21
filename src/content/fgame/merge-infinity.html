@@ -9,3 +9,31 @@
 </ul>
 <h2>Tips</h2>
 <p>Keep your highest-value tile in one corner and build chains toward it. Avoid scattering tiles randomly — concentrated stacks merge faster. When the board gets tight, look for a merge that opens two spaces at once rather than just one.</p>
+
+<h2>Spawn Probabilities and Math</h2>
+<p>Merge Infinity uses a tile-spawn algorithm weighted toward low-value tiles. A 2-tile spawns roughly 60% of the time, a 4-tile 30%, a 8-tile 5%, and larger tiles only 1% each. Understanding these probabilities lets you predict whether the next tile will help or hurt — and adjust your strategy accordingly.</p>
+<p>Each merge doubles the value of the new tile. So merging two 8s gives a 16. But merging a 16 and an 8 (different values) is impossible — the game requires same-value merges.</p>
+
+<h2>Strategy</h2>
+<p><strong>Build from the corners outward.</strong> Anchor your highest tile in a corner. Build chains radiating outward.</p>
+<p><strong>Use space-efficient shapes.</strong> Pairs of tiles stacked vertically are easier to merge than tiles scattered randomly.</p>
+<p><strong>Watch for the 2-spawn clusters.</strong> When many 2-tiles appear simultaneously, you can fast-merge your way to higher tiers quickly.</p>
+<p><strong>Plan around the next spawn.</strong> The preview shows the next tile. Set yourself up to merge immediately when it appears.</p>
+
+<h2>FAQ</h2>
+<dl>
+  <dt>Q: What's the highest tile possible?</dt>
+  <dd>A: Theoretically infinite — 2048, 4096, 8192, and beyond. Skilled players reach astronomical values.</dd>
+  <dt>Q: Can I undo a move?</dt>
+  <dd>A: No — plan carefully because every move is permanent.</dd>
+  <dt>Q: Is there a time limit?</dt>
+  <dd>A: No — you can take as long as you need between moves.</dd>
+  <dt>Q: Does the game save automatically?</dt>
+  <dd>A: Yes — current board state is preserved across browser sessions.</dd>
+</dl>
+<h2>Similar Puzzle Games</h2>
+<ul>
+  <li><a href="/fgame/2048">2048</a> — the original merge puzzle</li>
+  <li><a href="/fgame/merge-infinity/">Merge Infinity</a> — endless merging</li>
+  <li><a href="/fgame/2048-drop/">2048 Drop</a> — falling-chip version</li>
+</ul>

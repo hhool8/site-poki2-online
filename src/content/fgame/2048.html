@@ -38,3 +38,30 @@
   <li>Threes — original number-merge design that inspired 2048.</li>
   <li>Other sliding puzzles — explore variants that change board size or spawn rules for new challenges.</li>
 </ul>
+
+<h2>Origins and Community Impact</h2>
+<p>Gabriele Cirulli released 2048 as open-source on GitHub in March 2014, then watched it explode across the web. Within a week, dozens of clones and themed variants appeared — including the broader "X + 4 = 4096" family of merging puzzles. The original source code was only ~600 lines of JavaScript but featured clean animation that made merges feel tactile and rewarding. The game's viral success taught the indie community that simple, polished mechanics can outperform marketing budgets.</p>
+<p>The community quickly formalised optimal strategy. The "corner strategy" (anchor your highest tile in one corner, build chains outward) is the universally recommended technique, but advanced players explore variations: the "snake pattern", the "two-corner split", and the "buffalo" build for very large boards. Some players use automated solvers to prove mathematically optimal play reaches tiles well beyond 131072 on a 4×4 grid.</p>
+
+<h2>Advanced Tips</h2>
+<p><strong>Sacrifice small merges strategically.</strong> Sometimes refusing an immediate merge unlocks a much larger chain three moves later.</p>
+<p><strong>Track spawn probabilities.</strong> A fresh 4 is roughly 10% of spawns vs 90% for a 2. Plan tiles in the densest area with the most spawn-tile avoidance.</p>
+<p><strong>Use undo sparingly if you have it.</strong> Most serious players disable undo because it masks the bigger mistake they should have spotted.</p>
+
+<h2>FAQ</h2>
+<dl>
+  <dt>Q: Has anyone mathematically solved 2048?</dt>
+  <dd>A: Yes. Theoretical-optimal play has been computed using AI search; the highest tile a perfect solver can guarantee on a 4×4 board is 131072.</dd>
+  <dt>Q: What's the highest tile ever recorded in 2048?</dt>
+  <dd>A: Skilled players consistently reach 131072+; the all-time records exceed 1 million when playing on modded custom boards.</dd>
+  <dt>Q: Is the 4×4 board the hardest?</dt>
+  <dd>A: The 4×4 is the canonical difficulty. Smaller boards are easier (less to manage), larger boards (5×5, 6×6) make scoring much harder but allow bigger tiles.</dd>
+  <dt>Q: What does "Best Score" track?</dt>
+  <dd>A: Your highest single-run score stored in your browser's localStorage. It persists across page reloads.</dd>
+</dl>
+<h2>Similar Puzzles</h2>
+<ul>
+  <li><a href="/fgame/2048-drop/">2048 Drop</a> — falling-chip merge variant</li>
+  <li><a href="/fgame/2048-rogue/">2048 Rogue</a> — roguelike random-spawn version</li>
+  <li><a href="/fgame/threes/">Threes</a> — the original number-merge design</li>
+</ul>
