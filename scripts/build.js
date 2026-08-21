@@ -238,36 +238,69 @@ function fillArticle(template, post, content, relatedLinks) {
     .replace(/\{\{BUILD_TS\}\}/g,           buildTs);
 }
 
+function buildGameNumberOfPlayers(players) {
+  const text = String(players || '').trim();
+  if (!text) return undefined;
+  const rangeMatch = text.match(/(\d+)\s*[-–]\s*(\d+)/);
+  if (rangeMatch) {
+    return {
+      '@type': 'QuantitativeValue',
+      minValue: Number(rangeMatch[1]),
+      maxValue: Number(rangeMatch[2]),
+    };
+  }
+  const singleMatch = text.match(/(\d+)/);
+  if (singleMatch) {
+    return {
+      '@type': 'QuantitativeValue',
+      minValue: Number(singleMatch[1]),
+      maxValue: Number(singleMatch[1]),
+    };
+  }
+  return undefined;
+}
+
+function buildGamePlayMode(players, explicitPlayMode) {
+  if (explicitPlayMode) return explicitPlayMode;
+  const text = String(players || '').toLowerCase();
+  if (/multiplayer|2\s*player|1\s*[-–]\s*4\s*players|1\s*[-–]\s*4\s*player/.test(text)) {
+    return 'MultiPlayer';
+  }
+  return 'SinglePlayer';
+}
+
 function fillGame(template, game, content, relatedLinks) {
   const canonical = `${site.domain}/fgame/${game.slug}`;
   const buildTs   = new Date().toISOString();
   const gameImageRaw = game.imgUrl || '/og-image.png';
   const gameImageAbs = toAbsoluteUrl(gameImageRaw);
+  const numberOfPlayers = buildGameNumberOfPlayers(game.players);
   const schema    = [{
     '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    '@id': canonical,
-    url:         canonical,
-    name:        game.title,
+    '@type': 'VideoGame',
+    '@id': `${canonical}#video-game`,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+    url: canonical,
+    name: game.title,
     description: game.description,
-    image:       gameImageAbs,
-    isAccessibleForFree: true,
+    image: gameImageAbs,
+    genre: game.genre,
+    applicationCategory: 'Game',
+    operatingSystem: ['Web Browser'],
+    gamePlatform: ['Web Browser'],
+    playMode: buildGamePlayMode(game.players, game.playMode),
     inLanguage: 'en',
+    author: { '@type': 'Organization', name: 'Poki2', url: site.domain },
     publisher: { '@type': 'Organization', name: 'Poki2', url: site.domain },
-    author: { '@type': 'Organization', name: 'Poki2 Games', url: site.domain },
     datePublished: game.isoDate || '2026-04-07',
-    about: {
-      '@type': 'VideoGame',
-      name:        game.title,
-      description: game.description,
-      url:         canonical,
-      image:       gameImageAbs,
-      genre:       game.genre,
-      numberOfPlayers: { '@type': 'QuantitativeValue', name: game.players },
-      gamePlatform: 'Web Browser',
-      gameEdition: 'Browser',
-      playMode: game.playMode || 'SinglePlayer',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      url: canonical,
     },
+    ...(numberOfPlayers ? { numberOfPlayers } : {}),
   }, {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
