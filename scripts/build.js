@@ -473,6 +473,34 @@ function buildGames() {
     .game-index-card-genre,.game-index-card-players{font-size:.75rem;color:#94a3b8;display:block}
   </style>
   ${categorySections}
+
+<h2 id="why-choose" class="game-cat-heading">Why Choose Poki2 for Free Browser Games?</h2>
+<p style="max-width:860px;color:#cbd5e1;line-height:1.7;margin:0 0 1.5rem">Poki2 is a free browser games portal focused on quality over quantity. Every game listed is reviewed for control responsiveness, performance on modest hardware, content appropriateness, and replayability. Games that break, require plugins, or rely on deceptive ad flows are removed from the catalogue quickly. The site itself runs on Cloudflare's global CDN, so pages load fast worldwide and the underlying games are hosted on infrastructure chosen for low-latency browser play. There are no forced sign-ups, no premium-only content hidden behind paywalls, and no in-game advertising injected into the gameplay window.</p>
+<p style="max-width:860px;color:#cbd5e1;line-height:1.7;margin:0 0 1.5rem">We don't aggregate games purely for ad revenue — each title is hand-curated against a short list of standards: it must run in modern Chrome, Firefox, Edge, and Safari without plugins; it must respect the player's pause state; it must not require a payment to reach a meaningful win condition; and it must load in under five seconds on a 10 Mbps connection. When a game fails any of these standards, it gets rotated off the front page and eventually removed entirely.</p>
+
+<h2 id="how-to-play" class="game-cat-heading">How to Play Browser Games on Poki2</h2>
+<p style="max-width:860px;color:#cbd5e1;line-height:1.7;margin:0 0 1.5rem">Click any game thumbnail on this page to open its dedicated page. The dedicated page includes a brief description of the game, the controls you'll need, and an embedded player. Most games load into the embedded player within a few seconds — your browser will cache the assets after the first load so subsequent visits open instantly. Touch-screen devices get auto-detected and on-screen controls will appear where the game supports them. No special software, no Adobe Flash, no downloads, no Java applets — every game is built on modern HTML5 and runs as a standard web page.</p>
+
+<h2 id="pick-by-genre" class="game-cat-heading">Discover Free Online Games by Genre</h2>
+<p style="max-width:860px;color:#cbd5e1;line-height:1.7;margin:0 0 1.5rem">Poki2 organises its free browser games into seven broad categories so you can find your next favourite quickly. <strong>Puzzle</strong> covers classic tile-matching, drawing-physics, and brain-teaser mechanics — 2048, Bricky Break, Brain Lines, Golf Puzzle, Trap the Cat, and many similar titles. <strong>Action &amp; Shooter</strong> includes top-down shooters, defense games, and intensity-driven challenges like Blocky Hunter, Chicken Jockey Combat, Bricky Break, and Glide In. <strong>Endless Runner</strong> covers running games where the goal is surviving as long as possible — Subway Surfers, Run 3, Temple Runner, and similar titles. <strong>Racing</strong> includes both arcade racing and physics-stunt games — Drift Hunters, Moto X3M, Bike Xtreme, Blocky Rider, Battle Karts. <strong>Platformer &amp; Arcade</strong> covers stickman, voxel, and physics-based arcade games. <strong>Sports &amp; IO</strong> collects basketball, tennis, volleyball, baseball, and multiplayer IO titles — Basketball Stars, Slither.io, Billiards Master, Ball Orbit, Bat Smash, Arcade Tennis. <strong>Idle &amp; Sandbox</strong> is for clicker and incremental games — Cookie Clicker, Astro Robot Clicker, Chicken Jockey Clicker, Bombardino Crocodilo Clicker, Plants vs Brainrots Online.</p>
+
+<h2 id="poki2-faq" class="game-cat-heading">Frequently Asked Questions</h2>
+<dl style="max-width:860px;color:#cbd5e1;line-height:1.7;margin:0 0 1.5rem">
+  <dt style="font-weight:700;color:#f1f5f9;margin-top:1rem">Q: Do I need to create an account to play?</dt>
+  <dd style="margin:0.25rem 0 1rem">A: No account is required. Click any game thumbnail and start playing immediately. Some games save your high scores locally in your browser so you can return and beat your personal best without any signup.</dd>
+  <dt style="font-weight:700;color:#f1f5f9;margin-top:1rem">Q: Are the games truly free?</dt>
+  <dd style="margin:0.25rem 0 1rem">A: Yes — every game on Poki2 is free to play with no purchase required. Poki2 is supported by display advertising. There are no premium tiers, no paywalled games, and no in-game purchases you need to make progress.</dd>
+  <dt style="font-weight:700;color:#f1f5f9;margin-top:1rem">Q: Do the games work on mobile and tablet?</dt>
+  <dd style="margin:0.25rem 0 1rem">A: Most games on Poki2 are designed to work on both desktop and mobile browsers. Touch controls are supported on games that have been optimised for touchscreen. Some games — particularly those that require keyboard shortcuts or precise mouse control — are better suited to desktop play.</dd>
+  <dt style="font-weight:700;color:#f1f5e1;margin-top:1rem">Q: Do the games work on school Chromebooks?</dt>
+  <dd style="margin:0.25rem 0 1rem">A: Many games on the Poki2 network are specifically chosen to work in school and office environments. The dedicated Unblocked Games site (gplus.poki2.online) hosts 474+ games that work on most filtered networks and Chromebooks. All Poki2 sites are served over HTTPS from Cloudflare's global CDN, which gives them a better chance of being accessible on filtered networks.</dd>
+  <dt style="font-weight:700;color:#f1f5f9;margin-top:1rem">Q: How can I suggest a game for the catalogue?</dt>
+  <dd style="margin:0.25rem 0 1rem">A: Use the Poki2 contact form and include the game's name, the platform or URL where it is hosted, and the Poki2 category you think it fits best. The editorial team reviews every suggestion based on control responsiveness, performance on modest hardware, content appropriateness, and how it fits the existing catalogue.</dd>
+</dl>
+
+<h2 id="poki2-mission" class="game-cat-heading">About Poki2's Free Games Network</h2>
+<p style="max-width:860px;color:#cbd5e1;line-height:1.7;margin:0 0 1.5rem">Poki2 is a network of specialised free browser game portals. Each subdomain focuses on a particular category — Play hosts the main 200+ generalist catalogue, AZ Games aggregates 300+ A-to-Z titles, Unblocked Games G+ hosts 474+ school-safe titles, and additional portals for Kids Games, Racing, Puzzle, IO Arena, and Stickman are coming soon. This poki2.online domain is the central hub: it lists the top picks from across the network, with thumbnails linking to the dedicated game pages where the embedded players and detailed guides live.</p>
+
 </div>`;
 
   const gamesIndexHtml = fillBase(baseTemplate, baseGamesPage, gamesIndexContent);
