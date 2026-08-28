@@ -15,11 +15,13 @@
   <meta property="og:type" content="game">
   <meta property="og:site_name" content="Poki2">
   <meta property="og:image" content="{{OG_IMAGE}}">
+  <meta property="og:image:alt" content="{{GAME_TITLE_PLAIN}} game icon and Poki2 logo">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@poki2online">
   <meta name="twitter:title" content="{{TWITTER_TITLE}}">
   <meta name="twitter:description" content="{{TWITTER_DESCRIPTION}}">
   <meta name="twitter:image" content="{{TWITTER_IMAGE}}">
+  <meta name="twitter:image:alt" content="{{GAME_TITLE_PLAIN}} game icon">
   {{SCHEMA}}
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
@@ -174,6 +176,12 @@
             <button class="tb-btn" id="tb-fav" data-slug="{{GAME_SLUG}}" aria-label="Add to favorites" aria-pressed="false" title="Favorite">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </button>
+            <!-- Share -->
+            <button class="tb-btn" id="tb-share" aria-label="Share this game" title="Share">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
+            </button>
+            <button class="tb-btn" id="tb-x" aria-label="Share on X" title="Share on X">X</button>
+            <button class="tb-btn" id="tb-facebook" aria-label="Share on Facebook" title="Share on Facebook">f</button>
             <!-- Report -->
             <button class="tb-btn" id="tb-report" aria-label="Report a problem" title="Report a problem">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
@@ -292,6 +300,9 @@
     (function () {
       var likeBtn   = document.getElementById('tb-like');
       var favBtn    = document.getElementById('tb-fav');
+      var shareBtn  = document.getElementById('tb-share');
+      var xBtn      = document.getElementById('tb-x');
+      var facebookBtn = document.getElementById('tb-facebook');
       var reportBtn = document.getElementById('tb-report');
       var resetBtn  = document.getElementById('tb-reset');
       var expandBtn = document.getElementById('tb-expand');
@@ -345,6 +356,51 @@
         localStorage.setItem('fav_' + slug, favd ? '1' : '0');
         refreshFav();
         refocus();
+      });
+
+      shareBtn.addEventListener('click', function () {
+        var shareData = {
+          title: document.title,
+          text: 'Play ' + document.title + ' free online',
+          url: window.location.href
+        };
+        if (navigator.share) {
+          navigator.share(shareData).then(function () {
+            refocus();
+          }).catch(function (error) {
+            if (error.name !== 'AbortError') window.alert('Unable to share this game. Please try again.');
+            refocus();
+          });
+          return;
+        }
+        var copyPromise = navigator.clipboard
+          ? navigator.clipboard.writeText(window.location.href)
+          : Promise.reject(new Error('Clipboard API unavailable'));
+        copyPromise.then(function () {
+          shareBtn.setAttribute('aria-label', 'Link copied');
+          shareBtn.setAttribute('title', 'Link copied');
+          setTimeout(function () {
+            shareBtn.setAttribute('aria-label', 'Share this game');
+            shareBtn.setAttribute('title', 'Share');
+          }, 1600);
+          refocus();
+        }).catch(function () {
+          window.prompt('Copy this game link:', window.location.href);
+          refocus();
+        });
+      });
+
+      function openSocialShare(url) {
+        window.open(url, '_blank', 'noopener,noreferrer,width=640,height=520');
+        refocus();
+      }
+      xBtn.addEventListener('click', function () {
+        var text = encodeURIComponent('Play ' + document.title + ' free online');
+        var url = encodeURIComponent(window.location.href);
+        openSocialShare('https://x.com/intent/post?text=' + text + '&url=' + url + '&via=poki2online');
+      });
+      facebookBtn.addEventListener('click', function () {
+        openSocialShare('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href));
       });
 
       reportBtn.addEventListener('click', function () {
