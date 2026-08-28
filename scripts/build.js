@@ -290,6 +290,8 @@ function fillGame(template, game, content, relatedLinks) {
     author: { '@type': 'Organization', name: 'Poki2', url: site.domain },
     publisher: { '@type': 'Organization', name: 'Poki2', url: site.domain },
     datePublished: game.isoDate || '2026-04-07',
+    dateModified: game.isoUpdated || game.isoDate || '2026-04-07',
+    copyrightHolder: { '@type': 'Organization', name: 'Poki2', url: site.domain },
     ...(numberOfPlayers ? { numberOfPlayers } : {}),
   }, {
     '@context': 'https://schema.org',
@@ -335,6 +337,7 @@ function fillGame(template, game, content, relatedLinks) {
     .replace(/\{\{GAME_EMBED_URL\}\}/g,    game.embedUrl)
     .replace(/\{\{GAME_IMG_URL\}\}/g,      gameImageRaw)
     .replace(/\{\{GAME_DATE\}\}/g,         game.date || '')
+    .replace(/\{\{GAME_UPDATED_DATE\}\}/g, game.updated || game.date || '')
     .replace(/\{\{RELATED_GAME_LINKS\}\}/g, relatedLinks)
     .replace(/\{\{CONTENT\}\}/g,           content)
     .replace(/\{\{BUILD_TS\}\}/g,          buildTs);
