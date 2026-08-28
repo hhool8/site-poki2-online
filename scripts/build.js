@@ -275,6 +275,7 @@ function fillGame(template, game, content, relatedLinks) {
   const gameImageRaw = game.imgUrl || '/og-image.png';
   const gameImageAbs = toAbsoluteUrl(gameImageRaw);
   const numberOfPlayers = buildGameNumberOfPlayers(game.players);
+  const brandedTitle = withBrand(`${game.title} — Play Free Online`);
   const schema    = [{
     '@context': 'https://schema.org',
     '@type': 'Game',
@@ -292,6 +293,15 @@ function fillGame(template, game, content, relatedLinks) {
     ...(numberOfPlayers ? { numberOfPlayers } : {}),
   }, {
     '@context': 'https://schema.org',
+    '@type': 'ItemPage',
+    '@id': `${canonical}#webpage`,
+    url: canonical,
+    name: brandedTitle,
+    isPartOf: { '@type': 'WebSite', '@id': `${site.domain}/#website`, url: site.domain, name: site.name },
+    about: { '@id': canonical },
+    mainEntity: { '@id': canonical },
+  }, {
+    '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.domain}/` },
@@ -299,8 +309,6 @@ function fillGame(template, game, content, relatedLinks) {
       { '@type': 'ListItem', position: 3, name: game.title, item: canonical },
     ],
   }];
-
-  const brandedTitle = withBrand(`${game.title} — Play Free Online`);
 
   return template
     .replace(/\{\{TITLE\}\}/g,             esc(brandedTitle))
