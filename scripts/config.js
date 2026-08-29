@@ -114,8 +114,12 @@ const pages = [
         name: 'Poki2',
         url:  'https://poki2.online/',
         logo: 'https://poki2.online/favicon-512.png',
-        description: 'Poki2 is a free browser games network with 1000+ instant-play games across multiple specialized sites.',
-        contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', email: 'contact@poki2.online' }],
+        description: 'Poki2 is a free browser games network with 1000+ instant-play games across multiple specialized sites, published by an editorial and engineering team focused on browser gaming.',
+        areaServed: 'Worldwide',
+        foundingDate: '2023',
+        slogan: 'Instant browser games, no download required.',
+        knowsAbout: ['Browser games', 'HTML5 games', 'Open web gaming', 'Unblocked gaming', 'Editorial game curation'],
+        contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', email: 'contact@poki2.online', url: 'https://poki2.online/contact' }],
         sameAs: [
           'https://www.youtube.com/@poki2online',
           'https://x.com/poki2online',
@@ -199,6 +203,14 @@ const pages = [
           },
           {
             '@type': 'Question',
+            name: 'How does Poki2 review and curate games?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Poki2 reviews each game before it is listed. We check load speed, control quality, browser compatibility, and whether the game is appropriate for the target audience. This editorial review helps us keep the network useful, stable, and readable for players who want fast-access browser games without unreliable or low-quality experiences.'
+            }
+          },
+          {
+            '@type': 'Question',
             name: 'Do I need to create an account to play?',
             acceptedAnswer: {
               '@type': 'Answer',
@@ -211,6 +223,14 @@ const pages = [
             acceptedAnswer: {
               '@type': 'Answer',
               text: 'Most games on the Poki2 network are designed to work on both desktop and mobile browsers. Touch controls are supported on games that have been optimised for touchscreen. Some games — particularly those that require keyboard shortcuts, precise mouse control, or split-keyboard two-player input — are better suited to desktop play. Each game page notes the recommended platform.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'What makes Poki2 different from a generic game list?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Poki2 is more than a random game directory. We organize the network by category, maintain a clear editorial process, and publish practical content such as game pages, guides, and recommendations. That means readers can find a title they want quickly, understand whether it suits their device, and rely on a consistent browsing experience across the platform.'
             }
           },
           {
