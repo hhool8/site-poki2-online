@@ -1,12 +1,16 @@
 {
-  "name": "Poki2",
+  "name": "Poki2 — Free Browser Games Network",
   "short_name": "Poki2",
-  "description": "Poki2 free browser games network",
+  "description": "Poki2 offers free instant-play browser games across action, puzzle, racing, sports, IO, and unblocked categories.",
+  "id": "/",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#0b0b18",
   "theme_color": "#0b0b18",
+  "lang": "en-US",
+  "categories": ["games", "entertainment"],
   "icons": [
     {
       "src": "/favicon-48.png",

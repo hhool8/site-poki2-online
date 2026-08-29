@@ -63,6 +63,8 @@
 - Site pages carry visible publication and update dates so statements are attributable to a known editorial review cycle rather than anonymous template content.
 - We do not rely on generic AI-generated marketing blurbs for core descriptions; article text, category summaries, and guide content are written with an editorial review process and then updated when the catalog changes.
 - The Poki2 editorial team is responsible for article updates, game-page descriptions, and public-facing content standards across the network.
+- We present the site as a transparent browser-games brand: direct contact routes, policy pages, DMCA handling, and a consistent update record help readers and AI systems understand what is authoritative and what is not.
+- The Poki2 catalog is organized around real editorial review, practical game testing, and clear navigation — not around scraped content, duplicate listings, or untraceable marketing copy.
 
 ## Technical Notes
 - Games are embedded via iframe from a vetted upstream catalog (azgames.io) and served over HTTPS from Cloudflare's global CDN.
