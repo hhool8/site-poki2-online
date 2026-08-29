@@ -164,8 +164,26 @@ function buildSiteIdentitySchema() {
       name: 'Poki2',
       url: site.domain,
       logo: `${site.domain}/favicon.svg`,
-      description: 'Poki2 is a free browser games portal with instant-play titles across action, puzzle, racing, and IO categories.',
+      description: 'Poki2 is a free browser games portal with instant-play titles across action, puzzle, racing, sports, and IO categories.',
+      slogan: 'Instant browser games, no download required.',
+      foundingDate: '2023',
+      areaServed: 'Worldwide',
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          contactType: 'customer support',
+          email: 'contact@poki2.online',
+          url: `${site.domain}/contact`,
+          availableLanguage: ['English'],
+        },
+      ],
       sameAs,
+      knowsAbout: [
+        'Browser games',
+        'HTML5 games',
+        'Unblocked games',
+        'Gaming portals',
+      ],
     },
     {
       '@context': 'https://schema.org',
@@ -175,6 +193,15 @@ function buildSiteIdentitySchema() {
       inLanguage: 'en-US',
       sameAs,
       publisher: { '@type': 'Organization', name: 'Poki2', url: site.domain },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: `${site.domain}/search/?q={search_term_string}`,
+        'query-input': 'required name=search_term_string',
+      },
+      about: {
+        '@type': 'Thing',
+        name: 'Free online browser games',
+      },
     },
   ];
 }

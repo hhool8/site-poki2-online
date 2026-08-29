@@ -230,7 +230,15 @@ const pages = [
             name: 'What makes Poki2 different from a generic game list?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Poki2 is more than a random game directory. We organize the network by category, maintain a clear editorial process, and publish practical content such as game pages, guides, and recommendations. That means readers can find a title they want quickly, understand whether it suits their device, and rely on a consistent browsing experience across the platform.'
+              text: 'Poki2 is a browser-games brand built around curation, review, and transparency. We organize the network by category, publish direct support and policy pages, and keep our editorial process visible so readers know how we choose games, update pages, and respond to feedback. That makes the experience more useful and more trustworthy than a generic scraped directory.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'Who is responsible for the content and updates on Poki2?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Poki2 is run by an independent editorial and technical team. Our editors review games, update article pages, and maintain the public information about the site, while our developers handle page performance, site structure, and technical reliability. We keep contact and policy pages visible so readers can follow up when something needs clarification or correction.'
             }
           },
           {
@@ -297,7 +305,14 @@ const pages = [
       '@type': 'AboutPage',
       url:  'https://poki2.online/about',
       name: 'About Poki2',
-      description: 'About the Poki2 free browser games network.',
+      description: 'Poki2 is an independent browser games network focused on free instant-play HTML5 games, transparent editorial standards, and fast access across school, work, and home devices.',
+      publisher: { '@type': 'Organization', name: 'Poki2', url: 'https://poki2.online/' },
+      mainEntity: { '@type': 'Organization', name: 'Poki2', url: 'https://poki2.online/' },
+      sameAs: [
+        'https://poki2.online/contact',
+        'https://poki2.online/privacy',
+        'https://poki2.online/dmca'
+      ]
     }],
   },
   {
@@ -340,6 +355,21 @@ const pages = [
       '@type': 'ContactPage',
       url: 'https://poki2.online/contact',
       name: 'Contact Poki2',
+      description: 'Public support contact for the Poki2 gaming network, including game reports, partnerships, privacy requests, and DMCA notices.',
+      contactPoint: [{
+        '@type': 'ContactPoint',
+        contactType: 'customer support',
+        email: 'contact@poki2.online',
+        url: 'https://poki2.online/contact',
+        areaServed: 'Worldwide',
+        availableLanguage: ['English']
+      }],
+      publisher: { '@type': 'Organization', name: 'Poki2', url: 'https://poki2.online/' },
+      sameAs: [
+        'https://poki2.online/about',
+        'https://poki2.online/privacy',
+        'https://poki2.online/dmca'
+      ]
     }],
   },
   {
