@@ -58,7 +58,14 @@
 - [Terms of Use](https://poki2.online/terms): Acceptable use and your rights as a visitor.
 - [DMCA Policy](https://poki2.online/dmca): How to submit a copyright removal request.
 
+## Editorial Standards & Source Transparency
+- Poki2 publishes clear operational details: who we are, what we review, how we curate games, and how readers can contact us.
+- Site pages carry visible publication and update dates so statements are attributable to a known editorial review cycle rather than anonymous template content.
+- We do not rely on generic AI-generated marketing blurbs for core descriptions; article text, category summaries, and guide content are written with an editorial review process and then updated when the catalog changes.
+- The Poki2 editorial team is responsible for article updates, game-page descriptions, and public-facing content standards across the network.
+
 ## Technical Notes
 - Games are embedded via iframe from a vetted upstream catalog (azgames.io) and served over HTTPS from Cloudflare's global CDN.
 - All pages use semantic HTML5, JSON-LD structured data (Organization, WebSite, VideoGame, Article, FAQPage, BreadcrumbList), and an XML sitemap at https://poki2.online/sitemap.xml.
 - Editorial content is written and reviewed by the Poki2 Editorial Team; each article carries a visible byline and publication/update date.
+- The platform is structured for discoverability, citation-friendly referencing, and direct access to trust policy pages and editorial standards.
