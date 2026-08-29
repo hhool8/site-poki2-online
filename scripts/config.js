@@ -1011,7 +1011,7 @@ const gamePosts = [
   {
     slug:      '2048-rogue',
     title:     '2048 Rogue',
-    description: 'Set on a 4x4 grid, 2048 Rogue is an addictive yet challenging merging puzzle game where you combine tiles for higher-value creatures or objects. Play now & have fun!',
+    description: '2048 Rogue mixes the classic tile-merging loop with a roguelike twist. Match numbered tiles, build stronger combinations, and push deeper through each run.',
     embedUrl:  'https://azgames.io/2048-rogue.embed',
     imgUrl:    '/imgs/fgame/2048-rogue.png',
     genre:     'Puzzle',

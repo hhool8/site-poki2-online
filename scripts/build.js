@@ -142,6 +142,108 @@ function toAbsoluteUrl(url) {
   return `${site.domain}/${value}`;
 }
 
+function normalizeText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function buildSiteSameAs() {
+  return [
+    'https://www.youtube.com/@poki2online',
+    'https://x.com/poki2online',
+    'https://www.tiktok.com/@poki2online',
+    'https://www.instagram.com/poki2online',
+  ];
+}
+
+function buildSiteIdentitySchema() {
+  const sameAs = buildSiteSameAs();
+  return [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Poki2',
+      url: site.domain,
+      logo: `${site.domain}/favicon.svg`,
+      description: 'Poki2 is a free browser games portal with instant-play titles across action, puzzle, racing, and IO categories.',
+      sameAs,
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      url: site.domain,
+      name: 'Poki2',
+      inLanguage: 'en-US',
+      sameAs,
+      publisher: { '@type': 'Organization', name: 'Poki2', url: site.domain },
+    },
+  ];
+}
+
+function buildGameKeywords(game) {
+  const title = normalizeText(game.title);
+  const genre = normalizeText(game.genre || 'browser game');
+  const candidates = [
+    title,
+    `play ${title} online`,
+    `free ${title} game`,
+    `${genre} game`,
+  ].map(s => normalizeText(s)).filter(Boolean);
+
+  const keywords = [];
+  for (const candidate of candidates) {
+    const lower = candidate.toLowerCase();
+    if (keywords.some(item => item.toLowerCase() === lower)) continue;
+    const value = keywords.length ? `${keywords.join(', ')}, ${candidate}` : candidate;
+    if (value.length <= 100) {
+      keywords.push(candidate);
+    } else {
+      break;
+    }
+  }
+
+  return keywords.join(', ');
+}
+
+function normalizeGameDescription(game) {
+  const title = normalizeText(game.title);
+  const genre = normalizeText(game.genre || 'browser game');
+  const controls = normalizeText(game.controls || 'keyboard and mouse');
+  const players = normalizeText(game.players || '1 Player');
+  const raw = normalizeText(game.description || '');
+
+  let cleaned = raw
+    .replace(new RegExp(`^Play\\s+${title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s+(free\\s+)?(online|in\\s+your\\s+browser)?\\s*[-—:]?\\s*`, 'i'), '')
+    .replace(/^play\s+/i, '')
+    .replace(/^[-—:]\s*/, '')
+    .replace(/\s+[-—:]\s*$/g, '')
+    .replace(/\s+free\s+online\s*[-—:]?\s*$/i, '')
+    .replace(/\s+no\s+download\s*,?\s*no\s+account\s*[-—:]?\s*/i, ' ')
+    .replace(/\s+in\s+your\s+browser\s*[-—:]?\s*/i, ' ')
+    .replace(/\s+play\s+now\s*&\s*have\s+fun\s*!*$/i, '')
+    .replace(/\s+play\s+now\s*&\s*help\s*!*$/i, '')
+    .replace(/\s+play\s+now\s*!*$/i, '')
+    .replace(/\s+quickly\s*$/i, '')
+    .replace(/\s+for\s+free\s*$/i, '');
+
+  cleaned = normalizeText(cleaned);
+
+  if (!cleaned || /^(a|an|the)\s+/i.test(cleaned) === false && cleaned.length < 20) {
+    cleaned = `${title} is a ${genre.toLowerCase()} game with ${players.toLowerCase()} and ${controls.toLowerCase()} controls.`;
+  }
+
+  const finalText = cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+  const isTemplateHeavy = /(play|free|online|browser|download|account|instant|challenge|fun|your|quick|simple)/i.test(finalText) && finalText.length > 130;
+  const naturalText = isTemplateHeavy
+    ? `${title} is a ${genre.toLowerCase()} game with ${players.toLowerCase()} and ${controls.toLowerCase()} controls. Quick rounds and easy play.`
+    : finalText;
+
+  const shortened = naturalText.length > 160
+    ? `${naturalText.slice(0, 157).trim().replace(/[.,;:!?]\s*$/, '')}...`
+    : naturalText;
+
+  return /[.!?…]$/.test(shortened) ? shortened : `${shortened}.`;
+}
+
 function fillBase(template, page, content) {
   const ogImage = `${site.domain}/og-image.png`;
   const brandedTitle = withBrand(page.title);
@@ -275,55 +377,61 @@ function fillGame(template, game, content, relatedLinks) {
   const gameImageRaw = game.imgUrl || '/og-image.png';
   const gameImageAbs = toAbsoluteUrl(gameImageRaw);
   const numberOfPlayers = buildGameNumberOfPlayers(game.players);
+  const description = normalizeGameDescription(game);
+  const keywords = buildGameKeywords(game);
   const brandedTitle = withBrand(`${game.title} — Play Free Online`);
-  const schema    = [{
-    '@context': 'https://schema.org',
-    '@type': 'Game',
-    '@id': canonical,
-    url: canonical,
-    name: game.title,
-    description: game.description,
-    image: gameImageAbs,
-    genre: game.genre,
-    isAccessibleForFree: true,
-    inLanguage: 'en',
-    author: { '@type': 'Organization', name: 'Poki2', url: site.domain },
-    publisher: { '@type': 'Organization', name: 'Poki2', url: site.domain },
-    datePublished: game.isoDate || '2026-04-07',
-    dateModified: game.isoUpdated || game.isoDate || '2026-04-07',
-    copyrightHolder: { '@type': 'Organization', name: 'Poki2', url: site.domain },
-    ...(numberOfPlayers ? { numberOfPlayers } : {}),
-  }, {
-    '@context': 'https://schema.org',
-    '@type': 'ItemPage',
-    '@id': `${canonical}#webpage`,
-    url: canonical,
-    name: brandedTitle,
-    isPartOf: { '@type': 'WebSite', '@id': `${site.domain}/#website`, url: site.domain, name: site.name },
-    about: { '@id': canonical },
-    mainEntity: { '@id': canonical },
-  }, {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.domain}/` },
-      { '@type': 'ListItem', position: 2, name: 'Games', item: `${site.domain}/fgame/` },
-      { '@type': 'ListItem', position: 3, name: game.title, item: canonical },
-    ],
-  }];
+  const schema = [
+    ...buildSiteIdentitySchema(),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Game',
+      '@id': canonical,
+      url: canonical,
+      name: game.title,
+      description,
+      image: gameImageAbs,
+      genre: game.genre,
+      isAccessibleForFree: true,
+      inLanguage: 'en',
+      author: { '@type': 'Organization', name: 'Poki2', url: site.domain },
+      publisher: { '@type': 'Organization', name: 'Poki2', url: site.domain },
+      datePublished: game.isoDate || '2026-04-07',
+      dateModified: game.isoUpdated || game.isoDate || '2026-04-07',
+      copyrightHolder: { '@type': 'Organization', name: 'Poki2', url: site.domain },
+      ...(numberOfPlayers ? { numberOfPlayers } : {}),
+    }, {
+      '@context': 'https://schema.org',
+      '@type': 'ItemPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: brandedTitle,
+      isPartOf: { '@type': 'WebSite', '@id': `${site.domain}/#website`, url: site.domain, name: site.name },
+      about: { '@id': canonical },
+      mainEntity: { '@id': canonical },
+    }, {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.domain}/` },
+        { '@type': 'ListItem', position: 2, name: 'Games', item: `${site.domain}/fgame/` },
+        { '@type': 'ListItem', position: 3, name: game.title, item: canonical },
+      ],
+    }
+  ];
 
   return template
     .replace(/\{\{TITLE\}\}/g,             esc(brandedTitle))
-    .replace(/\{\{DESCRIPTION\}\}/g,       esc(game.description))
+    .replace(/\{\{DESCRIPTION\}\}/g,       esc(description))
+    .replace(/\{\{KEYWORDS\}\}/g,          esc(keywords))
     .replace(/\{\{ROBOTS_META\}\}/g,       '<meta name="robots" content="index,follow">')
     .replace(/\{\{CANONICAL\}\}/g,         canonical)
     .replace(/\{\{OG_TITLE\}\}/g,          esc(brandedTitle))
-    .replace(/\{\{OG_DESCRIPTION\}\}/g,    esc(game.description))
+    .replace(/\{\{OG_DESCRIPTION\}\}/g,    esc(description))
     .replace(/\{\{OG_URL\}\}/g,            canonical)
     .replace(/\{\{OG_IMAGE\}\}/g,          `${site.domain}/social/${game.slug}.png`)
     .replace(/\{\{SITE_OG_IMAGE\}\}/g,     `${site.domain}/og-image.png`)
     .replace(/\{\{TWITTER_TITLE\}\}/g,     esc(brandedTitle))
-    .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(game.description))
+    .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(description))
     .replace(/\{\{TWITTER_IMAGE\}\}/g,     `${site.domain}/social/${game.slug}.png`)
     .replace(/\{\{SCHEMA\}\}/g,            schemaTag(schema))
     .replace(/\{\{ADSENSE_BOOTSTRAP\}\}/g, adsenseTemplateVars.bootstrap)
