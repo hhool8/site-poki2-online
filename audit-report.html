@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" data-page-node-id="UTcB4IqA3Z8r4dCIs5mvhR">
+<head data-page-node-id="fuaEgnjVILJde86IrzmV34">
+<meta charset="UTF-8" data-page-node-id="qxiMdVxHGi0RFNasRHOE7B">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="q3CJU9Un3utmfVmg3Y6ZoL">
+<title>SEO & Technical Audit Report — poki2.online</title>
+<style>
+  :root { --bg: #0d1117; --surface: #161b22; --border: #30363d; --text: #e6edf3; --text-dim: #8b949e; --red: #f85149; --yellow: #d29922; --green: #3fb950; --blue: #58a6ff; --purple: #bc8cff; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+  h1 { font-size: 1.8rem; margin-bottom: .25rem; }
+  .subtitle { color: var(--text-dim); margin-bottom: 2rem; font-size: .95rem; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .75rem; margin-bottom: 2.5rem; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; }
+  .stat-num { font-size: 1.75rem; font-weight: 700; }
+  .stat-num.red { color: var(--red); } .stat-num.yellow { color: var(--yellow); } .stat-num.green { color: var(--green); }
+  .stat-label { font-size: .75rem; color: var(--text-dim); margin-top: .25rem; }
+  h2 { font-size: 1.25rem; margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+  h2 .badge { font-size: .75rem; padding: .15rem .5rem; border-radius: 4px; margin-left: .5rem; vertical-align: middle; }
+  .badge-critical { background: rgba(248,81,73,.15); color: var(--red); }
+  .badge-warning { background: rgba(210,153,34,.15); color: var(--yellow); }
+  .badge-pass { background: rgba(63,185,80,.15); color: var(--green); }
+  .badge-info { background: rgba(88,166,255,.15); color: var(--blue); }
+  .issue { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: .75rem; }
+  .issue-title { font-weight: 600; margin-bottom: .5rem; display: flex; align-items: center; gap: .5rem; }
+  .issue-title .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-red { background: var(--red); } .dot-yellow { background: var(--yellow); } .dot-green { background: var(--green); } .dot-blue { background: var(--blue); }
+  .issue-desc { color: var(--text-dim); font-size: .9rem; }
+  .issue-detail { margin-top: .5rem; font-size: .85rem; color: var(--text); }
+  .issue-detail code { background: rgba(110,118,129,.2); padding: .1rem .35rem; border-radius: 3px; font-size: .82rem; color: var(--blue); }
+  .issue-detail ul { margin-left: 1.5rem; margin-top: .3rem; }
+  .issue-detail li { margin-bottom: .2rem; }
+  .fix { margin-top: .5rem; padding: .5rem .75rem; background: rgba(63,185,80,.08); border-left: 3px solid var(--green); border-radius: 0 4px 4px 0; font-size: .85rem; }
+  .fix strong { color: var(--green); }
+  .pass-list { color: var(--green); font-size: .9rem; }
+  .pass-list li { margin-bottom: .3rem; list-style: none; }
+  .pass-list li::before { content: "✓ "; color: var(--green); }
+  table { width: 100%; border-collapse: collapse; margin: .5rem 0; font-size: .85rem; }
+  th, td { text-align: left; padding: .4rem .6rem; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: .8rem; text-transform: uppercase; }
+  td code { color: var(--blue); font-size: .82rem; }
+  .tag { display: inline-block; padding: .1rem .4rem; border-radius: 3px; font-size: .75rem; font-weight: 600; }
+  .tag-red { background: rgba(248,81,73,.15); color: var(--red); }
+  .tag-yellow { background: rgba(210,153,34,.15); color: var(--yellow); }
+  .tag-green { background: rgba(63,185,80,.15); color: var(--green); }
+  @media (max-width: 768px) { .summary-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body data-page-node-id="BySZQSv6OukVGwahiiQ5ee">
+<div class="container" data-page-node-id="WzmvWHQXSAuduEKMmNM0yb">
+
+<h1 data-page-node-id="i1E1EZRxYRAF4ldvn0k0T1">SEO & Technical Audit Report</h1>
+<p class="subtitle" data-page-node-id="3pyOpvigbNy5B2zdlx68Bk">Site: poki2.online &middot; Audited: September 1, 2026 &middot; 87 HTML pages &middot; 35 audit categories</p>
+
+<div class="summary-grid" data-page-node-id="NdeO40DMhXvGaNJeeN3IAF">
+  <div class="stat-card" data-page-node-id="ljAH8E74l7wfbpqgfLi66E"><div class="stat-num red" data-page-node-id="ZEoRTkWp45LIKGIimxpYfd">7</div><div class="stat-label" data-page-node-id="SA0IBmdPAFSAbrUCtDr56d">Critical Issues</div></div>
+  <div class="stat-card" data-page-node-id="YoelARreIdGysjhfe1Be6L"><div class="stat-num yellow" data-page-node-id="tF1KITlfkztk2sVzr3PLIe">6</div><div class="stat-label" data-page-node-id="GVsOYSgIqRZctllErzMnJd">Warnings</div></div>
+  <div class="stat-card" data-page-node-id="gE9dxLhmXFDH7ZCXrBIMl2"><div class="stat-num green" data-page-node-id="Xdx08zPn5NF0ThNs4IjwuC">22</div><div class="stat-label" data-page-node-id="TrMrlA8MSRtZWj01I2D67w">Categories Passed</div></div>
+  <div class="stat-card" data-page-node-id="ct508HaR99c3h14BMxKtnO"><div class="stat-num green" data-page-node-id="HHFtukQKGw3rGfwfhbVglY">87</div><div class="stat-label" data-page-node-id="6d2nLKYCYCkNifV7xNU01g">Pages Audited</div></div>
+  <div class="stat-card" data-page-node-id="XjJWeabjx6geF1cV4OGwRq"><div class="stat-num red" data-page-node-id="ZMlDf1GXo0ZF2MjhWvmLBQ">3</div><div class="stat-label" data-page-node-id="xB0Y25KqOtXoAAoevHDxhY">Broken Pages (404)</div></div>
+  <div class="stat-card" data-page-node-id="w4VAHwaIVrmHLrsSE8qSBB"><div class="stat-num yellow" data-page-node-id="xWOsgBHbVwF22QBcK2WRuZ">145</div><div class="stat-label" data-page-node-id="nhYpO021syNZlwE5tRBbvu">Redirect Links</div></div>
+</div>
+
+<!-- ==================== CRITICAL ISSUES ==================== -->
+
+<h2 data-page-node-id="jfXL1VWgphaAagVl5rnDDO">Critical Issues <span class="badge badge-critical" data-page-node-id="qHnGsUkTCGcXNvEASj9ZMd">7 found</span></h2>
+
+<!-- 1. Config.js syntax error -->
+<div class="issue" data-page-node-id="zudyQHDSaHpaFgsNHqMr9Y">
+  <div class="issue-title" data-page-node-id="ax7KELZ9v9eXmzWYEZgDfG"><span class="dot dot-red" data-page-node-id="B9pDlBI5zzQHxq7WvT3VE5"></span> 1. Config.js Syntax Error — Double Comma (Breaks Build)</div>
+  <div class="issue-desc" data-page-node-id="xISBPZEK9IFbDxIHEgJbWO">A double comma <code data-page-node-id="UYUSxXckdVJqnCNxDarbvR">,,</code> at line 1033 of <code data-page-node-id="BpV0A08VZXLHrEwExJgVnO">scripts/config.js</code> between the <code data-page-node-id="ZkwixViMIbEBrv8y7FH3Bs">soccer-random</code> game entry and the <code data-page-node-id="realfPLiO44dHJEaYrfKaH">2048-drop</code> entry is invalid JavaScript. Node.js may tolerate this in some contexts, but it's a syntax error that can break parsers, linters, and future Node versions.</div>
+  <div class="issue-detail" data-page-node-id="hFFqZgwiOthXFFnzmOr63E">
+    <strong data-page-node-id="voAdh9FeZqPcUPEvrOJCOT">File:</strong> <code data-page-node-id="PFn3A77YKsTrFpR6OBybYc">scripts/config.js</code> line 1033<br data-page-node-id="Ocer0uy5i6LXDDBdEkFzxF">
+    <strong data-page-node-id="DAFBte68p2dPhhkXo04tuY">Code:</strong> <code data-page-node-id="Yzds2yi21mQUhKirhiRE29">deprecationReason: 'Access denied. Authorization required."',</code> followed by <code data-page-node-id="ZVp57vFgrxx01HoXBV6yyk">,,</code> then <code data-page-node-id="WirexH0r9kVOIh3jaEBNQA">{</code>
+    <div class="fix" data-page-node-id="FuQcpgJ2qUwdLnc2bIDn8q"><strong data-page-node-id="9jN6bnt6uMEfHhgOQSQvq5">Fix:</strong> Replace <code data-page-node-id="9BsDOiavNE2vRoVB7BvVfM">,,</code> with a single <code data-page-node-id="HamsXT6EcETgwIc219RwLU">,</code> at line 1033. The <code data-page-node-id="H7TM6Dtr5kEzqHp8agDhf0">soccer-random</code> entry's closing brace is followed by two commas — remove one.</div>
+  </div>
+</div>
+
+<!-- 2. Deprecated game pages returning 200 on live site -->
+<div class="issue" data-page-node-id="LUfJOVtOQmNKJWWceG8HBP">
+  <div class="issue-title" data-page-node-id="9YwVmQgCTeN5eP59GEUAMK"><span class="dot dot-red" data-page-node-id="aZkQUPjgPxj8b2GY9t0TTY"></span> 2. Deprecated Game Pages Live But Not Rebuilt — 404 After Next Deploy</div>
+  <div class="issue-desc" data-page-node-id="C5rsV6VyMoQdlBPgsSCpcw">Three deprecated games still return HTTP 200 on the live site because old HTML files persist from a previous deploy, but the build script (<code data-page-node-id="eiTVAMVnHpsqlOxWypRN6S">visibleGames = gamePosts.filter(g => !g.deprecated)</code>) excludes them from new builds. After the next <code data-page-node-id="ATRMYljDIgk93HK9eyD4Qb">npm run build</code> + deploy, these will become 404s — but they're currently indexed by Google with <code data-page-node-id="IDvgHbGwQN5YrVVcn54hMC">index,follow</code>.</div>
+  <div class="issue-detail" data-page-node-id="IKGJVafbf6ZssWUd9UyJlH">
+    <table data-page-node-id="4UHd8l2Vi39CGMF52Ymgsb">
+      <tr data-page-node-id="6VPb0vXPNOCJloEhzarHq4"><th data-page-node-id="eBrO39wsffKKqGZPrGkVsU">Game Slug</th><th data-page-node-id="rTUbhN6XT5jJKgSgDuUIyc">Live Status</th><th data-page-node-id="eWkncv6jUTxJJGwX4EthP7">robots Meta</th><th data-page-node-id="CzMLHG8xZlrwYtXPbUARZB">Issue</th></tr>
+      <tr data-page-node-id="6fJiEcws6mBDmqcgieqMm2"><td data-page-node-id="yTuIC8u684roaOknbgJa7B"><code data-page-node-id="Jh0r8jLgnb5i7vwGwbZox0">moto-x3m</code></td><td data-page-node-id="SwwbHArctcYkURiGzTPHcZ"><span class="tag tag-red" data-page-node-id="pHlk2eJgm7m5aPYGxVhDzi">200</span></td><td data-page-node-id="Krq7TFFjXzWQBS2IjzVD1l">index,follow</td><td data-page-node-id="3ST5UTr1hQbNXpo9sePK34">Will 404 after rebuild; embed is broken</td></tr>
+      <tr data-page-node-id="HeEj4ZNKGw3I6Tsk97Lc9L"><td data-page-node-id="jp0ByyHYNiZJyliW4bSlpb"><code data-page-node-id="EqhgRNkNNshCQkVS7L3h45">cut-the-rope</code></td><td data-page-node-id="CZRUd3wbtkGBooNgJTWufd"><span class="tag tag-red" data-page-node-id="Tn0ZRItBOCEfU9oMF5EVRC">200</span></td><td data-page-node-id="YCpf64o9E8vYoKZ9I28XwT">index,follow</td><td data-page-node-id="rA0v7sFa7q7dcvpp43xSxK">Will 404 after rebuild</td></tr>
+      <tr data-page-node-id="AOG38f1O5DqC3nN6goEGCy"><td data-page-node-id="jtR8MRIb4PzyDmRoDCRlcO"><code data-page-node-id="qLEf7BxcROPfFLzOl58aE6">hill-climb-racing</code></td><td data-page-node-id="WFmkbVsWVTBeD5mWp9uPT0"><span class="tag tag-red" data-page-node-id="z725lDIkC3oswMOciqlIhx">200</span></td><td data-page-node-id="pOevaSxfmfT0TXt1Ol8d9E">index,follow</td><td data-page-node-id="6IHwJYiqO5kcLTWGRFgSVO">Will 404 after rebuild</td></tr>
+      <tr data-page-node-id="RG8RmdrtDjya1Sp89TOn7H"><td data-page-node-id="4CLVxa411oZoKiMsKJB4nC"><code data-page-node-id="m6wExNCCvHJaOwqY0o7vik">fireboy-and-watergirl</code></td><td data-page-node-id="T5rgpToVtf2HzNFumeY6VQ"><span class="tag tag-yellow" data-page-node-id="ciFGPpLQBiL42ZTiH0jHuW">404</span></td><td data-page-node-id="shkkxxBfzWeBGeY2H3QVLk">—</td><td data-page-node-id="DDnaPSx9g3lSjTrG0xyOR3">Already removed — was indexed</td></tr>
+      <tr data-page-node-id="KJRwt0bBAmFtuz2wHFcZBI"><td data-page-node-id="9302N6RzUsEujlYsvBgtu0"><code data-page-node-id="3vTGNiiMxDvQFWD2s5x4mE">vex-3</code></td><td data-page-node-id="Nd8aJIrdh5Hnt8IeVFKGJG"><span class="tag tag-yellow" data-page-node-id="FJoyw8EKhaNOYSpJQqDFOJ">404</span></td><td data-page-node-id="ScfnwHPGALWMQ9MPjsSLqT">—</td><td data-page-node-id="ns9oSpdC9r2OcigGuwHIgo">Already removed — was indexed</td></tr>
+      <tr data-page-node-id="8A8MYgTJ1bZh1QjA08JcLs"><td data-page-node-id="pquvOPqIq6NjxBgXlaZV4H"><code data-page-node-id="QNIVOd3kljecWQGJzARy0Z">paper-io</code></td><td data-page-node-id="hm8cUZagXBHmwyaZ1hck9u"><span class="tag tag-yellow" data-page-node-id="EEts1RFHCunuqKtH68EpeM">404</span></td><td data-page-node-id="sdrwWZsb3ftwE064FcFZXX">—</td><td data-page-node-id="cadVtvFG424Fe1ShmK2B0s">Already removed — was indexed</td></tr>
+      <tr data-page-node-id="GmgsKWuFPPD776WS8CZ0mU"><td data-page-node-id="S96wvbcCxM4Fcq4g3wOKgS"><code data-page-node-id="Oq1qZ1YYjo7Bb7dCa4c2t0">agar-io</code></td><td data-page-node-id="2tfqWF7xAL0Bs0GH12S61o"><span class="tag tag-yellow" data-page-node-id="qSwb9WEv0VdF92GrV4Vowj">404</span></td><td data-page-node-id="4M9xUV3UFlt0hLYiPgpOSS">—</td><td data-page-node-id="l66OSng8ZFzNnMs8jCDlDw">Already removed — was indexed</td></tr>
+      <tr data-page-node-id="mueGjVX04xkR6IqOcqvbfN"><td data-page-node-id="BM6GQjlBZJyfr5nTxVpdX8"><code data-page-node-id="OIrQBsdrY5xsYmBAqf9dsW">krunker-io</code></td><td data-page-node-id="ICJk7EtMrms3rYqj3FzYoE"><span class="tag tag-yellow" data-page-node-id="trS4xPd4VktcKPLjWN4dgw">404</span></td><td data-page-node-id="D4zaqC67lrsIQwKhmQoZMR">—</td><td data-page-node-id="ZDNtzcL85sscaU3twRQuII">Already removed — was indexed</td></tr>
+      <tr data-page-node-id="5JdAwUinQZlFQBUycrrM9v"><td data-page-node-id="r9cCEzbuP53LShxXWuTNTL"><code data-page-node-id="L5WEL5mM9hfutonhnpH9mx">basket-random</code></td><td data-page-node-id="71EJGQMQLgGn3itNpGte7A"><span class="tag tag-yellow" data-page-node-id="K5rzbL79YdGv0aAg6vll0o">404</span></td><td data-page-node-id="yVW4q7ObYlOse17up7OwbE">—</td><td data-page-node-id="6z03oW06WGqHvVXoezVppt">Already removed — was indexed</td></tr>
+      <tr data-page-node-id="7QCztqNePP8eWPXHE1lfEF"><td data-page-node-id="w14uUctKkOv9eRyaJehqaK"><code data-page-node-id="KgCHjITP9LtVhyyE16yICX">soccer-random</code></td><td data-page-node-id="5BhR8hZIHJxGV7V2b7bjFi"><span class="tag tag-yellow" data-page-node-id="6XJaDZwThaRKoCazgtaypa">404</span></td><td data-page-node-id="scAYkLQ1EjUFkOzSQhevV8">—</td><td data-page-node-id="51Hg96FHKi8cjHM1dn4MoT">Already removed — was indexed</td></tr>
+      <tr data-page-node-id="pxDZBbEOKdmdM33K9MN7jC"><td data-page-node-id="7ZqJWmB0ipRoe6f93rKFPB"><code data-page-node-id="rkZhzvpreF0MpvFfY5L6pE">bitlife</code></td><td data-page-node-id="9sxSQ6DLER5ArDnb13uK3c"><span class="tag tag-yellow" data-page-node-id="O1cCZoLUKAhlsE9RAv3kEx">404</span></td><td data-page-node-id="IfCsO25ZlrsDX99oWF5rv2">—</td><td data-page-node-id="lfEyo3Tie9soxyaw6roOrB">Already removed — was indexed</td></tr>
+      <tr data-page-node-id="PeRofXFBlBU9vHvcAE4S9I"><td data-page-node-id="XSgHO8PknIMju1hKgndXHh"><code data-page-node-id="reX3kGipCGka3rpkhY4puV">color-switch</code></td><td data-page-node-id="kcLpEQWlbgoK9oAUXoHJ2Y"><span class="tag tag-yellow" data-page-node-id="ruWDUJYDyePg1KoQwXulHN">404</span></td><td data-page-node-id="iu2oujHglTltIGrmT78l2u">—</td><td data-page-node-id="RXCjcWSLwiAIlELNHwjqU2">Already removed — was indexed</td></tr>
+    </table>
+    <div class="fix" data-page-node-id="FFN5B3f34APgatZYUtcp4H"><strong data-page-node-id="LWxx48AYNFaGAHAb8EVAHH">Fix:</strong> (1) For the 3 still-live deprecated pages: add <code data-page-node-id="KEVXiEPd3Eao059aRqwc6b">&lt;meta name="robots" content="noindex,follow"&gt;</code> and a 301 redirect to a related game or the /fgame/ index. (2) For the 8 already-404 pages: add 301 redirects in <code data-page-node-id="L1VABj0Q03hV1CFIvGtzUK">_redirects</code> to prevent link-juice loss. (3) Add all deprecated slugs to <code data-page-node-id="SdRyS0VUFA7ziddHHrU5dN">_redirects</code> with 301s to /fgame/.</div>
+  </div>
+</div>
+
+<!-- 3. Broken internal links with trailing slashes -->
+<div class="issue" data-page-node-id="xuTdQLg4k7cFMJz6zzKg1y">
+  <div class="issue-title" data-page-node-id="NWWvENqr6CwqqUbCDNcv3G"><span class="dot dot-red" data-page-node-id="t0CnZzzQZYCS004KWJImak"></span> 3. Broken Internal Links — 145 Links Use Trailing Slash (308 Redirect Chain)</div>
+  <div class="issue-desc" data-page-node-id="KqZZhI5coFHEdfj2eTkDao">Game content fragments in <code data-page-node-id="mcgst40DTXTaJTiEUJnyQU">src/content/fgame/*.html</code> contain internal links with trailing slashes (e.g., <code data-page-node-id="imFPOHwcaEJLj35B3Q7n9F">/fgame/2048-drop/</code>), but the actual built files are <code data-page-node-id="Jx7JDiML1H2amflcxXCQu3">/fgame/2048-drop.html</code> (served as <code data-page-node-id="nJS8HoOkRtUZeoBQ0KjAGy">/fgame/2048-drop</code> without slash). Cloudflare Pages issues a <strong data-page-node-id="rOwLgIcNvqnOBZ1XCj789Z">308 redirect</strong> for every trailing-slash URL, creating unnecessary redirect hops for 145 internal links across 40+ game pages.</div>
+  <div class="issue-detail" data-page-node-id="OzXwtsl6jY6D0yW1bbkHuD">
+    <strong data-page-node-id="bfPFWpau8EvcwfRYwa0S8G">Sample affected pages:</strong>
+    <ul data-page-node-id="ZFzw7pUu3Yfp3w4OfVpxxQ">
+      <li data-page-node-id="C9wPIPrCkpxbMyWncuRtCy"><code data-page-node-id="1R0D6Aieta6YHdN8xnOp2y">fgame/2048.html</code> → links to <code data-page-node-id="393t9TYbZv0lJtYwXTGBAL">/fgame/2048-drop/</code> and <code data-page-node-id="oj3fG5uZvwoJtNn9Xk94WG">/fgame/2048-rogue/</code></li>
+      <li data-page-node-id="5RqWHW7LClGGsVZp5P7AK7"><code data-page-node-id="KfXinbIvzms6XrhOKmtbtd">fgame/drift-hunters.html</code> → links to <code data-page-node-id="B6Rux5P7YfmDrjKP31shI7">/fgame/retro-bowl/</code>, <code data-page-node-id="AqKMcLhOXQIWyodUXgLy1H">/fgame/bike-xtreme/</code>, <code data-page-node-id="sCvEDZR0yGL9kmtVrLRblP">/fgame/american-truck-driving/</code></li>
+      <li data-page-node-id="c7SiwK1aFDbs3jB8ECSTnw"><code data-page-node-id="aZLR96gBBL5HpV30oIyCOO">fgame/basketball-stars.html</code> → links to <code data-page-node-id="UQVxwkU6RuHa6cBpwP7WC1">/fgame/retro-bowl/</code>, <code data-page-node-id="wvmdMKN58lAH0D8HyJhK6L">/fgame/hoop-legends/</code>, <code data-page-node-id="lnyhGipiMIyDoC6GDaAZgw">/fgame/basketball-stars/</code> (self-link!)</li>
+      <li data-page-node-id="zB9HCwbPKSApBLWSnDDoHQ">... and 142 more across all game pages</li>
+    </ul>
+    <strong data-page-node-id="QnzuwgfqF392hiOrkHSEp1">Also note:</strong> Some pages link to themselves (e.g., <code data-page-node-id="wD9XpJzbtlqUDjedE4BkLN">basketball-stars.html</code> → <code data-page-node-id="uK2Fz0CCbeBovdqy2MqdIl">/fgame/basketball-stars/</code>), <code data-page-node-id="aPgWFg8FpUJAJ0CXr9lWVc">golf-puzzle.html</code> → <code data-page-node-id="BiaiiYLj4RM1pA4wngBBlr">/fgame/golf-puzzle/</code>). Self-referential links are an SEO waste.
+    <div class="fix" data-page-node-id="JCAsU3mWpQvFdIcqnb1HPl"><strong data-page-node-id="HFDmsHgeGQbuIMuWYm3d39">Fix:</strong> Search-and-replace in all <code data-page-node-id="gEo6mqkIHlxO6nim49SjT4">src/content/fgame/*.html</code> files: change <code data-page-node-id="6e1lHTLK5EfYMUjavUsux2">href="/fgame/SLUG/"</code> to <code data-page-node-id="KFiFD6w3B8WAoMMeN3F6zc">href="/fgame/SLUG"</code> (remove trailing slash). Also remove self-referential links in "related games" lists.</div>
+  </div>
+</div>
+
+<!-- 4. HTML entity in blog title -->
+<div class="issue" data-page-node-id="KgUompDcHJr5mdQAh6APqq">
+  <div class="issue-title" data-page-node-id="NwA43mxMJ86daTb7Js8qR7"><span class="dot dot-red" data-page-node-id="7PgALMtY4hjjvd8nh6cqGq"></span> 4. HTML Entity in Blog Title — Renders as Literal "&amp;" in Title Tag</div>
+  <div class="issue-desc" data-page-node-id="K5zyHtp6lzO8zZhxlIWAAl">The blog post <code data-page-node-id="ksYDdEXxtV70dDCb3xtKLQ">best-idle-clicker-browser-games</code> has <code data-page-node-id="bv0ax7askpq0dZNQ9qIWJY">&amp;amp;</code> in its title in <code data-page-node-id="BAMVDuxAqvJlANUdzVLRAc">config.js</code>. The build's <code data-page-node-id="M9rS8OT3FKIgzysCoHZR6C">esc()</code> function escapes <code data-page-node-id="Hnx5Tgh4xCuIgMejT4oHzR">&</code> to <code data-page-node-id="REC8DSn917dB9oLwvAhiMj">&amp;amp;</code>, so the raw <code data-page-node-id="z6FAfjGcDugS3KUkmGtjmJ">&amp;amp;</code> becomes <code data-page-node-id="JcH3r47fIyS8PLspBuwp4p">&amp;amp;amp;</code> in the output — or at minimum renders as literal <code data-page-node-id="y7G6StNUaKgCMNaCGwoZtB">&amp;</code> text in the &lt;title&gt; tag, which looks broken in search results and browser tabs.</div>
+  <div class="issue-detail" data-page-node-id="AsWH5xTE8LKrcbWW6NiN41">
+    <strong data-page-node-id="A4HwTgTCjwpnj3PqbVZJcW">Config:</strong> <code data-page-node-id="l2pRWa5jK4y1QD04wNd2lw">title: '8 Best Idle &amp;amp; Clicker Browser Games to Play in 2026'</code><br data-page-node-id="JBBU72KJxfJn71ReTTk80L">
+    <strong data-page-node-id="Yh0eaVmv6vldQBy7t2nlaF">Expected:</strong> <code data-page-node-id="CX77opO0MwxmQqa7BvuBl0">8 Best Idle & Clicker Browser Games to Play in 2026</code><br data-page-node-id="9jZOCq9oLyB1CegUpoLkwX">
+    <strong data-page-node-id="aUWexCgW6QCPMHRMjN0BH2">Actual (in &lt;title&gt;):</strong> Likely <code data-page-node-id="mcn2JIdhXQlUwvMVZ2tW57">8 Best Idle &amp;amp; Clicker Browser Games to Play in 2026 — Poki2 Blog | Poki2</code>
+    <div class="fix" data-page-node-id="5FT9yYYBXatrLv1UEzFNyM"><strong data-page-node-id="hMhqf7XXKe1WQhY7yNWPG6">Fix:</strong> In <code data-page-node-id="kxPe7NQLnKYKjwrFlGbozM">scripts/config.js</code> line 532, change <code data-page-node-id="lTcaFdPxDVL3Xpo9MU5TCs">&amp;amp;</code> to <code data-page-node-id="cWIn2iUDNmPZPbNg5gRHVa">&</code> (raw ampersand). The <code data-page-node-id="hYS4ptAY69SPhRVlfVhM9a">esc()</code> function in <code data-page-node-id="iyEvk2XpRtmWEc5Y4FoV0v">build.js</code> will handle HTML-encoding it properly.</div>
+  </div>
+</div>
+
+<!-- 5. Article template missing advertising cookie consent category -->
+<div class="issue" data-page-node-id="IjXa8g2FVe9lchO9hDEFpf">
+  <div class="issue-title" data-page-node-id="qNe5Rt3ARqBXsMRUGFwSxh"><span class="dot dot-red" data-page-node-id="MQ1wpSGLpTwTGaZdXRsrNi"></span> 5. Article Template Missing Advertising Cookie Consent Category</div>
+  <div class="issue-desc" data-page-node-id="VXpQdd6zHcweA4A1mHD2Cq">The <code data-page-node-id="l1Q4rydBCgtK6AiB5Op42U">article.html</code> template's CookieConsent config only has <code data-page-node-id="4PGybm0QWlqNM6q4nxUbd5">necessary</code> and <code data-page-node-id="ROlALhsCVNGK6UxAUxrme7">analytics</code> categories — it's missing <code data-page-node-id="4vGdh7OAahzU4Ag61I2ys8">advertising</code>. This means blog article pages (27 pages) never grant <code data-page-node-id="nnenMxF2jCNFBUxKVbXufk">ad_storage</code> consent even when the user accepts all cookies, causing AdSense to operate without proper consent signals on all blog pages.</div>
+  <div class="issue-detail" data-page-node-id="EW9ZPLiYL8Y1YaRsznhdf8">
+    <strong data-page-node-id="HweUuIwH6EdQLQACqsFxpv">File:</strong> <code data-page-node-id="pTUIPnhCYxmAqlbJeD9uPM">src/templates/article.html</code> lines 322-324<br data-page-node-id="czp9CUKyKtEUEggv3xEsGh">
+    <strong data-page-node-id="oXrGhwA6jMb6lJCF64dw41">Current:</strong> <code data-page-node-id="WedjIoKDk04WNL6OBETIfW">categories: { necessary: {...}, analytics: {} }</code><br data-page-node-id="FNeE9ixECYwFs3bjTeiOjx">
+    <strong data-page-node-id="BWtQtWE3XBaTNfDXwCATSe">Should be:</strong> <code data-page-node-id="oYk32EJwlvCUeJkhifKOo7">categories: { necessary: {...}, analytics: {}, advertising: {} }</code><br data-page-node-id="V7mJPU3q3WDZrrk3wO7SD1">
+    Also missing the <code data-page-node-id="OSt9H4wcAOWLJxw01UPAM3">onConsent</code> and <code data-page-node-id="vuC1LSt8lq4kwbOGvXIwNw">onChange</code> handlers for <code data-page-node-id="AR87yJzEMle9rKtA6uQWjM">ad_storage</code>, <code data-page-node-id="8Pc9NJ19ZSLeqNAuwOuu35">ad_user_data</code>, <code data-page-node-id="YXTN7Z3MkyuEm950lblk7H">ad_personalization</code>.
+    <div class="fix" data-page-node-id="DiwLazlCAw333eGsexAZBx"><strong data-page-node-id="DaBy14oRpQkfMTnzPwdOMn">Fix:</strong> Copy the complete CookieConsent config (including <code data-page-node-id="6hGjIf2oXfOjaofNrMDWwM">advertising</code> category and ad consent handlers) from <code data-page-node-id="auljFdn9Ra35BpexB6KJI7">base.html</code> or <code data-page-node-id="7jMB42Ddp942t9Xp1GfyRG">game.html</code> into <code data-page-node-id="ZrRMar0awZidMxGCiaijmr">article.html</code>. The three templates should have identical consent configurations.</div>
+  </div>
+</div>
+
+<!-- 6. 404 page uses stale CSS cache-busting version -->
+<div class="issue" data-page-node-id="maxyAwc0QxmQK48AXzlQrF">
+  <div class="issue-title" data-page-node-id="uoJzjd9GAsc2MYaDeRmLBU"><span class="dot dot-red" data-page-node-id="QkXCcY0iFXZFCFm0ulF7DL"></span> 6. 404 Page Uses Stale CSS Version (v=3 vs v=5)</div>
+  <div class="issue-desc" data-page-node-id="HSSmduCJtYH2MDKlSrpk82">The 404 page (<code data-page-node-id="QLw4MY2ExSSAxbnKtehJuQ">public/404.html</code>) references <code data-page-node-id="6xXZE82o2fjD3IxFpbtOqu">/css/style.css?v=3</code> while all other templates use <code data-page-node-id="xXjehm5jy3z5qM6JvLwhDF">/css/style.css?v=5</code>. Since the <code data-page-node-id="31qB1gkGX3cjYlvc2RTSXo">_headers</code> file sets <code data-page-node-id="H6f8Zclqna5pu1IwPahXv1">Cache-Control: public, max-age=31536000, immutable</code> for CSS files, visitors who previously loaded the v=5 CSS will get the correct stylesheet, but new visitors to 404 pages may get a stale cached version if the CDN serves the old version.</div>
+  <div class="issue-detail" data-page-node-id="qQY2fodswctzBLncMjbvoW">
+    <strong data-page-node-id="2l70xzyMDi3RSkE2iTfz1x">File:</strong> <code data-page-node-id="NwmlW9Tp9HoohGiNj6Urhb">public/404.html</code> line 9<br data-page-node-id="Zt4AZ8MGkspUlTJ8lVUmw0">
+    <strong data-page-node-id="otlfLvLG3et2AZ9lN8ZCll">Current:</strong> <code data-page-node-id="S4PFcFdk93IFMO5ZrCrlUK">&lt;link rel="stylesheet" href="/css/style.css?v=3"&gt;</code><br data-page-node-id="678l0GTAbHAwG5SsLVZ9NI">
+    <strong data-page-node-id="MQnw9YnFEKMCxx67JGEGFe">Should be:</strong> <code data-page-node-id="EMzdhrle8LkSvoJSbJCv7c">&lt;link rel="stylesheet" href="/css/style.css?v=5"&gt;</code>
+    <div class="fix" data-page-node-id="hgS31jD3Uy5JEOsf8CKzpx"><strong data-page-node-id="qTqXWVaecRW3BfC7ePqlXM">Fix:</strong> Update the version parameter from <code data-page-node-id="ZwNjxVlAvIqC1GtKFBnRiC">v=3</code> to <code data-page-node-id="9l5aC6hexcqFdvZe9bg3ao">v=5</code> in <code data-page-node-id="4gGYqFnFCZ6oz6Xv3dUOuD">public/404.html</code>.</div>
+  </div>
+</div>
+
+<!-- 7. Sitemap lastmod uses publish date, not update date -->
+<div class="issue" data-page-node-id="LuxEDnPBCQWxRCqEvaqiOQ">
+  <div class="issue-title" data-page-node-id="Wt0fFZlToBKjAXMniTexA7"><span class="dot dot-red" data-page-node-id="h8RbkWn3OBYo89vEqUzKBo"></span> 7. Sitemap lastmod Uses Publish Date Instead of Update Date</div>
+  <div class="issue-desc" data-page-node-id="iQ6iVmtgP7e15JURVKD9A3">The sitemap builder uses <code data-page-node-id="ZhzUoCjpj3hMJ8ATSfHayw">p.isoDate</code> (publication date) for blog post <code data-page-node-id="3dtyMaOs5d6rt3KhOZjnYE">&lt;lastmod&gt;</code> instead of <code data-page-node-id="cMbU8RtarNE0fpF7u08Rwj">p.isoUpdated</code> (last revision date). All 27 blog posts have <code data-page-node-id="GTSFL6A1EuLGZk2Gw2VNwZ">isoUpdated: '2026-07-27'</code>, but the sitemap shows dates from March-April 2026. Google uses lastmod to decide when to recrawl — stale dates mean delayed re-indexing of updated content.</div>
+  <div class="issue-detail" data-page-node-id="kTujvtMvPbyvwZG4bRAGke">
+    <strong data-page-node-id="qPPrF6kpniktFCh9Lyovun">File:</strong> <code data-page-node-id="DDAy4lHqAw515yydl2GWV4">scripts/build.js</code> line 833<br data-page-node-id="EoU8xLRz7iv9tTr2UTFx8z">
+    <strong data-page-node-id="FNUtb6BVDCrRpNbXdfRqP0">Current:</strong> <code data-page-node-id="yNnMGeixntIR73nou55kSF">&lt;lastmod&gt;${p.isoDate || now}&lt;/lastmod&gt;</code><br data-page-node-id="FurZp1jxsaiWzD0UwIH1Dd">
+    <strong data-page-node-id="YItUEbiFN1NqS09xAzfbLj">Should be:</strong> <code data-page-node-id="R3P0M0exy68y6702GF6xik">&lt;lastmod&gt;${p.isoUpdated || p.isoDate || now}&lt;/lastmod&gt;</code>
+    <div class="fix" data-page-node-id="qizy8aEjEEPz5lfyUUf0aX"><strong data-page-node-id="GWfF3EyqMOl3HEGynmdPEF">Fix:</strong> In <code data-page-node-id="DsSGSGfBrIpwX6T60Y0hsI">buildSitemap()</code>, change the blog URL lastmod to use <code data-page-node-id="kzk8J3GnCK9RqjZrsalacs">p.isoUpdated || p.isoDate || now</code>.</div>
+  </div>
+</div>
+
+<!-- ==================== WARNINGS ==================== -->
+
+<h2 data-page-node-id="cd6EJrULLQPEFtrEf6unWV">Warnings <span class="badge badge-warning" data-page-node-id="vLuCim7bvsRyMhYXd9Wim9">6 found</span></h2>
+
+<!-- W1. Article template missing google-site-verification -->
+<div class="issue" data-page-node-id="bkOwBy4mE145pjRmu6ZRKu">
+  <div class="issue-title" data-page-node-id="whCg2dfsyg1DvLzzOGtqnm"><span class="dot dot-yellow" data-page-node-id="FuiEVuQr39pcFWBWSZUQEq"></span> W1. Article & Game Templates Missing google-site-verification Meta</div>
+  <div class="issue-desc" data-page-node-id="PdigxBDLtBXKIdFKiXJ5xl">The <code data-page-node-id="1xhEspUuLsAkxYcoHMp0KQ">google-site-verification</code> meta tag exists only in <code data-page-node-id="bnrx5661Be30chL9Iegu2i">base.html</code>. The <code data-page-node-id="2NaTyhVVqU6wyUGHuZgeCW">article.html</code> and <code data-page-node-id="WEfmylAtL2Q82kRvsfXWD1">game.html</code> templates don't include it. Since blog articles and game pages use their own templates (not base.html), Google Search Console verification doesn't apply to 54+ pages.</div>
+  <div class="issue-detail" data-page-node-id="949B4FLH2NU3vzjKWWb3L3">
+    <strong data-page-node-id="UewpGqCX2gqbG0NJqEtkHP">Present in:</strong> <code data-page-node-id="ahAuozvoVPgmqPw9whuoyl">base.html</code> only<br data-page-node-id="sKSpC4i81SpMrXHDnjFOUc">
+    <strong data-page-node-id="BMN32JnuaLRa9uq5hqrBSF">Missing from:</strong> <code data-page-node-id="ZOKnh4KRDoDQiDOXaAPicw">article.html</code>, <code data-page-node-id="ya6v2FWShHBIV0NLAx85nV">game.html</code>
+    <div class="fix" data-page-node-id="hErD8W6bXZJ7vbgWtZe1S1"><strong data-page-node-id="NiNUUTjt3iWc5OOnGmD04t">Fix:</strong> Add <code data-page-node-id="dB2n9hJoaik5FhibVmnwqc">&lt;meta name="google-site-verification" content="65c93755d768ab97"&gt;</code> to the &lt;head&gt; of <code data-page-node-id="aWOeDcgqPqJ8rWH5fcbDNG">article.html</code> and <code data-page-node-id="oDX0Kkd51ME2lwtGwh0xys">game.html</code>.</div>
+  </div>
+</div>
+
+<!-- W2. Article template nav structure differs -->
+<div class="issue" data-page-node-id="XpnwUfDAiVoLgVuCPrTrAw">
+  <div class="issue-title" data-page-node-id="ouNL0KT7mptb3UEzvekR5I"><span class="dot dot-yellow" data-page-node-id="EpgZJMHs0Xzl0BCdO6N6Mg"></span> W2. Article Template Nav Missing Games Dropdown</div>
+  <div class="issue-desc" data-page-node-id="dXKZ3pxpk9qJgRLjBgWCvm">The <code data-page-node-id="wGgi93W2wbbLxx4tDrHEMn">article.html</code> template has a simpler nav (Home, Games, Blog, About, Contact) without the Games category dropdown that <code data-page-node-id="uGRXuwjdE85ynKUEWwERIe">base.html</code> and <code data-page-node-id="5zcrSYQ21Y5QT2ceE67Fsk">game.html</code> have. This means blog article pages don't expose category navigation (Action, Racing, Puzzle, etc.) that other pages do, creating an inconsistent navigation experience.</div>
+  <div class="issue-detail" data-page-node-id="pQ5oh7Ze3ql8tOWFHXIYYF">
+    <strong data-page-node-id="IgZIuq2O7qrnCfhykWS9On">Also:</strong> The article template footer only lists 3 subdomain links vs 5 in base/game templates (missing "2048 Collection" and "GamePix" links).
+    <div class="fix" data-page-node-id="wbh1s0RCYib14pvkK2LVY1"><strong data-page-node-id="JczxReBtkGxguinv9QEwlj">Fix:</strong> Align the nav and footer HTML across all three templates to provide consistent navigation.</div>
+  </div>
+</div>
+
+<!-- W3. 18 orphan game content fragments -->
+<div class="issue" data-page-node-id="kWekgobJLoVb7l40gdc2LD">
+  <div class="issue-title" data-page-node-id="5DRhcnCyIKIOXYUZmkCEwF"><span class="dot dot-yellow" data-page-node-id="n1EGXD0lFa6z7hICNsm4wp"></span> W3. 18 Orphan Game Content Fragments Not Wired to Config</div>
+  <div class="issue-desc" data-page-node-id="xcC4GtThBY1BpGl7SpSMIM">18 HTML body fragments exist in <code data-page-node-id="z7TRZHTMfrHjeLhDDpdpmR">src/content/fgame/</code> but are not registered in <code data-page-node-id="fPFZyVpyN0clHRqiQSDW9F">scripts/config.js</code>. They never get built, never appear on the site, and never emit JSON-LD. This is documented in <code data-page-node-id="CejEHqz1rqpQvAdboGfgvS">TODO.md</code> but represents missed SEO opportunities for high-volume keywords like "minesweeper", "solitaire", "pong", "breakout", "snake classic".</div>
+  <div class="issue-detail" data-page-node-id="x6s5d38q4VzejqJ59luhRJ">
+    <strong data-page-node-id="8lgUCaS2CxBUD1g8FWYkdb">Orphan slugs:</strong> 1v1lol, bonk-io, breakout, card-battle-arena, city-builder-sim, crossy-road, fishing-frenzy, mahjong-classic, match3-gems, minesweeper, pong, puzzle-platformer-quest, rhythm-run, rooftop-snipers, snake-classic, solitaire-klondike, space-shooter, tower-defense-classic
+    <div class="fix" data-page-node-id="PwOLv2dTY4IBTnATuuLGKE"><strong data-page-node-id="WR0pbRIyFJbMtwkUDFEFV1">Fix:</strong> Add config entries for high-SEO-value titles first (breakout, mahjong-classic, minesweeper, pong, snake-classic, solitaire-klondike, tower-defense-classic). Remove or archive fragments that won't be published.</div>
+  </div>
+</div>
+
+<!-- W4. Deprecated game deprecationReason has mismatched quotes -->
+<div class="issue" data-page-node-id="03aK3v23ycdeOJEba6Ca9o">
+  <div class="issue-title" data-page-node-id="S4PtUSGibMmxUAkDCo7FMa"><span class="dot dot-yellow" data-page-node-id="HYWkIiylLbhTjkHbInDvUE"></span> W4. Deprecated Game Entries Have Mismatched Quote in deprecationReason</div>
+  <div class="issue-desc" data-page-node-id="M6FaG0EzGipYuSrB6Dicd7">Every deprecated game has <code data-page-node-id="XvfYombRdN86bR59JM6tEt">deprecationReason: 'Access denied. Authorization required."'</code> — the string starts with a single quote but ends with a double quote. While JavaScript allows this (the string is single-quoted and the <code data-page-node-id="Q184nRoIW2r8TjNHud6Zon">"</code> is just a character), it's sloppy and may cause confusion.</div>
+  <div class="issue-detail" data-page-node-id="D9LEMxXNoeUeNGd7wXNEcJ">
+    <strong data-page-node-id="XgjmShjncUm23CnoLXmwHk">Affected:</strong> moto-x3m, fireboy-and-watergirl, vex-3, paper-io, color-switch, cut-the-rope, hill-climb-racing, agar-io, krunker-io, soccer-random, basket-random, bitlife
+    <div class="fix" data-page-node-id="JFc4Jqq5eFLk1CyLz24AsP"><strong data-page-node-id="5QvDVpxYBFH2JtPPxsOCw7">Fix:</strong> Change <code data-page-node-id="nvr9xrJECw8NH2n7BoRf5K">'Access denied. Authorization required."'</code> to <code data-page-node-id="xdOTpNHtMac9bW7uMBvC65">'Access denied. Authorization required.'</code> (matching single quotes).</div>
+  </div>
+</div>
+
+<!-- W5. Sitemap missing /blog and /fgame without trailing slash -->
+<div class="issue" data-page-node-id="PSYzSLl8swRI5sIEJ89ajQ">
+  <div class="issue-title" data-page-node-id="9fUKAKpeVkEiUOfBtti4Tk"><span class="dot dot-yellow" data-page-node-id="l7x9sa3e6N5AqiubHcFbJ0"></span> W5. Sitemap Contains Trailing-Slash URLs But Canonical Tags Don't</div>
+  <div class="issue-desc" data-page-node-id="GEUakbxE793EnqovCvce4u">The sitemap lists <code data-page-node-id="r0gWOWPT01Py4kI7iBA73E">https://poki2.online/blog/</code> and <code data-page-node-id="FiHGkDEc4Od6ImGoD9kwjS">https://poki2.online/fgame/</code> (with trailing slash), but the built pages' canonical tags also use trailing slash for these index pages. However, some internal links and the sitemap for individual game/blog pages use no trailing slash. This creates a minor canonical inconsistency for the index pages.</div>
+  <div class="issue-detail" data-page-node-id="88kFN0IocUw2Y61LtYQ6MG">
+    <strong data-page-node-id="9YEDE87JlnLEMrAdCWsUOA">Sitemap URLs:</strong> <code data-page-node-id="NOfjbAC8qsqL9QkZTr1Tp8">/blog/</code> and <code data-page-node-id="eqH18ALkudsGl5v2ScFO0l">/fgame/</code> (trailing slash)<br data-page-node-id="LuXy9qSAcjXzyBvt2DLXDW">
+    <strong data-page-node-id="KtrZOE74x5dF59nu7OvT9r">Canonical tags:</strong> Match — <code data-page-node-id="nqodUoA2CsyREE72zMBa72">https://poki2.online/blog/</code> and <code data-page-node-id="23ep1IyE71JAzyTueazMSr">https://poki2.online/fgame/</code><br data-page-node-id="0dqHHQQSpTxhbAT9wz40DL">
+    <strong data-page-node-id="2BysK82WNoCuqdktAacXME">Issue:</strong> Cloudflare Pages serves both <code data-page-node-id="wFDnufotvTfBIdXUrtXNYs">/blog</code> and <code data-page-node-id="gzcmj1lBzm1yzXz74evl9Y">/blog/</code> without redirect, creating duplicate URLs.
+    <div class="fix" data-page-node-id="PD9cMkvLCzlK6YNSFNPMWo"><strong data-page-node-id="g1lh2p63w02fk4Vixhvsir">Fix:</strong> Add a redirect in <code data-page-node-id="cwsNEaPH3r5cU4SSn2NWjJ">_redirects</code>: <code data-page-node-id="rg3yxGfcdsdR65QYJLs0ig">/blog /blog/ 301</code> and <code data-page-node-id="sUDYi3zJ8IHdKtOyFulIhJ">/fgame /fgame/ 301</code> to enforce trailing-slash for index pages. Or pick one canonical form and use it consistently.</div>
+  </div>
+</div>
+
+<!-- W6. Page load speed - external resources -->
+<div class="issue" data-page-node-id="92WkTBSzim9VsbcKx6ZYVf">
+  <div class="issue-title" data-page-node-id="xjx8Qji4GntTNfkuESboJH"><span class="dot dot-yellow" data-page-node-id="0kdca2L8yeyDiBsWGSg9DC"></span> W6. Page Load Speed — Multiple External Script Dependencies</div>
+  <div class="issue-desc" data-page-node-id="9StLfrlIkal6152PfTaGXn">Every page loads 3+ external JavaScript resources synchronously or async: Google Analytics (gtag/js), Google AdSense (adsbygoogle.js), and vanilla-cookieconsent from jsDelivr CDN. While <code data-page-node-id="Flh1qVWImVQzqlPckV0SHp">preconnect</code> hints are present, the cookie consent script is render-blocking (no <code data-page-node-id="fJW7meRpxwFjdpA95fcq6P">async</code> or <code data-page-node-id="3pMzBspNCmw0haJN5KAGt7">defer</code>). The CSS from jsDelivr is also render-blocking.</div>
+  <div class="issue-detail" data-page-node-id="BEtlg1HPrqX9C3bjUFL2hD">
+    <strong data-page-node-id="LsodM3A46bqWKBCPlY4ADV">Render-blocking resources:</strong>
+    <ul data-page-node-id="XNfVCWpiicfGpiTVhvty63">
+      <li data-page-node-id="juWaLGQxu1vJIffOhsHZ1H"><code data-page-node-id="uRMM5xx9Q9TPev8dPjHofZ">cookieconsent.css</code> from jsDelivr (no preload, render-blocking)</li>
+      <li data-page-node-id="VTGXPSrY6VPLiYHhKhwh0f"><code data-page-node-id="hAWTCcmkDNi75GFtTsPQbI">cookieconsent.umd.js</code> from jsDelivr (no async/defer, parser-blocking)</li>
+      <li data-page-node-id="XXlPgeQrBLkOyXOCFGxoI2">AdSense loader <code data-page-node-id="k8zspRewwXHupfCnpQGvAG">adsbygoogle.js</code> (async, OK)</li>
+      <li data-page-node-id="oD53JrkJCssU6uM9CdUrXy">GA4 <code data-page-node-id="Wol0FmgamOm0qvF9poaFfN">gtag/js</code> (async, OK)</li>
+    </ul>
+    <strong data-page-node-id="nDSWsqtzPEy6LZg8j3slyb">Note:</strong> Total HTML page sizes are reasonable (largest is 67KB for homepage, most game pages ~47KB). CSS is 26KB minified.
+    <div class="fix" data-page-node-id="87xtJtwB8VIiilm3X5XGKn"><strong data-page-node-id="BonQTtFZKpxmfoqvydu0d0">Fix:</strong> Add <code data-page-node-id="mOmDSBxurUnrMqCxUMgONc">defer</code> to the cookieconsent script tag. Consider self-hosting the cookie consent CSS/JS to eliminate the jsDelivr dependency. Or use <code data-page-node-id="nsqfWfkSKSjxPJ96J6CyNT">media="print" onload="this.media='all'"</code> trick for the CSS.</div>
+  </div>
+</div>
+
+<!-- ==================== PASSED CHECKS ==================== -->
+
+<h2 data-page-node-id="CnkeWntslaLGt8Xrq2HGW3">Passed Checks <span class="badge badge-pass" data-page-node-id="dQwWA8yRHFnrO6iRvWwp9k">22 categories</span></h2>
+
+<div class="issue" data-page-node-id="mCmM1bnKyVe0OBNl1dNbXc">
+  <div class="issue-title" data-page-node-id="EEyYihFDgMBxBVAPAXBmoo"><span class="dot dot-green" data-page-node-id="BANG94T07yZqSrHaQ9kikQ"></span> Categories with No Issues Found</div>
+  <div class="issue-desc" data-page-node-id="xuSeLl77XeC7Fg8Byca3wb">The following audit categories passed with no issues detected:</div>
+  <div class="issue-detail" data-page-node-id="uqQICuXZ2U1eIaexOEG6It">
+    <ul class="pass-list" data-page-node-id="pcF7kx88vOxJCFnYZDTnxi">
+      <li data-page-node-id="AmMHf0FhCGDIo5XymIwtUp"><strong data-page-node-id="b0htsFBbT5xHw9XdCBkou5">5xx Errors</strong> — No server errors detected on any tested URL</li>
+      <li data-page-node-id="GB0o7isbGDfpxVRQ7c1n5O"><strong data-page-node-id="McrsMdzGwiIwSY9xObn6Yw">DNS Resolution</strong> — poki2.online resolves correctly; no DNS issues</li>
+      <li data-page-node-id="4KHwaX24jjGXlsxw0NXE1w"><strong data-page-node-id="M1rUvN9vJeRUKrxIoJcNqD">www Resolve</strong> — www.poki2.online 301-redirects to poki2.online (correct canonical)</li>
+      <li data-page-node-id="jJFdsQA3YQZOQansQpuG8X"><strong data-page-node-id="RhNX26P8P8CaxDmNJXZ3P2">HTTP → HTTPS Redirect</strong> — http://poki2.online 301-redirects to https:// (correct)</li>
+      <li data-page-node-id="WLeCWSWL8qPGAvYUp4Y2fp"><strong data-page-node-id="q91F9sHdSSvVen4D2483Bm">SSL/TLS Certificate</strong> — Valid cert (Aug 1 - Oct 30, 2026), EC public key, TLS 1.3 via Cloudflare</li>
+      <li data-page-node-id="nbugg7CYezEOjdiUffD2In"><strong data-page-node-id="kLdrrDF5eW1csJztvlU6Wm">Security Protocol</strong> — TLS 1.3 (modern, not outdated)</li>
+      <li data-page-node-id="96KJs9CHt7AlReMhVmCGMF"><strong data-page-node-id="Wpf7cFZlPSNKsC3eJN5oMC">Certificate Name Match</strong> — Cert is for *.poki2.online (correct)</li>
+      <li data-page-node-id="on3FXKsd3Qpfxnadpboogh"><strong data-page-node-id="9hHhUCswXPzi13yJSH8y4F">Mixed Content</strong> — No HTTP resources on HTTPS pages detected (CSP enforces HTTPS)</li>
+      <li data-page-node-id="LJ2K6lCO3NcY2cufOSYJQS"><strong data-page-node-id="r5nOuorH5GGhtn52UPcmaS">HTTPS Homepage</strong> — Homepage is HTTPS with canonical (no HTTP homepage issue)</li>
+      <li data-page-node-id="mcgfkRIkrE2lkHgqfUyAn0"><strong data-page-node-id="RnTAwKf7rUBgVCHeEo7Ll5">Redirect Chains & Loops</strong> — No multi-hop redirect chains detected; all redirects are single-hop 301s</li>
+      <li data-page-node-id="9XHVndmlgcErFTR05mTWdR"><strong data-page-node-id="AE52JqcP68nHlilEpcMtXt">Missing Title Tags</strong> — All 87 pages have &lt;title&gt; tags (except Google verification page, which is expected)</li>
+      <li data-page-node-id="NuJSNSEumiNTo2Ew1pYpaz"><strong data-page-node-id="9TANwvY1hgP5YjnfIu2BtU">Duplicate Title Tags</strong> — No duplicate titles detected</li>
+      <li data-page-node-id="pfULPh1WVFUQOnI7PLDcMe"><strong data-page-node-id="oxmiNrx5xZSkFKG437il4F">Duplicate Meta Descriptions</strong> — No duplicate descriptions detected</li>
+      <li data-page-node-id="3cmniW56xz2y5Uw1zuQWoR"><strong data-page-node-id="VvecZdXHElYrEyasBElhEG">Duplicate Content</strong> — No duplicate body content detected</li>
+      <li data-page-node-id="E9AuuCmlDsxTLAHMOvLEfi"><strong data-page-node-id="pEuyXzPUOE1ItflLk6zcxR">Missing Canonical Tags</strong> — All content pages have canonical tags (except 404 and Google verification)</li>
+      <li data-page-node-id="UsEY8APBKASlfAltwmmcR2"><strong data-page-node-id="fpEVhZjFvh5iWz2E17Tfsc">Multiple Canonical URLs</strong> — No pages with multiple canonical tags</li>
+      <li data-page-node-id="w7JTXBGoGp8sqRu7U4LfWs"><strong data-page-node-id="HAslqU8CieUpNh4Ch3gYI4">Broken Canonical URLs</strong> — All canonical URLs resolve correctly</li>
+      <li data-page-node-id="aA16uabHr28F4fPsETcQKW"><strong data-page-node-id="cLs0wKCQ8NQkejBZbe9iFY">Meta Refresh Redirects</strong> — No meta refresh redirects detected</li>
+      <li data-page-node-id="yV16cV4cYoYryvsBQArR6k"><strong data-page-node-id="kDrErZ37ODIbuPIgtRHmpR">Viewport Configuration</strong> — All pages have correct viewport meta tag</li>
+      <li data-page-node-id="wiEmuuYT0FtdDygDdAffrL"><strong data-page-node-id="RzuUy9QR5AotgjycorI4rC">Large HTML Page Size</strong> — All pages under 70KB (well within limits)</li>
+      <li data-page-node-id="gwKvGgaUPlfpxejHuJBPwC"><strong data-page-node-id="Eg0rkROs6vFF75QPXu01E7">Invalid robots.txt Format</strong> — robots.txt is valid and well-structured</li>
+      <li data-page-node-id="v0zHgtfxdWlxOb8zAGYIn8"><strong data-page-node-id="A9KFUfcFndVZd3T0NHBYDP">Invalid sitemap.xml Format</strong> — sitemap.xml is valid XML with 87 URLs</li>
+      <li data-page-node-id="YJsAXWC4Gl3F5DXskwEMG8"><strong data-page-node-id="Vzu4gPUC4tiAh92YytagEL">Too Large sitemap.xml</strong> — Sitemap is small (~30KB, well under 50MB limit)</li>
+      <li data-page-node-id="ia1BZa2ABJagotsS1SSHXt"><strong data-page-node-id="aGcA3VZDvjRHUH4bcH2FlQ">Broken Internal Images</strong> — All referenced images exist in dist/</li>
+      <li data-page-node-id="D5grotbXdn7lXWA1mlhTRg"><strong data-page-node-id="bpyE6MjqWsUwh8ArgBJbkZ">Invalid Structured Data</strong> — All JSON-LD blocks parse successfully</li>
+      <li data-page-node-id="lJ4Y7pLEVC3sXvgvnVG7Fb"><strong data-page-node-id="eHUEIdn1csyFrY36EtWowT">Hreflang Issues</strong> — No hreflang tags (site is English-only, so this is expected and not an issue)</li>
+      <li data-page-node-id="AGvevDQI4d70f6jz9zdU7o"><strong data-page-node-id="ZrODoRh2wRg9TobrREl4DS">AMP Canonical Issues</strong> — No AMP pages (not applicable)</li>
+      <li data-page-node-id="CANYjFq37ihNBXloeB7pIx"><strong data-page-node-id="NqAzuvAMzHbNZpuA1dBQHF">Broken JS/CSS Files</strong> — All CSS and JS references resolve</li>
+      <li data-page-node-id="Yd3fdHbHRFj0WzLCvw44zX"><strong data-page-node-id="rB3AfA5uTyCSRNHP9fF4yd">Insecure Encryption Algorithms</strong> — TLS 1.3 only, no insecure ciphers</li>
+      <li data-page-node-id="xPmYBi8FpaM6Re1nFlAw8m"><strong data-page-node-id="EybmsPu21lZvCbIwmtZfUW">Malformed Links</strong> — No malformed link URLs detected</li>
+      <li data-page-node-id="rrBJqfW0R3Cr7APH4rJsbR"><strong data-page-node-id="P3cEy9XmXPxcawbKvrU6l0">Viewport Width Not Set</strong> — Viewport width=device-width is set on all pages</li>
+      <li data-page-node-id="depNtOVGVzcKNKfORCzAg7"><strong data-page-node-id="KTF3Hd0TNuROFuwLMXVjgC">Non-Secure Pages</strong> — All pages served over HTTPS</li>
+      <li data-page-node-id="VdpdzHmzLVc2GIJDJPVfLk"><strong data-page-node-id="V1YiQQD99fhJClXjEqMlF7">Incorrect Pages in Sitemap</strong> — All sitemap URLs correspond to built pages</li>
+      <li data-page-node-id="Ve49uwFf0FHNjEXW9GJSBs"><strong data-page-node-id="u7kbCj190u0IBc4GjSCEdd">Pages Not Crawled</strong> — No crawl-blocking issues detected (robots.txt allows all)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== SUMMARY TABLE ==================== -->
+
+<h2 data-page-node-id="CYDjQyf4hcBiiPDpevNp6u">Issue Summary by Priority</h2>
+
+<table data-page-node-id="9M7uxZpnPkSeC3W3P7ELKn">
+  <tr data-page-node-id="4orkqo9O2UG2WNGMkeUzwn"><th data-page-node-id="OdN5fUivtrcGAP2ZOWjFKg">#</th><th data-page-node-id="GxcyRb0LLJY8GMEWRmsPPi">Category</th><th data-page-node-id="kTElA9QDFuKT4zqpUSsQ51">Severity</th><th data-page-node-id="ueCLCnEWPLfqrXphVxHa4c">Status</th><th data-page-node-id="ulS6UCV3NDCsIW4i5iBd9K">Details</th></tr>
+  <tr data-page-node-id="6we3z6clYKPBzz5Vadexr0"><td data-page-node-id="MdNxgB1mBsnHv9azkF9EPh">1</td><td data-page-node-id="54f9fxhS350NBEIBmISkKu">5xx errors</td><td data-page-node-id="FCrlFYMldnq6MXfm7TCewi">—</td><td data-page-node-id="oG9ypMPB9BCEOPwwqeKMgB"><span class="tag tag-green" data-page-node-id="sjOWlRypUDXypxz6J602xI">PASS</span></td><td data-page-node-id="Yhv3pYNFHCIFlcKAU9TTmD">No 5xx errors detected</td></tr>
+  <tr data-page-node-id="McGWnecPphNsC95WFAUxgJ"><td data-page-node-id="lUIL4MmsgOEaNHutbvR79k">2</td><td data-page-node-id="SqXHnwSmEGv3qKxUWXvGHo">4xx errors</td><td data-page-node-id="pjCaR2XowV28UOZ267SD6u">Critical</td><td data-page-node-id="q7mmlNeDZmYiCIp8kXgNil"><span class="tag tag-red" data-page-node-id="sfPyfVsDMEzS7YJ8sDeIMy">FAIL</span></td><td data-page-node-id="8QpAqhziXIh8iDhRfQzfNa">8 deprecated game slugs return 404; 3 return 200 but will 404 after rebuild</td></tr>
+  <tr data-page-node-id="3OOUEqm8nh9KJ8qD86Inxu"><td data-page-node-id="bUaCilika8KcxLH9HDRkSx">3</td><td data-page-node-id="qAQ1NxbMAgQ8kZDQunFBDs">Missing title tags</td><td data-page-node-id="p1cMd6hpzBrFc5ciG7mCfq">—</td><td data-page-node-id="zgGnKUXCDFLKuBXFUnynAo"><span class="tag tag-green" data-page-node-id="l925ZkRPIIxK5pFh335cyU">PASS</span></td><td data-page-node-id="wRCgsLvncZGBdO6iOMjgbv">All pages have titles</td></tr>
+  <tr data-page-node-id="VkIEDUPWRcpZqiwkdLm9Q4"><td data-page-node-id="mBWsVoN9hEwyOYsLCKw1Vt">4</td><td data-page-node-id="0KmyfwctHQMPzn7yiLOcVy">Duplicate title tags</td><td data-page-node-id="R3ScFCPHY3gAsXI6TCf2Pr">—</td><td data-page-node-id="ZED3RGoYOB3dWGnpvfoWwr"><span class="tag tag-green" data-page-node-id="ZvMVEQLLUBuPtfxGa3dOEF">PASS</span></td><td data-page-node-id="bpaiZdJA3lqt3pZcQaG1Vk">No duplicates</td></tr>
+  <tr data-page-node-id="9vXNVMieDA3DCxOEu68ivD"><td data-page-node-id="k8raLY2RU166dPLuJGSziH">5</td><td data-page-node-id="AcQaeKyQ4vWrFhrPrd4chQ">Duplicate content</td><td data-page-node-id="0F0GpOOUeuRUufr0cz2jBj">—</td><td data-page-node-id="xazZMYo5eN8q3syWUV1zM0"><span class="tag tag-green" data-page-node-id="c8h3AONPnbsOwihdATA0Qj">PASS</span></td><td data-page-node-id="GQhuVVKSMLg9oDRHNBVGEh">No duplicates</td></tr>
+  <tr data-page-node-id="GdfK0LtY8MHGQ2WNsdzEH1"><td data-page-node-id="VRDXqAo8TcEh7WCsiAArxk">6</td><td data-page-node-id="E72MNLQifOnEjlm3yBaai9">Broken internal links</td><td data-page-node-id="0PKaH9PQ5f3Qc94VeytktJ">Critical</td><td data-page-node-id="n7XgVro0jWXqdEC2u3SHev"><span class="tag tag-red" data-page-node-id="LrbAGoJbdjnPJ3ED7Cuopg">FAIL</span></td><td data-page-node-id="AaLyAvlfUx0ofZ9fSxespX">145 trailing-slash links cause 308 redirects</td></tr>
+  <tr data-page-node-id="8drMwUeyk24Kfb9Cruz1ML"><td data-page-node-id="eyemAoVeLheojy0kMQ0UUV">7</td><td data-page-node-id="Y9X4Xh80PzTERsS4xA1ls8">Pages not crawled</td><td data-page-node-id="KqU7kTADv0cVyZoMZCB2VY">—</td><td data-page-node-id="5SdwikKfYTg0S8ccLDZCA9"><span class="tag tag-green" data-page-node-id="KXFQqK9h7LNbzoJl92XSLN">PASS</span></td><td data-page-node-id="Xsjt9qUHAn57KzDNDuGmBV">robots.txt allows all</td></tr>
+  <tr data-page-node-id="cYKF6lreqd5V69NvJ9u8tR"><td data-page-node-id="xQSoUuVzPxfpyzOfXJcOgC">8</td><td data-page-node-id="rEwIeXBE2S4ou3Bd2aExCZ">DNS resolution issue</td><td data-page-node-id="1KRuAS2HQ80XIEzaUpaJOU">—</td><td data-page-node-id="PIBRMG0iDIFGGA1ypVhhjB"><span class="tag tag-green" data-page-node-id="zuBiwzbvouI6KERClPFaxC">PASS</span></td><td data-page-node-id="pOlCxkbzG5BPQVEoYYdCkg">DNS resolves correctly</td></tr>
+  <tr data-page-node-id="VrzaspX2lz2mo6jMkz8V5N"><td data-page-node-id="EyrorYEpGtOcstbfoT3VDG">9</td><td data-page-node-id="JntucTRu0iKg7COrBZD7Qg">We couldn't open the page's URL</td><td data-page-node-id="mCd1qSEx3BePnGCrEbzcnp">—</td><td data-page-node-id="xBGVghhiS61ZitkhFCYzuG"><span class="tag tag-green" data-page-node-id="kpYzGcyRfTxSw3EGAYDmbK">PASS</span></td><td data-page-node-id="CxsFglHvQ5Gv9gaQJOMdl3">All key URLs return 200</td></tr>
+  <tr data-page-node-id="AuEvDhbtA5k6qjwcl2PGer"><td data-page-node-id="8mvOzEyZXGNiStDuOOsy2h">10</td><td data-page-node-id="OHkqBKIcAnsLsYk3Zm98FL">Broken internal images</td><td data-page-node-id="MglCESt8iZ0nNZFmM5Wp0j">—</td><td data-page-node-id="Ra0taiZmRQDWwCSlDYLhXE"><span class="tag tag-green" data-page-node-id="uGvD4qd9FJ7dOxefg1qICO">PASS</span></td><td data-page-node-id="DMghb5wSi8Gf6kL11XG8WV">All images exist</td></tr>
+  <tr data-page-node-id="tP9ax527xNtyAw0sLZlqzj"><td data-page-node-id="JCl3XofcUb3gDbzzTBveOF">11</td><td data-page-node-id="82bE1T4tZnzzukHLq0FbhN">Duplicate meta descriptions</td><td data-page-node-id="REhhm1styPlTcA2o8HM82w">—</td><td data-page-node-id="FsKBmQIeSHp3isPryD77mL"><span class="tag tag-green" data-page-node-id="j9PxpzEFuJSwVXKqs7FGKT">PASS</span></td><td data-page-node-id="GAqFNKfIzCjliYNEbH3yYo">No duplicates</td></tr>
+  <tr data-page-node-id="pq2B7LohYwN9atFDKKVPoA"><td data-page-node-id="09oy0NRQb0Y1KyCrUsIHWJ">12</td><td data-page-node-id="03v72YiEAfxlwIYdpt0xLc">Invalid robots.txt format</td><td data-page-node-id="26CM4E7pRiokpJJHCjQo2B">—</td><td data-page-node-id="1EGz93smUoVTHzN7ORFgxb"><span class="tag tag-green" data-page-node-id="IeMQPyRl8Cmd80A59pjGum">PASS</span></td><td data-page-node-id="MnmZXz5mpvSWtVlGHa0De7">Valid format</td></tr>
+  <tr data-page-node-id="BG3O6K4mnhRsDfOyx665MU"><td data-page-node-id="35NINDZGqvXljvO0QsZhMu">13</td><td data-page-node-id="Z1WGwAB1p4CP4OVdGYixoF">Invalid sitemap.xml format</td><td data-page-node-id="DB7WN8eHHVxUv6FjqiICoR">—</td><td data-page-node-id="zzIp8ruAupOEBbWMM4CstA"><span class="tag tag-green" data-page-node-id="X0Iaci4I7fJtIyyY1D76XA">PASS</span></td><td data-page-node-id="L3c0EN3bEvty2qD2kvCke3">Valid XML</td></tr>
+  <tr data-page-node-id="F0WdkuRa58uPsjy0wdEAex"><td data-page-node-id="8tBHbU6c12JEdHwtUyyu5d">14</td><td data-page-node-id="A1naKAq796uhzeaQJLLjQa">Incorrect pages in sitemap</td><td data-page-node-id="q394HFWHrLaFBQxrKSMnZW">—</td><td data-page-node-id="2hGr2s7sS4mUtH90UM43eu"><span class="tag tag-green" data-page-node-id="6NkEqXi2hbPgqBVodUbL7Z">PASS</span></td><td data-page-node-id="uf4sE6mpRuSmIlkkPciiCY">All URLs exist</td></tr>
+  <tr data-page-node-id="cTcsyWo255CzIgg0OTNF49"><td data-page-node-id="mO5bsuCveJGjYBCK2sgYRy">15</td><td data-page-node-id="akEDszPoQXuWdJvEZ594bR">www resolve issues</td><td data-page-node-id="YhqnbKvuQA5pEaC9xAfhEE">—</td><td data-page-node-id="Y9jChISjgGBZ5VT2mTn67W"><span class="tag tag-green" data-page-node-id="DX5NQ6L9AfHLqOaPN9ozGI">PASS</span></td><td data-page-node-id="Y5fAUKhqqqU74oNJY5tutf">www → non-www 301 redirect</td></tr>
+  <tr data-page-node-id="pqjSxCe5HzXTgl7UMFzhZE"><td data-page-node-id="bIkWrL9jkVD8W4C7WWqP63">16</td><td data-page-node-id="73qg4HFlrOSwL2OhAnRKKq">Viewport not configured</td><td data-page-node-id="TxLu5KDgXiqLVXPpVaC4Yg">—</td><td data-page-node-id="obfivfgbOfVwVYSoXlec1o"><span class="tag tag-green" data-page-node-id="bpx9ODPbCEKhz7nLqrwvOh">PASS</span></td><td data-page-node-id="jJOle9yZqoxraXcUMxVzXK">All pages have viewport</td></tr>
+  <tr data-page-node-id="CWvesQzdS4vcgiu4hpa9Ak"><td data-page-node-id="RxDKsuYDV0hwNWq98C90iN">17</td><td data-page-node-id="wjQQDEEj9tSYcjfZd8WAFp">Large HTML page size</td><td data-page-node-id="LYJjdovmMFbTC5nloAEyaE">—</td><td data-page-node-id="Gs5KtJGbzrYe0FpUv1tc6a"><span class="tag tag-green" data-page-node-id="DntOR5s4dIDt1ZEAlcSori">PASS</span></td><td data-page-node-id="8FNm3p0Y41VNbFM16yAQq9">All under 70KB</td></tr>
+  <tr data-page-node-id="ZDA6TJWYab52HOjRvrjtD4"><td data-page-node-id="168FPcr8iaW7t78OfQVUbw">18</td><td data-page-node-id="RvY0aX7d1yYSyPBE2IEx9O">Missing canonical in AMP</td><td data-page-node-id="S6LMb7ntANeLMC2d4UdrlQ">—</td><td data-page-node-id="8CVVI3x2sclU3mOUY8tn6o"><span class="tag tag-green" data-page-node-id="9aHvoYz9zEHnGdkKUJuK5I">N/A</span></td><td data-page-node-id="q4ycwHjWqpPsp0hapMEXGj">No AMP pages</td></tr>
+  <tr data-page-node-id="8CMCNw61A2oGfEJ8PVN10W"><td data-page-node-id="LIHvmUYRIhyy6tISBR3W2k">19</td><td data-page-node-id="14ITpFj1mU3Kby21jTCvt9">Issues with hreflang values</td><td data-page-node-id="aZBlIGvgptcwLwnJMdpgqF">—</td><td data-page-node-id="1hYBKWu7G730w8bAqzJZvc"><span class="tag tag-green" data-page-node-id="s4YfHEzu16IiQF1imYVYvz">N/A</span></td><td data-page-node-id="IpqRHysEBpDVraNbsfzFGX">No hreflang (single language)</td></tr>
+  <tr data-page-node-id="8cif5pTDmGl0tAZfABeNDX"><td data-page-node-id="MRatnb0qFXMA0mrj1quAr3">20</td><td data-page-node-id="juRkNwWFjWdStpX78v7zar">Hreflang conflicts</td><td data-page-node-id="PpeBRNI9mtZhEOR4PsNlyL">—</td><td data-page-node-id="N9htV5AIrJ0Ot1o5Kgtpgc"><span class="tag tag-green" data-page-node-id="PvFkVb2Y754BDkPxADmb8q">N/A</span></td><td data-page-node-id="GW2ig68XLNvo7a4DSsWIUC">No hreflang</td></tr>
+  <tr data-page-node-id="TS5b9WFXcDDLpHhoD4Cd8I"><td data-page-node-id="wga4XKkOfW7zdyPltOtdkG">21</td><td data-page-node-id="o16QPYdvVzZmvsrRDfWWEr">Incorrect hreflang links</td><td data-page-node-id="a7qdTUN0xGA62RkMxTO6cP">—</td><td data-page-node-id="2jZxzySBS4A5QQS3qqeq0T"><span class="tag tag-green" data-page-node-id="NCP6jeWTYCHia7RKUmoosl">N/A</span></td><td data-page-node-id="Pl8aRbGAYg1as3h3Ge6CZ3">No hreflang</td></tr>
+  <tr data-page-node-id="68gcmX9IqEs5DTjzJsh90o"><td data-page-node-id="pqBr21nn1OEhdAXKoJjbSB">22</td><td data-page-node-id="daHviNXI2bqlWouXbn6v9a">Non-secure pages</td><td data-page-node-id="57IG1ty2shh6dV7oFJYnp7">—</td><td data-page-node-id="JtD1pl3enmnt5GwS3mjffk"><span class="tag tag-green" data-page-node-id="hFXBOPvAAR1eIGX9W8IXMv">PASS</span></td><td data-page-node-id="Hhj4wbVKCclgbVhbYQW6FH">All HTTPS</td></tr>
+  <tr data-page-node-id="6G7jQHI3CiHWIMFxFgJKl8"><td data-page-node-id="MV77SWWj7ehshpzBUs5sSC">23</td><td data-page-node-id="2wHCvlmdC7lE3DEAq3tqK4">Certificate expiration</td><td data-page-node-id="nRZIt2mNnpnMWWqinsDZce">—</td><td data-page-node-id="2o2eE5bCDUtocuLt7b6ZI5"><span class="tag tag-green" data-page-node-id="eB3CPaSzvve3lO4fTDITcP">PASS</span></td><td data-page-node-id="ij2w9oxUVc0PbWBTMxi9cA">Valid until Oct 30, 2026</td></tr>
+  <tr data-page-node-id="gpmADnWldVn66JfTnYocSz"><td data-page-node-id="BHB9iEyoU9vaVN46BKuSer">24</td><td data-page-node-id="WMtizR3FPQT7PcXt6TcAw7">Old security protocol</td><td data-page-node-id="nH1RSmttXArGdEDeKYKLu9">—</td><td data-page-node-id="v2KbaQ63ea0249iqPBEd6R"><span class="tag tag-green" data-page-node-id="d4xixZtIFM2opvhhQp2AeZ">PASS</span></td><td data-page-node-id="tq27liuCuGygXIDWWCHAwY">TLS 1.3</td></tr>
+  <tr data-page-node-id="zUCc43Fbn1zCxJxdC5Path"><td data-page-node-id="c5CUnDgGZGKm8NrTQeOa54">25</td><td data-page-node-id="7QRSkq0g0yVEa9DE1BdCAF">Cert registered to wrong name</td><td data-page-node-id="RFCbbfKWR0KNNBRQMf7RMu">—</td><td data-page-node-id="Zi8djGCBFpQDTT0pWtWj3K"><span class="tag tag-green" data-page-node-id="iPaURYG3WCQ0L0qM6BGg2E">PASS</span></td><td data-page-node-id="4wnJPIrH7VSMPo3GuBEFNv">Cert for *.poki2.online</td></tr>
+  <tr data-page-node-id="7rcfHUQh5PCKrG2pxFCBaS"><td data-page-node-id="auOLUEZXksZAofQ0QKr0gC">26</td><td data-page-node-id="yQ0VAFb3ZCG1tLgXxujEiP">Mixed content</td><td data-page-node-id="3XyRMz9AhjI5I7qHhzDSIB">—</td><td data-page-node-id="rGymM9HZzCSwSEscrUVMFv"><span class="tag tag-green" data-page-node-id="vQEDO2vky8zCGUyLHTIJT9">PASS</span></td><td data-page-node-id="ab6UugrdaSVAKAMaUNl4SC">No HTTP resources on HTTPS</td></tr>
+  <tr data-page-node-id="zH3S0Wz1HjeTnVrU22ahdh"><td data-page-node-id="ji9FwfynUhM50x73W5Zlpv">27</td><td data-page-node-id="VSqGC2oNolXEk6D10NgmjK">No canonical/redirect from HTTP homepage</td><td data-page-node-id="JScgNxRo1q4GpyzpiX9REE">—</td><td data-page-node-id="b4IMX6nWNRDzqhUhYApD2A"><span class="tag tag-green" data-page-node-id="bKbGDG6TlO0fEECQ7IYptj">PASS</span></td><td data-page-node-id="Lbz66LP6kw5UHvVB1LGFsv">HTTP → HTTPS 301 redirect</td></tr>
+  <tr data-page-node-id="EonMeCWahAmPzfI4BqVEa7"><td data-page-node-id="dVKiRCbWO3bXTGKqeyTkUe">28</td><td data-page-node-id="3m7pBuZe8HD49QP5anIcty">Redirect chains and loops</td><td data-page-node-id="bsbg9ZaU5aOnl4r6fUjIo4">Warning</td><td data-page-node-id="0twfrCVjZwo7WLcXPezHKc"><span class="tag tag-yellow" data-page-node-id="tcyggfwVMQ5yCwFM1mDCM2">WARN</span></td><td data-page-node-id="Y4zuwGmGEGsffCdHnoJpMC">145 trailing-slash 308 redirects (single-hop, not chains)</td></tr>
+  <tr data-page-node-id="k0DXjtjSCpAKzvy6YYFaQD"><td data-page-node-id="HFH7EFnaJX3byGjM1k8Zdq">29</td><td data-page-node-id="PSVt08HN8LcqKMvTWxp84O">Broken canonical URLs</td><td data-page-node-id="pVFEM129aGS2mHhqgcJzNV">—</td><td data-page-node-id="ijTV2QZOYGNkYTAoFWHaSm"><span class="tag tag-green" data-page-node-id="tfx2rYE0IKOuKFWHpZtSXL">PASS</span></td><td data-page-node-id="dRDiGn9oNjn3wu1XsCPBoD">All canonicals resolve</td></tr>
+  <tr data-page-node-id="DQ3SJQQe4n3Wnc6vLOi3UH"><td data-page-node-id="FkFhO92cjszZD3zBFj1lOk">30</td><td data-page-node-id="8Wrbt9K3RcEUWyytPgOT6f">Multiple canonical URLs</td><td data-page-node-id="to4uoXiXhfKsasxu2MVAUv">—</td><td data-page-node-id="Af9Ltdud2DMphh5g1v4u52"><span class="tag tag-green" data-page-node-id="WTFTqBmVFeqzQeKJr5YHtB">PASS</span></td><td data-page-node-id="Ueb59zVpjKFbuZ3zIm5Q1P">One canonical per page</td></tr>
+  <tr data-page-node-id="dIHJ2oAC6GTaFvv0W2oq6F"><td data-page-node-id="jxNVYPAL688wGcSKFfMNqi">31</td><td data-page-node-id="YBrgfJdivZwT9YMmrFGBqb">Meta refresh redirects</td><td data-page-node-id="ETICTGjRg3EPQmGxFMaLdG">—</td><td data-page-node-id="vz5vm60NjRFK27BTz9mofT"><span class="tag tag-green" data-page-node-id="5yxCHjSFDes2PcVW0FM2z1">PASS</span></td><td data-page-node-id="PyrgCOAKDxs6fcW7s5Z9CU">None detected</td></tr>
+  <tr data-page-node-id="TED3kDplk6Ro9578T6XHgV"><td data-page-node-id="WPZM70phshl5xwacyEOD67">32</td><td data-page-node-id="apFuFCIw43GvZUpQvB7obs">Broken JS and CSS files</td><td data-page-node-id="V2MkW8qh69Qvq54uBqnDIT">—</td><td data-page-node-id="lzUZrvKtcVTcZ2OOErqiWR"><span class="tag tag-green" data-page-node-id="FLmd4ibXZkRueFRD1orwSY">PASS</span></td><td data-page-node-id="X2KcdaG1Dxjt8XoxKPVSzx">All resolve</td></tr>
+  <tr data-page-node-id="kD4VzhIhnUrCwfcPSQFzT1"><td data-page-node-id="wRMPH8Dk3Ixim1hp8bC717">33</td><td data-page-node-id="6UyHewdZWaMyvJ8TTbzpa6">Insecure encryption algorithms</td><td data-page-node-id="mruFwuKitoJp8TapyHYRTs">—</td><td data-page-node-id="QL1IMoaHBbFrv6BXlzO6XT"><span class="tag tag-green" data-page-node-id="t6dxn5AD0xx9ux1qvPCTAt">PASS</span></td><td data-page-node-id="r3GDzpAHtUrSUbFGThxJRD">TLS 1.3 only</td></tr>
+  <tr data-page-node-id="ZQugoEvqSm71lk6vXDdB6j"><td data-page-node-id="J7fQN2EOcGjAgcNZmMP8t2">34</td><td data-page-node-id="59WXYhis4VGA2Y0rlnvW0L">Too large sitemap.xml</td><td data-page-node-id="8uOKmT0LHdXS6uqxraKc1N">—</td><td data-page-node-id="UFvGHHEvL6f5yCg6WXHO1J"><span class="tag tag-green" data-page-node-id="lZKL2tKyAhMKpPmspLpqOi">PASS</span></td><td data-page-node-id="lL9xJ1Wo1kfFvTbCbT0mzL">~30KB</td></tr>
+  <tr data-page-node-id="ICQZOei25YguFEzVo6Wztb"><td data-page-node-id="H5lsLHFqNkfzYmWGkF3rfR">35</td><td data-page-node-id="ux6uueJKr1Oq7lrdHjToui">Malformed links</td><td data-page-node-id="kBcF09fDdhle4G6r8Y8tj6">—</td><td data-page-node-id="OoQ64OADPLVmgGVNI25p1h"><span class="tag tag-green" data-page-node-id="GfjoFjf7my6yrIeMOIB0sU">PASS</span></td><td data-page-node-id="U0ORQwjOIrlRdLB7yxDI8H">None detected</td></tr>
+  <tr data-page-node-id="S6kebMGp8eU3Dh3VCs2eOK"><td data-page-node-id="PV0nvp9kFvxBgnOBC3gVJX">36</td><td data-page-node-id="aqwAnYJ9YL33wl39FRU8Ii">Invalid structured data</td><td data-page-node-id="NX1LU9rM1CiCkzwhknATGD">—</td><td data-page-node-id="hwGQ7F9eUsDEg0qUOR9sts"><span class="tag tag-green" data-page-node-id="aoDBex0AtDY8rmIZf9n81A">PASS</span></td><td data-page-node-id="6bJG4X8EElqHvjGItR5RWY">All JSON-LD valid</td></tr>
+  <tr data-page-node-id="zjntn86uvqmPZ9ZktD3CS5"><td data-page-node-id="vF9SD54dixpFm9jL8VqB7f">37</td><td data-page-node-id="cGaPE9SR2QWzfpSUoJSNON">Viewport width not set</td><td data-page-node-id="iPE3KWTAGrgS4oeiR9Qu95">—</td><td data-page-node-id="vLVFIYsBdsQq8GbExym0Uj"><span class="tag tag-green" data-page-node-id="jzXHtCHPK2pGjbHPJ2qLvk">PASS</span></td><td data-page-node-id="0Dh85NqDEj9Y5Rc03l6Ef0">width=device-width on all</td></tr>
+  <tr data-page-node-id="v0N0TdcNrC2XqP55CyJiju"><td data-page-node-id="s4zMiBs0Ljz6leHVwXu3Hm">38</td><td data-page-node-id="sNuzt9xHhKpYkCwQ4AJkne">Slow page load speed</td><td data-page-node-id="reZOX7s2CQaMCckZWFQAcR">Warning</td><td data-page-node-id="tpFVK52xewgMHDtymKEKva"><span class="tag tag-yellow" data-page-node-id="FsaQbI1LBGu5ljWATobibb">WARN</span></td><td data-page-node-id="JwJ9KMypqvQFMcm2anmmWA">Render-blocking cookie consent script</td></tr>
+</table>
+
+<!-- ==================== RECOMMENDED FIX ORDER ==================== -->
+
+<h2 data-page-node-id="E8ytZly7jo0OB5zSWd9kBP">Recommended Fix Order</h2>
+
+<div class="issue" data-page-node-id="9sDd6AxMxlH9zi5m0blKim">
+  <div class="issue-title" data-page-node-id="LXIAowCDcOBuofxqiKK9x4"><span class="dot dot-blue" data-page-node-id="byhdPJlhsmLsNAyQhegfG3"></span> Priority Action Plan</div>
+  <div class="issue-desc" data-page-node-id="PV3eg6ACGaBFwrNHK2vlAq">Fix issues in this order to minimize risk and maximize SEO impact:</div>
+  <div class="issue-detail" data-page-node-id="SyArrJuQvlD5vhNzyNwC8i">
+    <ol data-page-node-id="1gSk1LPbKEg8x4mFzfahn2">
+      <li data-page-node-id="Mk3NSkKFLSlxDCGkxQAJ2N"><strong data-page-node-id="qY0zpbQo8dGDUKCtInbEKp">Fix config.js double comma</strong> (line 1033) — prevents potential build failures</li>
+      <li data-page-node-id="eCagWEWYZSN868qWBsLC5Y"><strong data-page-node-id="uDbTmF1W3GG4AI3sLTbkIw">Fix &amp;amp; in blog title</strong> — immediate search result appearance improvement</li>
+      <li data-page-node-id="u9Q90WojanCmGRm6ZjR6xD"><strong data-page-node-id="WlVi9rOjTY1HFNzEHLVvei">Add 301 redirects for all 11 deprecated game slugs</strong> in <code data-page-node-id="tEkwAnT0bBurzjfmol3cJq">_redirects</code> — prevents 404s and preserves link equity</li>
+      <li data-page-node-id="CtM7RCZ1p54HkEnbRJCTmx"><strong data-page-node-id="h36B3H6o7GkdUOjBeRjtMU">Fix article template cookie consent</strong> — required for AdSense compliance on blog pages</li>
+      <li data-page-node-id="AGiJ0nvSKkKcjkxru2dR5j"><strong data-page-node-id="qh8nFEI2QFcLtgyvaJdkTb">Fix sitemap lastmod</strong> — use isoUpdated instead of isoDate for blog posts</li>
+      <li data-page-node-id="qlwMi521SzGGTreaKJZTQ2"><strong data-page-node-id="SCXyyvyFuDDWa7G7pBmzyp">Fix 404 page CSS version</strong> — v=3 → v=5</li>
+      <li data-page-node-id="Arq2TTCEv8Vi3shO8GJUTL"><strong data-page-node-id="xXBVjvoLwsjcArLoRgSHGh">Fix trailing-slash internal links</strong> — remove trailing slashes from all /fgame/SLUG/ links in content fragments</li>
+      <li data-page-node-id="ulzIGthWMW2KgsVPx6q21c"><strong data-page-node-id="KsPHHThVgTmkYsvFjzWE94">Add google-site-verification</strong> to article and game templates</li>
+      <li data-page-node-id="pzE0AD1yOkNjK47YLQ4CRq"><strong data-page-node-id="mtSQpcqFLHQeofBELNEWVK">Add defer to cookie consent script</strong> — improves page load speed</li>
+      <li data-page-node-id="w3N0faGmoHIbYUIOommvXZ"><strong data-page-node-id="iBp2tRGxTPIpNpp0fypMz3">Fix deprecationReason quote mismatch</strong> — cleanup</li>
+      <li data-page-node-id="tqKdqFvWvXPDAXmPSnC81F"><strong data-page-node-id="B6IX82ASS6oJEnNDGtyhXu">Wire orphan game fragments</strong> — SEO growth opportunity</li>
+    </ol>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

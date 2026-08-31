@@ -829,7 +829,7 @@ function buildSitemap() {
   const blogUrls = blogPosts.map(p => `
   <url>
     <loc>${site.domain}/blog/${p.slug}</loc>
-    <lastmod>${p.isoDate || now}</lastmod>
+    <lastmod>${p.isoUpdated || p.isoDate || now}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>`).join('');
@@ -838,7 +838,7 @@ function buildSitemap() {
   const gameUrls = visibleGames.map(g => `
   <url>
     <loc>${site.domain}/fgame/${g.slug}</loc>
-    <lastmod>${g.isoDate || now}</lastmod>
+    <lastmod>${g.isoUpdated || g.isoDate || now}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>`).join('');
