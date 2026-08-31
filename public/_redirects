@@ -7,3 +7,29 @@
 /games          https://play.poki2.online/             301
 /games/         https://play.poki2.online/             301
 
+# Deprecated game pages → games index (301 to preserve link equity)
+/fgame/moto-x3m              /fgame/  301
+/fgame/moto-x3m/              /fgame/  301
+/fgame/fireboy-and-watergirl  /fgame/  301
+/fgame/fireboy-and-watergirl/ /fgame/  301
+/fgame/vex-3                  /fgame/  301
+/fgame/vex-3/                 /fgame/  301
+/fgame/paper-io               /fgame/  301
+/fgame/paper-io/              /fgame/  301
+/fgame/color-switch           /fgame/  301
+/fgame/color-switch/          /fgame/  301
+/fgame/cut-the-rope           /fgame/  301
+/fgame/cut-the-rope/          /fgame/  301
+/fgame/hill-climb-racing      /fgame/  301
+/fgame/hill-climb-racing/     /fgame/  301
+/fgame/agar-io                /fgame/  301
+/fgame/agar-io/               /fgame/  301
+/fgame/krunker-io             /fgame/  301
+/fgame/krunker-io/            /fgame/  301
+/fgame/soccer-random          /fgame/  301
+/fgame/soccer-random/         /fgame/  301
+/fgame/basket-random          /fgame/  301
+/fgame/basket-random/         /fgame/  301
+/fgame/bitlife                /fgame/  301
+/fgame/bitlife/               /fgame/  301
+

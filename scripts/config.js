@@ -529,7 +529,7 @@ const blogPosts = [
   },
   {
     slug:       'best-idle-clicker-browser-games',
-    title:      '8 Best Idle &amp; Clicker Browser Games to Play in 2026',
+    title:      '8 Best Idle & Clicker Browser Games to Play in 2026',
     description:'Cookie Clicker, Clicker Heroes, Realm Grinder and more — the best idle and incremental browser games ranked by depth, replayability, and session flexibility.',
     date:       'April 5, 2026',
     isoDate:    '2026-04-05',
@@ -768,7 +768,7 @@ const gamePosts = [
     description: 'Play Moto X3M free in your browser — a stunt motorbike game featuring increasingly difficult obstacle courses. Perform backflips and wheelies to earn stars on each level.',
     embedUrl:  'https://azgames.io/moto-x3m.embed',
     deprecated: true,
-    deprecationReason: 'Access denied. Authorization required."',
+    deprecationReason: "Access denied. Authorization required.",
     imgUrl:    '/imgs/fgame/moto-x3m.png',
     genre:     'Stunt Racing',
     category:  'Racing',
@@ -863,7 +863,7 @@ const gamePosts = [
     description: 'Play Fireboy and Watergirl free online — a legendary 2-player co-op puzzle platformer. Guide fire and water characters through elemental temples, solve puzzles, and reach the exit together.',
     embedUrl:  'https://azgames.io/fireboy-and-watergirl.embed',
     deprecated: true,
-    deprecationReason: 'Access denied. Authorization required."',
+    deprecationReason: "Access denied. Authorization required.",
     imgUrl:    '/imgs/fgame/fireboy-watergirl-1.png',
     genre:     '2-Player Co-op',
     category:  'Platformer & Arcade',
@@ -891,7 +891,7 @@ const gamePosts = [
     description: 'Play Vex 3 free in your browser — a challenging stickman platformer with increasingly devious obstacle courses. Master the wall-jumps, spikes, and moving platforms to survive each act.',
     embedUrl:  'https://azgames.io/vex-3.embed',
     deprecated: true,
-    deprecationReason: 'Access denied. Authorization required."',
+    deprecationReason: "Access denied. Authorization required.",
     imgUrl:    '/imgs/fgame/vex3v.jpg',
     genre:     'Stickman Platformer',
     category:  'Platformer & Arcade',
@@ -926,7 +926,7 @@ const gamePosts = [
     date:      'April 7, 2026',
     isoDate:   '2026-04-07',
     deprecated: true,
-    deprecationReason: 'Access denied. Authorization required."',
+    deprecationReason: "Access denied. Authorization required.",
   },
   {
     slug:      'color-switch',
@@ -941,7 +941,7 @@ const gamePosts = [
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
     deprecated: true,
-    deprecationReason: 'Access denied. Authorization required."',
+    deprecationReason: "Access denied. Authorization required.",
   },
   {
     slug:      'cut-the-rope',
@@ -956,7 +956,7 @@ const gamePosts = [
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
     deprecated: true,
-    deprecationReason: 'Access denied. Authorization required."',
+    deprecationReason: "Access denied. Authorization required.",
   },
   {
     slug:      'hill-climb-racing',
@@ -971,7 +971,7 @@ const gamePosts = [
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
     deprecated: true,
-    deprecationReason: 'Access denied. Authorization required."',
+    deprecationReason: "Access denied. Authorization required.",
   },
   {
     slug:      'slither-io',
@@ -999,7 +999,7 @@ const gamePosts = [
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
     deprecated: true,
-    deprecationReason: 'Access denied. Authorization required."',
+    deprecationReason: "Access denied. Authorization required.",
   },
   {
     slug:      'krunker-io',
@@ -1014,7 +1014,7 @@ const gamePosts = [
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
     deprecated: true,
-    deprecationReason: 'Access denied. Authorization required."',
+    deprecationReason: "Access denied. Authorization required.",
   },
   {
     slug:      'soccer-random',
@@ -1029,9 +1029,9 @@ const gamePosts = [
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
     deprecated: true,
-    deprecationReason: 'Access denied. Authorization required."',
-  },,
-{
+    deprecationReason: "Access denied. Authorization required.",
+  },
+  {
     slug:      '2048-drop',
     title:     '2048 Drop',
     description: 'Game 2048 Drop challenges you to merge chips strategically to create the ultimate number 2048. Dive into this addictive game!',
@@ -1190,7 +1190,7 @@ const gamePosts = [
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
     deprecated: true,
-    deprecationReason: 'Access denied. Authorization required."',
+    deprecationReason: "Access denied. Authorization required.",
   },
   {
     slug:      'bat-smash',
@@ -1270,7 +1270,7 @@ const gamePosts = [
     date:      'April 8, 2026',
     isoDate:   '2026-04-08',
     deprecated: true,
-    deprecationReason: 'Access denied. Authorization required."',
+    deprecationReason: "Access denied. Authorization required.",
   },
   {
     slug:      'blocky-hunter',
