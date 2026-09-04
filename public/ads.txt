@@ -1,3 +1,4 @@
+google.com, pub-5676206764686662, DIRECT, f08c47fec0942fa0
 google.com, pub-6199549323873133, DIRECT, f08c47fec0942fa0
 
 # Example entry for  GamePix (ad network for HTML5 games)
