@@ -87,7 +87,7 @@ function getAdsenseTemplateVars() {
     bootstrap: approved
       ? '<script>window.adsbygoogle = window.adsbygoogle || [];<\/script>'
       : '<script>window.adsbygoogle = { push: function(){} };<\/script>',
-    loader: '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6199549323873133" crossorigin="anonymous"><\/script>',
+    loader: '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6199549323873133" crossorigin="anonymous"><\/script>\n  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5676206764686662" crossorigin="anonymous"><\/script>',
   };
 }
 
