@@ -32,7 +32,7 @@ Static site powering [poki2.online](https://poki2.online/). Built with a zero-de
 | Hosting | Cloudflare Pages (`poki2-portal`) |
 | Build | Node.js (zero npm runtime deps) |
 | CSS | Single `css/style.css` (minified on build) |
-| AdSense publisher | `ca-pub-6199549323873133` |
+| AdSense publisher | `ca-pub-5676206764686662` |
 | GA4 property | `G-T69PZL0ELE` |
 | Node requirement | ≥ 18 |
 
@@ -204,7 +204,7 @@ This switch applies consistently to `base.html`, `article.html`, and `game.html`
 - **GA4** with Consent Mode v2 (`ad_storage: denied` by default until cookie consent granted)
 - **Cookie Consent** — vanilla-cookieconsent v3, GDPR-compliant bar layout
 - **Security headers** — HSTS, CSP, `X-Frame-Options: SAMEORIGIN`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy` via `public/_headers`
-- **ads.txt** — `google.com, pub-6199549323873133, DIRECT, f08c47fec0942fa0`
+- **ads.txt** — `google.com, pub-5676206764686662, DIRECT, f08c47fec0942fa0`
 
 ---
 
