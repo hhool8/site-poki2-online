@@ -448,6 +448,11 @@
           ad_user_data:      ads ? 'granted' : 'denied',
           ad_personalization:ads ? 'granted' : 'denied'
         });
+        if (ads) {
+          document.querySelectorAll('ins.adsbygoogle:not([data-ad-status])').forEach(function () {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+          });
+        }
       },
       language: {
         default: 'en',
