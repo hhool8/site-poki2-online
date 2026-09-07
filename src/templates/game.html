@@ -44,6 +44,19 @@
   <!-- Google AdSense -->
   {{ADSENSE_BOOTSTRAP}}
   {{ADSENSE_LOADER}}
+  <script>
+    function poki2PushAd(slot, attempts) {
+      if (!slot || slot.dataset.adRequested) return;
+      attempts = attempts || 0;
+      if (slot.getBoundingClientRect().width <= 0) {
+        if (attempts >= 60) return;
+        requestAnimationFrame(function () { poki2PushAd(slot, attempts + 1); });
+        return;
+      }
+      slot.dataset.adRequested = 'true';
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }
+  </script>
   <!-- Google Analytics 4 (Consent Mode v2) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-T69PZL0ELE"></script>
   <script>
@@ -667,8 +680,8 @@
           ad_personalization: ads ? 'granted' : 'denied'
         });
         if (ads) {
-          document.querySelectorAll('ins.adsbygoogle:not([data-ad-status])').forEach(function () {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
+          document.querySelectorAll('ins.adsbygoogle:not([data-ad-status])').forEach(function (slot) {
+            poki2PushAd(slot);
           });
         }
       },
