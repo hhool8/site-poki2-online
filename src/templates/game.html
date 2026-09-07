@@ -637,7 +637,8 @@
   <!-- Cookie Consent (vanilla-cookieconsent v3) -->
   <script defer src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
   <script>
-    CookieConsent.run({
+    document.addEventListener('DOMContentLoaded', function () {
+      CookieConsent.run({
       guiOptions: {
         consentModal: { layout: 'bar', position: 'bottom', equalWeightButtons: false }
       },
@@ -709,6 +710,7 @@
           }
         }
       }
+      });
     });
   </script>
 </body>

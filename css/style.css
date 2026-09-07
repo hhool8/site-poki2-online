@@ -722,9 +722,8 @@ section:nth-of-type(even):not(.hero) { background: var(--surface); }
 .ad-unit { width: 100%; overflow: hidden; margin: 1.5rem 0; text-align: center; }
 .ad-unit--leaderboard { min-height: 0; }
 .ad-unit--article { min-height: 0; margin: 2rem 0; }
-/* Hide ad slots that AdSense has not yet processed (approval pending) */
-ins.adsbygoogle:not([data-ad-status]) { display: none !important; }
-.ad-unit:has(ins:not([data-ad-status])) { display: none !important; margin: 0 !important; }
+/* Keep slots measurable while AdSense processes them. */
+ins.adsbygoogle:not([data-ad-status]) { display: block !important; min-height: 100px; }
 /* Hide explicitly unfilled slots */
 ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 .ad-unit:has(ins[data-ad-status="unfilled"]) { display: none !important; margin: 0 !important; }
