@@ -98,7 +98,7 @@ const MID_AD_HTML = `
        data-ad-format="fluid"
        data-ad-client="ca-pub-5676206764686662"
        data-ad-slot="9336055885"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>
+  <script>poki2PushAd(document.currentScript.previousElementSibling);<\/script>
 </div>`;
 
 function injectMidAd(content) {
