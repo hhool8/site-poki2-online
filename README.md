@@ -176,19 +176,16 @@ npm run deploy
 | Blog index | Leaderboard above grid | `8151800876` |
 | About page | Leaderboard | `1919331375` |
 
-AdSense behavior is controlled centrally via `scripts/config.js`:
+AdSense uses the approved publisher configuration in `scripts/config.js` and always initializes the official queue:
 
 ```js
 const site = {
   // ...
-  adsenseApproved: false,
+  adsenseApproved: true,
 };
 ```
 
-- `adsenseApproved: false` — build injects a no-op `window.adsbygoogle` bootstrap (safe for review period)
-- `adsenseApproved: true` — build injects standard `window.adsbygoogle = window.adsbygoogle || []`
-
-This switch applies consistently to `base.html`, `article.html`, and `game.html` through the build placeholders.
+The standard `window.adsbygoogle = window.adsbygoogle || []` bootstrap applies consistently to `base.html`, `article.html`, and `game.html` through the build placeholders.
 
 **Unfilled slot hiding:** `ins.adsbygoogle:not([data-ad-status])` is hidden via CSS so empty ad boxes never affect layout.
 

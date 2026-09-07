@@ -82,11 +82,8 @@ function withBrand(title) {
 }
 
 function getAdsenseTemplateVars() {
-  const approved = site.adsenseApproved === true;
   return {
-    bootstrap: approved
-      ? '<script>window.adsbygoogle = window.adsbygoogle || [];<\/script>'
-      : '<script>window.adsbygoogle = { push: function(){} };<\/script>',
+    bootstrap: '<script>window.adsbygoogle = window.adsbygoogle || [];<\/script>',
     loader: '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5676206764686662" crossorigin="anonymous"><\/script>',
   };
 }
