@@ -752,3 +752,5 @@ kbd { background: var(--surface-2, #2a2040); border: 1px solid var(--border); bo
 @media (max-width: 768px) {
   .faq-grid { grid-template-columns: 1fr; }
 }
+.az-link { color: var(--primary, #a78bfa); font-size: .92rem; font-weight: 600; text-decoration: none; padding: .25rem .4rem; border-radius: 6px; }
+.az-link:hover { text-decoration: underline; color: #c4b5fd; }

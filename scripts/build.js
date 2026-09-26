@@ -507,8 +507,26 @@ function buildPages() {
         return `<div class="featured-grid" style="margin-top:1.5rem">\n      ${cards}\n    </div>`;
       }
 
+      function renderAllGamesDirectory(games) {
+        const sorted = [...games].sort((a, b) => a.title.localeCompare(b.title));
+        const links = sorted.map(g =>
+          `<a href="/fgame/${g.slug}" class="az-link">${esc(g.title)}</a>`
+        ).join('\n        ');
+        return `<div style="display:flex;flex-wrap:wrap;gap:.55rem .9rem;justify-content:center;max-width:980px;margin:1.5rem auto 0">\n        ${links}\n      </div>`;
+      }
+
+      function renderAllBlogDirectory(blogPosts) {
+        const sorted = [...blogPosts].sort((a, b) => a.title.localeCompare(b.title));
+        const links = sorted.map(p =>
+          `<a href="/blog/${p.slug}" class="az-link">${esc(p.title)}</a>`
+        ).join('\n        ');
+        return `<div style="display:flex;flex-wrap:wrap;gap:.55rem .9rem;justify-content:center;max-width:980px;margin:1.5rem auto 0">\n        ${links}\n      </div>`;
+      }
+
       finalContent = finalContent.replace('<!-- GENERATED_FEATURED_GRID -->', renderFeaturedGrid(visibleGames));
       finalContent = finalContent.replace('<!-- GENERATED_EDITORS_PICKS -->', renderEditorsPicks(visibleGames));
+      finalContent = finalContent.replace('<!-- GENERATED_ALL_GAMES_DIRECTORY -->', renderAllGamesDirectory(visibleGames));
+      finalContent = finalContent.replace('<!-- GENERATED_ALL_BLOG_DIRECTORY -->', renderAllBlogDirectory(blogPosts));
     }
 
     const html    = fillBase(baseTemplate, page, finalContent);
