@@ -16,3 +16,6 @@ node_modules/
 
 # Session memory (per-machine)
 .workbuddy-ai/
+
+# SEO 账号档案（含密码，禁止入库）
+seo/

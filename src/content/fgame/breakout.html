@@ -1,12 +1,55 @@
 <h2>What Is Breakout?</h2>
-<p>Breakout is a brick-breaking arcade classic — bounce the ball and clear all bricks to progress.</p>
+<p>Breakout is the brick-breaking arcade classic Atari released in 1976 — a single paddle, a bouncing ball, and a wall of bricks to demolish. You move the paddle horizontally to keep the ball in play; every time the ball hits a brick, the brick disappears and the ball bounces back. Clear every brick on the screen and you advance to the next, harder layout. Let the ball fall past your paddle and you lose a life. The rules are simple enough to fit on a single line, but the angle physics, the brick colour scoring, and the escalating layouts give the game surprising depth.</p>
 
-<h2>How to Play</h2>
-<p>Move the paddle to keep the ball in play and target brick formations strategically.</p>
+<h2>How to Play Breakout</h2>
+<p>The board is split into three zones: the <strong>paddle</strong> at the bottom (you control its horizontal position), the <strong>ball</strong> bouncing around the playfield, and the <strong>brick wall</strong> across the top. Move the paddle to intercept the ball as it falls; the ball bounces off the paddle, the side walls, and the ceiling, and shatters any brick it touches. Different coloured bricks are worth different points, with the high-value colours usually placed at the top of the wall (hardest to reach) and low-value colours at the bottom.</p>
+
+<p>The angle of the ball off your paddle depends on where it hits: a centre hit returns the ball straight up; an edge hit returns it at a sharp angle. Use this to aim the ball at clusters of high-value bricks, or to angle it into the ceiling for a long arcing return that knocks out multiple bricks before coming back down.</p>
+
+<p>You start with three lives. Each brick you destroy adds to your score; each level you clear raises the ball speed slightly. The game ends when you run out of lives.</p>
 
 <h2>Controls</h2>
 <ul>
-  <li><strong>Mouse / Arrow Keys</strong> — move paddle</li>
+  <li><strong>Mouse</strong> — move the paddle horizontally (most precise)</li>
+  <li><strong>Left / Right Arrows</strong> — keyboard alternative</li>
+  <li><strong>Space</strong> — launch the ball at the start of each life (and pause on some versions)</li>
 </ul>
 
-<p>Embedded at the top of this page.</p>
+<h2>Winning Tips</h2>
+<p><strong>Hit the ball with the paddle's edge for sharp angles.</strong> A centre hit returns the ball straight up — predictable and easy to defend against. An edge hit sends the ball diagonally, which is what you want when you need to clear bricks in the corners that the ball cannot reach with vertical bounces.</p>
+<p><strong>Tunnel to the top early.</strong> The top rows hold the high-value bricks. If you can punch a vertical tunnel through the wall in the first few seconds, the ball will bounce around above the wall and clear multiple rows while you barely move the paddle — a strategy known as "ceiling bouncing".</p>
+<p><strong>Stay centred when defending.</strong> The centre of the playfield is the optimal defensive position because it minimises the distance to either side. Drift back to centre the instant the ball leaves your paddle.</p>
+<p><strong>Predict the ball's path, do not chase it.</strong> Once the ball has bounced off a brick, its trajectory is fixed until the next contact. Move to where it will land the moment you see the angle, not when it is halfway down the screen.</p>
+<p><strong>Save a life for the long game.</strong> Early levels are easy; the speed ramp hits hard around level 5. Do not take risks in the first three levels — bank your lives for the levels where the ball moves too fast to react to.</p>
+
+<h2>Why Breakout Is Timeless</h2>
+<p>Breakout distilled Pong's two-paddle duel into a single-player test of reflex and aim, and the resulting loop — bounce, shatter, advance — has been cloned and re-skinned thousands of times since 1976, from <em>Arkanoid</em> in 1986 to the modern idle-genre brick-breakers that auto-play themselves. The original remains the cleanest expression of the formula: a 90-second load, zero tutorial, infinite replayability. It runs on any device with a screen, needs no account, and the satisfaction of watching an entire row shatter in one bounce never fades.</p>
+
+<p>The embedded player is live at the top of this page — press Space (or click) to launch the ball.</p>
+
+<h2>Origins and Community Impact</h2>
+<p>Breakout was designed in 1976 by a small Atari team that included Nolan Bushnell, Steve Bristow, and — famously — a young Steve Jobs, with Steve Wozniak doing much of the actual engineering in four nights of work. The story goes that Jobs was offered a bonus for delivering the game under a tight chip budget; Wozniak's design came in so tight that it became a reference for cost-efficient arcade hardware for years. The original cabinet used roughly half the chips of comparable games, which is why Breakout shipped at a profit from the first unit.</p>
+<p>The modern brick-breaker genre — <em>Arkanoid</em>, <em>Alpha Bounce</em>, the entire idle brick-breaker subgenre that dominates mobile stores today — all trace directly to the original 1976 Atari board. Taito's <em>Arkanoid</em> (1986) added power-ups and ship customisation; modern idle variants add prestige systems and auto-play. The core loop has not changed in fifty years because there is nothing to improve.</p>
+
+<h2>Advanced Tips</h2>
+<p><strong>Practise the "wall glide" return.</strong> Hit the ball at a shallow angle just before it touches the side wall and it will skim along the wall, knocking out an entire column before bouncing back. This is the highest-scoring single move in the game.</p>
+<p><strong>Bait the ball into the ceiling.</strong> Once the ball is above the brick wall, it bounces around freely until gravity (or a brick) brings it back down. Aim every paddle hit toward the highest intact column so the ball spends maximum time above the wall.</p>
+<p><strong>Slow your paddle on contact.</strong> A fast paddle imparts unpredictable spin; a paddle that is decelerating at the moment of contact returns the ball at a controlled angle. Use fast movement to position, slow movement to hit.</p>
+
+<h2>FAQ</h2>
+<dl>
+  <dt>Q: How many levels does Breakout have?</dt>
+  <dd>A: The original arcade machine cycled through the same layouts indefinitely, raising ball speed with each level. Most browser versions follow the same convention — there is no "final" level, only a high-score chase.</dd>
+  <dt>Q: Why do the brick colours matter?</dt>
+  <dd>A: Different coloured bricks are worth different points (typically red = 7, orange = 5, yellow = 4, green = 3, blue = 2). The high-value red and orange rows sit at the top, hardest to reach, so the scoring rewards skilled play rather than just persistence.</dd>
+  <dt>Q: Is the ball's angle really paddle-dependent?</dt>
+  <dd>A: Yes. On the original 1976 hardware and most faithful clones, the contact point on the paddle determines the ball's rebound angle: centre = straight up, edges = diagonal. Some remakes randomise the angle — check by playing the same shot twice.</dd>
+  <dt>Q: Was Breakout really built by Steve Jobs and Steve Wozniak?</dt>
+  <dd>A: Wozniak did the engineering; Jobs negotiated the contract and delivered it to Atari. The full story is one of the more colourful chapters of early Silicon Valley lore, and the design constraints Wozniak worked under are still taught as a masterclass in minimal hardware design.</dd>
+</dl>
+
+<h2>Similar Arcade Games</h2>
+<ul>
+  <li><a href="/fgame/pong">Pong</a> — the two-paddle game Breakout was built from</li>
+  <li><a href="/fgame/snake-classic">Snake (Classic)</a> — another single-player arcade staple</li>
+</ul>
