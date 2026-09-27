@@ -103,8 +103,8 @@ const pages = [
     slug:       'index',
     outputFile: 'index.html',
     bodyClass:  'home-page',
-    title:      'Poki 2 — Free Browser Games Network: 1000+ Games, No Download | Poki2',
-    description:'Poki 2 (Poki2) is a free browser games network. Explore 1000+ games across 8 specialized sites — IO, action, puzzle, racing, and more. No downloads, instant play.',
+    title:      'Poki 2 — 1000+ Free Browser Games, No Download | Poki2',
+    description:'Poki 2 (Poki2) is a free browser games network. Explore 1000+ games across 8 specialized sites — IO, action, puzzle, racing, and more. No download needed.',
     keywords:   'poki 2, poki2, free browser games, online games no download, free online games, browser games network',
     canonical:  'https://poki2.online/',
     schema: [
@@ -298,7 +298,7 @@ const pages = [
     slug:       'about',
     outputFile: 'about.html',
     bodyClass:  'static-page about-page',
-    title:      'About Poki2 — Our Mission, Team & Advertising',
+    title:      'About Poki2 — Mission, Team & Advertising Policy',
     description:'Learn about Poki2, the free browser games network. Our mission, how we curate games, our advertising policy, and who we are.',
     canonical:  'https://poki2.online/about',
     schema: [{
@@ -320,7 +320,7 @@ const pages = [
     slug:       'privacy',
     outputFile: 'privacy.html',
     bodyClass:  'static-page privacy-page',
-    title:      'Privacy Policy — Poki2',
+    title:      'Privacy Policy — Data, Cookies & Ads | Poki2',
     description:'Poki2 Privacy Policy: how we collect, use, and protect your data, including our use of Google AdSense advertising cookies.',
     canonical:  'https://poki2.online/privacy',
     schema: [{
@@ -334,7 +334,7 @@ const pages = [
     slug:       'terms',
     outputFile: 'terms.html',
     bodyClass:  'static-page terms-page',
-    title:      'Terms of Use — Poki2',
+    title:      'Terms of Use — Rules & Disclaimers | Poki2',
     description:'Poki2 Terms of Use: acceptable use, intellectual property, disclaimers and your rights as a visitor.',
     canonical:  'https://poki2.online/terms',
     schema: [{
@@ -348,7 +348,7 @@ const pages = [
     slug:       'contact',
     outputFile: 'contact.html',
     bodyClass:  'static-page contact-page',
-    title:      'Contact Us — Poki2',
+    title:      'Contact Poki2 — Support, Partnerships & Press',
     description:'Contact the Poki2 team for support, game submissions, partnership enquiries, or press requests.',
     canonical:  'https://poki2.online/contact',
     schema: [{
@@ -377,7 +377,7 @@ const pages = [
     slug:       'dmca',
     outputFile: 'dmca.html',
     bodyClass:  'static-page dmca-page',
-    title:      'DMCA Notice — Poki2',
+    title:      'DMCA Notice — Copyright Takedown Policy | Poki2',
     description:'Poki2 DMCA policy. How to submit a copyright removal request and what to expect.',
     canonical:  'https://poki2.online/dmca',
     schema: [{
@@ -420,7 +420,7 @@ const blogPosts = [
   },
   {
     slug:       'unblocked-games-guide',
-    title:      'How to Play Unblocked Games Safely at School or Work',
+    title:      'How to Play Unblocked Games Safely at School',
     description:'A practical guide to finding and playing unblocked browser games legally and safely, without putting your network access at risk.',
     date:       'March 20, 2026',
     isoDate:    '2026-03-20',
@@ -431,7 +431,7 @@ const blogPosts = [
   },
   {
     slug:       'best-multiplayer-browser-games',
-    title:      '10 Best Multiplayer Browser Games You Can Play Right Now',
+    title:      '10 Best Multiplayer Browser Games Right Now',
     description:'Compete against real players in these top multiplayer games. No downloads, no accounts — just open your browser and start playing.',
     date:       'March 12, 2026',
     isoDate:    '2026-03-12',
@@ -442,7 +442,7 @@ const blogPosts = [
   },
   {
     slug:       'game-aggregator-picks',
-    title:      'Our Top 5 Browser Game Picks for Every Type of Gamer',
+    title:      'Top 5 Browser Game Picks for Every Type of Gamer',
     description:'Whether you love puzzles, racing, action, or casual fun — we\'ve picked the single best browser game for each type of player.',
     date:       'March 5, 2026',
     isoDate:    '2026-03-05',
@@ -453,7 +453,7 @@ const blogPosts = [
   },
   {
     slug:       'best-2-player-browser-games',
-    title:      '10 Best 2-Player Browser Games to Play with a Friend',
+    title:      '10 Best 2-Player Browser Games for a Friend',
     description:'Play together on one keyboard or across the internet — these are the best free 2-player browser games available right now, no download needed.',
     date:       'April 3, 2026',
     isoDate:    '2026-04-03',
@@ -475,7 +475,7 @@ const blogPosts = [
   },
   {
     slug:       'best-racing-browser-games',
-    title:      'Best Free Racing Browser Games: Drift Hunters, Moto X3M & More',
+    title:      'Best Racing Browser Games: Drift Hunters & More',
     description:'From arcade drift cars to off-road stunt bikes — the definitive list of the best free racing games you can play in your browser right now.',
     date:       'March 18, 2026',
     isoDate:    '2026-03-18',
@@ -486,7 +486,7 @@ const blogPosts = [
   },
   {
     slug:       'best-puzzle-browser-games',
-    title:      '15 Best Free Puzzle Browser Games You Can Play Right Now',
+    title:      '15 Best Free Puzzle Browser Games to Play Now',
     description:'Brain teasers, match-3, logic puzzles, and word games — the best free puzzle browser games ranked by quality, replayability, and zero-download access.',
     date:       'March 10, 2026',
     isoDate:    '2026-03-10',
@@ -497,7 +497,7 @@ const blogPosts = [
   },
   {
     slug:       'browser-games-no-download',
-    title:      'How to Play Browser Games Without Downloading Anything',
+    title:      'How to Play Browser Games Without Downloading',
     description:'A complete guide to free browser gaming — what browser games are, why they\'re safer than downloads, and how to get the best experience on any device.',
     date:       'March 3, 2026',
     isoDate:    '2026-03-03',
@@ -519,7 +519,7 @@ const blogPosts = [
   },
   {
     slug:       'unblocked-games-at-school-2026',
-    title:      '12 Unblocked Games That Actually Work at School in 2026',
+    title:      '12 Unblocked Games That Work at School in 2026',
     description:'A practical guide to browser games that work on school Chromebooks and strict networks — including Google built-ins, NYT Games, and verified unblocked portals.',
     date:       'April 4, 2026',
     isoDate:    '2026-04-04',
@@ -530,7 +530,7 @@ const blogPosts = [
   },
   {
     slug:       'best-idle-clicker-browser-games',
-    title:      '8 Best Idle & Clicker Browser Games to Play in 2026',
+    title:      '8 Best Idle & Clicker Browser Games in 2026',
     description:'Cookie Clicker, Clicker Heroes, Realm Grinder and more — the best idle and incremental browser games ranked by depth, replayability, and session flexibility.',
     date:       'April 5, 2026',
     isoDate:    '2026-04-05',
@@ -541,7 +541,7 @@ const blogPosts = [
   },
   {
     slug:       'best-mobile-browser-games',
-    title:      'Best Browser Games to Play on Your Phone (No App Needed)',
+    title:      'Best Browser Games for Your Phone (No App Needed)',
     description:'10 browser games with excellent mobile touch controls — play Slither.io, Cut the Rope, 2048, and more directly in your phone browser, no app install required.',
     date:       'April 5, 2026',
     isoDate:    '2026-04-05',
@@ -552,7 +552,7 @@ const blogPosts = [
   },
   {
     slug:       'best-strategy-browser-games',
-    title:      '12 Best Strategy Browser Games in 2026 (Free to Play)',
+    title:      '12 Best Strategy Browser Games in 2026 (Free)',
     description:'Forge of Empires, OGame, Tribal Wars, Diep.io and more — the best free strategy browser games ranked from casual city builders to deep 4X multiplayer.',
     date:       'April 6, 2026',
     isoDate:    '2026-04-06',
@@ -563,7 +563,7 @@ const blogPosts = [
   },
   {
     slug:       'geometry-dash-complete-guide',
-    title:      'Geometry Dash: Complete Guide to Every Level & Mechanic',
+    title:      'Geometry Dash: Guide to Every Level & Mechanic',
     description:'Master every official Geometry Dash level with our complete guide — all 21 levels explained, secret coins, game modes, and tips for beginners through experts.',
     date:       'April 7, 2026',
     isoDate:    '2026-04-07',
@@ -574,8 +574,8 @@ const blogPosts = [
   },
   {
     slug:       'unblocked-games-chromebook-guide',
-    title:      'Best Unblocked Games for School Chromebooks in 2026',
-    description:'A complete guide to playing unblocked games on school Chromebooks — how game blocking works, how to find safe sites, and 10 games that work on strict school networks.',
+    title:      'Best Unblocked Games for School Chromebooks 2026',
+    description:'Playing unblocked games on school Chromebooks, explained — how game blocking works, how to find safe sites, and 10 games that work on strict networks.',
     date:       'April 7, 2026',
     isoDate:    '2026-04-07',
     updated:    'July 27, 2026',
@@ -585,8 +585,8 @@ const blogPosts = [
   },
   {
     slug:       'cookie-clicker-complete-guide',
-    title:      'Cookie Clicker Complete Guide: Grandmapocalypse, Prestige & Tips',
-    description:'Everything you need to know about Cookie Clicker — all buildings explained, the Grandmapocalypse walkthrough, golden cookie combos, and the prestige/ascension system.',
+    title:      'Cookie Clicker Guide: Grandmapocalypse & Tips',
+    description:'Cookie Clicker explained — every building, the Grandmapocalypse walkthrough, golden cookie combos, and how the prestige/ascension system works.',
     date:       'April 8, 2026',
     isoDate:    '2026-04-08',
     updated:    'July 27, 2026',
@@ -607,8 +607,8 @@ const blogPosts = [
   },
   {
     slug:       'beginners-guide-to-browser-games',
-    title:      "Beginner's Guide to Browser Games: What They Are and Where to Start",
-    description:'New to browser gaming? This complete beginner\'s guide explains what HTML5 games are, how they compare to console games, and which titles to start with by playstyle.',
+    title:      "Beginner's Guide to Browser Games: Where to Start",
+    description:'New to browser gaming? This complete beginner\'s guide explains what browser games are, how they compare to console games, and which titles to start with.',
     date:       'April 9, 2026',
     isoDate:    '2026-04-09',
     updated:    'July 27, 2026',
@@ -618,8 +618,8 @@ const blogPosts = [
   },
   {
     slug:       'best-sports-browser-games',
-    title:      'Best Sports Browser Games 2026: Basketball, Tennis, Baseball & More',
-    description:'The best free sports browser games in 2026 — Basketball Stars, Retro Bowl, Arcade Tennis, Ball Orbit, Bat Smash, Arcade Volley, and Billiards Master. No download required.',
+    title:      'Best Sports Browser Games 2026: Top Picks',
+    description:'The best free sports browser games in 2026 — Basketball Stars, Retro Bowl, Arcade Tennis, Ball Orbit, Bat Smash and more. No download required.',
     date:       'April 9, 2026',
     isoDate:    '2026-04-09',
     updated:    'July 27, 2026',
@@ -629,8 +629,8 @@ const blogPosts = [
   },
   {
     slug:       'italian-brainrot-games-guide',
-    title:      'Italian Brainrot Games: The Complete Guide to Every Meme Browser Game',
-    description:'Your complete guide to Italian Brainrot browser games — Bombardino Crocodilo Clicker, Chicken Jockey Clicker, 2048 Italian Brainrot, Chicken Jockey Combat, and more.',
+    title:      'Italian Brainrot Games: Guide to Every Meme Game',
+    description:'Your guide to Italian Brainrot browser games — Bombardino Crocodilo Clicker, Chicken Jockey Clicker, 2048 Italian Brainrot and more, all free to play.',
     date:       'April 9, 2026',
     isoDate:    '2026-04-09',
     updated:    'July 27, 2026',
@@ -640,8 +640,8 @@ const blogPosts = [
   },
   {
     slug:       'best-simulation-adventure-browser-games',
-    title:      'Best Simulation & Adventure Browser Games 2026: Age of War, Animal Craft & More',
-    description:'Top free simulation and adventure browser games in 2026 — Age of War, Animal Craft, Crazy Animal City, Astro Tycoon, Astro Robot Clicker, American Truck Driving, and more.',
+    title:      'Best Simulation & Adventure Browser Games 2026',
+    description:'Top free simulation and adventure browser games in 2026 — Age of War, Animal Craft, Crazy Animal City, Astro Tycoon, truck driving and more.',
     date:       'April 9, 2026',
     isoDate:    '2026-04-09',
     updated:    'July 27, 2026',
@@ -651,8 +651,8 @@ const blogPosts = [
   },
   {
     slug:       'best-2048-variant-games',
-    title:      'Best 2048 Variant Games to Play in 2026: Drop, Rogue, Italian Brainrot & More',
-    description:'Beyond the original, 2048 has spawned brilliant variants — 2048 Drop, 2048 Rogue, and 2048 Italian Brainrot. This guide covers every variant and the strategy that wins each one.',
+    title:      'Best 2048 Variant Games 2026: Drop, Rogue & More',
+    description:'Beyond the original 2048: Drop, Rogue and Italian Brainrot. This guide covers every 2048 variant and the winning strategy for each one.',
     date:       'April 10, 2026',
     isoDate:    '2026-04-10',
     updated:    'July 27, 2026',
@@ -662,8 +662,8 @@ const blogPosts = [
   },
   {
     slug:       'best-shooting-browser-games',
-    title:      'Best Shooting Browser Games 2026: Blocky Hunter, Shell Shockers, Bricky Break & More',
-    description:'Top free shooting browser games in 2026 — Blocky Hunter, Chicken Jockey Combat, Bricky Break, Shell Shockers, 1v1.LOL, and more. No download, no install, just play.',
+    title:      'Best Shooting Browser Games 2026: Top 10 Picks',
+    description:'Top free shooting browser games in 2026 — Blocky Hunter, Chicken Jockey Combat, Shell Shockers, 1v1.LOL and more. No download, just play.',
     date:       'April 10, 2026',
     isoDate:    '2026-04-10',
     updated:    'July 27, 2026',
@@ -673,8 +673,8 @@ const blogPosts = [
   },
   {
     slug:       'best-racing-driving-browser-games',
-    title:      'Best Racing & Driving Browser Games 2026: Bike Xtreme, Drift Hunters, Truck Driving & More',
-    description:'Top free racing and driving browser games in 2026 — Bike Xtreme, Drift Hunters, American Truck Driving, Blocky Rider, Battle Karts, and more. Zero downloads required.',
+    title:      'Best Racing & Driving Browser Games 2026',
+    description:'Top free racing and driving browser games in 2026 — Bike Xtreme, Drift Hunters, American Truck Driving, Battle Karts and more. Zero downloads.',
     date:       'April 10, 2026',
     isoDate:    '2026-04-10',
     updated:    'July 27, 2026',
