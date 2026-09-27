@@ -1,12 +1,53 @@
 <h2>What Is Minesweeper?</h2>
-<p>Minesweeper is a logic puzzle where you reveal tiles and use numeric clues to avoid mines and clear the board.</p>
+<p>Minesweeper is a single-player logic puzzle in which you reveal tiles on a grid and use numeric hints to deduce which squares hide mines. Clear every safe tile without detonating a single mine and you win. Despite (or because of) its thirty-second rule set, Minesweeper became one of the most widely played video games in history once Microsoft bundled it with Windows 3.1 in 1990 — for an entire generation it was the game you played while waiting for a spreadsheet to load.</p>
 
-<h2>How to Play</h2>
-<p>Click tiles to reveal numbers; right-click or long-press to flag suspected mines. Use deduction to clear the board safely.</p>
+<h2>How to Play Minesweeper</h2>
+<p>The board is a grid of covered tiles. Left-click a tile to reveal it. If the tile hides a mine, the game ends instantly. If it is safe, it shows a number between 1 and 8 indicating how many of its eight neighbours contain a mine, or opens up as a blank if no neighbours are mined (in which case every connected blank tile is revealed automatically). Right-click (or long-press on touch devices) to flag a tile you suspect is a mine. The puzzle is won when every non-mine tile has been revealed.</p>
+
+<p>The opening move is always a guess — your first click is safe on Windows-spec boards because mines are placed after the initial reveal. The skill comes from there: every subsequent move should be backed by a numeric deduction rather than a coin flip.</p>
 
 <h2>Controls</h2>
 <ul>
-  <li><strong>Mouse / Tap</strong> — reveal or flag tiles</li>
+  <li><strong>Left-click</strong> — reveal a tile</li>
+  <li><strong>Right-click</strong> — place or remove a flag (long-press on mobile)</li>
+  <li><strong>Double-click a number</strong> — chord: if the flagged count around the number matches its value, reveal all remaining unflagged neighbours instantly</li>
 </ul>
 
-<p>Embedded player appears above.</p>
+<h2>Winning Tips</h2>
+<p><strong>Start in the middle.</strong> Clicking the centre of the board maximises the chance of triggering a blank cascade, which opens a large safe area and gives you numbers to work with immediately. Corners give you only three neighbours; edges only five; the centre gives you all eight.</p>
+<p><strong>Learn the "1-1 pattern".</strong> When a 1 sits next to an unknown row of tiles and another 1 appears one tile further along, the tile beyond the second 1 is the safe one — the mine is "shared" between the two 1s.</p>
+<p><strong>The "1-2-1" pattern is your bread and butter.</strong> A row reading 1-2-1 along the edge of an unknown strip means the mines sit under the two outside tiles and the middle tile is safe. Memorise this pattern — it solves roughly half of endgame boards.</p>
+<p><strong>Chord aggressively once you are confident.</strong> Flag the confirmed mines, then double-click the number to instantly reveal every safe neighbour. On larger boards, chording is the only way to clear within a reasonable time.</p>
+<p><strong>Count remaining mines.</strong> The mine counter in the corner is not decoration. Late in the game you can solve final moves purely by counting how many flags are left versus how many unflagged squares remain.</p>
+
+<h2>Why Minesweeper Is Timeless</h2>
+<p>Minesweeper is pure deductive logic with zero luck after the opening click. A 30-second tutorial explains every rule; a 300-hour player is still finding new patterns. There are no power-ups, no monetisation, no progression systems — just a grid and your reasoning. It is the perfect five-minute brain game for any device, which is why it has been ported to almost every operating system shipped in the last 35 years.</p>
+
+<p>Ready to test your nerve? The game is embedded live at the top of this page — left-click anywhere to begin.</p>
+
+<h2>Origins and Community Impact</h2>
+<p>The earliest published version of Minesweeper was <em>Mined-Out</em> (1983) by Andrew Baines for the ZX Spectrum, but the modern form was written by Robert Donner at Microsoft in 1989 and shipped with the Microsoft Entertainment Pack in 1990 before becoming a Windows staple from 3.1 onward. Curt Johnson had written an earlier mines-style game, but Donner's version introduced the right-click flag and the chord shortcut that define the game today.</p>
+<p>The competitive scene formalised in the 2000s. Speedsweeper players compete on cloned boards (identical mine layouts) for the fastest Expert time; the accepted world record on a 30×16 board with 170 mines sits in the 30-second range. Tool-assisted solvers prove that any solvable board can be cleared in under one second, but human play remains a contest of pattern recognition and risk tolerance.</p>
+
+<h2>Advanced Tips</h2>
+<p><strong>Treat the 50/50 as a last resort.</strong> Many boards end in a forced coin-flip where two tiles share a final mine. Accept that roughly one in ten Expert boards is mathematically unsolvable without a guess, and only guess when no pure-logic move remains.</p>
+<p><strong>Use the "edge subtraction" trick.</strong> When a number sits on the boundary of the board, its lower neighbour count (3 instead of 8) makes pattern recognition easier. Always solve from edges inward.</p>
+<p><strong>Practise on Intermediate first.</strong> Intermediate (16×16, 40 mines) trains pattern recognition without the brutal endgame of Expert (30×16, 170 mines). Most players plateau at 60 seconds Intermediate before the Expert click speed comes naturally.</p>
+
+<h2>FAQ</h2>
+<dl>
+  <dt>Q: Is the first click always safe?</dt>
+  <dd>A: On Microsoft-spec boards yes — mines are placed after the first reveal, so the initial click and its neighbours are guaranteed mine-free. Some clones do not honour this rule; check before assuming.</dd>
+  <dt>Q: What does the number 0 mean?</dt>
+  <dd>A: A tile showing no number (a blank) means zero mines in its surrounding eight squares; the board auto-expands every connected blank tile until numbers appear, which is how big openings happen.</dd>
+  <dt>Q: Can every Minesweeper board be solved without guessing?</dt>
+  <dd>A: No. Roughly 10–20% of randomly generated Expert boards contain at least one unavoidable 50/50 guess at the end. Pure-logic solvers detect and warn about these positions, but the standard game forces you to guess.</dd>
+  <dt>Q: What is a "chord"?</dt>
+  <dd>A: Double-clicking a number tile whose flag count matches its value instantly reveals all unflagged neighbours. It is the single fastest way to clear large safe areas once patterns are confirmed.</dd>
+</dl>
+
+<h2>Similar Puzzles</h2>
+<ul>
+  <li><a href="/fgame/solitaire-klondike">Solitaire (Klondike)</a> — the other classic Windows time-killer, with a similar "rules-in-30-seconds, mastery-in-years" appeal</li>
+  <li><a href="/fgame/snake-classic">Snake (Classic)</a> — another Nokia-era logic-and-reflex staple</li>
+</ul>

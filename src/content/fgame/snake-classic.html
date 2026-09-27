@@ -1,12 +1,55 @@
 <h2>What Is Snake (Classic)?</h2>
-<p>Classic Snake — guide your snake to eat dots, grow longer, and avoid colliding with yourself.</p>
+<p>Snake is the single-player arcade game Nokia bundled with its mobile phones from 1997 onward — the version most of the world actually played. You control a snake that grows longer every time it eats a piece of food on the playfield, and the game ends the instant the snake hits a wall or its own tail. The rules take a sentence to explain, the snake's body becomes the obstacles, and the longer you survive the harder it gets, which is exactly why Snake is one of the most-played video games in history — an estimated 400 million people played Nokia Snake on their phone in the late 1990s and early 2000s.</p>
 
-<h2>How to Play</h2>
-<p>Use directional controls to navigate. As you grow, the game becomes more challenging.</p>
+<h2>How to Play Snake</h2>
+<p>The playfield is a square grid with walls on all four sides. The snake starts as a single segment in the centre; one piece of food appears somewhere on the grid at all times. Use the arrow keys to turn the snake up, down, left, or right — it cannot reverse directly into itself, so a snake moving right cannot turn left in the same tick. When the snake's head lands on the food, the food disappears, the snake grows by one segment, and a new piece of food appears elsewhere on the grid. The snake moves continuously; you only control its turning.</p>
+
+<p>The game ends if the snake's head hits a wall or any segment of its own body. Every piece of food eaten increases both your score and the length of the snake, which means the obstacle (your own tail) gets larger with every successful move. The skill is in planning your path several moves ahead so that the head never meets the body.</p>
+
+<p>Some versions wrap the playfield (the snake exits one wall and re-enters the opposite wall) instead of using solid walls — this variant rewards slightly different strategy because the "wall" obstacle disappears.</p>
 
 <h2>Controls</h2>
 <ul>
-  <li><strong>Arrow Keys</strong> — movement</li>
+  <li><strong>Arrow Keys</strong> — turn the snake up, down, left, or right</li>
+  <li><strong>WASD</strong> — alternative on keyboards</li>
+  <li><strong>Swipe</strong> — on touchscreen devices, swipe in the desired direction</li>
 </ul>
 
-<p>Embedded above.</p>
+<h2>Winning Tips</h2>
+<p><strong>Follow the walls.</strong> The safest path early in the game is to hug the perimeter — move along one wall, turn the corner, continue along the next. Your tail follows a predictable L-shape and never crosses itself, leaving the entire interior of the grid open for food pickups.</p>
+<p><strong>Plan two turns ahead.</strong> The instant a new piece of food appears, identify the angle you will approach it from and the angle you will leave from. If you cannot visualise the exit, do not commit to the entry — the snake's body becomes a wall you cannot pass.</p>
+<p><strong>Keep your body compact.</strong> A snake coiled into a tight spiral has its head close to its tail, which means the tail moves out of the way almost as fast as the head approaches. A snake stretched across the grid has its head far from its tail, which means the tail is slow to clear the head's path. Compact shapes survive longer.</p>
+<p><strong>Never reverse direction.</strong> The single most common cause of death is reversing the snake into its own neck — pressing left while moving right. The game rejects the input on most versions, but on versions that accept it, the head collides with the second segment instantly and the game ends.</p>
+<p><strong>Use the wrap-around if the board has one.</strong> On wrap-around boards, the walls are not obstacles — plan paths that exit one wall and re-enter opposite, which dramatically expands your safe manoeuvring space.</p>
+
+<h2>Why Snake Is Timeless</h2>
+<p>Snake is one of the few games that genuinely everyone has played. It loads instantly on any device with a screen and four arrow inputs, the rules are obvious from the first move, and the failure states are immediate and clear (which is why Snake is so satisfying to retry). The snake's body being the obstacle is a piece of game-design genius — the difficulty curve comes from your own success, not from arbitrary level design, which means no two rounds ever play the same. Modern .io games such as <em>Slither.io</em> and <em>Little Big Snake</em> are direct evolutions of the Nokia formula, which is why the genre is still being reinvented 25 years later.</p>
+
+<p>Ready to grow? The embedded player is live at the top of this page — press any arrow key to begin.</p>
+
+<h2>Origins and Community Impact</h2>
+<p>The Snake concept dates to <em>Blockade</em> (1976, Gremlin Industries), an arcade two-player game in which each player's trail became a wall for the other. Atari's <em>Surround</em> (1977) brought it to home consoles, and the formula was re-skinned dozens of times through the 1980s. The breakthrough was Nokia Snake, written by Taneli Armanto for the Nokia 6110 in 1997 — the first phone game to ship pre-installed on a mass-market handset. Nokia sold over 400 million Snake-capable phones over the next decade, which means Snake was, for a time, the most-played video game in the world by orders of magnitude.</p>
+<p>The modern .io revival — <em>Slither.io</em>, <em>Little Big Snake</em>, <em>Wormate.io</em> — added multiplayer, cosmetics, and aggressive player-versus-player mechanics, but the core loop (eat, grow, avoid yourself) is unchanged. Nokia Snake's high-score culture also directly inspired the achievements and leaderboard systems in every mobile game since, which makes Snake one of the most influential designs in gaming history despite its three-line rule set.</p>
+
+<h2>Advanced Tips</h2>
+<p><strong>Practise the "double-back" exit.</strong> When your snake's tail is short, you can turn 180 degrees by going wall → adjacent wall → wall, which compresses the body into a tight S. This is the highest-risk, highest-reward manoeuvre in the game — it lets you reposition the head anywhere on the grid, but one wrong turn ends the run.</p>
+<p><strong>Bait food into safe zones.</strong> On grids where food spawns are partially random, you can influence where the next food appears by keeping one quadrant of the grid clear of your body. The next food often spawns in the open quadrant, which means it appears somewhere you can actually reach.</p>
+<p><strong>Play the long game by compacting.</strong> Once your snake is longer than the grid's shortest dimension, your only safe strategy is to coil into a spiral that follows its own tail. The head chases the tail, the tail moves at the same speed, and you survive indefinitely — until food spawns in a corner you cannot reach without breaking the spiral.</p>
+
+<h2>FAQ</h2>
+<dl>
+  <dt>Q: Can the snake reverse into itself?</dt>
+  <dd>A: On most versions, no — the game rejects a 180-degree reversal input. On versions that accept it, the head instantly hits the second segment and the run ends. Treat the rule as "no reversing" regardless.</dd>
+  <dt>Q: Is the food random?</dt>
+  <dd>A: Yes — food spawns at a random unoccupied tile. Some versions weight the spawn toward the area around the snake's head (more dangerous), others weight it toward open quadrants (safer). The distribution affects difficulty more than you might expect.</dd>
+  <dt>Q: What is the highest possible Snake score?</dt>
+  <dd>A: On a standard Nokia-sized grid (about 22×16), the maximum score is 350 — the entire grid filled by the snake with no room for food. In practice no human has ever reached it; scores above 100 are exceptional.</dd>
+  <dt>Q: Why do some Snake games wrap around the walls?</dt>
+  <dd>A: Those are "toroidal" variants — the playfield is mathematically a donut, so exiting one wall re-enters the opposite. Wrap-around boards are easier early but harder late, because you can no longer use walls as a guide rail.</dd>
+</dl>
+
+<h2>Similar Arcade Games</h2>
+<ul>
+  <li><a href="/fgame/breakout">Breakout</a> — the other single-player arcade classic from the same era</li>
+  <li><a href="/fgame/minesweeper">Minesweeper</a> — another Nokia/Windows staple with a similar rules-in-30-seconds appeal</li>
+</ul>
