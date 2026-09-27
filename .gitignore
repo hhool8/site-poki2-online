@@ -19,3 +19,6 @@ node_modules/
 
 # SEO 账号档案（含密码，禁止入库）
 seo/
+
+# WorkBuddy session data (local only)
+.workbuddy/
