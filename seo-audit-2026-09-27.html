@@ -33,16 +33,28 @@
 <body>
 <div class="wrap">
   <h1>Site Audit Report — poki2.online</h1>
-  <div class="sub">Semrush-style full-crawl audit · 101 pages (sitemap) · 2026-09-27 · crawler: scripts/audit-crawler.js · fixed same day, re-audited after deploy</div>
+  <div class="sub">Semrush-style full-crawl audit · Round 1: 101 pages on-page SEO · Round 2: crawl efficiency, internal linking, image weight, Core Web Vitals proxies · 2026-09-27 · crawler: scripts/audit-crawler.js + scripts/audit-deep.js</div>
 
   <div class="cards">
     <div class="card ok"><div class="num">101/101</div><div class="lbl">Pages crawled OK (200)</div></div>
     <div class="card err"><div class="num">0</div><div class="lbl">Errors remaining</div></div>
-    <div class="card warn"><div class="num">2</div><div class="lbl">Remaining warnings (both false positives)</div></div>
-    <div class="card ok"><div class="num">28</div><div class="lbl">Issues fixed &amp; deployed</div></div>
+    <div class="card warn"><div class="num">1</div><div class="lbl">Known false positive</div></div>
+    <div class="card ok"><div class="num">63</div><div class="lbl">Issues fixed &amp; deployed</div></div>
   </div>
 
-  <h2>Passed checks (Semrush error-level)</h2>
+  <h2>Round 2 — performance, internal linking &amp; images</h2>
+  <table>
+    <tr><th>Check</th><th>Before</th><th>After (verified live)</th><th>Fix</th></tr>
+    <tr><td>Images &gt;150KB (Semrush: inefficient format/size)</td><td><span class="badge b-warn">23 imgs, max 582KB</span></td><td><span class="badge b-ok">0</span></td><td><span class="mono">scripts/recompress-images.js</span> — 35 images recompressed in place (sharp, ≤512px, palette/progressive), <b>~9.2MB saved</b></td></tr>
+    <tr><td>Images missing explicit width/height (CLS)</td><td><span class="badge b-warn">178 / 780</span></td><td><span class="badge b-ok">0 actionable</span></td><td>Added width/height to template card imgs + 4 Unsplash hero imgs; remainder are display:none/inline-styled (no CLS impact)</td></tr>
+    <tr><td>Compression (brotli/gzip)</td><td><span class="badge b-ok">PASS · br</span></td><td><span class="badge b-ok">PASS</span></td><td>77KB HTML → 17KB br. (Initial "uncompressed" reading was an auditor artifact — no Accept-Encoding header sent; auditor fixed.)</td></tr>
+    <tr><td>Internal linking — orphan pages / click depth ≥5 / internal nofollow</td><td><span class="badge b-ok">0 / 0 / 0</span></td><td><span class="badge b-ok">PASS</span></td><td>BFS from home reaches 103 pages; every sitemap URL reachable at depth ≤4</td></tr>
+    <tr><td>TTFB</td><td colspan="2"><span class="badge b-ok">PASS · ~0.95s median</span></td><td>At parity with cloudflare.com (0.84s) from the same vantage — residual latency is network RTT to CF edge, not the site</td></tr>
+    <tr><td>HTML page weight</td><td><span class="badge b-ok">max 77KB</span></td><td><span class="badge b-ok">PASS</span></td><td>—</td></tr>
+    <tr><td>Core Web Vitals (PageSpeed Insights API)</td><td colspan="2"><span class="badge b-warn">UNAVAILABLE</span></td><td>googleapis.com unreachable from this network (HTTP 0). Re-run <span class="mono">node scripts/audit-deep.js</span> from an unrestricted network for lab/field CWV</td></tr>
+  </table>
+
+  <h2>Round 1 — on-page SEO</h2>
   <table>
     <tr><th>Check</th><th>Result</th></tr>
     <tr><td>Crawlability — all sitemap URLs return 200</td><td><span class="badge b-ok">PASS · 101/101</span></td></tr>
@@ -98,8 +110,10 @@
   <h2>Tooling left in the repo</h2>
   <div class="section">
     <ul>
-      <li><span class="mono">scripts/audit-crawler.js</span> — re-runnable Semrush-style auditor (crawl 101 sitemap URLs + link/asset checks, writes <span class="mono">.workbuddy/audit-raw.json</span> and prints issue summary). Run before/after every deploy.</li>
-      <li><span class="mono">scripts/seo-fix-titles.js</span> — one-off fix script for this audit (kept for provenance).</li>
+      <li><span class="mono">scripts/audit-crawler.js</span> — re-runnable Semrush-style on-page auditor (crawl 101 sitemap URLs + link/asset checks, writes <span class="mono">.workbuddy/audit-raw.json</span> and prints issue summary). Run before/after every deploy.</li>
+      <li><span class="mono">scripts/audit-deep.js</span> — round-2 auditor: BFS internal-link graph (orphans/depth/nofollow), TTFB/compression/page-weight, image-weight sampling, PSI API when reachable.</li>
+      <li><span class="mono">scripts/recompress-images.js</span> — re-run whenever new game thumbnails are added (recompresses any &gt;150KB image in place).</li>
+      <li><span class="mono">scripts/seo-fix-titles.js</span> — one-off fix script for round-1 audit (kept for provenance).</li>
       <li>Note: this audit ran against the production origin (live site). No Semrush API connector was available in-session, so the checks replicate Semrush Site Audit's core error/warning rules locally.</li>
     </ul>
   </div>
