@@ -167,7 +167,7 @@
 
       <!-- Game iframe -->
       <div class="game-frame-wrap" id="game-wrap">
-        <div id="game-img-mask"><img src="{{GAME_IMG_URL}}" alt="{{GAME_TITLE_PLAIN}}" loading="eager"></div>
+        <div id="game-img-mask"><img src="{{GAME_IMG_URL}}" alt="{{GAME_TITLE_PLAIN}}" loading="eager" width="512" height="512"></div>
         <iframe
           id="game-iframe"
           src="{{GAME_EMBED_URL}}"
@@ -615,7 +615,7 @@
         drop.innerHTML = matches.map(function (item) {
           var href = String(item.url || '').replace('https://poki2.online', '') || '/search/';
           var thumb = item.image
-            ? '<img src="' + esc(item.image) + '" alt="" loading="lazy">'
+            ? '<img src="' + esc(item.image) + '" alt="" loading="lazy" width="512" height="512">'
             : '<span class="nsd-thumb-placeholder"></span>';
           return '<a class="nsd-item" href="' + esc(href) + '" role="option">'
             + '<span class="nsd-thumb">' + thumb + '</span>'
