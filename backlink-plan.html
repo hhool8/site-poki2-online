@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>免注册外链资源调研与自动外链建设方案</title>
+<style>
+  :root{--ink:#1a2233;--muted:#5b6478;--line:#e3e7ef;--bg:#f6f8fb;--card:#ffffff;--accent:#2456e6;--ok:#0d8a4f;--warn:#b3541e;--bad:#c0392b;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;padding:32px 16px;}
+  .wrap{max-width:1080px;margin:0 auto;}
+  h1{font-size:26px;margin-bottom:6px;}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:24px;}
+  h2{font-size:20px;margin:34px 0 12px;padding-left:10px;border-left:4px solid var(--accent);}
+  h3{font-size:16px;margin:18px 0 8px;}
+  p{margin-bottom:10px;font-size:14.5px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin-bottom:14px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0;}
+  th{background:#eef2fa;text-align:left;padding:8px 10px;border:1px solid var(--line);font-weight:600;white-space:nowrap;}
+  td{padding:7px 10px;border:1px solid var(--line);vertical-align:top;}
+  tr:nth-child(even) td{background:#fafbfd;}
+  .tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;margin-right:4px;white-space:nowrap;}
+  .t-do{background:#e2f5ea;color:var(--ok);}
+  .t-nof{background:#eee6f7;color:#6b3fa0;}
+  .t-reg{background:#fdeee4;color:var(--warn);}
+  .t-noreg{background:#e3f0fd;color:var(--accent);}
+  .box{border-radius:8px;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+  .box.warn{background:#fdf3ec;border:1px solid #f0cdae;}
+  .box.danger{background:#fdeceb;border:1px solid #f3c1bd;}
+  .box.good{background:#ecf8f1;border:1px solid #bfe5cd;}
+  code{background:#eef1f6;padding:1px 5px;border-radius:4px;font-size:13px;}
+  ul,ol{margin:6px 0 10px 22px;font-size:14px;}
+  li{margin-bottom:4px;}
+  .step{display:flex;gap:12px;margin-bottom:12px;}
+  .step .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;}
+  a{color:var(--accent);text-decoration:none;word-break:break-all;}
+  .foot{color:var(--muted);font-size:12px;margin-top:28px;text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>免注册外链资源调研与自动外链建设方案</h1>
+  <div class="sub">调研时间：2026-09-27 · 适用站点：HTML5 游戏聚合站（site-poki2-online）· 出海英文 SEO</div>
+
+  <div class="card">
+    <h2 style="margin-top:0;">一、结论摘要</h2>
+    <p><strong>核心结论：</strong>"免注册 + 即时收录"（Instant Approval）目录站目前仍有一批可用（DA 18–41），可以在 1–2 天内为站点铺设第一批基础外链，加速收录。但这类链接权重低、相关性弱，<strong>只能作为起量补充，不能作为主策略</strong>；真正有排名价值的是游戏利基平台（itch.io、GameJolt、iogames.space 等）和高权重内容平台。自动化方面，建议做<strong>半自动化提交 + 监控</strong>，不建议购买/使用群发工具（GSA、XRumer 类），触发 Google 垃圾链接政策的风险远大于收益。</p>
+  </div>
+
+  <h2>二、风险提示（先读这部分）</h2>
+  <div class="box danger"><strong>⚠️ 群发式自动外链的风险：</strong>Google 的垃圾链接政策（Spam Policy for Web Spam）明确打击"程序化大规模建链"。历史上大量使用群发工具的站点出现过整站降权。本方案中的"自动化"仅限于：批量填写表单、记录台账、监控收录——即<strong>把手工动作提速</strong>，而不是无脑群发。</div>
+  <ul>
+    <li><strong>节奏控制：</strong>新站每周新增外链建议不超过 20–30 条，且来源分散（目录、平台、社交混杂），避免同一天集中爆发。</li>
+    <li><strong>锚文本多样性：</strong>品牌词（如站名）占 60%+，裸链接（URL）占 25%，关键词锚文本只占 10–15%，避免精确匹配锚文本堆积。</li>
+    <li><strong>质量过滤：</strong>只提交 Google 已收录、有真实内容、无恶意弹窗的目录；提交后 2–4 周检查收录情况，未收录的从台账中标记剔除。</li>
+    <li><strong>预案：</strong>若发现异常低质链接被大量索引，可通过 Google Search Console 的"拒绝链接"（Disavow）工具处理。</li>
+  </ul>
+
+  <h2>三、A 类：免注册 / 即时收录目录站（可直接提交）</h2>
+  <p>以下目录均<strong>无需注册账号</strong>，填写表单（站名、URL、简介、邮箱）即可提交，多数即时或 24–72 小时内上线。表中 DA 为公开统计值，供参考。建议从中挑选 20–30 个分批提交即可，不必全做。</p>
+  <table>
+    <tr><th>网站</th><th>DA</th><th>收录方式</th><th>备注</th></tr>
+    <tr><td>aquarius-dir.com</td><td>41</td><td>即时</td><td>老牌 SEO 目录，需选对分类</td></tr>
+    <tr><td>facebook-list.com</td><td>41</td><td>即时</td><td>综合目录</td></tr>
+    <tr><td>alivelink.org</td><td>36</td><td>即时</td><td>—</td></tr>
+    <tr><td>businessfreedirectory.biz</td><td>36</td><td>即时</td><td>—</td></tr>
+    <tr><td>efdir.com</td><td>36</td><td>即时</td><td>—</td></tr>
+    <tr><td>ad-links.org</td><td>36</td><td>即时</td><td>—</td></tr>
+    <tr><td>free-weblink.com</td><td>37</td><td>即时</td><td>—</td></tr>
+    <tr><td>clicksordirectory.com</td><td>38</td><td>即时</td><td>—</td></tr>
+    <tr><td>familydir.com</td><td>39</td><td>即时</td><td>—</td></tr>
+    <tr><td>poordirectory.com</td><td>39</td><td>即时</td><td>—</td></tr>
+    <tr><td>alive-directory.com</td><td>34</td><td>即时</td><td>—</td></tr>
+    <tr><td>harddirectory.net</td><td>33</td><td>即时</td><td>—</td></tr>
+    <tr><td>homedirectory.biz</td><td>33</td><td>即时</td><td>—</td></tr>
+    <tr><td>trafficdirectory.org</td><td>33</td><td>即时</td><td>—</td></tr>
+    <tr><td>ask-directory.com</td><td>32</td><td>即时</td><td>—</td></tr>
+    <tr><td>directoryanalytic.com</td><td>31</td><td>即时</td><td>—</td></tr>
+    <tr><td>advancedseodirectory.com</td><td>31</td><td>即时</td><td>—</td></tr>
+    <tr><td>apeopledirectory.com</td><td>31</td><td>即时</td><td>—</td></tr>
+    <tr><td>angelsdirectory.com</td><td>35</td><td>即时</td><td>—</td></tr>
+    <tr><td>adbritedirectory.com</td><td>35</td><td>即时</td><td>—</td></tr>
+    <tr><td>beegdirectory.com</td><td>35</td><td>即时</td><td>—</td></tr>
+    <tr><td>royaldirectory.biz</td><td>35</td><td>即时</td><td>—</td></tr>
+    <tr><td>addgoodsites.com</td><td>35</td><td>即时</td><td>—</td></tr>
+    <tr><td>ifidir.com</td><td>35</td><td>即时</td><td>—</td></tr>
+    <tr><td>jet-links.com</td><td>35</td><td>即时</td><td>—</td></tr>
+    <tr><td>steeldirectory.net</td><td>30</td><td>即时</td><td>—</td></tr>
+    <tr><td>freeweblink.org</td><td>30</td><td>即时</td><td>—</td></tr>
+    <tr><td>directorydirect.net</td><td>30</td><td>即时</td><td>—</td></tr>
+    <tr><td>toptendir.net</td><td>30</td><td>即时</td><td>—</td></tr>
+    <tr><td>directory9.biz</td><td>30</td><td>即时</td><td>—</td></tr>
+    <tr><td>prolink-directory.com</td><td>30</td><td>即时</td><td>—</td></tr>
+    <tr><td>nicedir.net</td><td>30</td><td>即时</td><td>—</td></tr>
+    <tr><td>thewebmax.com</td><td>~35</td><td>24–48h 人工</td><td>无需注册、有 dofollow，偏工具/产品站，游戏站也可提交通用分类</td></tr>
+  </table>
+  <p class="sub">注：这批目录多数链接为 dofollow，但站点权重低、模板雷同（同源目录群），务必控制数量并保持来源多样性。同源目录（如 directory3–10.org 系列）选 2–3 个即可，不要全提。</p>
+
+  <h2>四、B 类：游戏利基外链（价值最高，优先做）</h2>
+  <p>你是 HTML5 游戏站，来自游戏社区/门户的链接相关性远高于通用目录。按"注册门槛"标注：</p>
+  <table>
+    <tr><th>平台</th><th>门槛</th><th>链接性质</th><th>操作方式</th></tr>
+    <tr><td>iogames.space</td><td><span class="tag t-noreg">表单提交</span></td><td>dofollow（页面内）</td><td>io 类游戏可直接提交；流量大，注意响应慢</td></tr>
+    <tr><td>webgamer.io / obfog.com / hahagames.com</td><td><span class="tag t-noreg">表单/邮件提交</span></td><td>—</td><td>小型 HTML5 游戏门户，收录门槛低</td></tr>
+    <tr><td>itch.io</td><td><span class="tag t-reg">需注册</span></td><td>dofollow 页面</td><td>免费注册开发者账号，每个游戏一个页面；无需审核即可发布，还能带来真实玩家</td></tr>
+    <tr><td>GameJolt</td><td><span class="tag t-reg">需注册</span></td><td>dofollow 页面</td><td>HTML5 游戏可嵌入托管，社区活跃</td></tr>
+    <tr><td>Newgrounds</td><td><span class="tag t-reg">需注册</span></td><td>—</td><td>老牌 Flash/HTML5 游戏社区，可发布即上线</td></tr>
+    <tr><td>IndieDB / Mod DB</td><td><span class="tag t-reg">需注册</span></td><td>dofollow 页面</td><td>建立游戏页面 + 发布新闻更新</td></tr>
+    <tr><td>CrazyGames / Poki 官方</td><td><span class="tag t-reg">需注册申请</span></td><td>dofollow</td><td>门槛高但价值大；若站内有独家/原创游戏可尝试申请</td></tr>
+    <tr><td>gametopsites.net</td><td><span class="tag t-noreg">邮件提交</span></td><td>互惠链接制</td><td>免费列表需在站内回链；游戏相关站点 24h 收录</td></tr>
+  </table>
+
+  <h2>五、C 类：高权重内容/资料平台（需注册，性价比最高）</h2>
+  <p>注册一次即可长期产出外链，多数 DA 80+，是外链结构中的"主力军"：</p>
+  <ul>
+    <li><strong>about.me</strong> — 个人页外链，10 分钟完成，有 dofollow。</li>
+    <li><strong>Crunchbase / Product Hunt / AlternativeTo / SaaSHub / StartupBase / Microlaunch</strong> — 若站点有"产品"属性（游戏平台也算），可上架获 dofollow 链接。</li>
+    <li><strong>dev.to / Medium / LinkedIn 文章 / Vocal.Media / Tumblr</strong> — 发 2–3 篇英文游戏相关内容（如"Top 10 free browser games"），正文带链接；dev.to 部分场景 dofollow，Medium/LinkedIn 为 nofollow 但利于收录与品牌。</li>
+    <li><strong>Pinterest / Mix / SlideShare / Scribd</strong> — 视觉化内容 + 链接，nofollow 但能带来真实流量。</li>
+    <li><strong>Reddit（r/WebGames、r/indiegames、r/iogames）/ Quora / Hacker News（Show HN）</strong> — 高权重 UGC，先贡献价值再放链接，效果和存活率最好。</li>
+  </ul>
+
+  <h2>六、"自动外链建设"可行性方案</h2>
+  <div class="box good"><strong>推荐做法：半自动流水线</strong>（安全、可持续）</div>
+  <div class="step"><div class="n">1</div><div><strong>准备素材库：</strong>撰写 3–5 版不同长度的英文站点简介（短 25 字 / 中 60 字 / 长 150 字）+ 5 组锚文本变体，存为 JSON。避免每个目录用完全相同的描述。</div></div>
+  <div class="step"><div class="n">2</div><div><strong>半自动提交：</strong>用浏览器自动化（Playwright）按台账逐个打开 A 类目录表单，自动填充站名/URL/描述/邮箱并预填验证码截图人工确认。每天控制在 10–15 个目录。</div></div>
+  <div class="step"><div class="n">3</div><div><strong>台账登记：</strong>每次提交写入 <code>backlinks.csv</code>（站点、URL、日期、锚文本、简介版本、状态），便于后续追踪与去重。</div></div>
+  <div class="step"><div class="n">4</div><div><strong>监控与清洗：</strong>2–4 周后用 <code>site:查询</code> / Search Console 外链报告检查哪些已被索引；未收录或已死的标记剔除；异常链接进入 Disavow 候选名单。</div></div>
+  <div class="step"><div class="n">5</div><div><strong>主力投入 B/C 类：</strong>每周 1–2 篇 dev.to/Medium 内容 + 1–2 个游戏利基平台页面，这类链接才真正影响排名。</div></div>
+
+  <div class="box warn"><strong>不推荐：</strong>购买 GSA Search Engine Ranker、XRumer、SENuke 等群发软件的"全自动外链"，以及淘宝/海外的"1000 条 5 美元"外链包。这些来源会在短期内制造大量低质链接，当前算法环境下被识别为负面 SEO 的概率很高，且清理成本（Disavow）远高于收益。</div>
+
+  <h2>七、建议执行节奏（前 4 周）</h2>
+  <table>
+    <tr><th>周次</th><th>动作</th><th>数量</th></tr>
+    <tr><td>第 1 周</td><td>提交 A 类免注册目录（从上表挑 DA≥30 的）+ about.me + GameJolt/itch.io 建页</td><td>20–25 条</td></tr>
+    <tr><td>第 2 周</td><td>提交 B 类游戏门户（iogames.space、webgamer.io 等）+ dev.to 首篇文章</td><td>8–10 条 + 1 篇内容</td></tr>
+    <tr><td>第 3 周</td><td>Product Hunt / AlternativeTo / SaaSHub 上架 + Reddit 社区互动</td><td>5–8 条</td></tr>
+    <tr><td>第 4 周</td><td>回查第 1 周收录情况，剔除失效源，补 Medium/Pinterest 内容</td><td>持续</td></tr>
+  </table>
+
+  <div class="foot">报告由调研整理生成 · 数据来源：everywebzone / waytopost / dev.to / 3way.social / codergautam 论坛等公开清单（2025–2026）· DA 数值为第三方统计，仅供优先级参考</div>
+</div>
+</body>
+</html>
