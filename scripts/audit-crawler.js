@@ -46,10 +46,14 @@ function analyze(url, body) {
   r.url = url;
   r.status = 200;
   r.title = m(/<title[^>]*>([^<]*)<\/title>/i, body);
+  // measure entity-decoded length: HTML uses &amp; for &, Google counts rendered chars
+  const decode = (s) => s ? s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'") : s;
+  r.title = decode(r.title);
   r.titleLen = r.title ? r.title.trim().length : 0;
-  const md = body.match(/<meta\s+name=["']description["']\s+content=["']([^"']*)["']/i) ||
-             body.match(/<meta\s+content=["']([^"']*)["']\s+name=["']description["']/i);
-  r.desc = md ? md[1].trim() : null;
+  // content may legitimately contain apostrophes (we've) — match up to the closing double quote only
+  const md = body.match(/<meta\s+name=["']description["']\s+content=["']([^"]*)["']/i) ||
+             body.match(/<meta\s+content=["']([^"]*)["']\s+name=["']description["']/i);
+  r.desc = md ? decode(md[1].trim()) : null;
   r.descLen = r.desc ? r.desc.length : 0;
   r.canonical = m(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i, body);
   const robotsMeta = m(/<meta\s+name=["']robots["']\s+content=["']([^"']*)["']/i, body);
@@ -114,7 +118,11 @@ async function pool(items, worker, n) {
   const sitemapSet = new Set(urls.map((u) => u.replace(/\/$/, '')));
   const crawled = new Set(urls.map((u) => u.replace(/\/$/, '')));
   const extra = new Set();
-  for (const p of results) if (p.links) for (const l of p.links) if (!crawled.has(l)) { extra.add(l); crawled.add(l); }
+  for (const p of results) if (p.links) for (const l of p.links) {
+    // skip utility paths that are intentionally not in the sitemap (search UI, already noindex,follow)
+    if (/\/search$/.test(l)) continue;
+    if (!crawled.has(l)) { extra.add(l); crawled.add(l); }
+  }
   console.log(`  ${extra.size} internal links outside sitemap — checking...`);
   const extraChecks = await pool([...extra], async (u) => {
     const res = await fetchPage(u, 'HEAD');
