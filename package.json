@@ -6,9 +6,10 @@
   "scripts": {
     "gen-og": "node scripts/gen-og-image.js",
     "gen-favicons": "node scripts/gen-favicons.js",
-    "build": "node scripts/gen-favicons.js && node scripts/gen-og-image.js && node scripts/gen-game-og-images.js && node scripts/build.js",
+    "build": "node scripts/gen-lastmod.js && node scripts/gen-favicons.js && node scripts/gen-og-image.js && node scripts/gen-game-og-images.js && node scripts/build.js",
     "clean": "rm -rf dist",
-    "deploy": "wrangler pages deploy dist --project-name poki2-portal"
+    "deploy": "wrangler pages deploy dist --project-name poki2-portal",
+    "lastmod": "node scripts/gen-lastmod.js"
   },
   "devDependencies": {
     "sharp": "^0.34.5",
