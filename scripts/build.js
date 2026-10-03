@@ -26,10 +26,23 @@ function write(filePath, content) {
   console.log('  wrote', path.relative(ROOT, filePath));
 }
 
-// Last git commit date (YYYY-MM-DD) of a source file — used for accurate
-// sitemap <lastmod>. Falls back to today when the file is untracked, has no
-// git history, or git is unavailable, so builds never break.
+// Last commit date (YYYY-MM-DD) of a source file — used for sitemap
+// <lastmod>. Resolution order:
+//   1. data/lastmod.json (committed map — required on Cloudflare Pages, whose
+//      shallow clone cannot resolve dates for files outside the newest commit)
+//   2. live `git log` (accurate in a full local checkout)
+//   3. today (last resort, so builds never break)
+const LASTMOD_MAP = (() => {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'lastmod.json'), 'utf8'));
+  } catch {
+    return {};
+  }
+})();
+
 function gitLastMod(filePath) {
+  const rel = path.relative(ROOT, filePath).split(path.sep).join('/');
+  if (LASTMOD_MAP[rel]) return LASTMOD_MAP[rel];
   try {
     const out = execSync(
       `git log -1 --format=%ad --date=short -- ${JSON.stringify(filePath)}`,
