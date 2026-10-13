@@ -32,8 +32,7 @@
 
 ## The Poki2 Network (Specialized Sites)
 - [Poki2 Play](https://play.poki2.online/): 200+ hand-picked HTML5 games across every genre.
-- [AZ Games](https://azgames.poki2.online/): 300+ game collection sorted A to Z, powered by the azgames.io catalog.
-- [Unblocked Games](https://ubg66.poki2.online/): 474+ school-safe unblocked games that work on Chromebooks.
+- [Poki2 Games Hub](https://poki2.online/fgame/): In-depth guides, how-to-play walkthroughs, and strategy tips for every game.
 - [2048 Collection](https://2048.poki2.online/): Dedicated portal for 2048 and its variants.
 
 ## Key Guides & Articles
