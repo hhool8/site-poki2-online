@@ -86,7 +86,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
         font-family="Arial, sans-serif"
         font-size="26"
         fill="#22d3ee"
-        opacity="0.8">play.poki2.online · azgames.poki2.online · ubg66.poki2.online</text>
+        opacity="0.8">poki2.online · play.poki2.online</text>
 
   <!-- Bottom accent bar -->
   <rect x="0" y="${H - 8}" width="${W}" height="8" fill="url(#bar)"/>
