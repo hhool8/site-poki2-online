@@ -200,3 +200,33 @@
 2. **URL 级导出**（各问题分类的 Examples 表）—— 决定清理清单。
 3. **网络架构策略 A / B / C** —— 决定未来一个季度的工作方向。
 4. 是否有 **手动操作（Manual Action）** 通知？GSC「安全与手动操作」里查一下。如果有，是另一条完全不同的处理路径。
+
+---
+
+## 七、执行记录（2026-10-14，策略 B 已上线）
+
+用户选定方案：**子站 noindex + 主站解耦**。已全部执行并线上验证。
+
+| # | 改动 | 位置 | 验证结果 |
+|---|---|---|---|
+| 1 | azgames 子站整体 noindex：`_headers` 加 `X-Robots-Tag: noindex`；三个 `robotsMeta()` 改为恒定 `noindex,follow`；sitemap 输出空 urlset | `h5games_poki2_azgames`，commit `f2dec04` | 线上首页 / 游戏页 / category 页响应头均为 `x-robots-tag: noindex`；`sitemap.xml` 0 条 URL；附带 `/dist/` 陈旧副本也已被 noindex 覆盖 |
+| 2 | ubg66 子站整体 noindex：499 个 HTML 的 meta robots 由 `index,follow` 改为 `noindex,follow`；新增 `_headers`；两个 sitemap 清空 | `h5games_poki2_ubg66`（GitHub Pages `hhool/ubg66`），commit `5cccbc0` | 线上首页与游戏页 meta 已是 `noindex,follow,...`；`sitemaps.xml` 0 条 URL（GH Pages 无响应头支持，meta 为权威信号） |
+| 3 | 主站解耦 282 条出链：三套模板页脚、首页站点卡片与 CTA、about/contact/blog-index 重写、20 篇博客正文 ~60 处链接转为 `/fgame/` 内链或去链、404.html、llms.txt、gen-og-image.js、build.js 死域名 `gplus.poki2.online` | 本仓库，commit `a869779` | 线上首页与博客页对 azgames/ubg66 的出链为 **0**；`dist` 全量扫描 0 条；对 play/2048/gamepix 的内链保留 |
+
+**改动原则**：两个子站对访客完全可用（游戏照常能玩），只是退出 Google 索引；privacy/terms 里的纯文本域名列举保留（那是法务适用范围，不是链接）。
+
+**回滚方式**：
+- azgames：`robotsMeta()` 改回条件表达式 + `_headers` 删除 `X-Robots-Tag` 行 + `build-sitemap.js` 的 `SITE_INDEXABLE` 改回 `true`（脚本内已写明注释）
+- ubg66：revert commit `5cccbc0`
+- 主站：revert commit `a869779`
+
+**备份**：ubg66 改动前完整快照在 `/tmp/ubg66_backup`（约 100MB，重启后自动清除；git 本身即权威备份）。
+
+### 接下来的观察窗口（4–6 周）
+
+| 时间点 | 动作 |
+|---|---|
+| 第 1 周 | GSC → 网址检查，抽查 ubg66 / azgames 的 URL 是否变为 "已排除 – noindex"；确认主站 8 个经典游戏页仍可请求编入索引 |
+| 第 2–3 周 | 观察「已收录」是否从 1 回升；「抓取后未收录」是否随 816 页退出而下降 |
+| 第 4–6 周 | 若收录仍为个位数 → 升级到方案 A（子站迁独立域名）；若回升 → 继续主站内容与外链建设 |
+| 随时 | GSC「安全与手动操作」确认无手动处罚（本轮所有证据都指向质量判定，不是处罚，但仍需确认） |
