@@ -37,12 +37,17 @@ function gameImgWebp(slug) {
 // Returns a <picture> (webp source + png fallback) when a hashed asset exists,
 // otherwise falls back to the original /imgs/fgame/<slug>.<ext> (pre-existing
 // behaviour, e.g. for games whose thumbnail wasn't generated).
-function gamePicture(slug, { alt = '', w = 0, h = 0, loading = 'lazy', cls = '' } = {}) {
+function gamePicture(slug, { alt = '', w = 0, h = 0, loading = 'lazy', cls = '', sizes = '' } = {}) {
   const dims = (w && h) ? ` width="${w}" height="${h}"` : '';
   const classAttr = cls ? ` class="${cls}"` : '';
+  const sizeAttr = sizes ? ` sizes="${sizes}"` : '';
   const m = IMG_MANIFEST[slug];
   if (m && m.webp) {
-    return `<picture><source srcset="${m.webp}" type="image/webp">` +
+    // Responsive: serve the 256w variant to small slots, full-res to large ones.
+    const srcset = m.w256
+      ? `${m.webp} ${m.w || 512}w, ${m.w256} 256w`
+      : `${m.webp} ${m.w || 512}w`;
+    return `<picture><source type="image/webp" srcset="${srcset}"${sizeAttr}>` +
            `<img src="${m.png}" alt="${esc(alt)}" loading="${loading}"${dims}${classAttr}></picture>`;
   }
   const orig = m ? m.orig : `/imgs/fgame/${slug}.png`;
@@ -444,8 +449,6 @@ function buildGamePlayMode(players, explicitPlayMode) {
 function fillGame(template, game, content, relatedLinks) {
   const canonical = `${site.domain}/fgame/${game.slug}`;
   const buildTs   = new Date().toISOString();
-  const gameImageRaw = game.imgUrl || '/og-image.png';
-  const gameImageAbs = toAbsoluteUrl(gameImageRaw);
   const numberOfPlayers = buildGameNumberOfPlayers(game.players);
   const description = normalizeGameDescription(game);
   const keywords = buildGameKeywords(game);
@@ -459,7 +462,7 @@ function fillGame(template, game, content, relatedLinks) {
       url: canonical,
       name: game.title,
       description,
-      image: gameImageAbs,
+      image: toAbsoluteUrl(gameImgWebp(game.slug) || game.imgUrl || '/og-image.png'),
       genre: game.genre,
       playMode: buildGamePlayMode(game.players),
       isAccessibleForFree: true,
@@ -514,7 +517,7 @@ function fillGame(template, game, content, relatedLinks) {
     .replace(/\{\{GAME_PLAYERS\}\}/g,      esc(game.players))
     .replace(/\{\{GAME_CONTROLS\}\}/g,     esc(game.controls))
     .replace(/\{\{GAME_EMBED_URL\}\}/g,    game.embedUrl)
-    .replace(/\{\{GAME_IMG_URL\}\}/g,      gamePicture(game.slug, { alt: game.title, w: 512, h: 512, loading: 'eager' }))
+    .replace(/\{\{GAME_IMG_URL\}\}/g,      gamePicture(game.slug, { alt: game.title, w: 512, h: 512, loading: 'eager', sizes: '512px' }))
     .replace(/\{\{GAME_DATE\}\}/g,         game.date || '')
     .replace(/\{\{GAME_UPDATED_DATE\}\}/g, game.updated || game.date || '')
     .replace(/\{\{RELATED_GAME_LINKS\}\}/g, relatedLinks)
@@ -540,7 +543,7 @@ function buildPages() {
     if (page.slug === 'index') {
       function renderFeaturedGrid(games) {
         const cards = games.slice(0, 12).map(g =>
-          `<a href="/fgame/${g.slug}" class="featured-card">${gamePicture(g.slug, { alt: g.title, w: 160, h: 160 })}<span class="featured-card-label">${esc(g.title)}</span><span class="featured-card-src">${esc(g.category || g.genre || '')}</span></a>`
+          `<a href="/fgame/${g.slug}" class="featured-card">${gamePicture(g.slug, { alt: g.title, w: 160, h: 160, sizes: '160px' })}<span class="featured-card-label">${esc(g.title)}</span><span class="featured-card-src">${esc(g.category || g.genre || '')}</span></a>`
         ).join('\n      ');
         return `<div class="featured-grid" style="margin-top:1.5rem">\n      ${cards}\n    </div>`;
       }
@@ -549,7 +552,7 @@ function buildPages() {
         // 6 cards from games[6..12] – no overlap with Featured
         const picks = games.length >= 24 ? games.slice(12, 24) : games.slice(0, 12);
         const cards = picks.map(g =>
-          `<a href="/fgame/${g.slug}" class="featured-card">${gamePicture(g.slug, { alt: g.title, w: 160, h: 160 })}<span class="featured-card-label">${esc(g.title)}</span><span class="featured-card-src">${esc(g.category || g.genre || '')}</span></a>`
+          `<a href="/fgame/${g.slug}" class="featured-card">${gamePicture(g.slug, { alt: g.title, w: 160, h: 160, sizes: '160px' })}<span class="featured-card-label">${esc(g.title)}</span><span class="featured-card-src">${esc(g.category || g.genre || '')}</span></a>`
         ).join('\n      ');
         return `<div class="featured-grid" style="margin-top:1.5rem">\n      ${cards}\n    </div>`;
       }
@@ -601,7 +604,7 @@ function buildGames() {
     const offs = [2, 5, 9, 14];
     const picked = offs.map(o => visibleGames[(idx + o) % n]).filter(g => g.slug !== game.slug);
     const relatedLinks = picked.slice(0, 4).map(g =>
-      `<a href="/fgame/${g.slug}" class="related-game-card">${gamePicture(g.slug, { alt: g.title, w: 28, h: 28 })}${esc(g.title)}</a>`
+      `<a href="/fgame/${g.slug}" class="related-game-card">${gamePicture(g.slug, { alt: g.title, w: 28, h: 28, sizes: '44px' })}${esc(g.title)}</a>`
     ).join('\n          ');
 
     const html = fillGame(gameTemplate, game, content, relatedLinks);
@@ -660,7 +663,7 @@ function buildGames() {
   const categorySections = CATEGORY_ORDER.filter(cat => grouped[cat].length > 0).map(cat => {
     const catId = cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
     const cards = grouped[cat].map(g =>
-      `<a href="/fgame/${g.slug}" class="game-index-card">${gamePicture(g.slug, { alt: g.title, w: 120, h: 120 })}<div class="game-index-card-body"><h3 class="game-index-card-title">${esc(g.title)}</h3><span class="game-index-card-genre">${esc(g.genre)}</span><span class="game-index-card-players">${esc(g.players)}</span></div></a>`
+      `<a href="/fgame/${g.slug}" class="game-index-card">${gamePicture(g.slug, { alt: g.title, w: 120, h: 120, sizes: '150px' })}<div class="game-index-card-body"><h3 class="game-index-card-title">${esc(g.title)}</h3><span class="game-index-card-genre">${esc(g.genre)}</span><span class="game-index-card-players">${esc(g.players)}</span></div></a>`
     ).join('');
     return `<h2 id="${catId}" class="game-cat-heading">${esc(cat)}</h2><div class="game-index-grid">${cards}</div>`;
   }).join('');

@@ -2,491 +2,687 @@
   "2048": {
     "webp": "/imgs/fgame/h/2048.6d058e9d8ed1.webp",
     "png": "/imgs/fgame/h/2048.6d058e9d8ed1.jpg",
-    "orig": "/imgs/fgame/2048.jpg"
+    "orig": "/imgs/fgame/2048.jpg",
+    "w": 600,
+    "w256": "/imgs/fgame/h/2048.6d058e9d8ed1.256.webp"
   },
   "1v1lol": {
     "webp": "/imgs/fgame/h/1v1lol.e2bc1d040ca4.webp",
     "png": "/imgs/fgame/h/1v1lol.e2bc1d040ca4.png",
-    "orig": "/imgs/fgame/1v1lol.png"
+    "orig": "/imgs/fgame/1v1lol.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/1v1lol.e2bc1d040ca4.256.webp"
   },
   "2048-drop": {
     "webp": "/imgs/fgame/h/2048-drop.2ecdd9579473.webp",
     "png": "/imgs/fgame/h/2048-drop.2ecdd9579473.png",
-    "orig": "/imgs/fgame/2048-drop.png"
+    "orig": "/imgs/fgame/2048-drop.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/2048-drop.2ecdd9579473.256.webp"
   },
   "2048-italian-brainrot": {
     "webp": "/imgs/fgame/h/2048-italian-brainrot.783e0d8803d8.webp",
     "png": "/imgs/fgame/h/2048-italian-brainrot.783e0d8803d8.png",
-    "orig": "/imgs/fgame/2048-italian-brainrot.png"
+    "orig": "/imgs/fgame/2048-italian-brainrot.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/2048-italian-brainrot.783e0d8803d8.256.webp"
   },
   "2048-rogue": {
     "webp": "/imgs/fgame/h/2048-rogue.1e9273b43008.webp",
     "png": "/imgs/fgame/h/2048-rogue.1e9273b43008.png",
-    "orig": "/imgs/fgame/2048-rogue.png"
+    "orig": "/imgs/fgame/2048-rogue.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/2048-rogue.1e9273b43008.256.webp"
   },
   "agar-io": {
     "webp": "/imgs/fgame/h/agar-io.5218ce24aac3.webp",
     "png": "/imgs/fgame/h/agar-io.5218ce24aac3.png",
-    "orig": "/imgs/fgame/agar-io.png"
+    "orig": "/imgs/fgame/agar-io.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/agar-io.5218ce24aac3.256.webp"
   },
   "age-of-war": {
     "webp": "/imgs/fgame/h/age-of-war.217680724b7e.webp",
     "png": "/imgs/fgame/h/age-of-war.217680724b7e.jpg",
-    "orig": "/imgs/fgame/age-of-war.jpg"
+    "orig": "/imgs/fgame/age-of-war.jpg",
+    "w": 512,
+    "w256": "/imgs/fgame/h/age-of-war.217680724b7e.256.webp"
   },
   "american-truck-driving": {
     "webp": "/imgs/fgame/h/american-truck-driving.7f047641f7de.webp",
     "png": "/imgs/fgame/h/american-truck-driving.7f047641f7de.png",
-    "orig": "/imgs/fgame/american-truck-driving.png"
+    "orig": "/imgs/fgame/american-truck-driving.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/american-truck-driving.7f047641f7de.256.webp"
   },
   "animal-craft": {
     "webp": "/imgs/fgame/h/animal-craft.989fd2740072.webp",
     "png": "/imgs/fgame/h/animal-craft.989fd2740072.png",
-    "orig": "/imgs/fgame/animal-craft.png"
+    "orig": "/imgs/fgame/animal-craft.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/animal-craft.989fd2740072.256.webp"
   },
   "arcade-tennis": {
     "webp": "/imgs/fgame/h/arcade-tennis.1105ae24c8c0.webp",
     "png": "/imgs/fgame/h/arcade-tennis.1105ae24c8c0.png",
-    "orig": "/imgs/fgame/arcade-tennis.png"
+    "orig": "/imgs/fgame/arcade-tennis.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/arcade-tennis.1105ae24c8c0.256.webp"
   },
   "arcade-volley": {
     "webp": "/imgs/fgame/h/arcade-volley.098930c4fdfd.webp",
     "png": "/imgs/fgame/h/arcade-volley.098930c4fdfd.png",
-    "orig": "/imgs/fgame/arcade-volley.png"
+    "orig": "/imgs/fgame/arcade-volley.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/arcade-volley.098930c4fdfd.256.webp"
   },
   "astro-robot-clicker": {
     "webp": "/imgs/fgame/h/astro-robot-clicker.ffb310d6e873.webp",
     "png": "/imgs/fgame/h/astro-robot-clicker.ffb310d6e873.png",
-    "orig": "/imgs/fgame/astro-robot-clicker.png"
+    "orig": "/imgs/fgame/astro-robot-clicker.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/astro-robot-clicker.ffb310d6e873.256.webp"
   },
   "astro-tycoon": {
     "webp": "/imgs/fgame/h/astro-tycoon.c5ed3b016cd5.webp",
     "png": "/imgs/fgame/h/astro-tycoon.c5ed3b016cd5.png",
-    "orig": "/imgs/fgame/astro-tycoon.png"
+    "orig": "/imgs/fgame/astro-tycoon.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/astro-tycoon.c5ed3b016cd5.256.webp"
   },
   "badicecream": {
     "webp": "/imgs/fgame/h/badicecream.a05d97a353b0.webp",
     "png": "/imgs/fgame/h/badicecream.a05d97a353b0.png",
-    "orig": "/imgs/fgame/badicecream.png"
+    "orig": "/imgs/fgame/badicecream.png",
+    "w": 192,
+    "w256": "/imgs/fgame/h/badicecream.a05d97a353b0.256.webp"
   },
   "ball-orbit": {
     "webp": "/imgs/fgame/h/ball-orbit.ad65e02cb640.webp",
     "png": "/imgs/fgame/h/ball-orbit.ad65e02cb640.png",
-    "orig": "/imgs/fgame/ball-orbit.png"
+    "orig": "/imgs/fgame/ball-orbit.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/ball-orbit.ad65e02cb640.256.webp"
   },
   "basket-random": {
     "webp": "/imgs/fgame/h/basket-random.a6229aa3cac6.webp",
     "png": "/imgs/fgame/h/basket-random.a6229aa3cac6.jpg",
-    "orig": "/imgs/fgame/basket-random.jpeg"
+    "orig": "/imgs/fgame/basket-random.jpeg",
+    "w": 512,
+    "w256": "/imgs/fgame/h/basket-random.a6229aa3cac6.256.webp"
   },
   "basketball-stars": {
     "webp": "/imgs/fgame/h/basketball-stars.48cbe040b2ac.webp",
     "png": "/imgs/fgame/h/basketball-stars.48cbe040b2ac.png",
-    "orig": "/imgs/fgame/basketball-stars.png"
+    "orig": "/imgs/fgame/basketball-stars.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/basketball-stars.48cbe040b2ac.256.webp"
   },
   "basketballstarsgamelogo2": {
     "webp": "/imgs/fgame/h/basketballstarsgamelogo2.48cbe040b2ac.webp",
     "png": "/imgs/fgame/h/basketballstarsgamelogo2.48cbe040b2ac.png",
-    "orig": "/imgs/fgame/basketballstarsgamelogo2.png"
+    "orig": "/imgs/fgame/basketballstarsgamelogo2.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/basketballstarsgamelogo2.48cbe040b2ac.256.webp"
   },
   "bat-smash": {
     "webp": "/imgs/fgame/h/bat-smash.478afdd0b77f.webp",
     "png": "/imgs/fgame/h/bat-smash.478afdd0b77f.png",
-    "orig": "/imgs/fgame/bat-smash.png"
+    "orig": "/imgs/fgame/bat-smash.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/bat-smash.478afdd0b77f.256.webp"
   },
   "battle-karts": {
     "webp": "/imgs/fgame/h/battle-karts.c38795a1a31a.webp",
     "png": "/imgs/fgame/h/battle-karts.c38795a1a31a.png",
-    "orig": "/imgs/fgame/battle-karts.png"
+    "orig": "/imgs/fgame/battle-karts.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/battle-karts.c38795a1a31a.256.webp"
   },
   "bike-xtreme": {
     "webp": "/imgs/fgame/h/bike-xtreme.846e614451e8.webp",
     "png": "/imgs/fgame/h/bike-xtreme.846e614451e8.png",
-    "orig": "/imgs/fgame/bike-xtreme.png"
+    "orig": "/imgs/fgame/bike-xtreme.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/bike-xtreme.846e614451e8.256.webp"
   },
   "billiards-master": {
     "webp": "/imgs/fgame/h/billiards-master.56ae604c50e6.webp",
     "png": "/imgs/fgame/h/billiards-master.56ae604c50e6.png",
-    "orig": "/imgs/fgame/billiards-master.png"
+    "orig": "/imgs/fgame/billiards-master.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/billiards-master.56ae604c50e6.256.webp"
   },
   "bitlife": {
     "webp": "/imgs/fgame/h/bitlife.2ec5a6c263b2.webp",
     "png": "/imgs/fgame/h/bitlife.2ec5a6c263b2.png",
-    "orig": "/imgs/fgame/bitlife.png"
+    "orig": "/imgs/fgame/bitlife.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/bitlife.2ec5a6c263b2.256.webp"
   },
   "blocky-hunter": {
     "webp": "/imgs/fgame/h/blocky-hunter.d856941aa248.webp",
     "png": "/imgs/fgame/h/blocky-hunter.d856941aa248.png",
-    "orig": "/imgs/fgame/blocky-hunter.png"
+    "orig": "/imgs/fgame/blocky-hunter.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/blocky-hunter.d856941aa248.256.webp"
   },
   "blocky-rider": {
     "webp": "/imgs/fgame/h/blocky-rider.f803267fe774.webp",
     "png": "/imgs/fgame/h/blocky-rider.f803267fe774.png",
-    "orig": "/imgs/fgame/blocky-rider.png"
+    "orig": "/imgs/fgame/blocky-rider.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/blocky-rider.f803267fe774.256.webp"
   },
   "bombardino-crocodilo-clicker": {
     "webp": "/imgs/fgame/h/bombardino-crocodilo-clicker.1d80b063eacd.webp",
     "png": "/imgs/fgame/h/bombardino-crocodilo-clicker.1d80b063eacd.png",
-    "orig": "/imgs/fgame/bombardino-crocodilo-clicker.png"
+    "orig": "/imgs/fgame/bombardino-crocodilo-clicker.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/bombardino-crocodilo-clicker.1d80b063eacd.256.webp"
   },
   "bowling-master": {
     "webp": "/imgs/fgame/h/bowling-master.a08d7810be12.webp",
     "png": "/imgs/fgame/h/bowling-master.a08d7810be12.png",
-    "orig": "/imgs/fgame/bowling-master.png"
+    "orig": "/imgs/fgame/bowling-master.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/bowling-master.a08d7810be12.256.webp"
   },
   "brain-lines": {
     "webp": "/imgs/fgame/h/brain-lines.01097b8b34a8.webp",
     "png": "/imgs/fgame/h/brain-lines.01097b8b34a8.png",
-    "orig": "/imgs/fgame/brain-lines.png"
+    "orig": "/imgs/fgame/brain-lines.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/brain-lines.01097b8b34a8.256.webp"
   },
   "breakout-racing": {
     "webp": "/imgs/fgame/h/breakout-racing.8ce6516fb253.webp",
     "png": "/imgs/fgame/h/breakout-racing.8ce6516fb253.png",
-    "orig": "/imgs/fgame/breakout-racing.png"
+    "orig": "/imgs/fgame/breakout-racing.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/breakout-racing.8ce6516fb253.256.webp"
   },
   "breakout": {
     "webp": "/imgs/fgame/h/breakout.4efda2ea272c.webp",
     "png": "/imgs/fgame/h/breakout.4efda2ea272c.jpg",
-    "orig": "/imgs/fgame/breakout.jpeg"
+    "orig": "/imgs/fgame/breakout.jpeg",
+    "w": 512,
+    "w256": "/imgs/fgame/h/breakout.4efda2ea272c.256.webp"
   },
   "bricky-blast": {
     "webp": "/imgs/fgame/h/bricky-blast.4207be94be7a.webp",
     "png": "/imgs/fgame/h/bricky-blast.4207be94be7a.png",
-    "orig": "/imgs/fgame/bricky-blast.png"
+    "orig": "/imgs/fgame/bricky-blast.png",
+    "w": 180,
+    "w256": "/imgs/fgame/h/bricky-blast.4207be94be7a.256.webp"
   },
   "bricky-break": {
     "webp": "/imgs/fgame/h/bricky-break.fe1cad066b10.webp",
     "png": "/imgs/fgame/h/bricky-break.fe1cad066b10.png",
-    "orig": "/imgs/fgame/bricky-break.png"
+    "orig": "/imgs/fgame/bricky-break.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/bricky-break.fe1cad066b10.256.webp"
   },
   "chicken-jockey-clicker": {
     "webp": "/imgs/fgame/h/chicken-jockey-clicker.26eac4856dc0.webp",
     "png": "/imgs/fgame/h/chicken-jockey-clicker.26eac4856dc0.png",
-    "orig": "/imgs/fgame/chicken-jockey-clicker.png"
+    "orig": "/imgs/fgame/chicken-jockey-clicker.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/chicken-jockey-clicker.26eac4856dc0.256.webp"
   },
   "chicken-jockey-combat": {
     "webp": "/imgs/fgame/h/chicken-jockey-combat.84e36bc770e8.webp",
     "png": "/imgs/fgame/h/chicken-jockey-combat.84e36bc770e8.png",
-    "orig": "/imgs/fgame/chicken-jockey-combat.png"
+    "orig": "/imgs/fgame/chicken-jockey-combat.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/chicken-jockey-combat.84e36bc770e8.256.webp"
   },
   "color-switch": {
     "webp": "/imgs/fgame/h/color-switch.e1d23ea982c6.webp",
     "png": "/imgs/fgame/h/color-switch.e1d23ea982c6.png",
-    "orig": "/imgs/fgame/color-switch.png"
+    "orig": "/imgs/fgame/color-switch.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/color-switch.e1d23ea982c6.256.webp"
   },
   "cookie-clicker": {
     "webp": "/imgs/fgame/h/cookie-clicker.a86e05a70c1d.webp",
     "png": "/imgs/fgame/h/cookie-clicker.a86e05a70c1d.png",
-    "orig": "/imgs/fgame/cookie-clicker.png"
+    "orig": "/imgs/fgame/cookie-clicker.png",
+    "w": 400,
+    "w256": "/imgs/fgame/h/cookie-clicker.a86e05a70c1d.256.webp"
   },
   "cookieclickerthumb": {
     "webp": "/imgs/fgame/h/cookieclickerthumb.a86e05a70c1d.webp",
     "png": "/imgs/fgame/h/cookieclickerthumb.a86e05a70c1d.png",
-    "orig": "/imgs/fgame/cookieclickerthumb.png"
+    "orig": "/imgs/fgame/cookieclickerthumb.png",
+    "w": 400,
+    "w256": "/imgs/fgame/h/cookieclickerthumb.a86e05a70c1d.256.webp"
   },
   "crazy-animal-city": {
     "webp": "/imgs/fgame/h/crazy-animal-city.2957c4f41e91.webp",
     "png": "/imgs/fgame/h/crazy-animal-city.2957c4f41e91.png",
-    "orig": "/imgs/fgame/crazy-animal-city.png"
+    "orig": "/imgs/fgame/crazy-animal-city.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/crazy-animal-city.2957c4f41e91.256.webp"
   },
   "crossy-road": {
     "webp": "/imgs/fgame/h/crossy-road.a07bd4077859.webp",
     "png": "/imgs/fgame/h/crossy-road.a07bd4077859.png",
-    "orig": "/imgs/fgame/crossy-road.png"
+    "orig": "/imgs/fgame/crossy-road.png",
+    "w": 250,
+    "w256": "/imgs/fgame/h/crossy-road.a07bd4077859.256.webp"
   },
   "crossyroad1": {
     "webp": "/imgs/fgame/h/crossyroad1.a07bd4077859.webp",
     "png": "/imgs/fgame/h/crossyroad1.a07bd4077859.png",
-    "orig": "/imgs/fgame/crossyroad1.png"
+    "orig": "/imgs/fgame/crossyroad1.png",
+    "w": 250,
+    "w256": "/imgs/fgame/h/crossyroad1.a07bd4077859.256.webp"
   },
   "cut-the-rope": {
     "webp": "/imgs/fgame/h/cut-the-rope.34f176d06573.webp",
     "png": "/imgs/fgame/h/cut-the-rope.34f176d06573.png",
-    "orig": "/imgs/fgame/cut-the-rope.png"
+    "orig": "/imgs/fgame/cut-the-rope.png",
+    "w": 192,
+    "w256": "/imgs/fgame/h/cut-the-rope.34f176d06573.256.webp"
   },
   "cuttherope": {
     "webp": "/imgs/fgame/h/cuttherope.34f176d06573.webp",
     "png": "/imgs/fgame/h/cuttherope.34f176d06573.png",
-    "orig": "/imgs/fgame/cuttherope.png"
+    "orig": "/imgs/fgame/cuttherope.png",
+    "w": 192,
+    "w256": "/imgs/fgame/h/cuttherope.34f176d06573.256.webp"
   },
   "doodlejump": {
     "webp": "/imgs/fgame/h/doodlejump.02a34e501b96.webp",
     "png": "/imgs/fgame/h/doodlejump.02a34e501b96.png",
-    "orig": "/imgs/fgame/doodlejump.png"
+    "orig": "/imgs/fgame/doodlejump.png",
+    "w": 192,
+    "w256": "/imgs/fgame/h/doodlejump.02a34e501b96.256.webp"
   },
   "drift-hunters": {
     "webp": "/imgs/fgame/h/drift-hunters.a930b5e5224c.webp",
     "png": "/imgs/fgame/h/drift-hunters.a930b5e5224c.jpg",
-    "orig": "/imgs/fgame/drift-hunters.jpg"
+    "orig": "/imgs/fgame/drift-hunters.jpg",
+    "w": 225,
+    "w256": "/imgs/fgame/h/drift-hunters.a930b5e5224c.256.webp"
   },
   "drifthunters": {
     "webp": "/imgs/fgame/h/drifthunters.a930b5e5224c.webp",
     "png": "/imgs/fgame/h/drifthunters.a930b5e5224c.jpg",
-    "orig": "/imgs/fgame/drifthunters.jpg"
+    "orig": "/imgs/fgame/drifthunters.jpg",
+    "w": 225,
+    "w256": "/imgs/fgame/h/drifthunters.a930b5e5224c.256.webp"
   },
   "escape-tsunami-brainrots-online": {
     "webp": "/imgs/fgame/h/escape-tsunami-brainrots-online.60b23263dd10.webp",
     "png": "/imgs/fgame/h/escape-tsunami-brainrots-online.60b23263dd10.png",
-    "orig": "/imgs/fgame/escape-tsunami-brainrots-online.png"
+    "orig": "/imgs/fgame/escape-tsunami-brainrots-online.png",
+    "w": 180,
+    "w256": "/imgs/fgame/h/escape-tsunami-brainrots-online.60b23263dd10.256.webp"
   },
   "fireboy-watergirl-1": {
     "webp": "/imgs/fgame/h/fireboy-watergirl-1.ae4c2197a52f.webp",
     "png": "/imgs/fgame/h/fireboy-watergirl-1.ae4c2197a52f.png",
-    "orig": "/imgs/fgame/fireboy-watergirl-1.png"
+    "orig": "/imgs/fgame/fireboy-watergirl-1.png",
+    "w": 260,
+    "w256": "/imgs/fgame/h/fireboy-watergirl-1.ae4c2197a52f.256.webp"
   },
   "fishing-frenzy": {
     "webp": "/imgs/fgame/h/fishing-frenzy.72a6439d736f.webp",
     "png": "/imgs/fgame/h/fishing-frenzy.72a6439d736f.png",
-    "orig": "/imgs/fgame/fishing-frenzy.png"
+    "orig": "/imgs/fgame/fishing-frenzy.png",
+    "w": 250,
+    "w256": "/imgs/fgame/h/fishing-frenzy.72a6439d736f.256.webp"
   },
   "flappybird": {
     "webp": "/imgs/fgame/h/flappybird.8ddd34be390d.webp",
     "png": "/imgs/fgame/h/flappybird.8ddd34be390d.png",
-    "orig": "/imgs/fgame/flappybird.png"
+    "orig": "/imgs/fgame/flappybird.png",
+    "w": 192,
+    "w256": "/imgs/fgame/h/flappybird.8ddd34be390d.256.webp"
   },
   "geometry-dash": {
     "webp": "/imgs/fgame/h/geometry-dash.e1e05d840b42.webp",
     "png": "/imgs/fgame/h/geometry-dash.e1e05d840b42.png",
-    "orig": "/imgs/fgame/geometry-dash.png"
+    "orig": "/imgs/fgame/geometry-dash.png",
+    "w": 800,
+    "w256": "/imgs/fgame/h/geometry-dash.e1e05d840b42.256.webp"
   },
   "geometrydash": {
     "webp": "/imgs/fgame/h/geometrydash.7a1fc06266be.webp",
     "png": "/imgs/fgame/h/geometrydash.7a1fc06266be.png",
-    "orig": "/imgs/fgame/geometrydash.png"
+    "orig": "/imgs/fgame/geometrydash.png",
+    "w": 192,
+    "w256": "/imgs/fgame/h/geometrydash.7a1fc06266be.256.webp"
   },
   "glide-in": {
     "webp": "/imgs/fgame/h/glide-in.7929598ee45b.webp",
     "png": "/imgs/fgame/h/glide-in.7929598ee45b.png",
-    "orig": "/imgs/fgame/glide-in.png"
+    "orig": "/imgs/fgame/glide-in.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/glide-in.7929598ee45b.256.webp"
   },
   "golf-puzzle": {
     "webp": "/imgs/fgame/h/golf-puzzle.9b2e79aa7fd4.webp",
     "png": "/imgs/fgame/h/golf-puzzle.9b2e79aa7fd4.png",
-    "orig": "/imgs/fgame/golf-puzzle.png"
+    "orig": "/imgs/fgame/golf-puzzle.png",
+    "w": 180,
+    "w256": "/imgs/fgame/h/golf-puzzle.9b2e79aa7fd4.256.webp"
   },
   "hill-climb-racing": {
     "webp": "/imgs/fgame/h/hill-climb-racing.0c93bb3245d1.webp",
     "png": "/imgs/fgame/h/hill-climb-racing.0c93bb3245d1.png",
-    "orig": "/imgs/fgame/hill-climb-racing.png"
+    "orig": "/imgs/fgame/hill-climb-racing.png",
+    "w": 250,
+    "w256": "/imgs/fgame/h/hill-climb-racing.0c93bb3245d1.256.webp"
   },
   "hoop-legends": {
     "webp": "/imgs/fgame/h/hoop-legends.9877cfe1d0c6.webp",
     "png": "/imgs/fgame/h/hoop-legends.9877cfe1d0c6.png",
-    "orig": "/imgs/fgame/hoop-legends.png"
+    "orig": "/imgs/fgame/hoop-legends.png",
+    "w": 180,
+    "w256": "/imgs/fgame/h/hoop-legends.9877cfe1d0c6.256.webp"
   },
   "krunker-io": {
     "webp": "/imgs/fgame/h/krunker-io.de90b8cc35b2.webp",
     "png": "/imgs/fgame/h/krunker-io.de90b8cc35b2.png",
-    "orig": "/imgs/fgame/krunker-io.png"
+    "orig": "/imgs/fgame/krunker-io.png",
+    "w": 250,
+    "w256": "/imgs/fgame/h/krunker-io.de90b8cc35b2.256.webp"
   },
   "loop-breakout": {
     "webp": "/imgs/fgame/h/loop-breakout.ac19bd0fc52c.webp",
     "png": "/imgs/fgame/h/loop-breakout.ac19bd0fc52c.png",
-    "orig": "/imgs/fgame/loop-breakout.png"
+    "orig": "/imgs/fgame/loop-breakout.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/loop-breakout.ac19bd0fc52c.256.webp"
   },
   "merge-infinity": {
     "webp": "/imgs/fgame/h/merge-infinity.87d70f73b90d.webp",
     "png": "/imgs/fgame/h/merge-infinity.87d70f73b90d.png",
-    "orig": "/imgs/fgame/merge-infinity.png"
+    "orig": "/imgs/fgame/merge-infinity.png",
+    "w": 180,
+    "w256": "/imgs/fgame/h/merge-infinity.87d70f73b90d.256.webp"
   },
   "minecraftclassic": {
     "webp": "/imgs/fgame/h/minecraftclassic.f1ba16d1cf5e.webp",
     "png": "/imgs/fgame/h/minecraftclassic.f1ba16d1cf5e.png",
-    "orig": "/imgs/fgame/minecraftclassic.png"
+    "orig": "/imgs/fgame/minecraftclassic.png",
+    "w": 455,
+    "w256": "/imgs/fgame/h/minecraftclassic.f1ba16d1cf5e.256.webp"
   },
   "minesweeper": {
     "webp": "/imgs/fgame/h/minesweeper.301f1facc16f.webp",
     "png": "/imgs/fgame/h/minesweeper.301f1facc16f.jpg",
-    "orig": "/imgs/fgame/minesweeper.jpeg"
+    "orig": "/imgs/fgame/minesweeper.jpeg",
+    "w": 512,
+    "w256": "/imgs/fgame/h/minesweeper.301f1facc16f.256.webp"
   },
   "moto-x3m": {
     "webp": "/imgs/fgame/h/moto-x3m.3c3948964b4d.webp",
     "png": "/imgs/fgame/h/moto-x3m.3c3948964b4d.png",
-    "orig": "/imgs/fgame/moto-x3m.png"
+    "orig": "/imgs/fgame/moto-x3m.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/moto-x3m.3c3948964b4d.256.webp"
   },
   "mr-flip": {
     "webp": "/imgs/fgame/h/mr-flip.eca54c79c6c8.webp",
     "png": "/imgs/fgame/h/mr-flip.eca54c79c6c8.png",
-    "orig": "/imgs/fgame/mr-flip.png"
+    "orig": "/imgs/fgame/mr-flip.png",
+    "w": 180,
+    "w256": "/imgs/fgame/h/mr-flip.eca54c79c6c8.256.webp"
   },
   "pacman": {
     "webp": "/imgs/fgame/h/pacman.16d2aaf0b48c.webp",
     "png": "/imgs/fgame/h/pacman.16d2aaf0b48c.jpg",
-    "orig": "/imgs/fgame/pacman.jpg"
+    "orig": "/imgs/fgame/pacman.jpg",
+    "w": 1600,
+    "w256": "/imgs/fgame/h/pacman.16d2aaf0b48c.256.webp"
   },
   "paper-io": {
     "webp": "/imgs/fgame/h/paper-io.bb48d90f9df9.webp",
     "png": "/imgs/fgame/h/paper-io.bb48d90f9df9.jpg",
-    "orig": "/imgs/fgame/paper-io.jpeg"
+    "orig": "/imgs/fgame/paper-io.jpeg",
+    "w": 512,
+    "w256": "/imgs/fgame/h/paper-io.bb48d90f9df9.256.webp"
   },
   "paperio2": {
     "webp": "/imgs/fgame/h/paperio2.ce00409cf230.webp",
     "png": "/imgs/fgame/h/paperio2.ce00409cf230.png",
-    "orig": "/imgs/fgame/paperio2.png"
+    "orig": "/imgs/fgame/paperio2.png",
+    "w": 192,
+    "w256": "/imgs/fgame/h/paperio2.ce00409cf230.256.webp"
   },
   "pinball-master": {
     "webp": "/imgs/fgame/h/pinball-master.65674bbe0234.webp",
     "png": "/imgs/fgame/h/pinball-master.65674bbe0234.png",
-    "orig": "/imgs/fgame/pinball-master.png"
+    "orig": "/imgs/fgame/pinball-master.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/pinball-master.65674bbe0234.256.webp"
   },
   "plants-vs-brainrots-online": {
     "webp": "/imgs/fgame/h/plants-vs-brainrots-online.cb96e7e113d2.webp",
     "png": "/imgs/fgame/h/plants-vs-brainrots-online.cb96e7e113d2.png",
-    "orig": "/imgs/fgame/plants-vs-brainrots-online.png"
+    "orig": "/imgs/fgame/plants-vs-brainrots-online.png",
+    "w": 180,
+    "w256": "/imgs/fgame/h/plants-vs-brainrots-online.cb96e7e113d2.256.webp"
   },
   "pong": {
     "webp": "/imgs/fgame/h/pong.382ddec4cde1.webp",
     "png": "/imgs/fgame/h/pong.382ddec4cde1.jpg",
-    "orig": "/imgs/fgame/pong.jpeg"
+    "orig": "/imgs/fgame/pong.jpeg",
+    "w": 512,
+    "w256": "/imgs/fgame/h/pong.382ddec4cde1.256.webp"
   },
   "retro-blaster": {
     "webp": "/imgs/fgame/h/retro-blaster.4370238f83ea.webp",
     "png": "/imgs/fgame/h/retro-blaster.4370238f83ea.png",
-    "orig": "/imgs/fgame/retro-blaster.png"
+    "orig": "/imgs/fgame/retro-blaster.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/retro-blaster.4370238f83ea.256.webp"
   },
   "retro-bowl": {
     "webp": "/imgs/fgame/h/retro-bowl.7b0d018d2c1a.webp",
     "png": "/imgs/fgame/h/retro-bowl.7b0d018d2c1a.jpg",
-    "orig": "/imgs/fgame/retro-bowl.jpg"
+    "orig": "/imgs/fgame/retro-bowl.jpg",
+    "w": 512,
+    "w256": "/imgs/fgame/h/retro-bowl.7b0d018d2c1a.256.webp"
   },
   "retro-rush": {
     "webp": "/imgs/fgame/h/retro-rush.80e22e65fa79.webp",
     "png": "/imgs/fgame/h/retro-rush.80e22e65fa79.png",
-    "orig": "/imgs/fgame/retro-rush.png"
+    "orig": "/imgs/fgame/retro-rush.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/retro-rush.80e22e65fa79.256.webp"
   },
   "retro-sports-champion": {
     "webp": "/imgs/fgame/h/retro-sports-champion.07533df8ea2d.webp",
     "png": "/imgs/fgame/h/retro-sports-champion.07533df8ea2d.png",
-    "orig": "/imgs/fgame/retro-sports-champion.png"
+    "orig": "/imgs/fgame/retro-sports-champion.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/retro-sports-champion.07533df8ea2d.256.webp"
   },
   "rooftop-rush": {
     "webp": "/imgs/fgame/h/rooftop-rush.0a3adb211663.webp",
     "png": "/imgs/fgame/h/rooftop-rush.0a3adb211663.png",
-    "orig": "/imgs/fgame/rooftop-rush.png"
+    "orig": "/imgs/fgame/rooftop-rush.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/rooftop-rush.0a3adb211663.256.webp"
   },
   "rooftop-snipers": {
     "webp": "/imgs/fgame/h/rooftop-snipers.b88bff45bba0.webp",
     "png": "/imgs/fgame/h/rooftop-snipers.b88bff45bba0.png",
-    "orig": "/imgs/fgame/rooftop-snipers.png"
+    "orig": "/imgs/fgame/rooftop-snipers.png",
+    "w": 250,
+    "w256": "/imgs/fgame/h/rooftop-snipers.b88bff45bba0.256.webp"
   },
   "run-3": {
     "webp": "/imgs/fgame/h/run-3.f3d2ebbbf403.webp",
     "png": "/imgs/fgame/h/run-3.f3d2ebbbf403.png",
-    "orig": "/imgs/fgame/run-3.png"
+    "orig": "/imgs/fgame/run-3.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/run-3.f3d2ebbbf403.256.webp"
   },
   "run-3d": {
     "webp": "/imgs/fgame/h/run-3d.b1071c2d551a.webp",
     "png": "/imgs/fgame/h/run-3d.b1071c2d551a.png",
-    "orig": "/imgs/fgame/run-3d.png"
+    "orig": "/imgs/fgame/run-3d.png",
+    "w": 180,
+    "w256": "/imgs/fgame/h/run-3d.b1071c2d551a.256.webp"
   },
   "run3thumb": {
     "webp": "/imgs/fgame/h/run3thumb.f3d2ebbbf403.webp",
     "png": "/imgs/fgame/h/run3thumb.f3d2ebbbf403.png",
-    "orig": "/imgs/fgame/run3thumb.png"
+    "orig": "/imgs/fgame/run3thumb.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/run3thumb.f3d2ebbbf403.256.webp"
   },
   "shell-shockers": {
     "webp": "/imgs/fgame/h/shell-shockers.f143fee0f9d0.webp",
     "png": "/imgs/fgame/h/shell-shockers.f143fee0f9d0.jpg",
-    "orig": "/imgs/fgame/shell-shockers.jpg"
+    "orig": "/imgs/fgame/shell-shockers.jpg",
+    "w": 1200,
+    "w256": "/imgs/fgame/h/shell-shockers.f143fee0f9d0.256.webp"
   },
   "slither-io": {
     "webp": "/imgs/fgame/h/slither-io.e4c514717f46.webp",
     "png": "/imgs/fgame/h/slither-io.e4c514717f46.png",
-    "orig": "/imgs/fgame/slither-io.png"
+    "orig": "/imgs/fgame/slither-io.png",
+    "w": 94,
+    "w256": "/imgs/fgame/h/slither-io.e4c514717f46.256.webp"
   },
   "slope": {
     "webp": "/imgs/fgame/h/slope.74978f36c654.webp",
     "png": "/imgs/fgame/h/slope.74978f36c654.png",
-    "orig": "/imgs/fgame/slope.png"
+    "orig": "/imgs/fgame/slope.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/slope.74978f36c654.256.webp"
   },
   "smash-karts": {
     "webp": "/imgs/fgame/h/smash-karts.ad99f98d83c8.webp",
     "png": "/imgs/fgame/h/smash-karts.ad99f98d83c8.jpg",
-    "orig": "/imgs/fgame/smash-karts.jpg"
+    "orig": "/imgs/fgame/smash-karts.jpg",
+    "w": 900,
+    "w256": "/imgs/fgame/h/smash-karts.ad99f98d83c8.256.webp"
   },
   "snake-arena": {
     "webp": "/imgs/fgame/h/snake-arena.e4fd63a7de91.webp",
     "png": "/imgs/fgame/h/snake-arena.e4fd63a7de91.png",
-    "orig": "/imgs/fgame/snake-arena.png"
+    "orig": "/imgs/fgame/snake-arena.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/snake-arena.e4fd63a7de91.256.webp"
   },
   "snake-classic": {
     "webp": "/imgs/fgame/h/snake-classic.1e600e8ac3a8.webp",
     "png": "/imgs/fgame/h/snake-classic.1e600e8ac3a8.jpg",
-    "orig": "/imgs/fgame/snake-classic.jpeg"
+    "orig": "/imgs/fgame/snake-classic.jpeg",
+    "w": 512,
+    "w256": "/imgs/fgame/h/snake-classic.1e600e8ac3a8.256.webp"
   },
   "soccer-random": {
     "webp": "/imgs/fgame/h/soccer-random.b1387c672393.webp",
     "png": "/imgs/fgame/h/soccer-random.b1387c672393.png",
-    "orig": "/imgs/fgame/soccer-random.png"
+    "orig": "/imgs/fgame/soccer-random.png",
+    "w": 250,
+    "w256": "/imgs/fgame/h/soccer-random.b1387c672393.256.webp"
   },
   "solitaire-klondike": {
     "webp": "/imgs/fgame/h/solitaire-klondike.1fffcb9ddab6.webp",
     "png": "/imgs/fgame/h/solitaire-klondike.1fffcb9ddab6.jpg",
-    "orig": "/imgs/fgame/solitaire-klondike.jpeg"
+    "orig": "/imgs/fgame/solitaire-klondike.jpeg",
+    "w": 512,
+    "w256": "/imgs/fgame/h/solitaire-klondike.1fffcb9ddab6.256.webp"
   },
   "stickman-hook": {
     "webp": "/imgs/fgame/h/stickman-hook.dca2503acaee.webp",
     "png": "/imgs/fgame/h/stickman-hook.dca2503acaee.jpg",
-    "orig": "/imgs/fgame/stickman-hook.jpg"
+    "orig": "/imgs/fgame/stickman-hook.jpg",
+    "w": 225,
+    "w256": "/imgs/fgame/h/stickman-hook.dca2503acaee.256.webp"
   },
   "stickmanhook": {
     "webp": "/imgs/fgame/h/stickmanhook.dca2503acaee.webp",
     "png": "/imgs/fgame/h/stickmanhook.dca2503acaee.jpg",
-    "orig": "/imgs/fgame/stickmanhook.jpg"
+    "orig": "/imgs/fgame/stickmanhook.jpg",
+    "w": 225,
+    "w256": "/imgs/fgame/h/stickmanhook.dca2503acaee.256.webp"
   },
   "subway-surfers": {
     "webp": "/imgs/fgame/h/subway-surfers.b395363469fb.webp",
     "png": "/imgs/fgame/h/subway-surfers.b395363469fb.png",
-    "orig": "/imgs/fgame/subway-surfers.png"
+    "orig": "/imgs/fgame/subway-surfers.png",
+    "w": 314,
+    "w256": "/imgs/fgame/h/subway-surfers.b395363469fb.256.webp"
   },
   "subwaysurfers": {
     "webp": "/imgs/fgame/h/subwaysurfers.b395363469fb.webp",
     "png": "/imgs/fgame/h/subwaysurfers.b395363469fb.png",
-    "orig": "/imgs/fgame/subwaysurfers.png"
+    "orig": "/imgs/fgame/subwaysurfers.png",
+    "w": 314,
+    "w256": "/imgs/fgame/h/subwaysurfers.b395363469fb.256.webp"
   },
   "temple-runner": {
     "webp": "/imgs/fgame/h/temple-runner.f165450723f0.webp",
     "png": "/imgs/fgame/h/temple-runner.f165450723f0.png",
-    "orig": "/imgs/fgame/temple-runner.png"
+    "orig": "/imgs/fgame/temple-runner.png",
+    "w": 400,
+    "w256": "/imgs/fgame/h/temple-runner.f165450723f0.256.webp"
   },
   "tetris": {
     "webp": "/imgs/fgame/h/tetris.0c10e7c0c1ea.webp",
     "png": "/imgs/fgame/h/tetris.0c10e7c0c1ea.png",
-    "orig": "/imgs/fgame/tetris.png"
+    "orig": "/imgs/fgame/tetris.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/tetris.0c10e7c0c1ea.256.webp"
   },
   "tetristhumb": {
     "webp": "/imgs/fgame/h/tetristhumb.0c10e7c0c1ea.webp",
     "png": "/imgs/fgame/h/tetristhumb.0c10e7c0c1ea.png",
-    "orig": "/imgs/fgame/tetristhumb.png"
+    "orig": "/imgs/fgame/tetristhumb.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/tetristhumb.0c10e7c0c1ea.256.webp"
   },
   "tic-tac-toe-io": {
     "webp": "/imgs/fgame/h/tic-tac-toe-io.21011abc1e0b.webp",
     "png": "/imgs/fgame/h/tic-tac-toe-io.21011abc1e0b.png",
-    "orig": "/imgs/fgame/tic-tac-toe-io.png"
+    "orig": "/imgs/fgame/tic-tac-toe-io.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/tic-tac-toe-io.21011abc1e0b.256.webp"
   },
   "tower-defense-classic": {
     "webp": "/imgs/fgame/h/tower-defense-classic.96c7b6cb7abf.webp",
     "png": "/imgs/fgame/h/tower-defense-classic.96c7b6cb7abf.jpg",
-    "orig": "/imgs/fgame/tower-defense-classic.jpeg"
+    "orig": "/imgs/fgame/tower-defense-classic.jpeg",
+    "w": 512,
+    "w256": "/imgs/fgame/h/tower-defense-classic.96c7b6cb7abf.256.webp"
   },
   "tower-rise": {
     "webp": "/imgs/fgame/h/tower-rise.41a21599fd54.webp",
     "png": "/imgs/fgame/h/tower-rise.41a21599fd54.png",
-    "orig": "/imgs/fgame/tower-rise.png"
+    "orig": "/imgs/fgame/tower-rise.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/tower-rise.41a21599fd54.256.webp"
   },
   "trap-the-cat": {
     "webp": "/imgs/fgame/h/trap-the-cat.459082083c51.webp",
     "png": "/imgs/fgame/h/trap-the-cat.459082083c51.png",
-    "orig": "/imgs/fgame/trap-the-cat.png"
+    "orig": "/imgs/fgame/trap-the-cat.png",
+    "w": 180,
+    "w256": "/imgs/fgame/h/trap-the-cat.459082083c51.256.webp"
   },
   "vex3v": {
     "webp": "/imgs/fgame/h/vex3v.818225681213.webp",
     "png": "/imgs/fgame/h/vex3v.818225681213.jpg",
-    "orig": "/imgs/fgame/vex3v.jpg"
+    "orig": "/imgs/fgame/vex3v.jpg",
+    "w": 512,
+    "w256": "/imgs/fgame/h/vex3v.818225681213.256.webp"
   },
   "wave-road": {
     "webp": "/imgs/fgame/h/wave-road.a791141a4d6b.webp",
     "png": "/imgs/fgame/h/wave-road.a791141a4d6b.png",
-    "orig": "/imgs/fgame/wave-road.png"
+    "orig": "/imgs/fgame/wave-road.png",
+    "w": 180,
+    "w256": "/imgs/fgame/h/wave-road.a791141a4d6b.256.webp"
   }
 }
