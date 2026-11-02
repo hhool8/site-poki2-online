@@ -428,6 +428,7 @@ function fillGame(template, game, content, relatedLinks) {
       description,
       image: gameImageAbs,
       genre: game.genre,
+      playMode: buildGamePlayMode(game.players),
       isAccessibleForFree: true,
       inLanguage: 'en',
       author: { '@type': 'Organization', name: 'Poki2', url: site.domain },
@@ -724,7 +725,6 @@ function buildBlog() {
     const contentFile = path.join(SRC, 'content', 'blog', `${post.slug}.html`);
     const postContent = fs.existsSync(contentFile) ? read(contentFile) : '';
     const firstImage = extractFirstImageSrc(postContent) || defaultBlogCardImage;
-    const imgStyle = ` style="background-image:url('${cssUrlValue(firstImage)}');background-size:cover;background-position:center;background-repeat:no-repeat"`;
     const safeTitle = esc(decodeBasicHtmlEntities(post.title));
     const safeCategory = esc(decodeBasicHtmlEntities(post.category || 'Guides'));
     const safeDescription = esc(decodeBasicHtmlEntities(post.description || ''));
@@ -734,7 +734,7 @@ function buildBlog() {
     return `
     <article class="blog-listing-card">
       <a href="/blog/${post.slug}" class="blog-card-img-link" tabindex="-1" aria-hidden="true">
-        <div class="blog-card-img" role="img" aria-label="${safeTitle}"${imgStyle}></div>
+        <img class="blog-card-img" src="${esc(firstImage)}" alt="${safeTitle}" loading="lazy" decoding="async" width="440" height="280">
       </a>
       <div class="blog-card-body">
         <div class="blog-card-meta">
