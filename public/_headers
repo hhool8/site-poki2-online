@@ -22,3 +22,10 @@
 /imgs/**
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
   Vary: Accept-Encoding
+
+# Content-hashed game thumbnails (see scripts/gen-img-manifest.js). Filename
+# changes iff bytes change, so these are safe to cache as immutable. Placed
+# AFTER /imgs/** so it overrides the broader long-cache rule for this path.
+/imgs/fgame/h/*
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept-Encoding

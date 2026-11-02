@@ -1,0 +1,492 @@
+{
+  "2048": {
+    "webp": "/imgs/fgame/h/2048.6d058e9d8ed1.webp",
+    "png": "/imgs/fgame/h/2048.6d058e9d8ed1.jpg",
+    "orig": "/imgs/fgame/2048.jpg"
+  },
+  "1v1lol": {
+    "webp": "/imgs/fgame/h/1v1lol.e2bc1d040ca4.webp",
+    "png": "/imgs/fgame/h/1v1lol.e2bc1d040ca4.png",
+    "orig": "/imgs/fgame/1v1lol.png"
+  },
+  "2048-drop": {
+    "webp": "/imgs/fgame/h/2048-drop.2ecdd9579473.webp",
+    "png": "/imgs/fgame/h/2048-drop.2ecdd9579473.png",
+    "orig": "/imgs/fgame/2048-drop.png"
+  },
+  "2048-italian-brainrot": {
+    "webp": "/imgs/fgame/h/2048-italian-brainrot.783e0d8803d8.webp",
+    "png": "/imgs/fgame/h/2048-italian-brainrot.783e0d8803d8.png",
+    "orig": "/imgs/fgame/2048-italian-brainrot.png"
+  },
+  "2048-rogue": {
+    "webp": "/imgs/fgame/h/2048-rogue.1e9273b43008.webp",
+    "png": "/imgs/fgame/h/2048-rogue.1e9273b43008.png",
+    "orig": "/imgs/fgame/2048-rogue.png"
+  },
+  "agar-io": {
+    "webp": "/imgs/fgame/h/agar-io.5218ce24aac3.webp",
+    "png": "/imgs/fgame/h/agar-io.5218ce24aac3.png",
+    "orig": "/imgs/fgame/agar-io.png"
+  },
+  "age-of-war": {
+    "webp": "/imgs/fgame/h/age-of-war.217680724b7e.webp",
+    "png": "/imgs/fgame/h/age-of-war.217680724b7e.jpg",
+    "orig": "/imgs/fgame/age-of-war.jpg"
+  },
+  "american-truck-driving": {
+    "webp": "/imgs/fgame/h/american-truck-driving.7f047641f7de.webp",
+    "png": "/imgs/fgame/h/american-truck-driving.7f047641f7de.png",
+    "orig": "/imgs/fgame/american-truck-driving.png"
+  },
+  "animal-craft": {
+    "webp": "/imgs/fgame/h/animal-craft.989fd2740072.webp",
+    "png": "/imgs/fgame/h/animal-craft.989fd2740072.png",
+    "orig": "/imgs/fgame/animal-craft.png"
+  },
+  "arcade-tennis": {
+    "webp": "/imgs/fgame/h/arcade-tennis.1105ae24c8c0.webp",
+    "png": "/imgs/fgame/h/arcade-tennis.1105ae24c8c0.png",
+    "orig": "/imgs/fgame/arcade-tennis.png"
+  },
+  "arcade-volley": {
+    "webp": "/imgs/fgame/h/arcade-volley.098930c4fdfd.webp",
+    "png": "/imgs/fgame/h/arcade-volley.098930c4fdfd.png",
+    "orig": "/imgs/fgame/arcade-volley.png"
+  },
+  "astro-robot-clicker": {
+    "webp": "/imgs/fgame/h/astro-robot-clicker.ffb310d6e873.webp",
+    "png": "/imgs/fgame/h/astro-robot-clicker.ffb310d6e873.png",
+    "orig": "/imgs/fgame/astro-robot-clicker.png"
+  },
+  "astro-tycoon": {
+    "webp": "/imgs/fgame/h/astro-tycoon.c5ed3b016cd5.webp",
+    "png": "/imgs/fgame/h/astro-tycoon.c5ed3b016cd5.png",
+    "orig": "/imgs/fgame/astro-tycoon.png"
+  },
+  "badicecream": {
+    "webp": "/imgs/fgame/h/badicecream.a05d97a353b0.webp",
+    "png": "/imgs/fgame/h/badicecream.a05d97a353b0.png",
+    "orig": "/imgs/fgame/badicecream.png"
+  },
+  "ball-orbit": {
+    "webp": "/imgs/fgame/h/ball-orbit.ad65e02cb640.webp",
+    "png": "/imgs/fgame/h/ball-orbit.ad65e02cb640.png",
+    "orig": "/imgs/fgame/ball-orbit.png"
+  },
+  "basket-random": {
+    "webp": "/imgs/fgame/h/basket-random.a6229aa3cac6.webp",
+    "png": "/imgs/fgame/h/basket-random.a6229aa3cac6.jpg",
+    "orig": "/imgs/fgame/basket-random.jpeg"
+  },
+  "basketball-stars": {
+    "webp": "/imgs/fgame/h/basketball-stars.48cbe040b2ac.webp",
+    "png": "/imgs/fgame/h/basketball-stars.48cbe040b2ac.png",
+    "orig": "/imgs/fgame/basketball-stars.png"
+  },
+  "basketballstarsgamelogo2": {
+    "webp": "/imgs/fgame/h/basketballstarsgamelogo2.48cbe040b2ac.webp",
+    "png": "/imgs/fgame/h/basketballstarsgamelogo2.48cbe040b2ac.png",
+    "orig": "/imgs/fgame/basketballstarsgamelogo2.png"
+  },
+  "bat-smash": {
+    "webp": "/imgs/fgame/h/bat-smash.478afdd0b77f.webp",
+    "png": "/imgs/fgame/h/bat-smash.478afdd0b77f.png",
+    "orig": "/imgs/fgame/bat-smash.png"
+  },
+  "battle-karts": {
+    "webp": "/imgs/fgame/h/battle-karts.c38795a1a31a.webp",
+    "png": "/imgs/fgame/h/battle-karts.c38795a1a31a.png",
+    "orig": "/imgs/fgame/battle-karts.png"
+  },
+  "bike-xtreme": {
+    "webp": "/imgs/fgame/h/bike-xtreme.846e614451e8.webp",
+    "png": "/imgs/fgame/h/bike-xtreme.846e614451e8.png",
+    "orig": "/imgs/fgame/bike-xtreme.png"
+  },
+  "billiards-master": {
+    "webp": "/imgs/fgame/h/billiards-master.56ae604c50e6.webp",
+    "png": "/imgs/fgame/h/billiards-master.56ae604c50e6.png",
+    "orig": "/imgs/fgame/billiards-master.png"
+  },
+  "bitlife": {
+    "webp": "/imgs/fgame/h/bitlife.2ec5a6c263b2.webp",
+    "png": "/imgs/fgame/h/bitlife.2ec5a6c263b2.png",
+    "orig": "/imgs/fgame/bitlife.png"
+  },
+  "blocky-hunter": {
+    "webp": "/imgs/fgame/h/blocky-hunter.d856941aa248.webp",
+    "png": "/imgs/fgame/h/blocky-hunter.d856941aa248.png",
+    "orig": "/imgs/fgame/blocky-hunter.png"
+  },
+  "blocky-rider": {
+    "webp": "/imgs/fgame/h/blocky-rider.f803267fe774.webp",
+    "png": "/imgs/fgame/h/blocky-rider.f803267fe774.png",
+    "orig": "/imgs/fgame/blocky-rider.png"
+  },
+  "bombardino-crocodilo-clicker": {
+    "webp": "/imgs/fgame/h/bombardino-crocodilo-clicker.1d80b063eacd.webp",
+    "png": "/imgs/fgame/h/bombardino-crocodilo-clicker.1d80b063eacd.png",
+    "orig": "/imgs/fgame/bombardino-crocodilo-clicker.png"
+  },
+  "bowling-master": {
+    "webp": "/imgs/fgame/h/bowling-master.a08d7810be12.webp",
+    "png": "/imgs/fgame/h/bowling-master.a08d7810be12.png",
+    "orig": "/imgs/fgame/bowling-master.png"
+  },
+  "brain-lines": {
+    "webp": "/imgs/fgame/h/brain-lines.01097b8b34a8.webp",
+    "png": "/imgs/fgame/h/brain-lines.01097b8b34a8.png",
+    "orig": "/imgs/fgame/brain-lines.png"
+  },
+  "breakout-racing": {
+    "webp": "/imgs/fgame/h/breakout-racing.8ce6516fb253.webp",
+    "png": "/imgs/fgame/h/breakout-racing.8ce6516fb253.png",
+    "orig": "/imgs/fgame/breakout-racing.png"
+  },
+  "breakout": {
+    "webp": "/imgs/fgame/h/breakout.4efda2ea272c.webp",
+    "png": "/imgs/fgame/h/breakout.4efda2ea272c.jpg",
+    "orig": "/imgs/fgame/breakout.jpeg"
+  },
+  "bricky-blast": {
+    "webp": "/imgs/fgame/h/bricky-blast.4207be94be7a.webp",
+    "png": "/imgs/fgame/h/bricky-blast.4207be94be7a.png",
+    "orig": "/imgs/fgame/bricky-blast.png"
+  },
+  "bricky-break": {
+    "webp": "/imgs/fgame/h/bricky-break.fe1cad066b10.webp",
+    "png": "/imgs/fgame/h/bricky-break.fe1cad066b10.png",
+    "orig": "/imgs/fgame/bricky-break.png"
+  },
+  "chicken-jockey-clicker": {
+    "webp": "/imgs/fgame/h/chicken-jockey-clicker.26eac4856dc0.webp",
+    "png": "/imgs/fgame/h/chicken-jockey-clicker.26eac4856dc0.png",
+    "orig": "/imgs/fgame/chicken-jockey-clicker.png"
+  },
+  "chicken-jockey-combat": {
+    "webp": "/imgs/fgame/h/chicken-jockey-combat.84e36bc770e8.webp",
+    "png": "/imgs/fgame/h/chicken-jockey-combat.84e36bc770e8.png",
+    "orig": "/imgs/fgame/chicken-jockey-combat.png"
+  },
+  "color-switch": {
+    "webp": "/imgs/fgame/h/color-switch.e1d23ea982c6.webp",
+    "png": "/imgs/fgame/h/color-switch.e1d23ea982c6.png",
+    "orig": "/imgs/fgame/color-switch.png"
+  },
+  "cookie-clicker": {
+    "webp": "/imgs/fgame/h/cookie-clicker.a86e05a70c1d.webp",
+    "png": "/imgs/fgame/h/cookie-clicker.a86e05a70c1d.png",
+    "orig": "/imgs/fgame/cookie-clicker.png"
+  },
+  "cookieclickerthumb": {
+    "webp": "/imgs/fgame/h/cookieclickerthumb.a86e05a70c1d.webp",
+    "png": "/imgs/fgame/h/cookieclickerthumb.a86e05a70c1d.png",
+    "orig": "/imgs/fgame/cookieclickerthumb.png"
+  },
+  "crazy-animal-city": {
+    "webp": "/imgs/fgame/h/crazy-animal-city.2957c4f41e91.webp",
+    "png": "/imgs/fgame/h/crazy-animal-city.2957c4f41e91.png",
+    "orig": "/imgs/fgame/crazy-animal-city.png"
+  },
+  "crossy-road": {
+    "webp": "/imgs/fgame/h/crossy-road.a07bd4077859.webp",
+    "png": "/imgs/fgame/h/crossy-road.a07bd4077859.png",
+    "orig": "/imgs/fgame/crossy-road.png"
+  },
+  "crossyroad1": {
+    "webp": "/imgs/fgame/h/crossyroad1.a07bd4077859.webp",
+    "png": "/imgs/fgame/h/crossyroad1.a07bd4077859.png",
+    "orig": "/imgs/fgame/crossyroad1.png"
+  },
+  "cut-the-rope": {
+    "webp": "/imgs/fgame/h/cut-the-rope.34f176d06573.webp",
+    "png": "/imgs/fgame/h/cut-the-rope.34f176d06573.png",
+    "orig": "/imgs/fgame/cut-the-rope.png"
+  },
+  "cuttherope": {
+    "webp": "/imgs/fgame/h/cuttherope.34f176d06573.webp",
+    "png": "/imgs/fgame/h/cuttherope.34f176d06573.png",
+    "orig": "/imgs/fgame/cuttherope.png"
+  },
+  "doodlejump": {
+    "webp": "/imgs/fgame/h/doodlejump.02a34e501b96.webp",
+    "png": "/imgs/fgame/h/doodlejump.02a34e501b96.png",
+    "orig": "/imgs/fgame/doodlejump.png"
+  },
+  "drift-hunters": {
+    "webp": "/imgs/fgame/h/drift-hunters.a930b5e5224c.webp",
+    "png": "/imgs/fgame/h/drift-hunters.a930b5e5224c.jpg",
+    "orig": "/imgs/fgame/drift-hunters.jpg"
+  },
+  "drifthunters": {
+    "webp": "/imgs/fgame/h/drifthunters.a930b5e5224c.webp",
+    "png": "/imgs/fgame/h/drifthunters.a930b5e5224c.jpg",
+    "orig": "/imgs/fgame/drifthunters.jpg"
+  },
+  "escape-tsunami-brainrots-online": {
+    "webp": "/imgs/fgame/h/escape-tsunami-brainrots-online.60b23263dd10.webp",
+    "png": "/imgs/fgame/h/escape-tsunami-brainrots-online.60b23263dd10.png",
+    "orig": "/imgs/fgame/escape-tsunami-brainrots-online.png"
+  },
+  "fireboy-watergirl-1": {
+    "webp": "/imgs/fgame/h/fireboy-watergirl-1.ae4c2197a52f.webp",
+    "png": "/imgs/fgame/h/fireboy-watergirl-1.ae4c2197a52f.png",
+    "orig": "/imgs/fgame/fireboy-watergirl-1.png"
+  },
+  "fishing-frenzy": {
+    "webp": "/imgs/fgame/h/fishing-frenzy.72a6439d736f.webp",
+    "png": "/imgs/fgame/h/fishing-frenzy.72a6439d736f.png",
+    "orig": "/imgs/fgame/fishing-frenzy.png"
+  },
+  "flappybird": {
+    "webp": "/imgs/fgame/h/flappybird.8ddd34be390d.webp",
+    "png": "/imgs/fgame/h/flappybird.8ddd34be390d.png",
+    "orig": "/imgs/fgame/flappybird.png"
+  },
+  "geometry-dash": {
+    "webp": "/imgs/fgame/h/geometry-dash.e1e05d840b42.webp",
+    "png": "/imgs/fgame/h/geometry-dash.e1e05d840b42.png",
+    "orig": "/imgs/fgame/geometry-dash.png"
+  },
+  "geometrydash": {
+    "webp": "/imgs/fgame/h/geometrydash.7a1fc06266be.webp",
+    "png": "/imgs/fgame/h/geometrydash.7a1fc06266be.png",
+    "orig": "/imgs/fgame/geometrydash.png"
+  },
+  "glide-in": {
+    "webp": "/imgs/fgame/h/glide-in.7929598ee45b.webp",
+    "png": "/imgs/fgame/h/glide-in.7929598ee45b.png",
+    "orig": "/imgs/fgame/glide-in.png"
+  },
+  "golf-puzzle": {
+    "webp": "/imgs/fgame/h/golf-puzzle.9b2e79aa7fd4.webp",
+    "png": "/imgs/fgame/h/golf-puzzle.9b2e79aa7fd4.png",
+    "orig": "/imgs/fgame/golf-puzzle.png"
+  },
+  "hill-climb-racing": {
+    "webp": "/imgs/fgame/h/hill-climb-racing.0c93bb3245d1.webp",
+    "png": "/imgs/fgame/h/hill-climb-racing.0c93bb3245d1.png",
+    "orig": "/imgs/fgame/hill-climb-racing.png"
+  },
+  "hoop-legends": {
+    "webp": "/imgs/fgame/h/hoop-legends.9877cfe1d0c6.webp",
+    "png": "/imgs/fgame/h/hoop-legends.9877cfe1d0c6.png",
+    "orig": "/imgs/fgame/hoop-legends.png"
+  },
+  "krunker-io": {
+    "webp": "/imgs/fgame/h/krunker-io.de90b8cc35b2.webp",
+    "png": "/imgs/fgame/h/krunker-io.de90b8cc35b2.png",
+    "orig": "/imgs/fgame/krunker-io.png"
+  },
+  "loop-breakout": {
+    "webp": "/imgs/fgame/h/loop-breakout.ac19bd0fc52c.webp",
+    "png": "/imgs/fgame/h/loop-breakout.ac19bd0fc52c.png",
+    "orig": "/imgs/fgame/loop-breakout.png"
+  },
+  "merge-infinity": {
+    "webp": "/imgs/fgame/h/merge-infinity.87d70f73b90d.webp",
+    "png": "/imgs/fgame/h/merge-infinity.87d70f73b90d.png",
+    "orig": "/imgs/fgame/merge-infinity.png"
+  },
+  "minecraftclassic": {
+    "webp": "/imgs/fgame/h/minecraftclassic.f1ba16d1cf5e.webp",
+    "png": "/imgs/fgame/h/minecraftclassic.f1ba16d1cf5e.png",
+    "orig": "/imgs/fgame/minecraftclassic.png"
+  },
+  "minesweeper": {
+    "webp": "/imgs/fgame/h/minesweeper.301f1facc16f.webp",
+    "png": "/imgs/fgame/h/minesweeper.301f1facc16f.jpg",
+    "orig": "/imgs/fgame/minesweeper.jpeg"
+  },
+  "moto-x3m": {
+    "webp": "/imgs/fgame/h/moto-x3m.3c3948964b4d.webp",
+    "png": "/imgs/fgame/h/moto-x3m.3c3948964b4d.png",
+    "orig": "/imgs/fgame/moto-x3m.png"
+  },
+  "mr-flip": {
+    "webp": "/imgs/fgame/h/mr-flip.eca54c79c6c8.webp",
+    "png": "/imgs/fgame/h/mr-flip.eca54c79c6c8.png",
+    "orig": "/imgs/fgame/mr-flip.png"
+  },
+  "pacman": {
+    "webp": "/imgs/fgame/h/pacman.16d2aaf0b48c.webp",
+    "png": "/imgs/fgame/h/pacman.16d2aaf0b48c.jpg",
+    "orig": "/imgs/fgame/pacman.jpg"
+  },
+  "paper-io": {
+    "webp": "/imgs/fgame/h/paper-io.bb48d90f9df9.webp",
+    "png": "/imgs/fgame/h/paper-io.bb48d90f9df9.jpg",
+    "orig": "/imgs/fgame/paper-io.jpeg"
+  },
+  "paperio2": {
+    "webp": "/imgs/fgame/h/paperio2.ce00409cf230.webp",
+    "png": "/imgs/fgame/h/paperio2.ce00409cf230.png",
+    "orig": "/imgs/fgame/paperio2.png"
+  },
+  "pinball-master": {
+    "webp": "/imgs/fgame/h/pinball-master.65674bbe0234.webp",
+    "png": "/imgs/fgame/h/pinball-master.65674bbe0234.png",
+    "orig": "/imgs/fgame/pinball-master.png"
+  },
+  "plants-vs-brainrots-online": {
+    "webp": "/imgs/fgame/h/plants-vs-brainrots-online.cb96e7e113d2.webp",
+    "png": "/imgs/fgame/h/plants-vs-brainrots-online.cb96e7e113d2.png",
+    "orig": "/imgs/fgame/plants-vs-brainrots-online.png"
+  },
+  "pong": {
+    "webp": "/imgs/fgame/h/pong.382ddec4cde1.webp",
+    "png": "/imgs/fgame/h/pong.382ddec4cde1.jpg",
+    "orig": "/imgs/fgame/pong.jpeg"
+  },
+  "retro-blaster": {
+    "webp": "/imgs/fgame/h/retro-blaster.4370238f83ea.webp",
+    "png": "/imgs/fgame/h/retro-blaster.4370238f83ea.png",
+    "orig": "/imgs/fgame/retro-blaster.png"
+  },
+  "retro-bowl": {
+    "webp": "/imgs/fgame/h/retro-bowl.7b0d018d2c1a.webp",
+    "png": "/imgs/fgame/h/retro-bowl.7b0d018d2c1a.jpg",
+    "orig": "/imgs/fgame/retro-bowl.jpg"
+  },
+  "retro-rush": {
+    "webp": "/imgs/fgame/h/retro-rush.80e22e65fa79.webp",
+    "png": "/imgs/fgame/h/retro-rush.80e22e65fa79.png",
+    "orig": "/imgs/fgame/retro-rush.png"
+  },
+  "retro-sports-champion": {
+    "webp": "/imgs/fgame/h/retro-sports-champion.07533df8ea2d.webp",
+    "png": "/imgs/fgame/h/retro-sports-champion.07533df8ea2d.png",
+    "orig": "/imgs/fgame/retro-sports-champion.png"
+  },
+  "rooftop-rush": {
+    "webp": "/imgs/fgame/h/rooftop-rush.0a3adb211663.webp",
+    "png": "/imgs/fgame/h/rooftop-rush.0a3adb211663.png",
+    "orig": "/imgs/fgame/rooftop-rush.png"
+  },
+  "rooftop-snipers": {
+    "webp": "/imgs/fgame/h/rooftop-snipers.b88bff45bba0.webp",
+    "png": "/imgs/fgame/h/rooftop-snipers.b88bff45bba0.png",
+    "orig": "/imgs/fgame/rooftop-snipers.png"
+  },
+  "run-3": {
+    "webp": "/imgs/fgame/h/run-3.f3d2ebbbf403.webp",
+    "png": "/imgs/fgame/h/run-3.f3d2ebbbf403.png",
+    "orig": "/imgs/fgame/run-3.png"
+  },
+  "run-3d": {
+    "webp": "/imgs/fgame/h/run-3d.b1071c2d551a.webp",
+    "png": "/imgs/fgame/h/run-3d.b1071c2d551a.png",
+    "orig": "/imgs/fgame/run-3d.png"
+  },
+  "run3thumb": {
+    "webp": "/imgs/fgame/h/run3thumb.f3d2ebbbf403.webp",
+    "png": "/imgs/fgame/h/run3thumb.f3d2ebbbf403.png",
+    "orig": "/imgs/fgame/run3thumb.png"
+  },
+  "shell-shockers": {
+    "webp": "/imgs/fgame/h/shell-shockers.f143fee0f9d0.webp",
+    "png": "/imgs/fgame/h/shell-shockers.f143fee0f9d0.jpg",
+    "orig": "/imgs/fgame/shell-shockers.jpg"
+  },
+  "slither-io": {
+    "webp": "/imgs/fgame/h/slither-io.e4c514717f46.webp",
+    "png": "/imgs/fgame/h/slither-io.e4c514717f46.png",
+    "orig": "/imgs/fgame/slither-io.png"
+  },
+  "slope": {
+    "webp": "/imgs/fgame/h/slope.74978f36c654.webp",
+    "png": "/imgs/fgame/h/slope.74978f36c654.png",
+    "orig": "/imgs/fgame/slope.png"
+  },
+  "smash-karts": {
+    "webp": "/imgs/fgame/h/smash-karts.ad99f98d83c8.webp",
+    "png": "/imgs/fgame/h/smash-karts.ad99f98d83c8.jpg",
+    "orig": "/imgs/fgame/smash-karts.jpg"
+  },
+  "snake-arena": {
+    "webp": "/imgs/fgame/h/snake-arena.e4fd63a7de91.webp",
+    "png": "/imgs/fgame/h/snake-arena.e4fd63a7de91.png",
+    "orig": "/imgs/fgame/snake-arena.png"
+  },
+  "snake-classic": {
+    "webp": "/imgs/fgame/h/snake-classic.1e600e8ac3a8.webp",
+    "png": "/imgs/fgame/h/snake-classic.1e600e8ac3a8.jpg",
+    "orig": "/imgs/fgame/snake-classic.jpeg"
+  },
+  "soccer-random": {
+    "webp": "/imgs/fgame/h/soccer-random.b1387c672393.webp",
+    "png": "/imgs/fgame/h/soccer-random.b1387c672393.png",
+    "orig": "/imgs/fgame/soccer-random.png"
+  },
+  "solitaire-klondike": {
+    "webp": "/imgs/fgame/h/solitaire-klondike.1fffcb9ddab6.webp",
+    "png": "/imgs/fgame/h/solitaire-klondike.1fffcb9ddab6.jpg",
+    "orig": "/imgs/fgame/solitaire-klondike.jpeg"
+  },
+  "stickman-hook": {
+    "webp": "/imgs/fgame/h/stickman-hook.dca2503acaee.webp",
+    "png": "/imgs/fgame/h/stickman-hook.dca2503acaee.jpg",
+    "orig": "/imgs/fgame/stickman-hook.jpg"
+  },
+  "stickmanhook": {
+    "webp": "/imgs/fgame/h/stickmanhook.dca2503acaee.webp",
+    "png": "/imgs/fgame/h/stickmanhook.dca2503acaee.jpg",
+    "orig": "/imgs/fgame/stickmanhook.jpg"
+  },
+  "subway-surfers": {
+    "webp": "/imgs/fgame/h/subway-surfers.b395363469fb.webp",
+    "png": "/imgs/fgame/h/subway-surfers.b395363469fb.png",
+    "orig": "/imgs/fgame/subway-surfers.png"
+  },
+  "subwaysurfers": {
+    "webp": "/imgs/fgame/h/subwaysurfers.b395363469fb.webp",
+    "png": "/imgs/fgame/h/subwaysurfers.b395363469fb.png",
+    "orig": "/imgs/fgame/subwaysurfers.png"
+  },
+  "temple-runner": {
+    "webp": "/imgs/fgame/h/temple-runner.f165450723f0.webp",
+    "png": "/imgs/fgame/h/temple-runner.f165450723f0.png",
+    "orig": "/imgs/fgame/temple-runner.png"
+  },
+  "tetris": {
+    "webp": "/imgs/fgame/h/tetris.0c10e7c0c1ea.webp",
+    "png": "/imgs/fgame/h/tetris.0c10e7c0c1ea.png",
+    "orig": "/imgs/fgame/tetris.png"
+  },
+  "tetristhumb": {
+    "webp": "/imgs/fgame/h/tetristhumb.0c10e7c0c1ea.webp",
+    "png": "/imgs/fgame/h/tetristhumb.0c10e7c0c1ea.png",
+    "orig": "/imgs/fgame/tetristhumb.png"
+  },
+  "tic-tac-toe-io": {
+    "webp": "/imgs/fgame/h/tic-tac-toe-io.21011abc1e0b.webp",
+    "png": "/imgs/fgame/h/tic-tac-toe-io.21011abc1e0b.png",
+    "orig": "/imgs/fgame/tic-tac-toe-io.png"
+  },
+  "tower-defense-classic": {
+    "webp": "/imgs/fgame/h/tower-defense-classic.96c7b6cb7abf.webp",
+    "png": "/imgs/fgame/h/tower-defense-classic.96c7b6cb7abf.jpg",
+    "orig": "/imgs/fgame/tower-defense-classic.jpeg"
+  },
+  "tower-rise": {
+    "webp": "/imgs/fgame/h/tower-rise.41a21599fd54.webp",
+    "png": "/imgs/fgame/h/tower-rise.41a21599fd54.png",
+    "orig": "/imgs/fgame/tower-rise.png"
+  },
+  "trap-the-cat": {
+    "webp": "/imgs/fgame/h/trap-the-cat.459082083c51.webp",
+    "png": "/imgs/fgame/h/trap-the-cat.459082083c51.png",
+    "orig": "/imgs/fgame/trap-the-cat.png"
+  },
+  "vex3v": {
+    "webp": "/imgs/fgame/h/vex3v.818225681213.webp",
+    "png": "/imgs/fgame/h/vex3v.818225681213.jpg",
+    "orig": "/imgs/fgame/vex3v.jpg"
+  },
+  "wave-road": {
+    "webp": "/imgs/fgame/h/wave-road.a791141a4d6b.webp",
+    "png": "/imgs/fgame/h/wave-road.a791141a4d6b.png",
+    "orig": "/imgs/fgame/wave-road.png"
+  }
+}
