@@ -397,6 +397,15 @@ const pages = [
 //     posts that have never been revised after publication.
 const blogPosts = [
   {
+    slug:       'games-like-cookie-clicker',
+    title:      'Games Like Cookie Clicker: 5 Free Idle Games to Play Next',
+    description:'Five free browser games that scratch the same itch as Cookie Clicker — one sci-fi clicker, one meme pick, one idle tycoon and one idle tower defense. No download, no account.',
+    date:       'November 2, 2026',
+    isoDate:    '2026-11-02',
+    category:   'Top Lists',
+    readTime:   '8 min read',
+  },
+  {
     slug:       'best-browser-games-2026',
     title:      'The 15 Best Free Browser Games of 2026',
     description:'Our editors picked the 15 best free browser games you can play right now — no download, no login, just open and play.',
