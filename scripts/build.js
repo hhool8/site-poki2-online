@@ -703,6 +703,40 @@ const GENRE_OVERVIEWS = {
   'Idle & Sandbox': 'Idle & Sandbox is for clicker and incremental games that keep producing while you are away. Numbers go up, upgrades compound, and checking back in becomes its own reward.',
 };
 
+// Second content section for genre pages ("Playing X games on Poki2"): the
+// curator angle + a practical tip. Kept per-genre and concrete — two generic
+// paragraphs across seven pages read as filler to both users and crawlers.
+const GENRE_PLAY_PARAS = {
+  'Puzzle': [
+    'Every puzzle game on this page is played in a single browser tab and keeps its own progress, so you can leave a board half-finished and come back to it later. Nothing here needs a download, a plugin, or an account — the whole collection is click-to-play, and each listing states its controls before you start so you know whether it is a mouse game, a keyboard game, or both.',
+    'A good way to pick: if you want a ten-minute break, start with a matcher or a physics toy you can drop at any moment. If you want a longer session, pick a level-based title and work through the worlds in order — the early levels teach the mechanic, and the late levels combine it with everything the game has shown you so far.',
+  ],
+  'Action & Shooter': [
+    'Rounds here are short by design. Most games in this category put you back in the action within a second of dying, which makes them easy to fit into a break and hard to put down. Each listing names its controls and camera style up front — top-down, first-person, or side view — so you can tell how a game plays before the first shot.',
+    'Aim with the mouse, move with the keyboard, and check the game page for whether it supports two players on one machine. If a round feels overwhelming, lower the difficulty option most of these games offer rather than switching titles — the early waves are usually a warm-up for mechanics the game introduces a minute or two in.',
+  ],
+  'Endless Runner': [
+    'The whole category runs on one promise: you start over instantly. There are no checkpoints to wait for and no menus between attempts, so a failed run costs you a second, not a session. Every listing here tells you the input — usually one button or two — before you commit, which matters because the games differ more in timing feel than in rules.',
+    'Score chasing is the real game. Pick one title and learn its obstacle patterns instead of sampling all of them; runners reward memorised sequences far more than raw reaction speed. Most games record a personal best locally, so the competition is with your own last run.',
+  ],
+  'Racing': [
+    'The racing shelf splits into two families: circuit-style games where you hold a racing line and beat the clock, and physics games where the track is trying to flip you. Both are listed here, and each card shows which is which through its genre and player notes, so you can go straight to the style you are in the mood for.',
+    'Keyboard driving in the browser rewards smooth input — feather the accelerator through corners instead of tapping full throttle, and brake before the turn rather than in it. On physics tracks, keeping the wheels on the ground is usually faster than the biggest jump.',
+  ],
+  'Platformer & Arcade': [
+    'These games are built around momentum: swings, jumps, and bounces that chain into each other. That makes them the best category on the site for the feeling of pulling off a move you could not do an hour ago. Levels are short, deaths are instant, and progress saves locally as you clear stages.',
+    'If a section keeps killing you, stop retrying it at full speed. Watch what the level is actually asking — most platformer checkpoints hide one idea, a new obstacle or a new timing, and once you name the idea the attempt usually lands within a few tries.',
+  ],
+  'Sports & IO': [
+    'Sports games here compress real rules into two-minute matches — basketball, tennis, volleyball, and football with the pauses taken out. The IO titles next to them are the other kind of sport: a live arena where the opponents are other people\'s browsers. Both families are playable in seconds and both list their player counts up front.',
+    'For the local sports games, decide sides before the whistle — WASD against arrow keys — and swap ends between matches to keep it fair. For the IO games, the lobby you land in is usually full enough to matter; if it is not, one reload finds a busier server.',
+  ],
+  'Idle & Sandbox': [
+    'Idle games are the one category where closing the tab is part of playing well. Production keeps accumulating while you are away, and the game front-loads the decisions — what to buy, when to prestige — so that checking in for two minutes is a real turn, not a compromise. Progress persists in your browser between sessions.',
+    'Resist buying everything the moment you can afford it. The interesting choices in this category are timing choices: the same budget spent a few minutes later, after one more multiplier, usually buys noticeably more. If a run stalls completely, the prestige reset exists precisely to fix that.',
+  ],
+};
+
 // Shared card-grid style: the /fgame/ index, the genre pages and the 2-player
 // hub all render the same .game-index-card markup, so they must ship the same
 // CSS. Kept in one place — the genre pages previously missed the
@@ -734,6 +768,7 @@ function buildGenrePages() {
     ).join('');
     const blurb = GENRE_BLURBS[cat] || '';
     const overview = GENRE_OVERVIEWS[cat] || '';
+    const [playPara1, playPara2] = GENRE_PLAY_PARAS[cat] || ['', ''];
     const catLower = cat.toLowerCase();
     const content = `
 <div class="blog-listing-wrap">
@@ -745,6 +780,9 @@ function buildGenrePages() {
   <div class="game-index-grid">${cards}</div>
   <h2 class="game-cat-heading">What are ${esc(catLower)} games?</h2>
   <p class="genre-p">${esc(overview)}</p>
+  <h2 class="game-cat-heading">Playing ${esc(catLower)} games on Poki2</h2>
+  <p class="genre-p">${esc(playPara1)}</p>
+  <p class="genre-p">${esc(playPara2)}</p>
   <h2 class="game-cat-heading">Frequently Asked Questions</h2>
   <h3 class="genre-faq-q">Are ${esc(catLower)} games free on Poki2?</h3>
   <p class="genre-p">Yes. Every ${esc(catLower)} game on this page is free to play in the browser — no download, no installation and no account required. Click a game and it starts instantly.</p>
@@ -754,12 +792,19 @@ function buildGenrePages() {
   <p class="genre-p">${games.length} ${esc(catLower)} games are listed on this page, and the collection grows as new titles pass the catalogue's quality checks.</p>
   <p class="genre-p" style="margin-top:1.75rem"><a href="/fgame/">← Browse all games</a></p>
 </div>`;
-    const page = {
-      slug: `fgame-genre-${id}`, // no src/content file — content is generated above
-      outputFile: path.join('fgame', `${id}.html`),
-      bodyClass: 'static-page games-page',
-      title: `Free ${cat} Games`,
-      description: `${blurb} Play ${games.length} ${cat.toLowerCase()} games instantly in your browser — no download, no account.`.slice(0, 158),
+      // Sentence-aware meta description: hard .slice() produced mid-word
+      // truncations ("…instantly in") on every genre page. Fall back to the
+      // blurb's first sentence before ever cutting mid-sentence.
+      const metaTail = ` Play ${games.length} free ${cat.toLowerCase()} games instantly.`;
+      let metaDesc = `${blurb}${metaTail}`;
+      if (metaDesc.length > 158) metaDesc = `${blurb.split(/(?<=[.!?])\s/)[0]}${metaTail}`;
+      if (metaDesc.length > 158) metaDesc = `${metaDesc.slice(0, 157).replace(/\s+\S*$/, '')}.`;
+      const page = {
+        slug: `fgame-genre-${id}`, // no src/content file — content is generated above
+        outputFile: path.join('fgame', `${id}.html`),
+        bodyClass: 'static-page games-page',
+        title: `Free ${cat} Games`,
+        description: metaDesc,
       canonical: `${site.domain}/fgame/${id}`,
       crumb: cat,
       schema: [{
