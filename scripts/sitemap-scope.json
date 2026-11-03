@@ -5,6 +5,9 @@
 
   "pages": ["index", "2-player-games"],
 
+  "genrePages": true,
+  "_genrePagesWhy": "Real pages at /fgame/<genre> replaced the /fgame/#genre anchors (2026-11-04). They are generated from the same game data as the /fgame/ index, so their lastmod follows the newest game.",
+
   "blog": [
     "best-2-player-browser-games",
     "best-2-player-games-guide",

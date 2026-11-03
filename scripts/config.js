@@ -299,15 +299,15 @@ const pages = [
     // two-player intent, so this page exists to answer that intent directly
     // instead of asking the homepage to argue for it.
     slug:       '2-player-games',
-    outputFile: '2-player-games.html',
+    outputFile: 'fgame/2-player-games.html',
     bodyClass:  'static-page games-page',
     title:      'Poki 2 Player Games — Play Free with a Friend | Poki2',
     description:'Play Poki 2 player games free in your browser — same-screen titles like Basketball Stars and Pong, plus online multiplayer shooters. No download needed.',
-    canonical:  'https://poki2.online/2-player-games',
+    canonical:  'https://poki2.online/fgame/2-player-games',
     schema: [{
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
-      url:  'https://poki2.online/2-player-games',
+      url:  'https://poki2.online/fgame/2-player-games',
       name: 'Poki 2 Player Games',
       description: 'Two-player browser games on Poki2: same-screen games for one keyboard, and online multiplayer games against live opponents.',
       publisher: { '@type': 'Organization', name: 'Poki2', url: 'https://poki2.online/' },

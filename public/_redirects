@@ -3,9 +3,11 @@
 # Legacy game URLs → play subdomain (keep old links working)
 /game/*        https://play.poki2.online/game/:splat  301
 
-# The 2-player hub lives on THIS host at /2-player-games (restored 2026-11-04:
-# play's URL experiment was rolled back and apex owns the "poki 2 player games"
-# page again). No redirect here — the page itself is live.
+# The 2-player hub moved under the games section on 2026-11-04 (it is a
+# catalogue page, so it lives at /fgame/2-player-games). 301 preserves the
+# signals IndexNow announced for the old path earlier that day.
+/2-player-games   /fgame/2-player-games  301
+/2-player-games/  /fgame/2-player-games  301
 
 # Old game index path
 /games          https://play.poki2.online/             301

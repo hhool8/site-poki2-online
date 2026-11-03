@@ -674,6 +674,114 @@ function fillGame(template, game, content, relatedLinks) {
 }
 
 // ── Build steps ─────────────────────────────────────────────────────────────
+// The seven catalogue genres, in display order. Used by the /fgame/ index
+// grouping AND by the dedicated genre pages at /fgame/<genre> — the two must
+// never drift, which is why the list lives in exactly one place.
+const GAME_GENRES = ['Puzzle', 'Action & Shooter', 'Endless Runner', 'Racing', 'Platformer & Arcade', 'Sports & IO', 'Idle & Sandbox'];
+const genreSlug = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
+
+const GENRE_BLURBS = {
+  'Puzzle': 'Tile-matching, drawing-physics, and brain-teaser mechanics. Every puzzle game here runs in the browser and starts in one click.',
+  'Action & Shooter': 'Top-down shooters, defense games, and intensity-driven challenges. Fast rounds, quick restarts, nothing to install.',
+  'Endless Runner': 'Running games where the goal is surviving as long as possible. One input, rising speed, instant restart.',
+  'Racing': 'Both arcade racing and physics-stunt games — drift, flip, and chase the clock across 3D tracks.',
+  'Platformer & Arcade': 'Stickman, voxel, and physics-based arcade games. Timing and momentum over raw reaction speed.',
+  'Sports & IO': 'Basketball, tennis, volleyball, baseball, and multiplayer IO titles — quick matches against real or AI opponents.',
+  'Idle & Sandbox': 'Clicker and incremental games that keep producing while you are away. Numbers go up; that is the point.',
+};
+
+// Longer overview paragraphs under each genre grid, plus a per-genre FAQ —
+// same visible-content pattern as /fgame/2-player-games (whose FAQPage schema
+// is derived from the same text, never hand-written separately).
+const GENRE_OVERVIEWS = {
+  'Puzzle': 'Puzzle covers classic tile-matching, drawing-physics, and brain-teaser mechanics. The games are easy to start and hard to put down: each one teaches its rules in the first thirty seconds, then spends the next hundred levels bending them. If you want something to think about rather than react to, start here.',
+  'Action & Shooter': 'Action & Shooter collects top-down shooters, defense games, and intensity-driven challenges. Rounds are short, restarts are instant, and the difficulty comes from speed and coordination rather than complexity. Pick a game, click once, and you are already playing.',
+  'Endless Runner': 'Endless Runner games ask one thing of you: survive as long as possible. One or two inputs control everything, speed rises the longer you last, and every failed run ends in an instant restart. The score is the story.',
+  'Racing': 'Racing includes both arcade racing and physics-stunt games — drift around corners, flip off ramps, and chase the clock across 3D tracks. The controls stay simple; the tracks do the hard part.',
+  'Platformer & Arcade': 'Platformer & Arcade covers stickman, voxel, and physics-based arcade games. Timing and momentum matter more than raw reaction speed, and most titles can be learned in a single run.',
+  'Sports & IO': 'Sports & IO collects basketball, tennis, volleyball, baseball, and multiplayer IO titles. Quick matches against AI or live opponents, with rules you already know from the real sports — scaled down to a browser tab.',
+  'Idle & Sandbox': 'Idle & Sandbox is for clicker and incremental games that keep producing while you are away. Numbers go up, upgrades compound, and checking back in becomes its own reward.',
+};
+
+function buildGenrePages() {
+  console.log('\n[1.5/5] Building genre pages…');
+  const baseTemplate = read(path.join(SRC, 'templates', 'base.html'));
+  const gridStyle = `<style>
+    .game-index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-bottom:.25rem}
+    .game-index-card{display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0;transition:transform .15s,border-color .15s}
+    .game-index-card:hover{transform:translateY(-3px);border-color:rgba(99,102,241,.5)}
+    .game-index-card img{width:100%;aspect-ratio:1/1;object-fit:cover}
+    .game-index-card-body{padding:.6rem .75rem .75rem}
+  </style>`;
+  let built = 0;
+  for (const cat of GAME_GENRES) {
+    const games = visibleGames.filter(g => (g.category || 'Other') === cat);
+    if (games.length === 0) continue;
+    const id = genreSlug(cat);
+    const cards = games.map(g =>
+      `<a href="/fgame/${g.slug}" class="game-index-card">${gamePicture(g.slug, { alt: g.title, w: 120, h: 120, sizes: '150px' })}<div class="game-index-card-body"><h3 class="game-index-card-title">${esc(g.title)}</h3><span class="game-index-card-genre">${esc(g.genre)}</span><span class="game-index-card-players">${esc(g.players)}</span></div></a>`
+    ).join('');
+    const blurb = GENRE_BLURBS[cat] || '';
+    const overview = GENRE_OVERVIEWS[cat] || '';
+    const catLower = cat.toLowerCase();
+    const content = `
+<div class="blog-listing-wrap">
+  <div class="blog-listing-header">
+    <h1>Free ${esc(cat)} Games</h1>
+    <p>${esc(blurb)}</p>
+  </div>
+  ${gridStyle}
+  <div class="game-index-grid">${cards}</div>
+  <h2 style="margin-top:2.25rem">What are ${esc(catLower)} games?</h2>
+  <p style="max-width:860px;color:#cbd5e1;line-height:1.7;margin:0 0 1.5rem">${esc(overview)}</p>
+  <h2>Frequently Asked Questions</h2>
+  <h3>Are ${esc(catLower)} games free on Poki2?</h3>
+  <p>Yes. Every ${esc(catLower)} game on this page is free to play in the browser — no download, no installation and no account required. Click a game and it starts instantly.</p>
+  <h3>Can I play ${esc(catLower)} games on mobile?</h3>
+  <p>Yes. These games run in any modern mobile browser with touch controls; keyboard support is available on desktop. There is nothing to install.</p>
+  <h3>How many ${esc(catLower)} games are there?</h3>
+  <p>${games.length} ${esc(catLower)} games are listed on this page, and the collection grows as new titles pass the catalogue's quality checks.</p>
+  <p style="margin-top:1.5rem"><a href="/fgame/">← Browse all games</a></p>
+</div>`;
+    const page = {
+      slug: `fgame-genre-${id}`, // no src/content file — content is generated above
+      outputFile: path.join('fgame', `${id}.html`),
+      bodyClass: 'static-page games-page',
+      title: `Free ${cat} Games`,
+      description: `${blurb} Play ${games.length} ${cat.toLowerCase()} games instantly in your browser — no download, no account.`.slice(0, 158),
+      canonical: `${site.domain}/fgame/${id}`,
+      crumb: cat,
+      schema: [{
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        url: `${site.domain}/fgame/${id}`,
+        name: `Free ${cat} Games`,
+        description: blurb,
+        publisher: { '@type': 'Organization', name: 'Poki2', url: `${site.domain}/` },
+      }],
+    };
+    // FAQPage schema derived from the visible Q&As above — a schema that can
+    // drift from what a reader sees is worse than no schema (same rule the
+    // 2-player hub follows).
+    const faq = extractFaq(content);
+    if (faq.length) {
+      page.schema = [...(page.schema || []), {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faq.map(f => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        })),
+      }];
+    }
+    write(path.join(DIST, page.outputFile), fillBase(baseTemplate, page, content));
+    built++;
+    console.log(`  /fgame/${id}: ${games.length} games`);
+  }
+  console.log(`  ${built} genre pages written`);
+}
+
 function buildPages() {
   console.log('\n[1/4] Building static pages…');
   const baseTemplate = read(path.join(SRC, 'templates', 'base.html'));
@@ -838,21 +946,22 @@ function buildGames() {
   };
 
   // Group visible games by category
-  const CATEGORY_ORDER = ['Puzzle', 'Action & Shooter', 'Endless Runner', 'Racing', 'Platformer & Arcade', 'Sports & IO', 'Idle & Sandbox'];
   const grouped = {};
-  for (const cat of CATEGORY_ORDER) grouped[cat] = [];
+  for (const cat of GAME_GENRES) grouped[cat] = [];
   for (const g of visibleGames) {
     const cat = g.category || 'Other';
     if (!grouped[cat]) grouped[cat] = [];
     grouped[cat].push(g);
   }
 
-  const categorySections = CATEGORY_ORDER.filter(cat => grouped[cat].length > 0).map(cat => {
-    const catId = cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
+  const categorySections = GAME_GENRES.filter(cat => grouped[cat].length > 0).map(cat => {
+    const catId = genreSlug(cat);
     const cards = grouped[cat].map(g =>
       `<a href="/fgame/${g.slug}" class="game-index-card">${gamePicture(g.slug, { alt: g.title, w: 120, h: 120, sizes: '150px' })}<div class="game-index-card-body"><h3 class="game-index-card-title">${esc(g.title)}</h3><span class="game-index-card-genre">${esc(g.genre)}</span><span class="game-index-card-players">${esc(g.players)}</span></div></a>`
     ).join('');
-    return `<h2 id="${catId}" class="game-cat-heading">${esc(cat)}</h2><div class="game-index-grid">${cards}</div>`;
+    // Heading links to the dedicated genre page (/fgame/<genre>) — the anchor
+    // id stays for any /fgame/#<id> links still in the wild.
+    return `<h2 id="${catId}" class="game-cat-heading"><a href="/fgame/${catId}" style="color:inherit;text-decoration:none">${esc(cat)}</a></h2><div class="game-index-grid">${cards}</div>`;
   }).join('');
 
   const gamesIndexContent = `
@@ -1147,6 +1256,18 @@ function buildSitemap() {
     <priority>0.9</priority>
   </url>`;
 
+  // Genre pages (/fgame/<genre>) — generated from the game list like the
+  // /fgame/ index, so their lastmod follows the newest game's date too.
+  const genreUrls = scope.genrePages ? GAME_GENRES
+    .filter(cat => visibleGames.some(g => (g.category || 'Other') === cat))
+    .map(cat => `
+  <url>
+    <loc>${site.domain}/fgame/${genreSlug(cat)}</loc>
+    <lastmod>${latestGameDate}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`).join('') : '';
+
   const blogUrls = blogPosts.filter(p => scope.blog.includes(p.slug)).map(p => `
   <url>
     <loc>${site.domain}/blog/${p.slug}</loc>
@@ -1165,7 +1286,7 @@ function buildSitemap() {
   </url>`).join('');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pageUrls}${blogIndexUrl}${gamesIndexUrl}${blogUrls}${gameUrls}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pageUrls}${blogIndexUrl}${gamesIndexUrl}${genreUrls}${blogUrls}${gameUrls}
 </urlset>`;
 
   write(path.join(DIST, 'sitemap.xml'), xml);
@@ -1234,6 +1355,7 @@ function main() {
   fs.mkdirSync(DIST, { recursive: true });
   checkGameConsistency(visibleGames);
   buildPages();
+  buildGenrePages();
   buildGames();
   buildBlog();
   buildSearchIndex();
