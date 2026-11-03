@@ -5,7 +5,7 @@ const site = {
   name:      'Poki2',
   domain:    'https://poki2.online',
   tagline:   'The Ultimate Free Browser Games Network',
-  faviconUrl:'https://poki2.online/favicon.svg',
+  faviconUrl:'https://poki2.online/favicon-512.png',
   // AdSense is approved and ready to serve ads.
   adsenseApproved: true,
 };

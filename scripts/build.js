@@ -211,7 +211,7 @@ function buildSiteIdentitySchema() {
       '@type': 'Organization',
       name: 'Poki2',
       url: site.domain,
-      logo: `${site.domain}/favicon.svg`,
+      logo: `${site.domain}/favicon-512.png`,
       description: 'Poki2 is a free browser games portal with instant-play titles across action, puzzle, racing, sports, and IO categories.',
       slogan: 'Instant browser games, no download required.',
       foundingDate: '2023',
@@ -412,7 +412,7 @@ function fillArticle(template, post, content, relatedLinks) {
     },
     publisher: {
       '@type': 'Organization', name: 'Poki2', url: site.domain,
-      logo: { '@type': 'ImageObject', url: `${site.domain}/favicon.svg` }
+      logo: { '@type': 'ImageObject', url: `${site.domain}/favicon-512.png` }
     },
   }, {
     '@context': 'https://schema.org',
@@ -802,7 +802,10 @@ function buildBlog() {
   }
 
   let blogIndexContent = read(path.join(SRC, 'content', 'blog', 'index.html'));
-  const defaultBlogCardImage = `${site.domain}/favicon.svg`;
+  // Fallback card image for a post with no in-content image. Must be a raster
+  // 1.91:1 asset: og:image consumers (and Google's Article image checks) do not
+  // render SVG, so the old /favicon.svg fallback was a silent loss.
+  const defaultBlogCardImage = `${site.domain}/og-image.png`;
 
   const sortedBlogPosts = blogPosts
     .map((post, index) => ({ post, index, ts: Date.parse(post.isoDate || '') || 0 }))

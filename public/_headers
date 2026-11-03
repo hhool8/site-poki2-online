@@ -1,4 +1,13 @@
 # Cloudflare Pages custom headers — poki2.online (portal / AdSense site)
+#
+# Match semantics note: Cloudflare Pages matches these patterns against the
+# REQUEST path, not the file on disk. This site serves pretty URLs
+# (/blog/foo/ -> blog/foo.html, /fgame/2048/ -> fgame/2048/index.html), so a
+# `/*.html` pattern NEVER fires for a page request: the path has no extension.
+# That is why HTML was falling back to the Pages default
+# `cache-control: public, max-age=0, must-revalidate` with cf-cache-status
+# DYNAMIC. The per-route blocks below exist for that reason — do not collapse
+# them into a single `/*` cache rule, or static assets inherit the HTML policy.
 
 /*
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
@@ -6,16 +15,81 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://adservice.google.com https://www.googletagmanager.com https://www.google-analytics.com https://tpc.googlesyndication.com https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://fundingchoicesmessages.google.com https://ep2.adtrafficquality.google blob:; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fundingchoicesmessages.google.com https://formsubmit.co https://cloudflareinsights.com; frame-src https://tpc.googlesyndication.com https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep2.adtrafficquality.google https://azgames.io; object-src 'none'; base-uri 'self';
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://adservice.google.com https://www.googletagmanager.com https://www.google-analytics.com https://tpc.googlesyndication.com https://static.cloudflareinsights.com https://fundingchoicesmessages.google.com https://ep2.adtrafficquality.google blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fundingchoicesmessages.google.com https://formsubmit.co https://cloudflareinsights.com; frame-src https://tpc.googlesyndication.com https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep2.adtrafficquality.google https://azgames.io; object-src 'none'; base-uri 'self';
 
+# --- HTML pages: edge cache (s-maxage only; browsers always revalidate) ---
+# No max-age in the browser-facing part, so a stale HTML page can never be
+# served from a visitor's disk cache after a deploy.
+
+/
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+# Hubs are canonical WITH a trailing slash; /blog and /fgame 308 to the slash
+# form, but both are listed so a pre-redirect request still gets the right policy.
+/blog
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+/blog/
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+/blog/*
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+/fgame
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+/fgame/
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+/fgame/*
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+# Legal / utility pages are canonical WITHOUT a trailing slash (/about/ 308s to
+# /about), so only the bare path is listed.
+/about
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+/contact
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+/dmca
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+/privacy
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+/terms
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+/search
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+/search/
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+# Retained for real .html requests (e.g. a direct /404.html hit).
 /*.html
   Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
+
+# --- Static assets ---
 
 /css/*
   Cache-Control: public, max-age=31536000, immutable
   Vary: Accept-Encoding
 
 /assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept-Encoding
+
+# Self-hosted third-party runtime (vanilla-cookieconsent 3.3.0). Filenames carry
+# the exact patch version, so a byte change requires a filename change and these
+# are safe as immutable.
+# Provenance / integrity:
+#   css  1a9c7616ef583089ba3ea79a645a26aff9fd6050a9ec1c6028b91662979bb73d
+#   js   713454aea8cf898e9e7ef10d980f75c58bab3086bd372ac811c0c1318d292f1c
+# Upgrade procedure: bump the version in the filename AND in the three
+# templates (base.html, article.html, game.html); never edit the vendored bytes.
+/vendor/*
   Cache-Control: public, max-age=31536000, immutable
   Vary: Accept-Encoding
 
