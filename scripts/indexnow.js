@@ -149,7 +149,7 @@ async function send(payload) {
 
 const STATUS_HELP = {
   200: 'OK',
-  202: 'Accepted (key validated, URLs queued)',
+  202: 'Accepted (key validation PENDING - not yet validated)',
   400: 'Bad request - the JSON payload was malformed',
   403: 'Forbidden - key file not reachable at keyLocation, or its contents do not match the key',
   422: 'Unprocessable - URLs do not belong to the declared host, or the key does not match',
@@ -220,6 +220,7 @@ async function main() {
 
   const keyLocation = `https://${host}/${key}.txt`;
   let sent = 0;
+  let pending = 0;
 
   for (let i = 0; i < changed.length; i += MAX_URLS_PER_REQUEST) {
     const urlList = changed.slice(i, i + MAX_URLS_PER_REQUEST);
@@ -253,11 +254,24 @@ async function main() {
     }
 
     sent += urlList.length;
+    if (last.status === 202) pending += urlList.length;
     console.log(`[indexnow] ${last.status} ${STATUS_HELP[last.status]} - ${urlList.length} URL(s) announced.`);
   }
 
   writeState(nextPages);
   console.log(`[indexnow] Done: ${sent} URL(s) sent via ${ENDPOINT}; state written to ${path.relative(ROOT, STATE_FILE)}.`);
+
+  if (pending > 0) {
+    // Observed 2026-11-04: the very first submission for this host/key answered 202
+    // and never appeared in Bing Webmaster Tools' IndexNow report, while every later
+    // submission answered 200 and did. 202 means "key validation pending", so treat it
+    // as unconfirmed rather than done.
+    console.warn(`[indexnow] NOTE: ${pending} URL(s) answered 202 = key validation pending, not validated.`);
+    console.warn('[indexnow] Unchecked 202 batches have been observed to leave no trace in the');
+    console.warn('[indexnow] Bing Webmaster Tools IndexNow report. Confirm in the report, and if');
+    console.warn('[indexnow] they are missing, re-send once the site is verified in BWT:');
+    console.warn('[indexnow]   node scripts/indexnow.js --all');
+  }
   return 0;
 }
 
