@@ -346,6 +346,45 @@ function fillBase(template, page, content) {
     .replace(/\{\{CONTENT\}\}/g,            content);
 }
 
+// Pull Q&A pairs from a blog post's visible FAQ block (<h2>Frequently Asked
+// Questions</h2> followed by alternating <h3>question</h3> + <p>answer</p>).
+// Parsing the rendered HTML keeps the FAQPage JSON-LD a 1:1 mirror of the
+// on-page text, which is exactly what Google requires for FAQ rich results.
+function decodeEntities(s) {
+  return s
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, ' ');
+}
+
+function stripHtml(s) {
+  return decodeEntities(s).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+}
+
+function extractFaq(content) {
+  const h = content.match(/<h2[^>]*>\s*Frequently Asked Questions[\s\S]*?<\/h2>/i);
+  if (!h) return [];
+  const after = content.slice(h.index + h[0].length);
+  const nextH2 = after.search(/<h2[\s>]/i);
+  const block = nextH2 === -1 ? after : after.slice(0, nextH2);
+  const out = [];
+  const h3Re = /<h3[^>]*>([\s\S]*?)<\/h3>/gi;
+  let m;
+  while ((m = h3Re.exec(block)) !== null) {
+    const q = stripHtml(m[1]);
+    const pM = /<p[^>]*>([\s\S]*?)<\/p>/i.exec(block.slice(h3Re.lastIndex));
+    if (pM) {
+      const a = stripHtml(pM[1]);
+      if (q && a) out.push({ question: q, answer: a });
+    }
+  }
+  return out;
+}
+
 function fillArticle(template, post, content, relatedLinks) {
   const canonical = `${site.domain}/blog/${post.slug}`;
   const buildTs   = new Date().toISOString();
@@ -354,7 +393,7 @@ function fillArticle(template, post, content, relatedLinks) {
   const schemaImage = heroImg
     ? { '@type': 'ImageObject', url: heroImg, width: 1200, height: 630 }
     : { '@type': 'ImageObject', url: `${site.domain}/og-image.png`, width: 1200, height: 630 };
-  const schema    = [{
+  let schema      = [{
     '@context': 'https://schema.org',
     '@type': ['Article', 'BlogPosting'],
     mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
@@ -384,6 +423,19 @@ function fillArticle(template, post, content, relatedLinks) {
       { '@type': 'ListItem', position: 3, name: post.title, item: canonical },
     ],
   }];
+
+  const faq = extractFaq(content);
+  if (faq.length) {
+    schema.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.map(f => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    });
+  }
 
   const brandedTitle = withBrand(`${post.title} — Poki2 Blog`);
 
