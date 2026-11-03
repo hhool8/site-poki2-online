@@ -727,6 +727,38 @@ function buildPages() {
       finalContent = finalContent.replace('<!-- GENERATED_ALL_BLOG_DIRECTORY -->', renderAllBlogDirectory(blogPosts));
     }
 
+    // /2-player-games — two grids, driven by the `players` field so the page
+    // can never list a game that does not actually support a second player.
+    if (page.slug === '2-player-games') {
+      const twoUp = (g) => /2\s*player|1\s*[-–]\s*[24]\s*player/i.test(g.players || '');
+      const online = (g) => /multiplayer/i.test(g.players || '');
+      const local  = visibleGames.filter(twoUp);
+      const remote = visibleGames.filter((g) => online(g) && !twoUp(g));
+      const card = (g) =>
+        `<a href="/fgame/${g.slug}" class="featured-card">${gamePicture(g.slug, { alt: g.title, w: 160, h: 160, sizes: '160px' })}<span class="featured-card-label">${esc(g.title)}</span><span class="featured-card-src">${esc(g.players || '')}</span></a>`;
+      const grid = (list) =>
+        `<div class="featured-grid" style="margin-top:1.5rem">\n      ${list.map(card).join('\n      ')}\n    </div>`;
+
+      finalContent = finalContent.replace('<!-- GENERATED_2P_LOCAL -->', grid(local));
+      finalContent = finalContent.replace('<!-- GENERATED_2P_ONLINE -->', grid(remote));
+
+      // FAQPage derived from the visible Q&As in the copy, never hand-written:
+      // a schema that can drift from what a reader sees is worse than no schema.
+      const faq = extractFaq(finalContent);
+      if (faq.length) {
+        page.schema = [...(page.schema || []), {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faq.map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: { '@type': 'Answer', text: f.answer },
+          })),
+        }];
+      }
+      console.log(`  2-player-games: ${local.length} same-screen + ${remote.length} online, ${faq.length} FAQ`);
+    }
+
     const html    = fillBase(baseTemplate, page, finalContent);
     write(path.join(DIST, page.outputFile), html);
   }
