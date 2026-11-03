@@ -12,6 +12,7 @@
     "release": "npm run build && npm run deploy",
     "indexnow": "node scripts/indexnow.js",
     "indexnow:dry": "node scripts/indexnow.js --dry-run",
+    "bing": "node scripts/bing-status.js",
     "lastmod": "node scripts/gen-lastmod.js"
   },
   "devDependencies": {
