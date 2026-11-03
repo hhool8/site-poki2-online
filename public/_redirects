@@ -3,6 +3,12 @@
 # Legacy game URLs → play subdomain (keep old links working)
 /game/*        https://play.poki2.online/game/:splat  301
 
+# The 2-player hub lives on the play host, where the game pages it links to are.
+# Same path, one owner: leaving it on both hosts meant two pages competing for
+# "poki 2 player games" with identical titles.
+/2-player-games   https://play.poki2.online/2-player-games/  301
+/2-player-games/  https://play.poki2.online/2-player-games/  301
+
 # Old game index path
 /games          https://play.poki2.online/             301
 /games/         https://play.poki2.online/             301
