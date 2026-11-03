@@ -1,6 +1,9 @@
 # Build output
 dist/
 
+# IndexNow announce state (per-machine; losing it only re-announces everything)
+.indexnow-state.json
+
 # Dependencies
 node_modules/
 

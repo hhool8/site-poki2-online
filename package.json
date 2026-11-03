@@ -8,8 +8,10 @@
     "gen-favicons": "node scripts/gen-favicons.js",
     "build": "node scripts/gen-lastmod.js && node scripts/gen-favicons.js && node scripts/gen-og-image.js && node scripts/gen-game-og-images.js && node scripts/build.js",
     "clean": "rm -rf dist",
-    "deploy": "CLOUDFLARE_ACCOUNT_ID=$CLOUDFLARE_ACCOUNT_ID wrangler pages deploy dist --project-name poki2-portal --commit-dirty=true && node scripts/purge-cache.js",
+    "deploy": "CLOUDFLARE_ACCOUNT_ID=$CLOUDFLARE_ACCOUNT_ID wrangler pages deploy dist --project-name poki2-portal --commit-dirty=true && node scripts/purge-cache.js && node scripts/indexnow.js",
     "release": "npm run build && npm run deploy",
+    "indexnow": "node scripts/indexnow.js",
+    "indexnow:dry": "node scripts/indexnow.js --dry-run",
     "lastmod": "node scripts/gen-lastmod.js"
   },
   "devDependencies": {
