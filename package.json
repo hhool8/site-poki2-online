@@ -8,7 +8,8 @@
     "gen-favicons": "node scripts/gen-favicons.js",
     "build": "node scripts/gen-lastmod.js && node scripts/gen-favicons.js && node scripts/gen-og-image.js && node scripts/gen-game-og-images.js && node scripts/build.js",
     "clean": "rm -rf dist",
-    "deploy": "wrangler pages deploy dist --project-name poki2-portal",
+    "deploy": "wrangler pages deploy dist --project-name poki2-portal --commit-dirty=true && node scripts/purge-cache.js",
+    "release": "npm run build && npm run deploy",
     "lastmod": "node scripts/gen-lastmod.js"
   },
   "devDependencies": {
