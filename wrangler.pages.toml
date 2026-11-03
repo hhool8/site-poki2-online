@@ -1,2 +1,10 @@
+# Config for Cloudflare Pages (`npm run deploy` / Pages Git integration).
+#
+# account_id is deliberately NOT set here: `wrangler pages deploy` rejects a
+# custom config path (`-c`) and only auto-loads this exact filename, so the
+# account is pinned through CLOUDFLARE_ACCOUNT_ID in the npm script instead.
+# That matters because the logged-in user can see two Cloudflare accounts and a
+# non-interactive wrangler run aborts rather than guessing. poki2.online's zone
+# lives in <cf-account-email>'s account ($CLOUDFLARE_ACCOUNT_ID).
 name = "poki2-portal"
 pages_build_output_dir = "dist"
