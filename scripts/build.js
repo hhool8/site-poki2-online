@@ -707,6 +707,9 @@ function buildGenrePages() {
   console.log('\n[1.5/5] Building genre pages…');
   const baseTemplate = read(path.join(SRC, 'templates', 'base.html'));
   const gridStyle = `<style>
+    .game-cat-heading{font-size:1.15rem;font-weight:700;color:#f1f5f9;margin:2.25rem 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid rgba(255,255,255,.08)}
+    .genre-faq-q{font-size:1.02rem;font-weight:700;color:#f1f5f9;margin:1.5rem 0 .5rem}
+    .genre-p{max-width:860px;color:#cbd5e1;line-height:1.7;margin:0 0 1.5rem}
     .game-index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-bottom:.25rem}
     .game-index-card{display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0;transition:transform .15s,border-color .15s}
     .game-index-card:hover{transform:translateY(-3px);border-color:rgba(99,102,241,.5)}
@@ -732,16 +735,16 @@ function buildGenrePages() {
   </div>
   ${gridStyle}
   <div class="game-index-grid">${cards}</div>
-  <h2 style="margin-top:2.25rem">What are ${esc(catLower)} games?</h2>
-  <p style="max-width:860px;color:#cbd5e1;line-height:1.7;margin:0 0 1.5rem">${esc(overview)}</p>
-  <h2>Frequently Asked Questions</h2>
-  <h3>Are ${esc(catLower)} games free on Poki2?</h3>
-  <p>Yes. Every ${esc(catLower)} game on this page is free to play in the browser — no download, no installation and no account required. Click a game and it starts instantly.</p>
-  <h3>Can I play ${esc(catLower)} games on mobile?</h3>
-  <p>Yes. These games run in any modern mobile browser with touch controls; keyboard support is available on desktop. There is nothing to install.</p>
-  <h3>How many ${esc(catLower)} games are there?</h3>
-  <p>${games.length} ${esc(catLower)} games are listed on this page, and the collection grows as new titles pass the catalogue's quality checks.</p>
-  <p style="margin-top:1.5rem"><a href="/fgame/">← Browse all games</a></p>
+  <h2 class="game-cat-heading">What are ${esc(catLower)} games?</h2>
+  <p class="genre-p">${esc(overview)}</p>
+  <h2 class="game-cat-heading">Frequently Asked Questions</h2>
+  <h3 class="genre-faq-q">Are ${esc(catLower)} games free on Poki2?</h3>
+  <p class="genre-p">Yes. Every ${esc(catLower)} game on this page is free to play in the browser — no download, no installation and no account required. Click a game and it starts instantly.</p>
+  <h3 class="genre-faq-q">Can I play ${esc(catLower)} games on mobile?</h3>
+  <p class="genre-p">Yes. These games run in any modern mobile browser with touch controls; keyboard support is available on desktop. There is nothing to install.</p>
+  <h3 class="genre-faq-q">How many ${esc(catLower)} games are there?</h3>
+  <p class="genre-p">${games.length} ${esc(catLower)} games are listed on this page, and the collection grows as new titles pass the catalogue's quality checks.</p>
+  <p class="genre-p" style="margin-top:1.75rem"><a href="/fgame/">← Browse all games</a></p>
 </div>`;
     const page = {
       slug: `fgame-genre-${id}`, // no src/content file — content is generated above
