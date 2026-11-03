@@ -703,10 +703,11 @@ const GENRE_OVERVIEWS = {
   'Idle & Sandbox': 'Idle & Sandbox is for clicker and incremental games that keep producing while you are away. Numbers go up, upgrades compound, and checking back in becomes its own reward.',
 };
 
-function buildGenrePages() {
-  console.log('\n[1.5/5] Building genre pages…');
-  const baseTemplate = read(path.join(SRC, 'templates', 'base.html'));
-  const gridStyle = `<style>
+// Shared card-grid style: the /fgame/ index, the genre pages and the 2-player
+// hub all render the same .game-index-card markup, so they must ship the same
+// CSS. Kept in one place — the genre pages previously missed the
+// title/genre/players rules and rendered card headings at default h3 size.
+const GAME_INDEX_STYLE = `<style>
     .game-cat-heading{font-size:1.15rem;font-weight:700;color:#f1f5f9;margin:2.25rem 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid rgba(255,255,255,.08)}
     .genre-faq-q{font-size:1.02rem;font-weight:700;color:#f1f5f9;margin:1.5rem 0 .5rem}
     .genre-p{max-width:860px;color:#cbd5e1;line-height:1.7;margin:0 0 1.5rem}
@@ -715,7 +716,14 @@ function buildGenrePages() {
     .game-index-card:hover{transform:translateY(-3px);border-color:rgba(99,102,241,.5)}
     .game-index-card img{width:100%;aspect-ratio:1/1;object-fit:cover}
     .game-index-card-body{padding:.6rem .75rem .75rem}
+    .game-index-card-title{font-size:.95rem;font-weight:600;margin:0 0 .3rem;color:#f1f5f9}
+    .game-index-card-genre,.game-index-card-players{font-size:.75rem;color:#94a3b8;display:block}
   </style>`;
+
+function buildGenrePages() {
+  console.log('\n[1.5/5] Building genre pages…');
+  const baseTemplate = read(path.join(SRC, 'templates', 'base.html'));
+  const gridStyle = GAME_INDEX_STYLE;
   let built = 0;
   for (const cat of GAME_GENRES) {
     const games = visibleGames.filter(g => (g.category || 'Other') === cat);
@@ -845,13 +853,15 @@ function buildPages() {
       const online = (g) => /multiplayer/i.test(g.players || '');
       const local  = visibleGames.filter(twoUp);
       const remote = visibleGames.filter((g) => online(g) && !twoUp(g));
+      // Same card markup as the /fgame/ index and the genre pages — one visual
+      // language across every catalogue grid (icon, title, genre, players).
       const card = (g) =>
-        `<a href="/fgame/${g.slug}" class="featured-card">${gamePicture(g.slug, { alt: g.title, w: 160, h: 160, sizes: '160px' })}<span class="featured-card-label">${esc(g.title)}</span><span class="featured-card-src">${esc(g.players || '')}</span></a>`;
-      const grid = (list) =>
-        `<div class="featured-grid" style="margin-top:1.5rem">\n      ${list.map(card).join('\n      ')}\n    </div>`;
+        `<a href="/fgame/${g.slug}" class="game-index-card">${gamePicture(g.slug, { alt: g.title, w: 120, h: 120, sizes: '150px' })}<div class="game-index-card-body"><h3 class="game-index-card-title">${esc(g.title)}</h3><span class="game-index-card-genre">${esc(g.genre || '')}</span><span class="game-index-card-players">${esc(g.players || '')}</span></div></a>`;
+      const grid = (list, withStyle) =>
+        `${withStyle ? GAME_INDEX_STYLE : ''}<div class="game-index-grid" style="margin-top:1.5rem">\n      ${list.map(card).join('\n      ')}\n    </div>`;
 
-      finalContent = finalContent.replace('<!-- GENERATED_2P_LOCAL -->', grid(local));
-      finalContent = finalContent.replace('<!-- GENERATED_2P_ONLINE -->', grid(remote));
+      finalContent = finalContent.replace('<!-- GENERATED_2P_LOCAL -->', grid(local, true));
+      finalContent = finalContent.replace('<!-- GENERATED_2P_ONLINE -->', grid(remote, false));
 
       // FAQPage derived from the visible Q&As in the copy, never hand-written:
       // a schema that can drift from what a reader sees is worse than no schema.
@@ -973,16 +983,7 @@ function buildGames() {
     <h1>Free Browser Games</h1>
     <p>Find your next game in seconds on Poki2. Browse by genre, open any game page, and start playing instantly with no download or account.</p>
   </div>
-  <style>
-    .game-cat-heading{font-size:1.15rem;font-weight:700;color:#f1f5f9;margin:2.25rem 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid rgba(255,255,255,.08)}
-    .game-index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-bottom:.25rem}
-    .game-index-card{display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;text-decoration:none;color:#e2e8f0;transition:transform .15s,border-color .15s}
-    .game-index-card:hover{transform:translateY(-3px);border-color:rgba(99,102,241,.5)}
-    .game-index-card img{width:100%;aspect-ratio:1/1;object-fit:cover}
-    .game-index-card-body{padding:.6rem .75rem .75rem}
-    .game-index-card-title{font-size:.95rem;font-weight:600;margin:0 0 .3rem;color:#f1f5f9}
-    .game-index-card-genre,.game-index-card-players{font-size:.75rem;color:#94a3b8;display:block}
-  </style>
+  ${GAME_INDEX_STYLE}
   ${categorySections}
 
 <h2 id="why-choose" class="game-cat-heading">Why Choose Poki2 for Free Browser Games?</h2>
