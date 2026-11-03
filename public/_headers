@@ -25,20 +25,17 @@
   Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
 
 # Hubs are canonical WITH a trailing slash; /blog and /fgame 308 to the slash
-# form, but both are listed so a pre-redirect request still gets the right policy.
+# form, so both the bare path and the wildcard are listed. The wildcard already
+# matches the bare-slash form (`/blog/*` fires on `/blog/`), which is why there
+# is no explicit `/blog/` block — adding one made Cloudflare concatenate the
+# same Cache-Control twice into one malformed header.
 /blog
-  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
-
-/blog/
   Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
 
 /blog/*
   Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
 
 /fgame
-  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
-
-/fgame/
   Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
 
 /fgame/*
