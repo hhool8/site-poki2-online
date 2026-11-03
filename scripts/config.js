@@ -1221,7 +1221,11 @@ const gamePosts = [
     description: 'Battle Karts Join the ultimate free multiplayer kart battle arena. Drive fast Unleash rockets Create epic explosions. Play now for endless thrills',
     embedUrl:  'https://azgames.io/battle-karts.embed',
     imgUrl:    '/imgs/fgame/battle-karts.png',
-    genre:     'IO Multiplayer',
+    // genre and players were contradicting each other: "IO Multiplayer" against
+    // "1 Player", which produced a Game node with genre=IO Multiplayer and
+    // playMode=SinglePlayer. players is the field the playMode is derived from,
+    // so it wins and the genre label is corrected to match the actual game.
+    genre:     'Racing',
     category:  'Sports & IO',
     players:   '1 Player',
     controls:  'Mouse / Keyboard',
@@ -1247,7 +1251,8 @@ const gamePosts = [
     description: 'Dive in Billiards Master realistic billiards simulation gameplay. Select a mode you love, aim, control shot strength, and strike the ball. Play on Azgames today!',
     embedUrl:  'https://azgames.io/billiards-master.embed',
     imgUrl:    '/imgs/fgame/billiards-master.png',
-    genre:     'IO Multiplayer',
+    // Same contradiction as battle-karts: a multiplayer genre on a 1-player game.
+    genre:     'Sports',
     category:  'Sports & IO',
     players:   '1 Player',
     controls:  'Mouse / Keyboard',

@@ -37,10 +37,11 @@ function gameImgWebp(slug) {
 // Returns a <picture> (webp source + png fallback) when a hashed asset exists,
 // otherwise falls back to the original /imgs/fgame/<slug>.<ext> (pre-existing
 // behaviour, e.g. for games whose thumbnail wasn't generated).
-function gamePicture(slug, { alt = '', w = 0, h = 0, loading = 'lazy', cls = '', sizes = '' } = {}) {
+function gamePicture(slug, { alt = '', w = 0, h = 0, loading = 'lazy', cls = '', sizes = '', fetchpriority = '' } = {}) {
   const dims = (w && h) ? ` width="${w}" height="${h}"` : '';
   const classAttr = cls ? ` class="${cls}"` : '';
   const sizeAttr = sizes ? ` sizes="${sizes}"` : '';
+  const priorityAttr = fetchpriority ? ` fetchpriority="${fetchpriority}"` : '';
   const m = IMG_MANIFEST[slug];
   if (m && m.webp) {
     // Responsive: serve the 256w variant to small slots, full-res to large ones.
@@ -48,10 +49,10 @@ function gamePicture(slug, { alt = '', w = 0, h = 0, loading = 'lazy', cls = '',
       ? `${m.webp} ${m.w || 512}w, ${m.w256} 256w`
       : `${m.webp} ${m.w || 512}w`;
     return `<picture><source type="image/webp" srcset="${srcset}"${sizeAttr}>` +
-           `<img src="${m.png}" alt="${esc(alt)}" loading="${loading}"${dims}${classAttr}></picture>`;
+           `<img src="${m.png}" alt="${esc(alt)}" loading="${loading}"${priorityAttr}${dims}${classAttr}></picture>`;
   }
   const orig = m ? m.orig : `/imgs/fgame/${slug}.png`;
-  return `<img src="${orig}" alt="${esc(alt)}" loading="${loading}"${dims}${classAttr}>`;
+  return `<img src="${orig}" alt="${esc(alt)}" loading="${loading}"${priorityAttr}${dims}${classAttr}>`;
 }
 
 function read(filePath) {
@@ -165,7 +166,10 @@ function injectMidAd(content) {
 
 function extractFirstImageSrc(content) {
   const imgMatch = String(content || '').match(/<img[^>]+src=["']([^"']+)["']/i);
-  return imgMatch ? String(imgMatch[1]).trim() : '';
+  if (!imgMatch) return '';
+  // Article heroes are self-hosted now, so this is a root-relative path — while
+  // schema `image` and og:image both require an absolute URL.
+  return toAbsoluteUrl(String(imgMatch[1]).trim());
 }
 
 function cssUrlValue(url) {
@@ -319,12 +323,86 @@ function normalizeGameDescription(game) {
   return /[.!?…]$/.test(shortened) ? shortened : `${shortened}.`;
 }
 
+// ── Shared head additions ─────────────────────────────────────────────────────
+// Speculation Rules, prefetch only. Prerender is deliberately absent: every page
+// carries AdSense, so a prerendered game page would fetch ads for a view that may
+// never happen — a wasted ad request plus an impression booked against a pageview
+// nobody saw. "moderate" eagerness fires on hover or as the link nears the
+// viewport, which is late enough to be cheap and early enough to be useful.
+const SPECULATION_RULES =
+  '<script type="speculationrules">{"prefetch":[{"source":"document","where":{"href_matches":"/fgame/*"},"eagerness":"moderate"}]}</script>';
+
+// Preload the game hero, which is the LCP candidate on every /fgame/ page. The
+// page renders the hero through <picture> with a webp source, so the preload has
+// to carry imagesrcset/imagesizes too — a plain href would make the browser
+// fetch the png fallback as well, doubling the bytes it was meant to save.
+function gameHeroPreload(slug) {
+  const m = IMG_MANIFEST[slug];
+  if (!m || !m.webp) return '';
+  const srcset = m.w256 ? `${m.webp} ${m.w || 512}w, ${m.w256} 256w` : `${m.webp} ${m.w || 512}w`;
+  return `<link rel="preload" as="image" type="image/webp" href="${m.webp}" imagesrcset="${srcset}" imagesizes="512px" fetchpriority="high">`;
+}
+
+// Static pages ship no breadcrumb markup. Deriving the trail from the canonical
+// URL here — rather than pasting a literal block into eight page objects — keeps
+// one definition and makes it impossible for a new static page to ship without
+// one. Homepage gets a single ListItem on purpose: a one-step trail that points
+// at itself is noise.
+function stripBrand(title) {
+  return String(title || '').split(/\s+[|—]\s+/)[0].trim();
+}
+
+function pageBreadcrumb(page) {
+  const canonical = String(page.canonical || '').trim();
+  if (!canonical) return null;
+  const path = canonical.replace(/^https?:\/\/[^/]+/, '').replace(/\/+$/, '');
+  const trail = [{ '@type': 'ListItem', position: 1, name: 'Home', item: `${site.domain}/` }];
+  if (path) {
+    trail.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: page.crumb || stripBrand(page.title) || path.replace(/^\//, ''),
+      item: canonical,
+    });
+  }
+  return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: trail };
+}
+
+function schemaHasBreadcrumb(schema) {
+  return (schema || []).some((s) => {
+    const t = s && s['@type'];
+    return t === 'BreadcrumbList' || (Array.isArray(t) && t.includes('BreadcrumbList'));
+  });
+}
+
+// One eager image per page, everything else lazy. Enforced at build time instead
+// of trusting 27 hand-written content files and three templates to stay
+// consistent — which is how the site ended up with 326 eager images. Images with
+// no loading attribute are treated as eager and demoted like the rest, so the
+// output always states the intent explicitly.
+function normalizeImgLoading(html, { keepFirstEager = true } = {}) {
+  let seen = 0;
+  return String(html).replace(/<img\b[^>]*>/gi, (tag) => {
+    const eager = keepFirstEager && seen === 0;
+    seen += 1;
+    const selfClose = /\/>$/.test(tag);
+    let out = tag.replace(/\sloading\s*=\s*"[^"]*"/gi, '');
+    out = selfClose ? out.replace(/\s*\/>$/, '') : out.replace(/>$/, '');
+    return `${out} loading="${eager ? 'eager' : 'lazy'}"${selfClose ? ' />' : '>'}`;
+  });
+}
+
 function fillBase(template, page, content) {
   const ogImage = `${site.domain}/og-image.png`;
   const brandedTitle = withBrand(page.title);
   const robotsMeta = page.indexable === false
     ? '<meta name="robots" content="noindex,follow">'
     : '<meta name="robots" content="index,follow">';
+  const schema = [...(page.schema || [])];
+  if (!schemaHasBreadcrumb(schema)) {
+    const breadcrumb = pageBreadcrumb(page);
+    if (breadcrumb) schema.push(breadcrumb);
+  }
   return template
     .replace(/\{\{TITLE\}\}/g,               esc(brandedTitle))
     .replace(/\{\{DESCRIPTION\}\}/g,         esc(page.description || ''))
@@ -339,11 +417,12 @@ function fillBase(template, page, content) {
     .replace(/\{\{TWITTER_TITLE\}\}/g,      esc(brandedTitle))
     .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(page.description || ''))
     .replace(/\{\{TWITTER_IMAGE\}\}/g,      ogImage)
-    .replace(/\{\{SCHEMA\}\}/g,             schemaTag(page.schema || []))
+    .replace(/\{\{SCHEMA\}\}/g,             schemaTag(schema))
+    .replace(/\{\{HEAD_EXTRA\}\}/g,         SPECULATION_RULES)
     .replace(/\{\{ADSENSE_BOOTSTRAP\}\}/g,  adsenseTemplateVars.bootstrap)
     .replace(/\{\{ADSENSE_LOADER\}\}/g,     adsenseTemplateVars.loader)
     .replace(/\{\{BODY_CLASS\}\}/g,         page.bodyClass || '')
-    .replace(/\{\{CONTENT\}\}/g,            content);
+    .replace(/\{\{CONTENT\}\}/g,            normalizeImgLoading(content));
 }
 
 // Pull Q&A pairs from a blog post's visible FAQ block (<h2>Frequently Asked
@@ -452,6 +531,7 @@ function fillArticle(template, post, content, relatedLinks) {
     .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(post.description || ''))
     .replace(/\{\{TWITTER_IMAGE\}\}/g,      ogImage)
     .replace(/\{\{SCHEMA\}\}/g,             schemaTag(schema))
+    .replace(/\{\{HEAD_EXTRA\}\}/g,         SPECULATION_RULES)
     .replace(/\{\{ADSENSE_BOOTSTRAP\}\}/g,  adsenseTemplateVars.bootstrap)
     .replace(/\{\{ADSENSE_LOADER\}\}/g,     adsenseTemplateVars.loader)
     .replace(/\{\{ARTICLE_TITLE\}\}/g,      post.title)
@@ -463,7 +543,7 @@ function fillArticle(template, post, content, relatedLinks) {
     .replace(/\{\{ARTICLE_CATEGORY\}\}/g,   post.category || '')
     .replace(/\{\{ARTICLE_READ_TIME\}\}/g,  post.readTime || '')
     .replace(/\{\{RELATED_LINKS\}\}/g,      relatedLinks)
-    .replace(/\{\{CONTENT\}\}/g,            content)
+    .replace(/\{\{CONTENT\}\}/g,            normalizeImgLoading(content))
     .replace(/\{\{BUILD_TS\}\}/g,           buildTs);
 }
 
@@ -560,6 +640,7 @@ function fillGame(template, game, content, relatedLinks) {
     .replace(/\{\{TWITTER_DESCRIPTION\}\}/g, esc(description))
     .replace(/\{\{TWITTER_IMAGE\}\}/g,     `${site.domain}/social/${game.slug}.png`)
     .replace(/\{\{SCHEMA\}\}/g,            schemaTag(schema))
+    .replace(/\{\{HEAD_EXTRA\}\}/g,        `${gameHeroPreload(game.slug)}\n  ${SPECULATION_RULES}`)
     .replace(/\{\{ADSENSE_BOOTSTRAP\}\}/g, adsenseTemplateVars.bootstrap)
     .replace(/\{\{ADSENSE_LOADER\}\}/g,    adsenseTemplateVars.loader)
     .replace(/\{\{GAME_SLUG\}\}/g,         game.slug)
@@ -569,11 +650,13 @@ function fillGame(template, game, content, relatedLinks) {
     .replace(/\{\{GAME_PLAYERS\}\}/g,      esc(game.players))
     .replace(/\{\{GAME_CONTROLS\}\}/g,     esc(game.controls))
     .replace(/\{\{GAME_EMBED_URL\}\}/g,    game.embedUrl)
-    .replace(/\{\{GAME_IMG_URL\}\}/g,      gamePicture(game.slug, { alt: game.title, w: 512, h: 512, loading: 'eager', sizes: '512px' }))
+    .replace(/\{\{GAME_IMG_URL\}\}/g,      gamePicture(game.slug, { alt: game.title, w: 512, h: 512, loading: 'eager', sizes: '512px', fetchpriority: 'high' }))
     .replace(/\{\{GAME_DATE\}\}/g,         game.date || '')
     .replace(/\{\{GAME_UPDATED_DATE\}\}/g, game.updated || game.date || '')
     .replace(/\{\{RELATED_GAME_LINKS\}\}/g, relatedLinks)
-    .replace(/\{\{CONTENT\}\}/g,           content)
+    // keepFirstEager:false — the hero lives in the template, so every image in
+    // the body copy is below it by definition.
+    .replace(/\{\{CONTENT\}\}/g,           normalizeImgLoading(content, { keepFirstEager: false }))
     .replace(/\{\{BUILD_TS\}\}/g,          buildTs);
 }
 
@@ -1067,11 +1150,29 @@ function copyAssets() {
   }
 }
 
+// genre is hand-written in config.js while playMode is derived from players, so
+// the two can drift apart — which is how the site ended up with Game nodes that
+// claimed an "IO Multiplayer" genre and a SinglePlayer mode. A warning at build
+// time costs nothing and turns a structured-data defect into something you see
+// on the next deploy instead of in a Search Console report months later.
+function checkGameConsistency(games) {
+  const bad = games.filter(
+    (g) => /multiplayer/i.test(g.genre || '') && buildGamePlayMode(g.players) === 'SinglePlayer'
+  );
+  if (bad.length) {
+    console.warn(`\n[schema] ${bad.length} game(s) declare a multiplayer genre but resolve to SinglePlayer:`);
+    for (const g of bad) console.warn(`  - ${g.slug}: genre="${g.genre}", players="${g.players}"`);
+    console.warn('[schema] Correct the genre in scripts/config.js, or fix players if the game is multiplayer.\n');
+  }
+  return bad;
+}
+
 function main() {
   console.log('=== Poki2 Portal Build ===');
   // Always rebuild from a clean output directory to prevent stale pages from being deployed.
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
+  checkGameConsistency(visibleGames);
   buildPages();
   buildGames();
   buildBlog();
