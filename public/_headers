@@ -20,6 +20,13 @@
 # --- HTML pages: edge cache (s-maxage only; browsers always revalidate) ---
 # No max-age in the browser-facing part, so a stale HTML page can never be
 # served from a visitor's disk cache after a deploy.
+#
+# KNOWN LIMITATION, measured 2026-11-03 after deploying these rules: the header
+# is necessary but NOT sufficient. `cf-cache-status` stays DYNAMIC on every HTML
+# route — Cloudflare Pages does not place HTML in the edge cache just because
+# the origin declares s-maxage. Turning it on needs a zone-level Cache Rule
+# (http_request_cache_settings); nothing in this file can do it. Until that rule
+# exists, these blocks only fix the response header.
 
 /
   Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
