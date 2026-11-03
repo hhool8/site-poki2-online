@@ -31,6 +31,10 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+# Anthropic's user-triggered search fetcher (Claude search)
+User-agent: Claude-SearchBot
+Allow: /
+
 # Google AI Overviews (served by Googlebot, already allowed above)
 User-agent: Googlebot
 Allow: /
@@ -46,7 +50,10 @@ Disallow: /
 User-agent: CCBot
 Disallow: /
 
-User-agent: anthropic-ai
+# Google's AI-training token (Gemini / Bard). Separate from Googlebot, which
+# still powers Search and AI Overviews and stays allowed above. Blocked to stay
+# consistent with the no-training-scraper stance (GPTBot / CCBot).
+User-agent: Google-Extended
 Disallow: /
 
 # ==========================================

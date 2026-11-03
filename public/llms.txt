@@ -67,6 +67,6 @@
 
 ## Technical Notes
 - Games are embedded via iframe from a vetted upstream catalog (azgames.io) and served over HTTPS from Cloudflare's global CDN.
-- All pages use semantic HTML5, JSON-LD structured data (Organization, WebSite, VideoGame, Article, FAQPage, BreadcrumbList), and an XML sitemap at https://poki2.online/sitemap.xml.
+- All pages use semantic HTML5 and an XML sitemap at https://poki2.online/sitemap.xml. JSON-LD structured data is deployed by page type: Organization (sitewide), WebSite (primary pages), Game (all 67 game pages), BreadcrumbList (sitewide), and a single FAQPage on the homepage. Blog posts are typed as WebPage.
 - Editorial content is written and reviewed by the Poki2 Editorial Team; each article carries a visible byline and publication/update date.
 - The platform is structured for discoverability, citation-friendly referencing, and direct access to trust policy pages and editorial standards.
