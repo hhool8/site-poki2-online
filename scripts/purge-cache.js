@@ -21,22 +21,46 @@
  *   CF_API_TOKEN=<token with Zone.Cache Purge> node scripts/purge-cache.js
  *   CF_ZONE_ID=<zone> CF_API_TOKEN=... node scripts/purge-cache.js
  *
+ * The token is read from CF_API_TOKEN if set, otherwise from
+ * ~/.poki2-cf-token (override the path with CF_TOKEN_FILE). Keeping it in a
+ * 0600 file outside the repo means `npm run deploy` works with no export and
+ * no risk of committing the secret.
+ *
  * A missing token is a warning, not a failure: the deploy already succeeded and
  * a stale-cache window is a lesser problem than a red build. An API error is a
  * failure, because silently leaving 1-hour-old HTML in place is the exact bug
  * this script exists to prevent.
  */
 
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
+
 const ZONE_ID = process.env.CF_ZONE_ID || '$CF_ZONE_ID';
-const TOKEN = process.env.CF_API_TOKEN;
+const TOKEN_FILE = process.env.CF_TOKEN_FILE || path.join(os.homedir(), '.poki2-cf-token');
 const API = 'https://api.cloudflare.com/client/v4';
 
+function resolveToken() {
+  const fromEnv = (process.env.CF_API_TOKEN || '').trim();
+  if (fromEnv) return { token: fromEnv, source: 'CF_API_TOKEN' };
+  try {
+    const fromFile = fs.readFileSync(TOKEN_FILE, 'utf8').trim();
+    if (fromFile) return { token: fromFile, source: TOKEN_FILE };
+  } catch {
+    /* no file - fall through */
+  }
+  return { token: null, source: null };
+}
+
 async function main() {
+  const { token: TOKEN, source } = resolveToken();
+
   if (!TOKEN) {
-    console.warn('[purge] CF_API_TOKEN is not set - skipping cache purge.');
+    console.warn('[purge] No API token: CF_API_TOKEN is unset and ' + TOKEN_FILE + ' is missing.');
     console.warn('[purge] Deploy succeeded, but cached HTML will keep serving the');
-    console.warn('[purge] previous build for up to s-maxage (3600s) if an edge');
-    console.warn('[purge] Cache Rule is active on this zone.');
+    console.warn('[purge] previous build for up to s-maxage (3600s) plus');
+    console.warn('[purge] stale-while-revalidate (86400s). Purge manually, or create');
+    console.warn('[purge] a token with Zone.Cache Purge and save it to ' + TOKEN_FILE + '.');
     return 0;
   }
 
@@ -68,7 +92,7 @@ async function main() {
     return 1;
   }
 
-  console.log(`[purge] Cache purged (zone ${ZONE_ID}).`);
+  console.log(`[purge] Cache purged (zone ${ZONE_ID}, token from ${source}).`);
   return 0;
 }
 
