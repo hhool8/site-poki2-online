@@ -3,7 +3,7 @@
   "_measured": "2026-11-04 · apex 1 indexed / 42 crawled-not-indexed / 59 unknown · play 0 indexed / 70 crawled / 28 unknown",
   "_review": "2026-11-18 — compare index-status snapshots, keep this only if the indexed count moved.",
 
-  "pages": ["index"],
+  "pages": ["index", "2-player-games"],
 
   "blog": [
     "best-2-player-browser-games",
