@@ -1050,7 +1050,15 @@ function buildSitemap() {
   console.log('\n[5/6] Building sitemap…');
   const now = today();
 
-  const indexablePages = pages.filter((p) => p.indexable !== false);
+  // Sitemap scope (2026-11-04): Google crawled 112 of 200 URLs across both
+  // hosts and indexed one. A 200-URL sitemap on a three-day-old domain is an
+  // application to be judged as a thin-content site, and it was. Advertise only
+  // the pages we stand behind; everything else stays live, linked and
+  // crawlable — it is simply no longer claimed as a priority.
+  const scope = JSON.parse(fs.readFileSync(path.join(__dirname, 'sitemap-scope.json'), 'utf8'));
+  const inScope = (slug) => scope.pages.includes(slug);
+
+  const indexablePages = pages.filter((p) => p.indexable !== false && inScope(p.slug));
 
   // Base pages: use each page's real git last-modified date (the source file
   // is src/content/<slug>.html) so lastmod only moves when the page actually
@@ -1087,7 +1095,7 @@ function buildSitemap() {
     <priority>0.9</priority>
   </url>`;
 
-  const blogUrls = blogPosts.map(p => `
+  const blogUrls = blogPosts.filter(p => scope.blog.includes(p.slug)).map(p => `
   <url>
     <loc>${site.domain}/blog/${p.slug}</loc>
     <lastmod>${p.isoUpdated || p.isoDate || now}</lastmod>
@@ -1095,8 +1103,8 @@ function buildSitemap() {
     <priority>0.7</priority>
   </url>`).join('');
 
-  // Only include visible (non-deprecated) games in the sitemap
-  const gameUrls = visibleGames.map(g => `
+  // Only visible (non-deprecated) games go in the sitemap, and only those in scope.
+  const gameUrls = visibleGames.filter(g => scope.games.includes(g.slug)).map(g => `
   <url>
     <loc>${site.domain}/fgame/${g.slug}</loc>
     <lastmod>${g.isoUpdated || g.isoDate || now}</lastmod>

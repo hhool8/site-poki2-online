@@ -1,0 +1,23 @@
+{
+  "_why": "The sitemap advertises what we stand behind, not everything that returns 200. Google crawled 112 of these 200 URLs and indexed one; a 200-URL sitemap on a three-day-old domain reads as a thin-content application. This file is the short list. Pages not listed here stay live, stay linked, and stay crawlable — they are simply no longer advertised as priorities. Reversible: delete this file's entries and rebuild.",
+  "_measured": "2026-11-04 · apex 1 indexed / 42 crawled-not-indexed / 59 unknown · play 0 indexed / 70 crawled / 28 unknown",
+  "_review": "2026-11-18 — compare index-status snapshots, keep this only if the indexed count moved.",
+
+  "pages": ["index"],
+
+  "blog": [
+    "best-2-player-browser-games",
+    "best-2-player-games-guide",
+    "best-multiplayer-browser-games",
+    "what-are-io-games",
+    "best-browser-games-2026",
+    "unblocked-games-guide",
+    "games-like-cookie-clicker",
+    "best-puzzle-browser-games",
+    "best-idle-clicker-browser-games"
+  ],
+
+  "games": [],
+
+  "_gamesWhy": "Every one of the 68 apex /fgame/ pages duplicates the play host's /game/ page for the same title (four were exact slug collisions), and both sides self-canonical. Google crawled 17 of them and indexed none. The catalog is advertised from play; apex keeps /fgame/ as the browse index only."
+}
