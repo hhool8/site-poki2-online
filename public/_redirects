@@ -13,6 +13,20 @@
 /games          https://play.poki2.online/             301
 /games/         https://play.poki2.online/             301
 
+# Three games were published on both hosts with two self-canonicals. Google's
+# answer on 2026-11-04 was "Crawled - currently not indexed" on both copies —
+# it declined to pick a winner. The play host owns the catalogue, so the apex
+# copies retire here and the play pages carry the guide text instead.
+# (Pac-Man is not in this list on purpose: the apex page is the 30th Anniversary
+# Google Doodle edition and the play page is the standard Pac-Man, so they are
+# different products that happen to share a slug.)
+/fgame/2048              https://play.poki2.online/game/2/2048/             301
+/fgame/2048/             https://play.poki2.online/game/2/2048/             301
+/fgame/basketball-stars  https://play.poki2.online/game/b/basketball-stars/ 301
+/fgame/basketball-stars/ https://play.poki2.online/game/b/basketball-stars/ 301
+/fgame/minesweeper       https://play.poki2.online/game/m/minesweeper/      301
+/fgame/minesweeper/      https://play.poki2.online/game/m/minesweeper/      301
+
 # Deprecated game pages → games index (301 to preserve link equity)
 /fgame/moto-x3m              /fgame/  301
 /fgame/moto-x3m/              /fgame/  301

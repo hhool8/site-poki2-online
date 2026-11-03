@@ -19,5 +19,5 @@
 
   "games": [],
 
-  "_gamesWhy": "Every one of the 68 apex /fgame/ pages duplicates the play host's /game/ page for the same title (four were exact slug collisions), and both sides self-canonical. Google crawled 17 of them and indexed none. The catalog is advertised from play; apex keeps /fgame/ as the browse index only."
+  "_gamesWhy": "Every one of the 68 apex /fgame/ pages duplicates the play host's /game/ page for the same title, and both sides self-canonical. Google crawled 17 of them and indexed none. The catalog is advertised from play; apex keeps /fgame/ as the browse index only. Three of those pairs shared an exact slug and are now 301s to play (see public/_redirects); the fourth flagged collision, pacman, was a false positive — apex hosts the 30th Anniversary Google Doodle and play hosts the standard Pac-Man."
 }

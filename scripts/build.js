@@ -9,6 +9,19 @@ const { site, pages, blogPosts, gamePosts } = require('./config.js');
 // Only include non-deprecated games in frontend listings and sitemap
 const visibleGames = gamePosts.filter(g => !g.deprecated);
 
+// Games the play host owns outright. Three titles exist on both hosts and both
+// sides declared themselves canonical, which leaves Google to pick a winner and
+// — measured on 2026-11-04 — pick neither: every one of these was "Crawled -
+// currently not indexed" on both hosts. The apex copies are retired to a 301
+// (public/_redirects) and the play page absorbed the guide text that used to
+// live here. Links to /fgame/<slug> are left in place on purpose: they resolve
+// in one hop and hand the homepage's link equity to the page that survives.
+const REDIRECTED_GAMES = new Map([
+  ['2048',             'https://play.poki2.online/game/2/2048/'],
+  ['basketball-stars', 'https://play.poki2.online/game/b/basketball-stars/'],
+  ['minesweeper',      'https://play.poki2.online/game/m/minesweeper/'],
+]);
+
 // ── Path helpers ──────────────────────────────────────────────────────────────
 const ROOT    = path.join(__dirname, '..');
 const SRC     = path.join(ROOT, 'src');
@@ -726,6 +739,13 @@ function buildGames() {
 
   // Individual game pages — only for visible games
   for (const game of visibleGames) {
+    // Retired in favour of the play host — see REDIRECTED_GAMES. No static file
+    // is written, so public/_redirects is unambiguously the only thing serving
+    // this path.
+    if (REDIRECTED_GAMES.has(game.slug)) {
+      console.log('  RETIRED (301 to play):', game.slug);
+      continue;
+    }
     const contentFile = path.join(SRC, 'content', 'fgame', `${game.slug}.html`);
     if (!fs.existsSync(contentFile)) {
       console.warn('  SKIP (missing content):', game.slug);
