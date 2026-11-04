@@ -48,8 +48,16 @@
 /fgame/krunker-io/            /fgame/  301
 /fgame/soccer-random          /fgame/  301
 /fgame/soccer-random/         /fgame/  301
-/fgame/basket-random          /fgame/  301
-/fgame/basket-random/         /fgame/  301
 /fgame/bitlife                /fgame/  301
 /fgame/bitlife/               /fgame/  301
+
+# NOTE: /fgame/basket-random is deliberately NOT in this file.
+# It was retired here in April 2026 ("Access denied" from the upstream host)
+# and then revived on 2026-11-04 as the first of the six new two-player
+# guides. Cloudflare Pages applies _redirects BEFORE static assets
+# ("Redirects are always followed, regardless of whether or not an asset
+# matches the incoming request"), so a rule here would 301 the live guide
+# away and the page would never render. If a guide is ever retired, remove
+# its config.js entry instead of adding a rule here — a retired game must
+# have no built page, and build.js skips pages listed in REDIRECTED_GAMES.
 

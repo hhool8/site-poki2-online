@@ -20,7 +20,16 @@
     "best-idle-clicker-browser-games"
   ],
 
-  "games": [],
+  "games": [
+    "basket-random",
+    "head-soccer-2024",
+    "head-basketball",
+    "hockey-random",
+    "gun-mayhem",
+    "ragdoll-hit-stickman"
+  ],
 
-  "_gamesWhy": "Every one of the 68 apex /fgame/ pages duplicates the play host's /game/ page for the same title, and both sides self-canonical. Google crawled 17 of them and indexed none. The catalog is advertised from play; apex keeps /fgame/ as the browse index only. Three of those pairs shared an exact slug and are now 301s to play (see public/_redirects); the fourth flagged collision, pacman, was a false positive — apex hosts the 30th Anniversary Google Doodle and play hosts the standard Pac-Man."
+  "_gamesWhy": "Every one of the 68 apex /fgame/ pages duplicates the play host's /game/ page for the same title, and both sides self-canonical. Google crawled 17 of them and indexed none. The catalog is advertised from play; apex keeps /fgame/ as the browse index only. Three of those pairs shared an exact slug and are now 301s to play (see public/_redirects); the fourth flagged collision, pacman, was a false positive — apex hosts the 30th Anniversary Google Doodle and play hosts the standard Pac-Man.",
+
+  "_gamesException": "2026-11-04 — the six guides above are the exception, and the only entries in this list. They were added on 2026-11-04 as the first genuinely new two-player titles and they exist ONLY on apex: play.poki2.online's 221-game catalogue has no page for any of them, so there is no second self-canonical to compete with and no duplicate-content risk. They are also the highest intent match the site owns for the '2 player games' query — six dedicated pages against a hub that otherwise points at 300-word card descriptions. Apex currently has 1 indexed URL and 42 crawled-not-indexed; these are fresh URLs with no crawl history, which is exactly the population a sitemap helps. Sitemap goes 23 -> 29 URLs. Remove this list if the index count does not move by the 2026-11-18 review."
 }

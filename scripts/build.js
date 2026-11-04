@@ -22,6 +22,11 @@ const REDIRECTED_GAMES = new Map([
   ['minesweeper',      'https://play.poki2.online/game/m/minesweeper/'],
 ]);
 
+// Where a card should point. Games retired to the play host have no page on
+// this domain, so linking them locally would cost the visitor a 301 hop —
+// point the card straight at the destination instead.
+const gameHref = (g) => REDIRECTED_GAMES.get(g.slug) || `/fgame/${g.slug}`;
+
 // ── Path helpers ──────────────────────────────────────────────────────────────
 const ROOT    = path.join(__dirname, '..');
 const SRC     = path.join(ROOT, 'src');
@@ -627,7 +632,7 @@ function fillGame(template, game, content, relatedLinks) {
       isPartOf: { '@type': 'WebSite', '@id': `${site.domain}/#website`, url: site.domain, name: site.name },
       about: { '@id': canonical },
       mainEntity: { '@id': canonical },
-    }, {
+    },     {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
@@ -637,6 +642,22 @@ function fillGame(template, game, content, relatedLinks) {
       ],
     }
   ];
+
+  // FAQPage derived from the visible Q&As in the guide body — never written by
+  // hand, so schema cannot drift from what a reader sees. Only guides that use
+  // the "Frequently Asked Questions" heading with h3/p pairs qualify.
+  const faq = extractFaq(content);
+  if (faq.length) {
+    schema.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    });
+  }
 
   return template
     .replace(/\{\{TITLE\}\}/g,             esc(brandedTitle))
@@ -764,7 +785,7 @@ function buildGenrePages() {
     if (games.length === 0) continue;
     const id = genreSlug(cat);
     const cards = games.map(g =>
-      `<a href="/fgame/${g.slug}" class="game-index-card">${gamePicture(g.slug, { alt: g.title, w: 120, h: 120, sizes: '150px' })}<div class="game-index-card-body"><h3 class="game-index-card-title">${esc(g.title)}</h3><span class="game-index-card-genre">${esc(g.genre)}</span><span class="game-index-card-players">${esc(g.players)}</span></div></a>`
+      `<a href="${gameHref(g)}" class="game-index-card">${gamePicture(g.slug, { alt: g.title, w: 120, h: 120, sizes: '150px' })}<div class="game-index-card-body"><h3 class="game-index-card-title">${esc(g.title)}</h3><span class="game-index-card-genre">${esc(g.genre)}</span><span class="game-index-card-players">${esc(g.players)}</span></div></a>`
     ).join('');
     const blurb = GENRE_BLURBS[cat] || '';
     const overview = GENRE_OVERVIEWS[cat] || '';
@@ -855,7 +876,7 @@ function buildPages() {
     if (page.slug === 'index') {
       function renderFeaturedGrid(games) {
         const cards = games.slice(0, 12).map(g =>
-          `<a href="/fgame/${g.slug}" class="featured-card">${gamePicture(g.slug, { alt: g.title, w: 160, h: 160, sizes: '160px' })}<span class="featured-card-label">${esc(g.title)}</span><span class="featured-card-src">${esc(g.category || g.genre || '')}</span></a>`
+          `<a href="${gameHref(g)}" class="featured-card">${gamePicture(g.slug, { alt: g.title, w: 160, h: 160, sizes: '160px' })}<span class="featured-card-label">${esc(g.title)}</span><span class="featured-card-src">${esc(g.category || g.genre || '')}</span></a>`
         ).join('\n      ');
         return `<div class="featured-grid" style="margin-top:1.5rem">\n      ${cards}\n    </div>`;
       }
@@ -864,7 +885,7 @@ function buildPages() {
         // 6 cards from games[6..12] – no overlap with Featured
         const picks = games.length >= 24 ? games.slice(12, 24) : games.slice(0, 12);
         const cards = picks.map(g =>
-          `<a href="/fgame/${g.slug}" class="featured-card">${gamePicture(g.slug, { alt: g.title, w: 160, h: 160, sizes: '160px' })}<span class="featured-card-label">${esc(g.title)}</span><span class="featured-card-src">${esc(g.category || g.genre || '')}</span></a>`
+          `<a href="${gameHref(g)}" class="featured-card">${gamePicture(g.slug, { alt: g.title, w: 160, h: 160, sizes: '160px' })}<span class="featured-card-label">${esc(g.title)}</span><span class="featured-card-src">${esc(g.category || g.genre || '')}</span></a>`
         ).join('\n      ');
         return `<div class="featured-grid" style="margin-top:1.5rem">\n      ${cards}\n    </div>`;
       }
@@ -872,7 +893,7 @@ function buildPages() {
       function renderAllGamesDirectory(games) {
         const sorted = [...games].sort((a, b) => a.title.localeCompare(b.title));
         const links = sorted.map(g =>
-          `<a href="/fgame/${g.slug}" class="az-link">${esc(g.title)}</a>`
+          `<a href="${gameHref(g)}" class="az-link">${esc(g.title)}</a>`
         ).join('\n        ');
         return `<div style="display:flex;flex-wrap:wrap;gap:.55rem .9rem;justify-content:center;max-width:980px;margin:1.5rem auto 0">\n        ${links}\n      </div>`;
       }
@@ -901,7 +922,7 @@ function buildPages() {
       // Same card markup as the /fgame/ index and the genre pages — one visual
       // language across every catalogue grid (icon, title, genre, players).
       const card = (g) =>
-        `<a href="/fgame/${g.slug}" class="game-index-card">${gamePicture(g.slug, { alt: g.title, w: 120, h: 120, sizes: '150px' })}<div class="game-index-card-body"><h3 class="game-index-card-title">${esc(g.title)}</h3><span class="game-index-card-genre">${esc(g.genre || '')}</span><span class="game-index-card-players">${esc(g.players || '')}</span></div></a>`;
+        `<a href="${gameHref(g)}" class="game-index-card">${gamePicture(g.slug, { alt: g.title, w: 120, h: 120, sizes: '150px' })}<div class="game-index-card-body"><h3 class="game-index-card-title">${esc(g.title)}</h3><span class="game-index-card-genre">${esc(g.genre || '')}</span><span class="game-index-card-players">${esc(g.players || '')}</span></div></a>`;
       const grid = (list, withStyle) =>
         `${withStyle ? GAME_INDEX_STYLE : ''}<div class="game-index-grid" style="margin-top:1.5rem">\n      ${list.map(card).join('\n      ')}\n    </div>`;
 
@@ -957,7 +978,7 @@ function buildGames() {
     const offs = [2, 5, 9, 14];
     const picked = offs.map(o => visibleGames[(idx + o) % n]).filter(g => g.slug !== game.slug);
     const relatedLinks = picked.slice(0, 4).map(g =>
-      `<a href="/fgame/${g.slug}" class="related-game-card">${gamePicture(g.slug, { alt: g.title, w: 28, h: 28, sizes: '44px' })}${esc(g.title)}</a>`
+      `<a href="${gameHref(g)}" class="related-game-card">${gamePicture(g.slug, { alt: g.title, w: 28, h: 28, sizes: '44px' })}${esc(g.title)}</a>`
     ).join('\n          ');
 
     const html = fillGame(gameTemplate, game, content, relatedLinks);
@@ -1015,7 +1036,7 @@ function buildGames() {
   const categorySections = GAME_GENRES.filter(cat => grouped[cat].length > 0).map(cat => {
     const catId = genreSlug(cat);
     const cards = grouped[cat].map(g =>
-      `<a href="/fgame/${g.slug}" class="game-index-card">${gamePicture(g.slug, { alt: g.title, w: 120, h: 120, sizes: '150px' })}<div class="game-index-card-body"><h3 class="game-index-card-title">${esc(g.title)}</h3><span class="game-index-card-genre">${esc(g.genre)}</span><span class="game-index-card-players">${esc(g.players)}</span></div></a>`
+      `<a href="${gameHref(g)}" class="game-index-card">${gamePicture(g.slug, { alt: g.title, w: 120, h: 120, sizes: '150px' })}<div class="game-index-card-body"><h3 class="game-index-card-title">${esc(g.title)}</h3><span class="game-index-card-genre">${esc(g.genre)}</span><span class="game-index-card-players">${esc(g.players)}</span></div></a>`
     ).join('');
     // Heading links to the dedicated genre page (/fgame/<genre>) — the anchor
     // id stays for any /fgame/#<id> links still in the wild.

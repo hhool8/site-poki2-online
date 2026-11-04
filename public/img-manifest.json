@@ -107,7 +107,7 @@
   "basket-random": {
     "webp": "/imgs/fgame/h/basket-random.a6229aa3cac6.webp",
     "png": "/imgs/fgame/h/basket-random.a6229aa3cac6.jpg",
-    "orig": "/imgs/fgame/basket-random.jpeg",
+    "orig": "/imgs/fgame/basket-random.jpg",
     "w": 512,
     "w256": "/imgs/fgame/h/basket-random.a6229aa3cac6.256.webp"
   },
@@ -370,12 +370,40 @@
     "w": 180,
     "w256": "/imgs/fgame/h/golf-puzzle.9b2e79aa7fd4.256.webp"
   },
+  "gun-mayhem": {
+    "webp": "/imgs/fgame/h/gun-mayhem.a5744849b6e7.webp",
+    "png": "/imgs/fgame/h/gun-mayhem.a5744849b6e7.png",
+    "orig": "/imgs/fgame/gun-mayhem.png",
+    "w": 452,
+    "w256": "/imgs/fgame/h/gun-mayhem.a5744849b6e7.256.webp"
+  },
+  "head-basketball": {
+    "webp": "/imgs/fgame/h/head-basketball.0d7cb9a31a81.webp",
+    "png": "/imgs/fgame/h/head-basketball.0d7cb9a31a81.png",
+    "orig": "/imgs/fgame/head-basketball.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/head-basketball.0d7cb9a31a81.256.webp"
+  },
+  "head-soccer-2024": {
+    "webp": "/imgs/fgame/h/head-soccer-2024.284659eb71ee.webp",
+    "png": "/imgs/fgame/h/head-soccer-2024.284659eb71ee.jpg",
+    "orig": "/imgs/fgame/head-soccer-2024.jpg",
+    "w": 1200,
+    "w256": "/imgs/fgame/h/head-soccer-2024.284659eb71ee.256.webp"
+  },
   "hill-climb-racing": {
     "webp": "/imgs/fgame/h/hill-climb-racing.0c93bb3245d1.webp",
     "png": "/imgs/fgame/h/hill-climb-racing.0c93bb3245d1.png",
     "orig": "/imgs/fgame/hill-climb-racing.png",
     "w": 250,
     "w256": "/imgs/fgame/h/hill-climb-racing.0c93bb3245d1.256.webp"
+  },
+  "hockey-random": {
+    "webp": "/imgs/fgame/h/hockey-random.4aa08d5e81d2.webp",
+    "png": "/imgs/fgame/h/hockey-random.4aa08d5e81d2.png",
+    "orig": "/imgs/fgame/hockey-random.png",
+    "w": 512,
+    "w256": "/imgs/fgame/h/hockey-random.4aa08d5e81d2.256.webp"
   },
   "hoop-legends": {
     "webp": "/imgs/fgame/h/hoop-legends.9877cfe1d0c6.webp",
@@ -474,6 +502,13 @@
     "orig": "/imgs/fgame/pong.jpeg",
     "w": 512,
     "w256": "/imgs/fgame/h/pong.382ddec4cde1.256.webp"
+  },
+  "ragdoll-hit-stickman": {
+    "webp": "/imgs/fgame/h/ragdoll-hit-stickman.a6455565f060.webp",
+    "png": "/imgs/fgame/h/ragdoll-hit-stickman.a6455565f060.png",
+    "orig": "/imgs/fgame/ragdoll-hit-stickman.png",
+    "w": 314,
+    "w256": "/imgs/fgame/h/ragdoll-hit-stickman.a6455565f060.256.webp"
   },
   "retro-blaster": {
     "webp": "/imgs/fgame/h/retro-blaster.4370238f83ea.webp",
