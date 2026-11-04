@@ -19,6 +19,17 @@
  * Deleted URLs are not sent at all -- IndexNow has no removal verb, and a 404
  * from the sitemap drop is the correct way to retire a page.
  *
+ * SCOPE: every published page, not just the sitemap.
+ * The sitemap was deliberately condensed to 26 URLs while the site publishes
+ * 114 canonical URLs. Announcing only sitemap URLs meant 88 real pages --
+ * including 78 /fgame/ game guides -- could never be announced at all, so a
+ * rewrite of one of them was invisible to Bing until it happened to recrawl on
+ * its own. Bing is the engine that actually indexes this site (measured
+ * 2026-11-04: ~12,300 URLs indexed across both hosts, against Google's 1), so
+ * the push channel has to cover the whole catalogue. The fingerprint diff is
+ * what keeps that cheap: unchanged pages are still skipped, so widening the
+ * scope does not turn every deploy into a full re-announce.
+ *
  * The fingerprint is the page HTML with the `<!-- built: ... -->` comment
  * stripped. That comment is on line 2 of every article and game page and
  * changes on every build, so hashing the raw file would mark all 102 pages
@@ -109,6 +120,42 @@ function locToFile(loc, host) {
   return null;
 }
 
+/** Every page in dist/ that declares a canonical, as { url -> file }. */
+function distPages(host) {
+  const map = new Map();
+  const prefix = `https://${host}`;
+  const skip = new Set();
+
+  const walk = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const p = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walk(p);
+        continue;
+      }
+      if (!entry.name.endsWith('.html')) continue;
+      const html = fs.readFileSync(p, 'utf8');
+      const m =
+        html.match(/<link[^>]+rel="canonical"[^>]+href="([^"]+)"/) ||
+        html.match(/<link[^>]+href="([^"]+)"[^>]+rel="canonical"/);
+      if (!m) continue;
+      const url = m[1].trim();
+      if (!url.startsWith(prefix)) continue;
+      if (map.has(url)) continue;
+      map.set(url, p);
+      // A page that canonicalises to the homepage (404.html does) would
+      // re-announce the homepage under a second fingerprint. Skip it.
+      if (url === prefix + '/' && path.basename(p) !== 'index.html') {
+        skip.add(url);
+      }
+    }
+  };
+
+  if (fs.existsSync(DIST)) walk(DIST);
+  for (const u of skip) map.delete(u);
+  return map;
+}
+
 /** Page identity that survives a rebuild: strip the per-build comment. */
 function fingerprint(file) {
   const html = fs.readFileSync(file, 'utf8').replace(/[ \t]*<!--\s*built:[^>]*?-->\s*/g, '');
@@ -188,12 +235,19 @@ async function main() {
   const unchanged = [];
   const unmapped = [];
 
+  // Announce every published page, not only the sitemap's URLs.
+  const targets = new Map(distPages(host));
   for (const loc of locs) {
+    if (targets.has(loc)) continue;
     const file = locToFile(loc, host);
     if (!file) {
       unmapped.push(loc);
       continue;
     }
+    targets.set(loc, file);
+  }
+
+  for (const [loc, file] of targets) {
     const fp = fingerprint(file);
     nextPages[loc] = fp;
     if (SEND_ALL || !state.pages[loc] || state.pages[loc] !== fp) changed.push(loc);
@@ -205,7 +259,7 @@ async function main() {
     for (const u of unmapped.slice(0, 10)) console.warn(`[indexnow]   ${u}`);
   }
 
-  console.log(`[indexnow] host=${host} key=${key.slice(0, 6)}…  sitemap=${locs.length}  changed=${changed.length}  unchanged=${unchanged.length}`);
+  console.log(`[indexnow] host=${host} key=${key.slice(0, 6)}…  sitemap=${locs.length}  pages=${targets.size}  changed=${changed.length}  unchanged=${unchanged.length}`);
   if (changed.length === 0) {
     console.log('[indexnow] Nothing changed since the last announce. Skipping.');
     return 0;
