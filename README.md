@@ -104,7 +104,7 @@ see `docs/` — and is the reason only 26 URLs are advertised in the sitemap.
 │   ├── favicon.svg
 │   ├── og-image.png
 │   ├── 404.html
-│   ├── indexnow-<key>.txt     # IndexNow key file (public by design)
+│   ├── <key>.txt              # IndexNow key file (public by design)
 │   └── google65c93755d768ab97.html  # Search Console verification
 ├── scripts/
 │   ├── build.js               # Build script — templates + content → dist/
@@ -415,8 +415,9 @@ printf '%s' '<cloudflare-zone-id>'    > ~/.poki2-cf-zone
 it into its local cache.
 
 Two identifiers are intentionally public, because their protocols require them
-to be served at the domain root: `public/indexnow-<key>.txt` and
-`public/google65c93755d768ab97.html`.
+to be served at the domain root: `public/<key>.txt` (the IndexNow key, which
+`scripts/indexnow.js` declares as its `keyLocation`) and
+`public/google65c93755d768ab97.html` (the Search Console verification file).
 
 ---
 
