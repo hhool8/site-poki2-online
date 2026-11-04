@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 const fs = require('fs');
-const T = (f) => '..//' + f;
+const path = require('path');
+const ROOT = path.join(__dirname, '..');
+const T = (f) => path.join(ROOT, f);
 
 // JS-injected related-card imgs in templates (literal text inside script strings)
 const oldJs = '<img src="' + "' + esc(item.image) + '" + '" alt="" loading="lazy">';

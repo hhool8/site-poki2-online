@@ -1,10 +1,26 @@
 # Config for Cloudflare Pages (`npm run deploy` / Pages Git integration).
 #
-# account_id is deliberately NOT set here: `wrangler pages deploy` rejects a
-# custom config path (`-c`) and only auto-loads this exact filename, so the
-# account is pinned through CLOUDFLARE_ACCOUNT_ID in the npm script instead.
-# That matters because the logged-in user can see two Cloudflare accounts and a
-# non-interactive wrangler run aborts rather than guessing. poki2.online's zone
-# lives in <cf-account-email>'s account ($CLOUDFLARE_ACCOUNT_ID).
+# account_id is deliberately NOT set here, and no account id appears anywhere
+# in this repository.
+#
+# Two reasons, both about keeping a person's account out of a public repo:
+#
+#   1. `wrangler pages deploy` rejects a custom config path (`-c`) and only
+#      auto-loads this exact filename, so the account cannot be pinned here
+#      even if we wanted to. The npm script used to work around that by
+#      inlining `CLOUDFLARE_ACCOUNT_ID=...` -- which is how a personal
+#      account id ended up committed to git.
+#   2. The account id identifies whose account hosts the site. It is not a
+#      secret, but it binds the repo to one person and follows every fork.
+#
+# Instead, `scripts/deploy.js` resolves the account id at deploy time from
+# `$CLOUDFLARE_ACCOUNT_ID` or from `~/.poki2-cf-account` (a 0600 file outside
+# the repo), then passes it to wrangler through the environment. The logged-in
+# user can see two Cloudflare accounts and a non-interactive wrangler run
+# aborts rather than guessing -- which is exactly why the id has to be
+# supplied explicitly.
+#
+# The zone id (needed for the post-deploy cache purge) follows the same
+# convention: `$CF_ZONE_ID` or `~/.poki2-cf-zone`.
 name = "poki2-portal"
 pages_build_output_dir = "dist"

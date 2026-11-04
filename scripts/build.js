@@ -776,7 +776,7 @@ const GAME_INDEX_STYLE = `<style>
   </style>`;
 
 function buildGenrePages() {
-  console.log('\n[1.5/5] Building genre pages…');
+  console.log('\n[2/8] Building genre pages…');
   const baseTemplate = read(path.join(SRC, 'templates', 'base.html'));
   const gridStyle = GAME_INDEX_STYLE;
   let built = 0;
@@ -860,7 +860,7 @@ function buildGenrePages() {
 }
 
 function buildPages() {
-  console.log('\n[1/4] Building static pages…');
+  console.log('\n[1/8] Building static pages…');
   const baseTemplate = read(path.join(SRC, 'templates', 'base.html'));
 
   for (const page of pages) {
@@ -952,7 +952,7 @@ function buildPages() {
 }
 
 function buildGames() {
-  console.log('\n[2/5] Building game pages…');
+  console.log('\n[3/8] Building game pages…');
   const gameTemplate = read(path.join(SRC, 'templates', 'game.html'));
   const baseTemplate = read(path.join(SRC, 'templates', 'base.html'));
 
@@ -1086,7 +1086,7 @@ function buildGames() {
 }
 
 function buildBlog() {
-  console.log('\n[3/5] Building blog…');
+  console.log('\n[4/8] Building blog…');
   const articleTemplate = read(path.join(SRC, 'templates', 'article.html'));
   const baseTemplate    = read(path.join(SRC, 'templates', 'base.html'));
 
@@ -1201,7 +1201,7 @@ function buildBlog() {
 }
 
 function buildSearchIndex() {
-  console.log('\n[4/6] Building search index…');
+  console.log('\n[5/8] Building search index…');
 
   const gameEntries = visibleGames.map((game) => ({
     type: 'game',
@@ -1231,7 +1231,7 @@ function stripHtmlToText(html) {
 // crawlers. Complements the curated /llms.txt with the complete text of every
 // game entry and blog article so it can be cited directly.
 function buildLlmsFull() {
-  console.log('\n[5.5/6] Building llms-full.txt…');
+  console.log('\n[7/8] Building llms-full.txt…');
   const lines = [];
 
   lines.push('# Poki2 — Full Content');
@@ -1278,7 +1278,7 @@ function buildLlmsFull() {
 }
 
 function buildSitemap() {
-  console.log('\n[5/6] Building sitemap…');
+  console.log('\n[6/8] Building sitemap…');
   const now = today();
 
   // Sitemap scope (2026-11-04): Google crawled 112 of 200 URLs across both
@@ -1373,7 +1373,7 @@ function minifyCss(src) {
 }
 
 function copyAssets() {
-  console.log('\n[6/6] Copying assets…');
+  console.log('\n[8/8] Copying assets…');
 
   const cssDest = path.join(DIST, 'css');
   fs.mkdirSync(cssDest, { recursive: true });

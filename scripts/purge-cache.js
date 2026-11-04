@@ -26,6 +26,12 @@
  * 0600 file outside the repo means `npm run deploy` works with no export and
  * no risk of committing the secret.
  *
+ * The zone id is read the same way: CF_ZONE_ID if set, otherwise from
+ * ~/.poki2-cf-zone (override with CF_ZONE_FILE). It used to be hardcoded
+ * here as a fallback, which committed a personal account's zone id to git.
+ * There is no hardcoded fallback now -- a missing zone id is a warning, not
+ * a guess.
+ *
  * A missing token is a warning, not a failure: the deploy already succeeded and
  * a stale-cache window is a lesser problem than a red build. An API error is a
  * failure, because silently leaving 1-hour-old HTML in place is the exact bug
@@ -36,9 +42,21 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 
-const ZONE_ID = process.env.CF_ZONE_ID || '$CF_ZONE_ID';
+const ZONE_FILE = process.env.CF_ZONE_FILE || path.join(os.homedir(), '.poki2-cf-zone');
 const TOKEN_FILE = process.env.CF_TOKEN_FILE || path.join(os.homedir(), '.poki2-cf-token');
 const API = 'https://api.cloudflare.com/client/v4';
+
+function resolveValue(envName, file) {
+  const fromEnv = (process.env[envName] || '').trim();
+  if (fromEnv) return fromEnv;
+  try {
+    const fromFile = fs.readFileSync(file, 'utf8').trim();
+    if (fromFile) return fromFile;
+  } catch {
+    /* no file - fall through */
+  }
+  return null;
+}
 
 function resolveToken() {
   const fromEnv = (process.env.CF_API_TOKEN || '').trim();
@@ -54,6 +72,7 @@ function resolveToken() {
 
 async function main() {
   const { token: TOKEN, source } = resolveToken();
+  const ZONE_ID = resolveValue('CF_ZONE_ID', ZONE_FILE);
 
   if (!TOKEN) {
     console.warn('[purge] No API token: CF_API_TOKEN is unset and ' + TOKEN_FILE + ' is missing.');
@@ -61,6 +80,13 @@ async function main() {
     console.warn('[purge] previous build for up to s-maxage (3600s) plus');
     console.warn('[purge] stale-while-revalidate (86400s). Purge manually, or create');
     console.warn('[purge] a token with Zone.Cache Purge and save it to ' + TOKEN_FILE + '.');
+    return 0;
+  }
+
+  if (!ZONE_ID) {
+    console.warn('[purge] No zone id: CF_ZONE_ID is unset and ' + ZONE_FILE + ' is missing.');
+    console.warn('[purge] The token alone is not enough to scope a purge. Save the zone');
+    console.warn('[purge] id to ' + ZONE_FILE + ' or export CF_ZONE_ID.');
     return 0;
   }
 

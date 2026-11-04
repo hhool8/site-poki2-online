@@ -12,9 +12,9 @@
 # Necessary but NOT sufficient: these headers alone do not put HTML in the edge
 # cache. Cloudflare Pages classifies text/html as dynamic and ignores s-maxage
 # at the edge until a zone-level Cache Rule authorises it. That rule lives
-# outside this repo (dashboard / API, zone $CF_ZONE_ID,
-# ruleset $CF_RULESET_ID); the payload is reproduced in
-# infra/cloudflare-cache-rule.json so it can be rebuilt from source.
+# outside this repo (dashboard / API, applied to your own zone id and ruleset
+# id); the payload is reproduced in infra/cloudflare-cache-rule.json so it can
+# be rebuilt from source.
 #
 # Consequence to remember: any rule change here that lengthens HTML caching
 # must be paired with a purge on deploy (scripts/purge-cache.js, wired into

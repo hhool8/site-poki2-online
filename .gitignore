@@ -7,6 +7,9 @@ dist/
 # Dependencies
 node_modules/
 
+# Wrangler local state (contains the Cloudflare account id of whoever ran it)
+.wrangler/
+
 # macOS
 .DS_Store
 
