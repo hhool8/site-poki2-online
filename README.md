@@ -77,9 +77,12 @@ Poki2 network. It is one of several repositories:
 | `poki2-online-sidecar` | Measurement and research workspace: Search Console tooling, audits, link tracking. Not deployed. |
 
 The apex and the play host are **two doors to the same catalogue**. Most
-`/fgame/<slug>` pages on the apex duplicate a `/game/<c>/<slug>/` page on play,
-and both sides self-canonical. That duplication is a known, measured problem —
-see `docs/` — and is the reason only 26 URLs are advertised in the sitemap.
+`/fgame/<slug>` pages on the apex duplicate a `/game/<c>/<slug>/` page on play.
+Both sides self-canonicalise, but that is not a canonical conflict: the
+2026-11-04 inspection of all 383 canonical URLs measured
+`cross_host canonical = 0` and Google chose each page's own canonical. The
+26-URL sitemap is a scope decision — the catalogue is advertised from play —
+not a remedy for duplication. See [Sitemap scope](#sitemap-scope).
 
 ---
 
@@ -301,9 +304,14 @@ review date. Change it deliberately, not by reflex.
 Two rules that are easy to get wrong:
 
 - **A game page on the apex belongs in the sitemap only if play does not have
-  it.** The apex and play are two doors to one catalogue; a game published on
-  both sides has two self-canonical pages competing for one query, and Google
-  has been observed picking neither.
+  it.** The apex and play are two doors to one catalogue; the catalogue is
+  advertised from play, and the apex keeps `/fgame/<slug>` as its browse layer.
+  Do not read a canonical conflict into this. The 2026-11-04 inspection of all
+  383 canonical URLs measured `cross_host canonical = 0`, and on every URL
+  where Google expressed a preference it chose the page's own canonical. The
+  earlier claim that two self-canonical pages compete and Google picks neither
+  is disproven; the bottleneck is content quality and discovery, not
+  canonical duplication. Do not add mirrors or canonical redirects to "fix" it.
 - **Never list a URL that `_redirects` also matches.** Cloudflare Pages
   applies redirects before static assets — a redirect rule for a path that also
   has a built HTML file means the page can never render.
