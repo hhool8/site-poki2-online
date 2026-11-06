@@ -173,9 +173,9 @@ const pages = [
       {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        name: 'Top Destinations on Poki2',
+        name: 'Poki2 Free Browser Games & Popular Pages',
         itemListOrder: 'https://schema.org/ItemListOrderAscending',
-        numberOfItems: 10,
+        numberOfItems: 9,
         itemListElement: [
           { '@type': 'ListItem', position: 1, url: 'https://poki2.online/fgame/', name: 'All Games' },
           { '@type': 'ListItem', position: 2, url: 'https://poki2.online/blog/', name: 'Blog Home' },
@@ -228,50 +228,10 @@ const pages = [
           },
           {
             '@type': 'Question',
-            name: 'What makes Poki2 different from a generic game list?',
+            name: 'Should I play free browser games at school or work?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Poki2 is a browser-games brand built around curation, review, and transparency. We organize the network by category, publish direct support and policy pages, and keep our editorial process visible so readers know how we choose games, update pages, and respond to feedback. That makes the experience more useful and more trustworthy than a generic scraped directory.'
-            }
-          },
-          {
-            '@type': 'Question',
-            name: 'Who is responsible for the content and updates on Poki2?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'Poki2 is run by an independent editorial and technical team. Our editors review games, update article pages, and maintain the public information about the site, while our developers handle page performance, site structure, and technical reliability. We keep contact and policy pages visible so readers can follow up when something needs clarification or correction.'
-            }
-          },
-          {
-            '@type': 'Question',
-            name: 'Do the games work on school Chromebooks or restricted networks?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'Many games on the Poki2 network are specifically chosen to work in school and office environments. Unblocked Games G+ is our dedicated school-safe portal with 474+ games that work on most filtered networks and Chromebooks. All Poki2 sites are served over HTTPS from Cloudflare\'s global CDN, which gives them a better chance of being accessible on filtered networks than older gaming portals.'
-            }
-          },
-          {
-            '@type': 'Question',
-            name: 'How do I suggest a game for the network?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'We welcome game suggestions from the community. Use the Poki2 contact form and include the game\'s name, the platform or URL where it is hosted, and note which Poki2 site you think it fits best. Our editorial team reviews every suggestion based on control responsiveness, performance on modest hardware, content appropriateness, and how it fits the existing catalogue.'
-            }
-          },
-          {
-            '@type': 'Question',
-            name: 'Why are some games loading slowly?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'Game load speed depends on your connection speed, browser, and the size of the game\'s assets. On your first visit to a game, all assets must be downloaded — this can take a few seconds on a slow connection. On repeat visits, cached assets load nearly instantly. All Poki2 sites are served from Cloudflare\'s global CDN, which minimises distance-based latency.'
-            }
-          },
-          {
-            '@type': 'Question',
-            name: 'Are the games safe for children?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'All games in the Poki2 network are manually reviewed before listing. We do not host games with adult content, graphic violence, or gambling mechanics. Most titles are appropriate for players 10 and up. For younger children (ages 4–12), we are building a dedicated Kids Games portal with age-appropriate content and a no-ads-during-play policy — coming soon.'
+              text: 'Many titles on the Poki2 network are chosen to work on filtered networks and school Chromebooks. See our guide to unblocked games at school for which ones load on most restricted connections. All Poki2 sites are served over HTTPS from Cloudflare\'s global CDN, which gives them a better chance of being accessible than older gaming portals — but whether a specific site is reachable still depends on your network\'s filter. Play responsibly and follow your school or workplace rules.'
             }
           },
         ],
