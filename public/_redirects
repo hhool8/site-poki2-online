@@ -1,8 +1,24 @@
 # poki2.online — Cloudflare Pages redirects
-
-# Legacy game URLs → play subdomain (keep old links working)
-/game/*        https://play.poki2.online/game/:splat  301
-
+#
+# Cloudflare Pages applies ONLY the first 100 redirect declarations in this
+# file; #101 and beyond are dropped with no warning, and the request simply
+# 404s. Measured on 2026-11-06 (the play host's _redirects had 452
+# declarations and its tail had been dead for months — /games/geodash at #100
+# answered 301, /games/getaway-shootout at #102 answered 404). This file
+# must stay under that ceiling. Only 301/302/303/307/308 are supported; any
+# other status code, 410 included, is ignored.
+#
+# The legacy "/game/* -> https://play.poki2.online/game/:splat" rule was
+# removed on 2026-11-06. It was in the first commit, the apex never served a
+# /game/ page in any revision, and its destination no longer exists: the play
+# catalogue moved to /game/<category>/<slug>/, so every URL it produced
+# answered 301 -> 404. A redirect to nothing is worse than an honest 404.
+# The legacy shape that does exist is /games/<slug>, which the redirect
+# worker serves (poki2.online/games/* -> play.poki2.online/game/<c>/<slug>/).
+# If the /game/ shape ever returns to Google's radar, give the worker a
+# matching route instead of a splat here — a splat cannot insert the
+# category letter, which is why this rule could never be repaired in place.
+#
 # The 2-player hub moved under the games section on 2026-11-04 (it is a
 # catalogue page, so it lives at /fgame/2-player-games). 301 preserves the
 # signals IndexNow announced for the old path earlier that day.
